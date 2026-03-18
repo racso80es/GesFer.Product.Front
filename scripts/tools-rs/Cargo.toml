@@ -1,0 +1,28 @@
+[package]
+name = "gesfer-tools"
+version = "0.1.0"
+edition = "2021"
+description = "Herramientas GesFer (contrato tools): implementación por defecto en Rust"
+authors = ["GesFer"]
+license = "UNLICENSED"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4.4", features = ["derive"] }
+tokio = { version = "1.0", features = ["full"] }
+reqwest = { version = "0.11", features = ["json", "blocking"] }
+anyhow = "1.0"
+
+[[bin]]
+name = "start_frontend"
+path = "src/bin/start_frontend.rs"
+
+[[bin]]
+name = "prepare_frontend_env"
+path = "src/bin/prepare_frontend_env.rs"
+
+[[bin]]
+name = "run_tests_frontend"
+path = "src/bin/run_tests_frontend.rs"
