@@ -1,0 +1,5 @@
+{
+  "description": "Este archivo está obsoleto. Usa los archivos en la carpeta config/ (local.json, development.json, production.json, test.json) o importa desde lib/config.ts",
+  "note": "Para compatibilidad con código antiguo, apiUrl se mantiene pero se recomienda usar lib/config.ts"
+}
+

@@ -1,0 +1,68 @@
+import { test, expect } from '@playwright/test';
+import { ApiClient } from '../api/api-client';
+import { TestDataCleanup } from '../helpers/test-data-cleanup';
+import { appConfig } from '../../lib/config';
+import { DEMO_COMPANY_NAME } from '../../lib/legacy-constants';
+
+test.describe('API - Autenticación', () => {
+  let apiClient: ApiClient;
+  let cleanup: TestDataCleanup;
+
+  test.beforeEach(async ({ request }) => {
+    apiClient = new ApiClient(request, process.env.API_URL || appConfig.api.url);
+    cleanup = new TestDataCleanup(request, process.env.API_URL || appConfig.api.url);
+    await cleanup.setAuthToken(DEMO_COMPANY_NAME, 'admin', 'admin123');
+  });
+
+  test.afterEach(async () => {
+    // Teardown: Limpiar cualquier dato de prueba creado durante los tests
+    await cleanup.cleanup();
+  });
+
+  test('debe realizar login exitoso y obtener información del usuario', async () => {
+    const loginData = await apiClient.loginFull(DEMO_COMPANY_NAME, 'admin', 'admin123');
+
+    expect(loginData).toBeTruthy();
+    expect(loginData).toHaveProperty('userId');
+    expect(loginData).toHaveProperty('username');
+    expect(loginData).toHaveProperty('firstName');
+    expect(loginData).toHaveProperty('lastName');
+    expect(loginData).toHaveProperty('companyId');
+    expect(loginData.username).toBe('admin');
+  });
+
+  test('debe rechazar login con credenciales inválidas', async () => {
+    const response = await apiClient.post('/api/auth/login', {
+      company: DEMO_COMPANY_NAME,
+      usuario: 'admin',
+      contraseña: 'password-incorrecta',
+    });
+
+    expect(response.status()).toBe(401);
+  });
+
+  test('debe validar campos requeridos en login', async () => {
+    const response = await apiClient.post('/api/auth/login', {
+      company: '',
+      usuario: '',
+      contraseña: '',
+    });
+
+    expect(response.status()).toBeGreaterThanOrEqual(400);
+  });
+
+  test('debe obtener información del usuario autenticado', async () => {
+    // La API no tiene endpoint /api/auth/me
+    // En su lugar, el login ya devuelve toda la información del usuario
+    const loginData = await apiClient.loginFull(DEMO_COMPANY_NAME, 'admin', 'admin123');
+
+    expect(loginData).toBeTruthy();
+    expect(loginData).toHaveProperty('userId');
+    expect(loginData).toHaveProperty('username');
+    expect(loginData).toHaveProperty('firstName');
+    expect(loginData).toHaveProperty('lastName');
+    expect(loginData).toHaveProperty('companyId');
+    expect(loginData).toHaveProperty('companyName');
+  });
+});
+
