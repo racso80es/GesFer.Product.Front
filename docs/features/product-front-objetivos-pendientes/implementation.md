@@ -4,7 +4,7 @@ action_id: implementation
 feature_id: product-front-objetivos-pendientes
 title: "Implementación por fases (SddIA → skills → src)"
 date: "2026-03-23"
-status: in_progress
+status: done
 plan_ref: "docs/features/product-front-objetivos-pendientes/plan.md"
 ---
 
