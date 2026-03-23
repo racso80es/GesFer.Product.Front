@@ -1,0 +1,15 @@
+# Evolution Log — GesFer.Product.Front
+
+Registro obligatorio de cambios relevantes de evolución del repositorio (Cúmulo: `paths.evolutionLogFile`). Mantener entradas breves y cronológicas (más reciente arriba).
+
+---
+
+## 2026-03-23
+
+- **Fase 1 (implementation):** norma `SddIA/norms/openapi-contract-rest-frontend.md`; `implementation.md` de la feature; README raíz enlaza la norma; commits por fase (SddIA → skills → src → Propuesta).
+- **Planning** (`docs/features/product-front-objetivos-pendientes/plan.md`): orden **SddIA → skills → src**; contrato API = OpenAPI del backend (D-09); **Propuesta** con README de aviso.
+- **Clarify** cerrado: D-09, D-10, D-11.
+
+## 2026-03-23 (entrada anterior)
+
+- **Clarify** inicial: decisiones D-05 a D-08 — HTTP y HTTPS locales; tests API real + mock; `EVOLUTION_LOG.md` obligatorio.
