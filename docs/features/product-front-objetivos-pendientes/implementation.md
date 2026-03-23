@@ -25,12 +25,12 @@ Registro de **touchpoints** aplicados por fase (commits separados).
 
 ## Fase 3 — src
 
-- Alineación de `NEXT_PUBLIC_API_URL` / `API_URL` y documentación al origen local de referencia del API (**5020** según planificación).
-- Comentarios en clientes HTTP; tests y `global-setup` coherentes con API real vs mock.
+- Origen por defecto **http://localhost:5020** alineado con API backend local de referencia: `config.ts`, `config.test.ts`, `next.config.js`, `auth.ts`, `product-api.ts`, `.env.example`, guías, scripts `setup*.ps1`, `diagnostico.ps1`, tests E2E y `tests/README.md`, `global-setup.ts`, `.playwright.env.example`.
+- Comentarios en `client.ts` referenciando OpenAPI.
 
 ## Fase 4 — Propuesta
 
-- `scripts/Propuesta/README.md` (material histórico, no SSOT).
+- `scripts/Propuesta/README.md` (material histórico, no SSOT). Commit en fase 4.
 
 ## TemporalShared
 

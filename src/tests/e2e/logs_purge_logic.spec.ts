@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { AdminLogsPage } from '../page-objects/AdminLogsPage';
 
 // Configuración de URLs para tests
-const API_URL = process.env.API_URL || 'http://localhost:5000';
+const API_URL = process.env.API_URL || 'http://localhost:5020';
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3000';
 
 test.describe('Logs Purge Logic - Backend Focus', () => {

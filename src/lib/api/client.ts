@@ -1,7 +1,6 @@
 import type { ApiError, ApiResponse } from "@/lib/types/api";
 
-// La API puede estar en HTTP (5000) o HTTPS (5001)
-// Por defecto usamos HTTPS en 5001, pero puedes cambiarlo en .env.local
+// El origen de la API lo fija NEXT_PUBLIC_API_URL (.env.local); por defecto alineado al backend local (p. ej. :5020). Ver OpenAPI del servicio.
 import { API_URL } from "@/lib/config";
 
 /**

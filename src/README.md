@@ -1,6 +1,8 @@
-# GesFer - Cliente Frontend
+# GesFer - Cliente Frontend (GesFer.Product.Front)
 
-Aplicación frontend desarrollada con Next.js 14+, TypeScript y Tailwind CSS para el sistema de gestión de compra/venta de chatarra.
+Aplicación frontend del repositorio **GesFer.Product.Front**, desarrollada con Next.js 14+, TypeScript y Tailwind CSS para el sistema de gestión de compra/venta de chatarra.
+
+Código compartido **provisional** desde el monolito: carpeta `TemporalShared/` (reubicar y eliminar cuando se integre en la estructura definitiva).
 
 ## 🚀 Tecnologías
 
@@ -15,7 +17,7 @@ Aplicación frontend desarrollada con Next.js 14+, TypeScript y Tailwind CSS par
 
 - Node.js 18+ 
 - npm o yarn
-- API backend ejecutándose (por defecto en `http://localhost:5000`)
+- API backend ejecutándose (por defecto en `http://localhost:5020`; ver OpenAPI del servicio)
 
 ## 🛠️ Instalación
 
@@ -38,7 +40,7 @@ cp .env.example .env.local
 Edita `.env.local` y configura la URL de tu API:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_API_URL=http://localhost:5020
 ```
 
 ## 🏃 Ejecución

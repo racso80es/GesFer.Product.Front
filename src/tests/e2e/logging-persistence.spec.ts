@@ -3,7 +3,7 @@ import { ApiClient } from '../api/api-client';
 import { DEMO_COMPANY_NAME } from '../../lib/legacy-constants';
 
 // Configuración de URLs para tests
-const API_URL = process.env.API_URL || 'http://localhost:5000';
+const API_URL = process.env.API_URL || 'http://localhost:5020';
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3000';
 
 test.describe('Logging Persistence Test', () => {

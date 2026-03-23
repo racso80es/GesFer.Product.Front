@@ -1,5 +1,11 @@
 # 🔧 Configuración de la URL de la API
 
+## Fuente de verdad del contrato (REST)
+
+La **realidad** a la que debe adecuarse el front es la del **API backend**. El contrato vigente (rutas, esquemas) se obtiene del **OpenAPI** expuesto por el servicio, p. ej. `{origen}/swagger/v1/swagger.json`. Si el backend cambia de versión o rutas, hay que **revalidar** clientes en `src/lib/api/` y variables de entorno frente a ese documento.
+
+`NEXT_PUBLIC_API_URL` debe apuntar al **origen** del servicio (esquema + host + puerto); los paths relativos en el código deben coincidir con los definidos en el swagger.
+
 ## Ubicación de la Configuración
 
 La URL de la API se configura en el archivo `.env.local` en la raíz del proyecto `Cliente`.
@@ -12,10 +18,10 @@ Edita el archivo `.env.local` y cambia la URL:
 
 ```env
 # URL de la API backend
-NEXT_PUBLIC_API_URL=http://localhost:5001
+NEXT_PUBLIC_API_URL=http://localhost:5020
 ```
 
-**Nota:** Cambia `5001` por el puerto donde esté ejecutándose tu API.
+**Nota:** Ajusta el puerto si tu API backend usa otro (el contrato vigente está en el OpenAPI del servicio).
 
 ### Opción 2: Variable de Entorno del Sistema
 
@@ -23,19 +29,19 @@ También puedes establecer la variable de entorno antes de ejecutar:
 
 **Windows PowerShell:**
 ```powershell
-$env:NEXT_PUBLIC_API_URL="http://localhost:5001"
+$env:NEXT_PUBLIC_API_URL="http://localhost:5020"
 npm run dev
 ```
 
 **Windows CMD:**
 ```cmd
-set NEXT_PUBLIC_API_URL=http://localhost:5001
+set NEXT_PUBLIC_API_URL=http://localhost:5020
 npm run dev
 ```
 
 **Linux/Mac:**
 ```bash
-NEXT_PUBLIC_API_URL=http://localhost:5001 npm run dev
+NEXT_PUBLIC_API_URL=http://localhost:5020 npm run dev
 ```
 
 ## Configuración Actual
@@ -43,7 +49,7 @@ NEXT_PUBLIC_API_URL=http://localhost:5001 npm run dev
 La configuración actual está en:
 - **Archivo**: `.env.local`
 - **Variable**: `NEXT_PUBLIC_API_URL`
-- **Valor por defecto en código**: `http://localhost:5001`
+- **Valor por defecto en código**: `http://localhost:5020`
 
 ## Importante
 
@@ -63,7 +69,7 @@ Para verificar qué URL está usando la aplicación, puedes:
 
 ## Puertos Comunes
 
-- **Desarrollo local**: `http://localhost:5000` o `http://localhost:5001`
+- **Desarrollo local**: `http://localhost:5020` (u otro según `launchSettings` / HTTPS del backend)
 - **Producción**: Tu URL de producción (ej: `https://api.tudominio.com`)
 
 ## Solución de Problemas

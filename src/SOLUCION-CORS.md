@@ -1,5 +1,7 @@
 # 🔧 Solución de Problemas CORS y Conexión API
 
+**Referencia actual GesFer.Product.Front:** origen API local habitual `http://localhost:5020` (ajustar según tu `launchSettings` / OpenAPI). Los puertos 5000/5001 siguen siendo ejemplos de perfiles HTTP/HTTPS genéricos.
+
 ## Problema: ERR_EMPTY_RESPONSE en peticiones preflight
 
 Este error indica que la petición OPTIONS (preflight) no está llegando a la API o la API no está respondiendo.
@@ -9,12 +11,12 @@ Este error indica que la petición OPTIONS (preflight) no está llegando a la AP
 ### 1. Configuración de URL de la API
 
 La API puede estar ejecutándose en:
-- **HTTP**: `http://localhost:5000` (puerto 5000)
-- **HTTPS**: `https://localhost:5001` (puerto 5001)
+- **HTTP**: p. ej. `http://localhost:5020` (referencia actual) u otros puertos
+- **HTTPS**: p. ej. `https://localhost:7xxx` según certificado local
 
-**Archivo `.env.local` actualizado:**
+**Archivo `.env.local` (ejemplo con origen 5020):**
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_API_URL=http://localhost:5020
 ```
 
 ### 2. Verificar en qué puerto está tu API

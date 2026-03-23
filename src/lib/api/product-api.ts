@@ -1,5 +1,5 @@
 export const getProductApi = () => {
-  const baseUrl = process.env.NEXT_PUBLIC_PRODUCT_API_URL || "http://localhost:5000/api";
+  const baseUrl = process.env.NEXT_PUBLIC_PRODUCT_API_URL || "http://localhost:5020/api";
 
   const request = async <T>(path: string, options: RequestInit = {}): Promise<T> => {
     const url = `${baseUrl}${path}`;

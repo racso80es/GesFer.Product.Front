@@ -40,7 +40,7 @@ if ($LASTEXITCODE -eq 0) {
     # Crear .env.local si no existe
     if (-not (Test-Path ".env.local")) {
         Write-Host "Creando archivo .env.local..." -ForegroundColor Yellow
-        $envContent = "# URL de la API backend`nNEXT_PUBLIC_API_URL=http://localhost:5001"
+        $envContent = "# URL de la API backend`nNEXT_PUBLIC_API_URL=http://localhost:5020"
         $envContent | Out-File -FilePath ".env.local" -Encoding UTF8
         Write-Host "OK Archivo .env.local creado" -ForegroundColor Green
     } else {

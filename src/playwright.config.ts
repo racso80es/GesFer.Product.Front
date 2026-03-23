@@ -53,7 +53,7 @@ export default defineConfig({
     video: 'retain-on-failure',
   },
 
-  /* Comprueba que la API (5000) esté en ejecución antes de correr los tests */
+  /* Comprueba que la API (p. ej. 5020) esté en ejecución antes de correr los tests */
   globalSetup: './tests/global-setup.ts',
   
   /* Configuración de API */

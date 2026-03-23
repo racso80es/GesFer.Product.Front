@@ -6,7 +6,7 @@ Este directorio contiene los tests de automatización E2E y API usando Playwrigh
 
 ```
 tests/
-├── api/                    # Tests de API (localhost:5000)
+├── api/                    # Tests de API (origen API, p. ej. localhost:5020)
 │   ├── api-client.ts        # Cliente API reutilizable
 │   ├── auth-api.spec.ts
 │   └── usuarios-api.spec.ts
@@ -25,7 +25,7 @@ tests/
 ## Configuración
 
 - **Web**: http://localhost:3000
-- **API**: http://localhost:5000
+- **API**: `API_URL` / origen configurado (p. ej. http://localhost:5020)
 
 La configuración se encuentra en `playwright.config.ts` en la raíz del proyecto.
 
@@ -81,9 +81,9 @@ npx playwright test --project=chromium
 
 **E2E (navegador + API):**
 1. La aplicación web debe estar ejecutándose en `http://localhost:3000` (o la levanta Playwright con webServer)
-2. La API debe estar en `http://localhost:5000` **o** usar mock: `USE_MOCK_API=1` y `API_URL=http://localhost:5002` (tras levantar `infrastructure/mock-apis`)
+2. La API **real** debe estar en el origen configurado (p. ej. `http://localhost:5020`) **o** usar mock: `USE_MOCK_API=1` y `API_URL=http://localhost:5002` (tras levantar `infrastructure/mock-apis`)
 
-**Solo tests de API (sin frontend):** `npm run test:e2e:api`. La API debe estar en 5000, o mock en 5002 con `USE_MOCK_API=1` y `API_URL=http://localhost:5002`.
+**Solo tests de API (sin frontend):** `npm run test:e2e:api`. API real en el origen configurado (p. ej. 5020), o mock en 5002 con `USE_MOCK_API=1` y `API_URL=http://localhost:5002`.
 
 ### E2E API (Product Back) con mock
 
@@ -116,12 +116,12 @@ Tras ejecutar `npm run test:e2e`, puedes abrir el reporte con:
 npm run test:e2e:report
 ```
 
-Playwright abre el reporte en un puerto disponible (por ejemplo **http://localhost:9323**). Ahí ves qué tests pasaron o fallaron, traces y capturas. Si todos los tests salen "malos", suele ser porque **la API no estaba en ejecución** al correr los tests: el `globalSetup` comprueba que la API (puerto 5000) responda antes de empezar; si no, falla con un mensaje claro.
+Playwright abre el reporte en un puerto disponible (por ejemplo **http://localhost:9323**). Ahí ves qué tests pasaron o fallaron, traces y capturas. Si todos los tests salen "malos", suele ser porque **la API no estaba en ejecución** al correr los tests: el `globalSetup` comprueba que la API (health en el origen configurado) responda antes de empezar; si no, falla con un mensaje claro.
 
 ## Notas
 
 - Los tests se ejecutan en paralelo por defecto
-- **Antes de ejecutar E2E:** la API Product debe estar levantada en el puerto 5000 (p. ej. `docker-compose up -d gesfer-product-api` o ejecutar el backend desde IDE)
+- **Antes de ejecutar E2E:** la API Product debe estar levantada en el origen configurado (p. ej. puerto **5020** o el definido en `API_URL`/`.env`)
 - Los screenshots y videos se guardan solo cuando fallan
 - Los traces se guardan solo en reintentos
 - El reporte HTML se genera automáticamente después de cada ejecución

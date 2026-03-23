@@ -6,7 +6,7 @@ Según el diagnóstico:
 - ✅ Node.js instalado (v24.12.0)
 - ✅ npm instalado (v11.6.2)
 - ✅ Puerto 3000 está LISTENING (servidor corriendo)
-- ✅ Puerto 5001 está LISTENING (API corriendo)
+- ✅ Puerto 5020 está LISTENING (API corriendo; u otro según .env.local)
 - ✅ Configuración correcta (.env.local)
 - ✅ Dependencias instaladas
 

@@ -37,7 +37,7 @@ Este comando instalará todas las dependencias necesarias:
 El archivo `.env.local` ya ha sido creado con la configuración por defecto:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_API_URL=http://localhost:5020
 ```
 
 Si tu API está ejecutándose en un puerto diferente, edita este archivo.

@@ -5,7 +5,7 @@
  * de usuarios y companies contra la API real.
  * 
  * Requiere:
- * - API ejecutándose en http://localhost:5000
+ * - API ejecutándose (p. ej. http://localhost:5020)
  * - Credenciales de prueba: company "Emp" + "resa Demo", usuario "admin", contraseña "admin123"
  */
 

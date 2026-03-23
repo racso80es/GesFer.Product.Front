@@ -35,14 +35,14 @@ if ($port3000) {
     Write-Host "   El servidor no esta corriendo" -ForegroundColor Yellow
 }
 
-# Verificar puerto 5001 (API)
-Write-Host "4. Verificando puerto 5001 (API)..." -ForegroundColor Yellow
-$port5001 = netstat -ano | findstr ":5001" | findstr "LISTENING"
-if ($port5001) {
-    Write-Host "   OK Puerto 5001 esta en uso (API corriendo)" -ForegroundColor Green
+# Verificar puerto 5020 (API local de referencia)
+Write-Host "4. Verificando puerto 5020 (API)..." -ForegroundColor Yellow
+$port5020 = netstat -ano | findstr ":5020" | findstr "LISTENING"
+if ($port5020) {
+    Write-Host "   OK Puerto 5020 esta en uso (API corriendo)" -ForegroundColor Green
 } else {
-    Write-Host "   ADVERTENCIA Puerto 5001 no esta en uso" -ForegroundColor Yellow
-    Write-Host "   La API puede no estar ejecutandose" -ForegroundColor Yellow
+    Write-Host "   ADVERTENCIA Puerto 5020 no esta en uso" -ForegroundColor Yellow
+    Write-Host "   La API puede no estar ejecutandose (o usar otro puerto en .env.local)" -ForegroundColor Yellow
 }
 
 # Verificar .env.local

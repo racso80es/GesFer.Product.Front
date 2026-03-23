@@ -7,13 +7,13 @@ const withNextIntl = createNextIntlPlugin('./i18n.ts');
  * 
  * La URL de la API se obtiene de:
  * 1. Variable de entorno NEXT_PUBLIC_API_URL (tiene prioridad)
- * 2. Valor por defecto según el entorno (development: localhost:5000, production: desde env)
+ * 2. Valor por defecto en desarrollo: origen API local (ajustar si el backend usa otro puerto/esquema).
  */
 const getDefaultApiUrl = () => {
   if (process.env.NODE_ENV === 'production') {
     return process.env.NEXT_PUBLIC_API_URL || 'https://api.gesfer.com';
   }
-  return process.env.NEXT_PUBLIC_API_URL || 'https://localhost:5001';
+  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5020';
 };
 
 /** @type {import('next').NextConfig} */

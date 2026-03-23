@@ -65,10 +65,10 @@ npm install
 Crea un archivo `.env.local` en la carpeta `Cliente` con el siguiente contenido:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_API_URL=http://localhost:5020
 ```
 
-**Nota:** Si tu API está en otro puerto, cambia `5000` por el puerto correcto.
+**Nota:** Si tu API está en otro puerto, ajusta la URL al origen correcto (referencia actual **5020**).
 
 ### Paso 3: Iniciar la Aplicación
 ```powershell

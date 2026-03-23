@@ -16,7 +16,7 @@ Cada archivo de configuración tiene la siguiente estructura:
 ```json
 {
   "api": {
-    "url": "http://127.0.0.1:5000"
+    "url": "http://127.0.0.1:5020"
   },
   "client": {
     "url": "http://localhost:3000"

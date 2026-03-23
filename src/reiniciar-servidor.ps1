@@ -47,7 +47,7 @@ if (-not (Test-Path "node_modules")) {
 Write-Host "5. Verificando configuracion..." -ForegroundColor Yellow
 if (-not (Test-Path ".env.local")) {
     Write-Host "   Creando .env.local..." -ForegroundColor Yellow
-    "# URL de la API backend`nNEXT_PUBLIC_API_URL=http://localhost:5001" | Out-File -FilePath ".env.local" -Encoding UTF8
+    "# URL de la API backend`nNEXT_PUBLIC_API_URL=http://localhost:5020" | Out-File -FilePath ".env.local" -Encoding UTF8
     Write-Host "   OK Archivo .env.local creado" -ForegroundColor Green
 } else {
     Write-Host "   OK Archivo .env.local existe" -ForegroundColor Green
