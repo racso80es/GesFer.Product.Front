@@ -12,5 +12,5 @@ Este principio establece la necesidad de un registro criptográfico de acciones 
 3. **Transparencia ("Caja de Cristal"):** Proporcionar visibilidad sobre el estado de salud del proyecto y las decisiones tomadas.
 
 ## Estado Actual
-- **En GesFer.Admin.Front:** Auditoría vía SddIA (paths.auditsPath, agente auditor frontend). No aplica Logger.ts/Electron.
+- **En GesFer.Product.Front:** Auditoría vía SddIA (paths.auditsPath, agente auditor frontend). No aplica Logger.ts/Electron.
 - **Reglas:** SddIA/norms y agentes (auditor, process-interaction).

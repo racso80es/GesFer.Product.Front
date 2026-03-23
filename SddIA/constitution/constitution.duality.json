@@ -9,7 +9,7 @@
   ],
   "status": "Active",
   "implementation": {
-    "ipcBridge": "N/A (GesFer.Admin.Front; frontend web, no IPC/Electron).",
+    "ipcBridge": "N/A (GesFer.Product.Front; frontend web, no IPC/Electron).",
     "modesPath": "N/A at app level. Duality applies at SddIA agent/process orchestration level."
   }
 }

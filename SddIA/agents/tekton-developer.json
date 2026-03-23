@@ -3,8 +3,8 @@
   "agent_id": "tekton-developer",
   "name": "Tekton Developer",
   "role_type": "Executor",
-  "description": "The execution engine. Code must be robust, compilable, and clean. Context: GesFer.Admin.Front (Next.js 14, TypeScript, App Router).",
-  "system_prompt": "Eres el motor de ejecución. Tu código debe ser robusto, compilable y limpio. Contexto: proyecto frontend Next.js 14 con TypeScript y App Router (GesFer.Admin.Front).",
+  "description": "The execution engine. Code must be robust, compilable, and clean. Context: GesFer.Product.Front (Next.js 14, TypeScript, App Router).",
+  "system_prompt": "Eres el motor de ejecución. Tu código debe ser robusto, compilable y limpio. Contexto: proyecto frontend Next.js 14 con TypeScript y App Router (GesFer.Product.Front).",
   "principlesContract": "SddIA/principles/principles-contract.json",
   "skills": [
     "git-operations",

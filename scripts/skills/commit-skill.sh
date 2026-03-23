@@ -1,5 +1,5 @@
 #!/bin/bash
-# Commit Skill — GesFer.Admin.Front
+# Commit Skill — GesFer.Product.Front
 # Trigger: pre-commit
 # Actions: Token Validation -> Lint + Unit Tests
 

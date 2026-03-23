@@ -6,7 +6,7 @@
 
 ## Objetivo
 
-Herramienta de **proceso** que define el procedimiento para realizar la auditoría funcional del frontend GesFer.Admin.Front, actuando como usuario administrativo. Permite repetir la validación en el futuro siguiendo los pasos documentados.
+Herramienta de **proceso** que define el procedimiento para realizar la auditoría funcional del frontend GesFer.Product.Front, actuando como usuario de la aplicación (flujo cliente). Permite repetir la validación en el futuro siguiendo los pasos documentados.
 
 **Objetivo máximo:** Reproducir las acciones del usuario lo máximo posible (simulación real de interacción en cliente visual).
 
@@ -22,19 +22,19 @@ Para ver las acciones del ratón, teclado y navegación en tiempo real:
 
 | Parámetro | Tipo | Descripción |
 |-----------|------|-------------|
-| API Admin activa | requisito | Backend en puerto 5011 |
-| Credenciales admin | requisito | Usuario con acceso a la API Admin |
-| Variables de entorno | requisito | ADMIN_API_URL, AUTH_SECRET |
+| API backend activa | requisito | URL según `NEXT_PUBLIC_API_URL` (p. ej. API Product en el puerto configurado) |
+| Credenciales válidas | requisito | Usuario con acceso a la API según entorno de pruebas |
+| Variables de entorno | requisito | NEXT_PUBLIC_API_URL, AUTH_SECRET (y otras según `src/.env.example`) |
 
 ## Fases del proceso
 
 ### Fase 1 — Preparación
-- Verificar que la API Admin está activa (`https://localhost:5011` o `http://localhost:5011`).
+- Verificar que la **API backend** está activa en la URL configurada (p. ej. `NEXT_PUBLIC_API_URL` en `.env.local`).
 - Usar tool **start-frontend** (paths.toolCapsules.start-frontend) o `npm run dev` desde `src/`.
-- Verificar que el front responde en `http://localhost:3001`.
+- Verificar que el front responde en `http://localhost:3000`.
 
 ### Fase 2 — Validación (manual o E2E automatizada)
-- **E2E automatizada (visual):** `npm run audit:visual` desde `src/`. Navegador visible, acciones en pantalla. Requisito: `npx playwright install` y API Admin activa.
+- **E2E automatizada (visual):** `npm run audit:visual` desde `src/`. Navegador visible, acciones en pantalla. Requisito: `npx playwright install` y API backend activa (misma URL que el front).
 - **Manual:** Seguir la tabla de validación en el reporte de auditoría (paths.auditsPath):
   1. Login → Dashboard
   2. Dashboard → Resumen cargado
@@ -61,9 +61,9 @@ Tras la auditoría, aplicar mejoras:
 
 | Escenario | Tests que pasan | Tests que fallan | Causa |
 |-----------|-----------------|------------------|-------|
-| **API Admin activa + credenciales válidas** | 8/8 | 0 | Auditoría completa OK |
-| **API Admin no conectada o credenciales incorrectas** | 2/8 (tests 1 y 8) | 6/8 (tests 2–7) | Login no redirige a dashboard; tests que requieren sesión fallan |
-| **Frontend no responde** | 0 | 8 | Puerto 3001 ocupado o dev server no iniciado |
+| **API backend activa + credenciales válidas** | 8/8 | 0 | Auditoría completa OK |
+| **API no conectada o credenciales incorrectas** | 2/8 (tests 1 y 8) | 6/8 (tests 2–7) | Login no redirige a dashboard; tests que requieren sesión fallan |
+| **Frontend no responde** | 0 | 8 | Puerto 3000 ocupado o dev server no iniciado |
 
 **Tests que pasan sin API:** 1 (formulario login visible), 8 (protección /dashboard → redirect a login).
 **Tests que requieren API:** 2, 3, 4, 5, 6, 7 (login exitoso, dashboard, companies, logout).

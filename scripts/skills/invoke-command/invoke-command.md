@@ -13,7 +13,7 @@ Cualquier comando de sistema que el agente deba ejecutar ha de invocarse a trav�
 .\scripts\skills\invoke-command\Invoke-Command.bat --command-file "docs\features\mi-feature\commit_cmd.txt" --fase Accion
 ```
 
-Parámetros: **Command** (obligatorio) o **--command-file** &lt;ruta&gt; (lee el comando desde un archivo; evita inyección de trailers en entornos automatizados), Contexto (default GesFer), Fase (Triaje|Analisis|Evaluacion|Marcado|Accion). Si existe `bin/invoke_command.exe` (Rust), el .bat lo invoca. Definición: SddIA/skills/invoke-command/spec.md.
+Parámetros: **Command** (obligatorio) o **--command-file** &lt;ruta&gt; (lee el comando desde un archivo; evita inyección de trailers en entornos automatizados), Contexto (default GesFer.Product.Front), Fase (Triaje|Analisis|Evaluacion|Marcado|Accion). Si existe `bin/invoke_command.exe` (Rust), el .bat lo invoca. Definición: SddIA/skills/invoke-command/spec.md.
 
 ## Rutas con --command-file
 

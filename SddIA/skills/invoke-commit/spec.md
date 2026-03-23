@@ -10,7 +10,7 @@ parameters:
     required: false
     type: flag
   contexto:
-    default: GesFer.Admin.Front
+    default: GesFer.Product.Front
     required: false
   fase:
     default: Accion
@@ -65,7 +65,7 @@ Centralizar las operaciones de **commit** en Git con parámetros directos, consu
 | --type | string | No | feat, fix, chore, docs, refactor (default: feat). |
 | --scope | string | No | Scope Conventional Commits. |
 | --fase | string | No | Fase para telemetría (default: Accion). |
-| --contexto | string | No | Contexto para registro (default: GesFer.Admin.Front). |
+| --contexto | string | No | Contexto para registro (default: GesFer.Product.Front). |
 
 ### Salidas
 

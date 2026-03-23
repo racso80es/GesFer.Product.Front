@@ -11,7 +11,7 @@ inputs:
   OutputJson: boolean (opcional). Emitir resultado JSON por stdout (por defecto: si).
   OutputPath: string (opcional). Fichero donde escribir el resultado JSON.
   Quiet: boolean (opcional). Suprimir salida JSON por stdout (solo con --output-path).
-  Port: number (opcional). Puerto del dev server. Por defecto 3001.
+  Port: number (opcional). Puerto del dev server. Por defecto 3000.
 output:
   exit_codes:
     '0': 'Exito: frontend responde'
@@ -40,13 +40,13 @@ version: 1.0.0
 
 ## Objetivo
 
-Herramienta que **levanta el dev server** del proyecto GesFer.Admin.Front (Next.js): ejecuta `npm run dev` en `src/`, comprueba que el puerto 3001 esté disponible y considera **éxito** si `http://localhost:3001` responde (HTTP 200).
+Herramienta que **levanta el dev server** del proyecto GesFer.Product.Front (Next.js): ejecuta `npm run dev` en `src/`, comprueba que el puerto 3000 esté disponible y considera **éxito** si `http://localhost:3000` responde (HTTP 200).
 
 ## Entradas
 
 | Parámetro     | Tipo   | Descripción |
 |---------------|--------|-------------|
-| Port          | number | Puerto del dev server (override). Por defecto 3001. |
+| Port          | number | Puerto del dev server (override). Por defecto 3000. |
 | OutputPath    | string | Fichero donde escribir el resultado JSON (contrato). |
 | OutputJson    | switch | Emitir el resultado JSON por stdout (por defecto: sí). |
 | Quiet         | switch | Suprimir salida JSON por stdout (útil solo con --output-path). |

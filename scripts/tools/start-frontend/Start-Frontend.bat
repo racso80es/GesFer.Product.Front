@@ -5,7 +5,7 @@ for %%I in ("%~dp0..\..\..") do set "REPO_ROOT=%%~fI"
 cd /d "%REPO_ROOT%"
 set "GESFER_REPO_ROOT=%REPO_ROOT%"
 
-echo [start-frontend] Levanta el dev server Next.js (npm run dev, puerto 3001^)
+echo [start-frontend] Levanta el dev server Next.js (npm run dev, puerto 3000^)
 echo [start-frontend] El resultado se emite en JSON al finalizar.
 echo.
 

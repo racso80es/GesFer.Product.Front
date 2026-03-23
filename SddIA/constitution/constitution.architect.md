@@ -12,6 +12,6 @@ Este principio dicta la organización del código en capas claras y la adopción
 3. **Contratos:** Las interacciones con la API externa se definen mediante tipos TypeScript y clientes HTTP centralizados en `src/lib/api/`.
 
 ## Estado Actual
-- **En GesFer.Admin.Front:** Ubicación en `src/` (Next.js 14 App Router). Proyecto frontend independiente.
+- **En GesFer.Product.Front:** Ubicación en `src/` (Next.js 14 App Router). Proyecto frontend independiente.
 - **Composición:** Componentes UI primitivos + Shared compuestos + Layouts.
 - **Contratos:** Tipos en `src/types/` y `src/lib/types/`; clientes API en `src/lib/api/`.

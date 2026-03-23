@@ -8,7 +8,7 @@ env:
   - Node.js 20+
 implementation_path_ref: paths.toolCapsules.run-tests-frontend
 inputs:
-  BaseUrl: string (opcional). URL base frontend para E2E; por defecto http://localhost:3001.
+  BaseUrl: string (opcional). URL base frontend para E2E; por defecto http://localhost:3000.
   OnlyTests: boolean (opcional). Solo ejecutar tests (sin npm install).
   OutputPath: string (opcional). Fichero donde escribir el resultado JSON.
   Quiet: boolean (opcional). Suprimir salida JSON por stdout (por defecto: se emite).
@@ -44,7 +44,7 @@ Ejecutar tests del frontend (unitarios, E2E, build, lint) en condiciones de vali
 |-----------|------|-------------|
 | TestScope | string | unit, e2e, build, lint, all (por defecto all). |
 | OnlyTests | switch | Solo ejecutar tests (sin npm install previo). |
-| BaseUrl | string | URL base del frontend para E2E (por defecto http://localhost:3001). |
+| BaseUrl | string | URL base del frontend para E2E (por defecto http://localhost:3000). |
 | OutputPath | string | Fichero donde escribir el resultado JSON. |
 | Quiet | switch | Suprimir salida JSON por stdout (por defecto: se emite). |
 

@@ -12,5 +12,5 @@ Este principio define la infraestructura para la persistencia del conocimiento d
 3. **Indexación Semántica:** Estructurar logs y datos para su fácil consumo por modelos de IA.
 
 ## Estado Actual
-- **En GesFer.Admin.Front:** Estado del cliente vía React Query (TanStack Query) y React Context (`src/contexts/`). Persistencia documental vía SddIA (paths, Cúmulo).
+- **En GesFer.Product.Front:** Estado del cliente vía React Query (TanStack Query) y React Context (`src/contexts/`). Persistencia documental vía SddIA (paths, Cúmulo).
 - **Contexto:** Gestionado por contextos React y documentación de tareas (features, fixes).

@@ -12,5 +12,5 @@ Este principio establece la separación entre modos de operación y el canal de 
 3. **Modos de Operación:** El sistema soporta modos operativos distintos gestionados por el estado global.
 
 ## Estado Actual
-- **En GesFer.Admin.Front:** No aplica IPC ni Electron (frontend web). El principio de dualidad Boss/Calm se conserva a nivel conceptual para el ecosistema SddIA.
+- **En GesFer.Product.Front:** No aplica IPC ni Electron (frontend web). El principio de dualidad Boss/Calm se conserva a nivel conceptual para el ecosistema SddIA.
 - **Modos:** Aplicables a nivel de agentes SddIA y procesos, no a nivel de arquitectura de la app frontend.

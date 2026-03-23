@@ -8,9 +8,9 @@
 .PARAMETER SkipInstall
     No ejecutar npm install (asume node_modules ya presentes).
 .PARAMETER SkipDevServer
-    No intentar arrancar el dev server; falla si localhost:3001 no responde.
+    No intentar arrancar el dev server; falla si localhost:3000 no responde.
 .PARAMETER BaseUrl
-    URL base del frontend (por defecto http://localhost:3001).
+    URL base del frontend (por defecto http://localhost:3000).
 .PARAMETER OnlyTests
     Solo ejecutar los tests E2E (sin install ni dev server).
 #>
@@ -18,7 +18,7 @@
 param(
     [switch] $SkipInstall,
     [switch] $SkipDevServer,
-    [string] $BaseUrl = "http://localhost:3001",
+    [string] $BaseUrl = "http://localhost:3000",
     [switch] $OnlyTests
 )
 

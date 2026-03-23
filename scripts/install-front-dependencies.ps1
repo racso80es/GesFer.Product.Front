@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Instala dependencias npm del proyecto GesFer.Admin.Front.
+    Instala dependencias npm del proyecto GesFer.Product.Front.
 .DESCRIPTION
     Ejecuta npm install en src/.
     Usar antes de la primera ejecucion o si faltan node_modules.

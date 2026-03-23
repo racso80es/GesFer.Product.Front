@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "Ejecutando Tests GesFer.Admin.Front" -ForegroundColor Cyan
+Write-Host "Ejecutando Tests GesFer.Product.Front" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 
 $RootPath = Resolve-Path "$PSScriptRoot/.."

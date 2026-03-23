@@ -9,7 +9,7 @@
   ],
   "status": "Active",
   "implementation": {
-    "location": "src/ (GesFer.Admin.Front; Next.js 14 App Router)",
+    "location": "src/ (GesFer.Product.Front; Next.js 14 App Router)",
     "componentModel": "React Server Components by default; 'use client' only when interactivity required.",
     "contractsPath": "src/types/ and src/lib/api/ (HTTP clients for Admin API)."
   }

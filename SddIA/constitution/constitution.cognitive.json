@@ -9,7 +9,7 @@
   ],
   "status": "Active",
   "implementation": {
-    "storagePath": "N/A (GesFer.Admin.Front; frontend web). Client state via React Query and React Context (src/contexts/). Project memory via SddIA docs.",
+    "storagePath": "N/A (GesFer.Product.Front; frontend web). Client state via React Query and React Context (src/contexts/). Project memory via SddIA docs.",
     "contextManagement": "React Query (server state) + React Context (client state) + SddIA documentation (project knowledge)."
   }
 }

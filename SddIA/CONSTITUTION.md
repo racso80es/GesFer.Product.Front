@@ -1,4 +1,4 @@
-# Constitución del Proyecto (GesFer.Admin.Front)
+# Constitución del Proyecto (GesFer.Product.Front)
 
 ## 1. Definición de la Arquitectura
 El proyecto se rige por un principio de separación clara entre capas de presentación, lógica de orquestación y acceso a datos externos. Para garantizar la mantenibilidad y la independencia, se establece la siguiente jerarquía:
@@ -21,12 +21,14 @@ Las capas de componentes se organizan por nivel de abstracción:
 * Pueden combinar primitivos UI con lógica de interacción.
 
 #### C. Componentes de Layout (`src/components/layout/`)
-* Estructuras de página (Sidebar, AdminLayout, Wrappers).
+* Estructuras de página (navegación, shell, envoltorios).
 * Orquestan la disposición visual pero no contienen lógica de negocio.
+
+*Nota:* Mientras dure la migración desde el monorepo, piezas equivalentes pueden existir temporalmente en `src/TemporalShared` para su reubicación y posterior eliminación.
 
 ### 1.3. Lógica y Servicios (`src/lib/`)
 Capa de orquestación, configuración y acceso a datos:
-- `src/lib/api/`: Clientes HTTP para consumo de la API Admin backend.
+- `src/lib/api/`: Clientes HTTP para consumo de la **API backend** (producto).
 - `src/lib/config.ts`: Configuración centralizada (URLs, variables de entorno).
 - `src/lib/utils/`: Utilidades transversales (cn, formatters).
 
@@ -39,21 +41,21 @@ Gestión de estado global vía React Context y React Query (TanStack Query).
 1. **Separación de capas:** Los componentes en `src/components/` no importan de `src/app/`. La dirección de dependencia es siempre `app → components → lib`.
 2. **Alias obligatorio:** Imports entre directorios usan `@/`. Prohibidas las rutas relativas que escapen del directorio actual (`../../`).
 3. **Independencia:** Este repositorio es un frontend standalone. No asume la existencia de monorepo, carpetas compartidas externas ni otros proyectos en su árbol de archivos.
-4. **API como contrato externo:** La API Admin es un servicio externo consumido vía HTTP. La URL se configura por variable de entorno (`ADMIN_API_URL`), no hardcodeada.
+4. **API como contrato externo:** La API de backend es un servicio externo consumido vía HTTP. La URL se configura por variables de entorno (**`NEXT_PUBLIC_API_URL`** en cliente; **`API_URL`** donde corresponda en servidor/tests), no hardcodeada.
 
 ## 3. Stack Tecnológico
 | Aspecto | Tecnología |
 |---------|-----------|
 | Framework | Next.js 14 (App Router) |
-| Lenguaje | TypeScript 5.3 (strict) |
-| UI | Tailwind CSS 3.4, Lucide React |
+| Lenguaje | TypeScript (strict) |
+| UI | Tailwind CSS, Lucide React |
 | Estado servidor | TanStack React Query 5 |
 | Formularios | react-hook-form 7 + Zod |
 | Autenticación | NextAuth 5 (CredentialsProvider) |
 | i18n | next-intl |
-| Testing | Jest 29 + Testing Library + Playwright |
+| Testing | Jest + Testing Library + Playwright |
 | Logging | Pino |
-| Puerto dev | 3001 |
+| Puerto dev (por defecto) | 3000 |
 
 ## 4. El Sistema de Consciencia
 
@@ -84,7 +86,7 @@ El proyecto opera bajo dos modos distintos para evitar conflictos entre interven
 
 La mejora continua (Kaizen) no es opcional; es estructural.
 
-* **Protección en Build:** El sistema detecta fallos potenciales antes del despliegue (`npm run lint`, `npm run build`, `npm run test`).
+* **Protección en Build:** El sistema detecta fallos potenciales antes del despliegue (`npm run lint`, `npm run build`, `npm run test` en `src/`).
 * **Acción de Protección:** Si se detecta una violación de las reglas de diseño o integridad, el proceso de build debe detenerse, exigiendo acción correctiva inmediata.
 
 ### 4.5. Principios de Diseño

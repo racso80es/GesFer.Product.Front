@@ -18,7 +18,7 @@ $logsDir = Join-Path $projectRoot "logs\services"
 $srcPath = Join-Path $projectRoot "src"
 
 $endpoints = @(
-    @{ Service = "AdminFront"; Url = "http://localhost:3001" }
+    @{ Service = "ProductFront"; Url = "http://localhost:3000" }
 )
 
 function Get-HealthStatus {
@@ -33,12 +33,12 @@ function Get-HealthStatus {
 }
 
 if ($StartService) {
-    Write-Host "Iniciando AdminFront en background..." -ForegroundColor Cyan
+    Write-Host "Iniciando ProductFront en background..." -ForegroundColor Cyan
     $runScript = Join-Path $PSScriptRoot "run-service-with-log.ps1"
     $jobFront = Start-Job -ScriptBlock {
         param($script, $name, $dir, $cmd)
         & $script -ServiceName $name -WorkingDir $dir -Command $cmd
-    } -ArgumentList $runScript, "AdminFront", $srcPath, "npm run dev"
+    } -ArgumentList $runScript, "ProductFront", $srcPath, "npm run dev"
     Write-Host "Esperando 15 segundos para que el frontend enlace..." -ForegroundColor Yellow
     Start-Sleep -Seconds 15
 }
@@ -60,7 +60,7 @@ foreach ($ep in $endpoints) {
 $healthResults | Format-Table -AutoSize
 
 Write-Host "`n=== Ultimas lineas de logs (cola) ===" -ForegroundColor Green
-foreach ($name in @("AdminFront")) {
+foreach ($name in @("ProductFront")) {
     $logFile = Join-Path $logsDir "$name.log"
     if (Test-Path $logFile) {
         Write-Host "--- $name.log (ultimas 12 lineas) ---" -ForegroundColor Cyan
@@ -70,7 +70,7 @@ foreach ($name in @("AdminFront")) {
 }
 
 if ($StartService) {
-    Write-Host "El trabajo de AdminFront sigue en ejecucion. Para detenerlo: Get-Job | Stop-Job; Get-Job | Remove-Job" -ForegroundColor Yellow
+    Write-Host "El trabajo de ProductFront sigue en ejecucion. Para detenerlo: Get-Job | Stop-Job; Get-Job | Remove-Job" -ForegroundColor Yellow
 }
 
 return $healthResults

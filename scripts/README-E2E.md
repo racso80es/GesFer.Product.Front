@@ -1,4 +1,4 @@
-# Pruebas E2E en local (GesFer.Admin.Front)
+# Pruebas E2E en local (GesFer.Product.Front)
 
 Las pruebas E2E se ejecutan contra el **frontend Next.js** en local usando **Playwright**.
 
@@ -10,7 +10,7 @@ Las pruebas E2E se ejecutan contra el **frontend Next.js** en local usando **Pla
    npm install
    npm run dev
    ```
-   (Esperar a que muestre "Ready on http://localhost:3001".)
+   (Esperar a que muestre "Ready on http://localhost:3000".)
 
 2. **En otra terminal**, ejecutar los tests E2E:
    ```powershell
@@ -37,7 +37,7 @@ Desde la raíz del repo:
 El script hace en orden:
 
 1. **npm install** en `src/` (si no se omite).
-2. **Comprueba** si el frontend responde en `http://localhost:3001`. Si no, intenta arrancarlo en background.
+2. **Comprueba** si el frontend responde en `http://localhost:3000`. Si no, intenta arrancarlo en background.
 3. **Ejecuta** `npm run test:e2e` con Playwright.
 
 ### Parámetros
@@ -45,14 +45,14 @@ El script hace en orden:
 | Parámetro        | Descripción |
 |------------------|-------------|
 | `-SkipInstall`   | No ejecutar npm install (node_modules ya presentes). |
-| `-SkipDevServer` | No arrancar el dev server; falla si localhost:3001 no responde. |
-| `-BaseUrl`       | URL base del frontend (por defecto `http://localhost:3001`). |
+| `-SkipDevServer` | No arrancar el dev server; falla si localhost:3000 no responde. |
+| `-BaseUrl`       | URL base del frontend (por defecto `http://localhost:3000`). |
 | `-OnlyTests`     | Solo ejecutar los tests E2E (entorno ya listo). |
 
 Ejemplos:
 
 ```powershell
-# Entorno ya listo (dev server corriendo en 3001)
+# Entorno ya listo (dev server corriendo en 3000)
 .\scripts\Run-E2ELocal.ps1 -OnlyTests
 
 # Sin instalar dependencias
@@ -70,12 +70,12 @@ npm run test:e2e
 
 Variables de entorno opcionales:
 
-- `BASE_URL` — URL base del frontend (por defecto `http://localhost:3001`).
+- `BASE_URL` — URL base del frontend (por defecto `http://localhost:3000`).
 
 ## Stack de testing
 
 - **Framework E2E:** Playwright 1.57
-- **Puerto desarrollo:** 3001
+- **Puerto desarrollo:** 3000
 - **Configuración:** `src/playwright.config.ts`
 
 Las herramientas de inicialización del entorno frontend están en `scripts/tools/` (paths.toolCapsules, Cúmulo).

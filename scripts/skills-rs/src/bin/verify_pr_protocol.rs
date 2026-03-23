@@ -1,63 +1,79 @@
 //! Skill verify-pr-protocol
-//! Enforces the PR Acceptance Protocol:
-//! 1. Nomenclature (validate-nomenclatura.ps1)
-//! 2. Compilation (dotnet build)
-//! 3. Tests (dotnet test)
+//! Alineado con SddIA/norms/pr-acceptance-protocol.md (frontend GesFer.Product.Front):
+//! 1. Nomenclatura (validate-nomenclatura.ps1)
+//! 2. Lint (npm run lint en src/)
+//! 3. Build (npm run build en src/)
+//! 4. Tests (npm run test en src/)
 
-use std::process::{Command, exit};
+use std::path::Path;
+use std::process::{exit, Command};
 
 fn main() {
-    println!("[VERIFY-PR-PROTOCOL] Starting PR Acceptance Protocol...");
+    println!("[VERIFY-PR-PROTOCOL] Protocolo de aceptación PR (GesFer.Product.Front)...");
 
-    // 1. Nomenclature Check
-    println!("[VERIFY-PR-PROTOCOL] 1/3 Checking Nomenclature...");
-    // Attempt to find a suitable shell for the PS1 script
     let shell = if cfg!(target_os = "windows") {
         "powershell"
     } else {
-        "pwsh" // Standard PowerShell Core on Linux/Mac
+        "pwsh"
     };
 
-    let nomenclature_status = run_command(shell, &["-NoProfile", "-Command", "./scripts/validate-nomenclatura.ps1"]);
-
-    // If pwsh is missing on Linux (e.g. some CI envs), we might need to handle it.
-    // However, the protocol demands it. If it fails to run (status false), we fail.
-    if !nomenclature_status {
-        eprintln!("[ERROR] Nomenclature check failed (or pwsh not found).");
+    // 1. Nomenclature
+    println!("[VERIFY-PR-PROTOCOL] 1/4 Nomenclatura...");
+    if !run_command(
+        shell,
+        &[
+            "-NoProfile",
+            "-Command",
+            "./scripts/validate-nomenclatura.ps1",
+        ],
+    ) {
+        eprintln!("[ERROR] Nomenclatura: fallo o script no ejecutable.");
         exit(1);
     }
 
-    // 2. Compilation Check
-    println!("[VERIFY-PR-PROTOCOL] 2/3 Compiling Solution...");
-    let build_status = run_command("dotnet", &["build", "src/GesFer.Admin.Back.sln"]);
-    if !build_status {
-        eprintln!("[ERROR] Compilation failed.");
+    let src = Path::new("src");
+    if !src.is_dir() {
+        eprintln!("[ERROR] No existe el directorio src/.");
         exit(1);
     }
 
-    // 3. Test Execution
-    println!("[VERIFY-PR-PROTOCOL] 3/3 Running Tests...");
-    let test_status = run_command("dotnet", &["test", "src/GesFer.Admin.Back.sln"]);
-    if !test_status {
-        eprintln!("[ERROR] Tests failed.");
+    // 2. Lint
+    println!("[VERIFY-PR-PROTOCOL] 2/4 Lint (npm run lint en src/)...");
+    if !npm_in_src(&["run", "lint"]) {
+        eprintln!("[ERROR] npm run lint falló.");
         exit(1);
     }
 
-    println!("[VERIFY-PR-PROTOCOL] All checks passed successfully. PR is ready for acceptance.");
+    // 3. Build
+    println!("[VERIFY-PR-PROTOCOL] 3/4 Build (npm run build en src/)...");
+    if !npm_in_src(&["run", "build"]) {
+        eprintln!("[ERROR] npm run build falló.");
+        exit(1);
+    }
+
+    // 4. Tests
+    println!("[VERIFY-PR-PROTOCOL] 4/4 Tests (npm run test en src/)...");
+    if !npm_in_src(&["run", "test"]) {
+        eprintln!("[ERROR] npm run test falló.");
+        exit(1);
+    }
+
+    println!("[VERIFY-PR-PROTOCOL] Todos los checks pasaron. PR listo para revisión.");
 }
 
 fn run_command(program: &str, args: &[&str]) -> bool {
-    let status = Command::new(program)
+    Command::new(program)
         .args(args)
-        .status();
+        .status()
+        .map(|s| s.success())
+        .unwrap_or(false)
+}
 
-    match status {
-        Ok(s) => s.success(),
-        Err(_) => {
-            // Siltently fail here to let the caller handle the false return.
-            // In a real scenario we might want to log why it failed (e.g. program not found)
-            eprintln!("[WARNING] Could not execute command: {}", program);
-            false
-        }
-    }
+fn npm_in_src(args: &[&str]) -> bool {
+    Command::new("npm")
+        .args(args)
+        .current_dir("src")
+        .status()
+        .map(|s| s.success())
+        .unwrap_or(false)
 }

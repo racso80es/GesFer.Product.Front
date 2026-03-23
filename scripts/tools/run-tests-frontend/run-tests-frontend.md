@@ -14,7 +14,7 @@ Parametros (via .ps1 o cuando se invoque la capsula):
 
 - **TestScope** — `unit`, `e2e`, `build`, `lint`, `all` (por defecto `all`).
 - **OnlyTests** — Solo ejecutar tests (sin npm install previo).
-- **BaseUrl** — URL base del frontend para E2E (por defecto http://localhost:3001).
+- **BaseUrl** — URL base del frontend para E2E (por defecto http://localhost:3000).
 - **OutputPath** — Fichero donde escribir el resultado JSON.
 - **Quiet** — Suprimir salida JSON por stdout (por defecto: se emite).
 

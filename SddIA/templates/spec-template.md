@@ -22,7 +22,7 @@ Describir de forma sucinta qué se quiere lograr y qué problema resuelve.
 ## 3. Arquitectura y Diseño Técnico
 
 ### 3.1. Componentes Afectados
-Identificar qué partes del proyecto GesFer.Admin.Front serán modificadas:
+Identificar qué partes del proyecto GesFer.Product.Front serán modificadas:
 *   `src/app/`: Páginas, layouts o rutas.
 *   `src/components/`: Componentes UI, shared o layout.
 *   `src/lib/`: Clientes API, configuración, utilidades.

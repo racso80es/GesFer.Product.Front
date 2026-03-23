@@ -9,7 +9,7 @@
   ],
   "status": "Active",
   "implementation": {
-    "loggerPath": "N/A (GesFer.Admin.Front; frontend web). Audit via paths.auditsPath, SddIA/agents/auditor.",
+    "loggerPath": "N/A (GesFer.Product.Front; frontend web). Audit via paths.auditsPath, SddIA/agents/auditor.",
     "rulesPath": "SddIA/norms, SddIA/agents/auditor."
   }
 }

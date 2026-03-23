@@ -1,5 +1,5 @@
 #!/bin/bash
-# PR Skill — GesFer.Admin.Front
+# PR Skill — GesFer.Product.Front
 # Trigger: pre-push (local) o GitHub Actions (CI)
 # Actions: [CI skip Token] Build Check -> Branch Doc Check -> All Tests
 

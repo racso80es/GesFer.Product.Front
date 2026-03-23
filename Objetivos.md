@@ -1,38 +1,42 @@
-# Objetivos del proyecto GesFer.Admin.Front
+# Objetivos del proyecto GesFer.Product.Front
 
 ## Descripción del contexto
 
-Este repositorio corresponde al **frontend de administración** del ecosistema GesFer, aislado como proyecto independiente. Su código fuente fue extraído de la carpeta `src/Admin/Front/` del monorepo GesFer original, y su infraestructura IA (SddIA) fue adaptada desde el proyecto GesFer.Admin.Back.
+Este repositorio es el **frontend de producto (cliente)** del ecosistema GesFer, **fuera del monolito**, como solución independiente. La infraestructura de agentes y normas (**SddIA**) se tomó inicialmente como base desde otra solución y se va **adecuando** a GesFer.Product.Front (constitución, README, agentes, scripts).
 
-En su estado actual, el proyecto es un **frontend Next.js 14 (App Router) standalone** que consume la API de administración como servicio externo vía HTTP.
+El código de la aplicación vive en **`src/`** (paquete npm `gesfer-cliente`): **Next.js 14 (App Router)** que consume la **API de backend** como servicio externo vía HTTP (`NEXT_PUBLIC_API_URL`, `API_URL` en tests).
 
-## Stack tecnológico
+## Código compartido temporal
 
-- **Framework:** Next.js 14 (App Router), TypeScript 5.3
-- **UI:** Tailwind CSS 3.4, Lucide React
-- **Estado:** TanStack React Query 5, React Context
-- **Formularios:** react-hook-form 7 + Zod
-- **Autenticación:** NextAuth 5 (CredentialsProvider)
+Las piezas pendientes de integrar en la estructura definitiva pueden estar en **`src/TemporalShared`**, con el objetivo de **moverlas, adaptarlas y eliminar** esa carpeta cuando ya no sea necesaria.
+
+## Stack tecnológico (resumen)
+
+- **Framework:** Next.js 14 (App Router), TypeScript
+- **UI:** Tailwind CSS, Lucide React, componentes estilo shadcn
+- **Estado:** TanStack React Query, React Context
+- **Formularios:** react-hook-form + Zod
+- **Autenticación:** NextAuth 5
 - **i18n:** next-intl
-- **Testing:** Jest 29 + Testing Library + Playwright
-- **Puerto desarrollo:** 3001
+- **Testing:** Jest, Testing Library, Playwright
+- **Puerto desarrollo (por defecto Next.js):** 3000
 
 ## Objetivos del proyecto (documentación viva)
 
-1. **Mantener una única fuente de verdad**  
-   La documentación en este repositorio debe referirse solo al contexto actual: frontend Admin aislado, sin asumir monorepo ni backend local.
+1. **Una sola fuente de verdad**  
+   Documentación y SddIA deben describir **GesFer.Product.Front**, sin asumir monorepo ni nombres de otras soluciones como contexto actual.
 
 2. **README y Objetivos al día**  
-   El README debe describir qué es este proyecto, cómo ejecutarlo y cómo contribuir, sin referencias obsoletas a monorepos o componentes que ya no forman parte del repo.
+   Cómo ejecutar, testear y desplegar el cliente; variables de entorno alineadas con `src/lib/config.ts`.
 
 3. **Claridad para nuevos desarrolladores**  
-   Cualquier persona que clone el repo debe entender de inmediato que es el frontend de administración de GesFer y qué puede hacer con él (ejecutar, testear, desplegar).
+   Entender de inmediato que es el **frontend de producto** GesFer y el rol de `TemporalShared` como puente temporal.
 
-4. **Alineación con el protocolo del proyecto**  
-   Respetar las Leyes Universales y el protocolo multi-agente definidos en `AGENTS.md` (entorno Windows/PowerShell, sin commits a `master`, build verificado, etc.).
+4. **Alineación con `AGENTS.md`**  
+   Entorno Windows/PowerShell, sin commits directos a `master`, build verificado, comandos vía skills/tools cuando aplique.
 
-5. **Independencia total del monorepo**  
-   No debe quedar ninguna dependencia, import ni configuración que asuma la existencia de carpetas externas (`../../Shared/`, `@shared/`, `src/Product/`, etc.).
+5. **Independencia respecto al monorepo**  
+   Sin dependencias a rutas externas al repo (`../../Shared/`, etc.); imports definitivos bajo `src/` y convención `@/`.
 
 ---
 
