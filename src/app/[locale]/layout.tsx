@@ -6,7 +6,7 @@ import "../globals.css";
 import { Toaster } from "sonner";
 import { QueryProvider } from "@/lib/providers/query-provider";
 import { AuthProvider } from "@/contexts/auth-context";
-import { OverlayFix } from "@shared/components/ui/overlay-fix";
+import { OverlayFix } from "@/TemporalShared/Front/components/ui/overlay-fix";
 import { locales } from "@/i18n";
 
 export const metadata: Metadata = {

@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/auth-context";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@shared/components/ui/card";
-import { Input } from "@shared/components/shared/Input";
-import { Label } from "@shared/components/ui/label";
-import { Button } from "@shared/components/shared/Button";
-import { ErrorMessage } from "@shared/components/ui/error-message";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/TemporalShared/Front/components/ui/card";
+import { Input } from "@/TemporalShared/Front/components/shared/Input";
+import { Label } from "@/TemporalShared/Front/components/ui/label";
+import { Button } from "@/TemporalShared/Front/components/shared/Button";
+import { ErrorMessage } from "@/TemporalShared/Front/components/ui/error-message";
 import { Building2, User, Lock, Loader2 } from "lucide-react";
 import { useTranslations } from 'next-intl';
 

@@ -4,14 +4,14 @@ import type { ControllerRenderProps } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@shared/components/shared/Button";
+import { Button } from "@/TemporalShared/Front/components/shared/Button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from "@shared/components/ui/dialog";
+} from "@/TemporalShared/Front/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -19,15 +19,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@shared/components/ui/form";
-import { Input } from "@shared/components/ui/input";
+} from "@/TemporalShared/Front/components/ui/form";
+import { Input } from "@/TemporalShared/Front/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@shared/components/ui/select";
+} from "@/TemporalShared/Front/components/ui/select";
 import { ArticleFamily } from "@/lib/api/article-families-api";
 import { TaxType, taxTypesApi } from "@/lib/api/tax-types-api";
 import { useTranslations } from "next-intl";

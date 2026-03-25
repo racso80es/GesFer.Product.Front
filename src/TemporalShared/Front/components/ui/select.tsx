@@ -15,6 +15,7 @@ const SelectContext = React.createContext<SelectContextValue | null>(null);
 
 interface SelectProps {
   value?: string;
+  defaultValue?: string;
   onValueChange?: (value: string) => void;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -23,13 +24,15 @@ interface SelectProps {
 }
 
 const Select = ({
-  value = "",
+  value,
+  defaultValue = "",
   onValueChange,
   open: controlledOpen,
   onOpenChange,
   disabled,
   children,
 }: SelectProps) => {
+  const actualValue = value ?? defaultValue;
   const [internalOpen, setInternalOpen] = React.useState(false);
   const open = controlledOpen ?? internalOpen;
   const setOpen = React.useCallback(
@@ -51,7 +54,7 @@ const Select = ({
   return (
     <SelectContext.Provider
       value={{
-        value,
+        value: actualValue,
         onValueChange: handleValueChange ?? (() => {}),
         open,
         setOpen,
