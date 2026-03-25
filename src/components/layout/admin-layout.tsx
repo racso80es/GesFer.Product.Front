@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/TemporalShared/Front/components/shared/Button";
+import { Button } from "@/components/shared/Button";
 import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";

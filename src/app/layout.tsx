@@ -7,7 +7,7 @@ import { Toaster } from "sonner";
 import { QueryProvider } from "@/lib/providers/query-provider";
 import { SessionProvider } from "@/lib/providers/session-provider";
 import { AuthProvider } from "@/contexts/auth-context";
-import { OverlayFix } from "@/TemporalShared/Front/components/ui/overlay-fix";
+import { OverlayFix } from "@/components/ui/overlay-fix";
 
 export const metadata: Metadata = {
   title: "GesFer - Gestión de Chatarra",

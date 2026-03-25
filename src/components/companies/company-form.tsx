@@ -3,8 +3,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/TemporalShared/Front/components/ui/button";
-import { Input } from "@/TemporalShared/Front/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -12,15 +12,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/TemporalShared/Front/components/ui/form";
+} from "@/components/ui/form";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/TemporalShared/Front/components/ui/select";
-import { ErrorMessage } from "@/TemporalShared/Front/components/ui/error-message";
+} from "@/components/ui/select";
+import { ErrorMessage } from "@/components/ui/error-message";
 import type { Company, CreateCompany, UpdateCompany } from "@/lib/types/api";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";

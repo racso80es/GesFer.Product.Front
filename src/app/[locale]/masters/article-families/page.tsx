@@ -1,7 +1,7 @@
 "use client";
 
 import { MainLayout } from "@/components/layout/main-layout";
-import { Button } from "@/TemporalShared/Front/components/shared/Button";
+import { Button } from "@/components/shared/Button";
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/TemporalShared/Front/components/ui/table";
+} from "@/components/ui/table";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
@@ -26,7 +26,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/TemporalShared/Front/components/ui/alert-dialog";
+} from "@/components/ui/alert-dialog";
 
 export default function ArticleFamiliesPage() {
   const t = useTranslations("articleFamilies");
