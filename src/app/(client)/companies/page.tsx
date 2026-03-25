@@ -2,9 +2,9 @@
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { MainLayout } from "@/components/layout/main-layout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@shared/components/ui/card";
-import { Loading } from "@shared/components/ui/loading";
-import { ErrorMessage } from "@shared/components/ui/error-message";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/TemporalShared/Front/components/ui/card";
+import { Loading } from "@/TemporalShared/Front/components/ui/loading";
+import { ErrorMessage } from "@/TemporalShared/Front/components/ui/error-message";
 import { CompanyForm } from "@/components/companies/company-form";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { myCompanyApi } from "@/lib/api/my-company";
