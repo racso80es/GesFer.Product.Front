@@ -1,7 +1,7 @@
 "use client";
 
 import { MainLayout } from "@/components/layout/main-layout";
-import { Button } from "@shared/components/shared/Button";
+import { Button } from "@/TemporalShared/Front/components/shared/Button";
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@shared/components/ui/table";
+} from "@/TemporalShared/Front/components/ui/table";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
@@ -25,7 +25,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@shared/components/ui/alert-dialog";
+} from "@/TemporalShared/Front/components/ui/alert-dialog";
 
 export default function TaxTypesPage() {
   const t = useTranslations("taxTypes");
