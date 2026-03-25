@@ -2,10 +2,10 @@
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { MainLayout } from "@/components/layout/main-layout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/TemporalShared/Front/components/ui/card";
-import { Button } from "@/TemporalShared/Front/components/shared/Button";
-import { Loading } from "@/TemporalShared/Front/components/ui/loading";
-import { ErrorMessage } from "@/TemporalShared/Front/components/ui/error-message";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/shared/Button";
+import { Loading } from "@/components/ui/loading";
+import { ErrorMessage } from "@/components/ui/error-message";
 import { useQuery } from "@tanstack/react-query";
 import { usersApi } from "@/lib/api/users";
 import { useRouter } from "next/navigation";
