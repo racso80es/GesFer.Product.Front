@@ -3,32 +3,22 @@ const createNextIntlPlugin = require('next-intl/plugin');
 const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
 /**
- * Configuración de Next.js
- * 
- * La URL de la API se obtiene de:
- * 1. Variable de entorno NEXT_PUBLIC_API_URL (tiene prioridad)
- * 2. Valor por defecto en desarrollo: origen API local (ajustar si el backend usa otro puerto/esquema).
+ * No inyectar NEXT_PUBLIC_API_URL aquí: Next.js ya carga `src/.env.local` / `.env`.
+ * Inyectarlo en `env` fijaba el valor al evaluar next.config y podía dejar una URL
+ * antigua (p. ej. https://localhost:5001) en el bundle aunque cambiara `.env.local`.
+ * Origen efectivo: variables de entorno + `lib/api-origin.ts` + `config/api-origin-defaults.json`.
  */
-const getDefaultApiUrl = () => {
-  if (process.env.NODE_ENV === 'production') {
-    return process.env.NEXT_PUBLIC_API_URL || 'https://api.gesfer.com';
-  }
-  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5020';
-};
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  env: {
-    NEXT_PUBLIC_API_URL: getDefaultApiUrl(),
-  },
   // Deshabilitar la optimización de vendor chunks que está causando problemas
   experimental: {
     optimizePackageImports: ['@tanstack/react-query'],
   },
   output: "standalone",
   webpack: (config) => {
-    // Permitir que los archivos en Shared encuentren las dependencias instaladas en Product
+    // Resolución explícita de node_modules del paquete (front aislado en src/)
     config.resolve.modules.push(__dirname + "/node_modules");
     return config;
   },

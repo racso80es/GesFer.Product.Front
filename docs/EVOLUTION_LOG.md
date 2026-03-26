@@ -1,3 +1,5 @@
+[2026-03-26] [kaizen-adaptacion-monorepo] [Dockerfile, gitignore, skill frontend-build, README-TESTS, normas SddIA/Cursor; cierre spec product-front-objetivos-pendientes.] [DONE].
+
 [2026-03-25] [feat/limpieza-temporal-shared] [Migrado código provisional del monolito a src/components/ y src/lib/. Actualizados imports a alias locales. Cierre de Tarea T-20260325-001.] [DONE].
 
 ## feature: limpieza-temporal-shared (histórico)

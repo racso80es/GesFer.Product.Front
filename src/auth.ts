@@ -1,6 +1,7 @@
 import NextAuth, { NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import type { LoginResponse } from "@/lib/types/api";
+import { getPublicApiOrigin } from "@/lib/api-origin";
 
 /**
  * Configuración de autenticación con Auth.js v5
@@ -24,7 +25,7 @@ export const authConfig: NextAuthConfig = {
         }
 
         try {
-          const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5020";
+          const apiUrl = getPublicApiOrigin();
           const response = await fetch(`${apiUrl}/api/auth/login`, {
             method: "POST",
             headers: {

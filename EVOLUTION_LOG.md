@@ -4,6 +4,10 @@ Registro obligatorio de cambios relevantes de evolución del repositorio (Cúmul
 
 ---
 
+## 2026-03-26
+
+- **Kaizen / cierre adaptación monorepo:** Dockerfile para árbol aislado (`docker build -f src/Dockerfile .`); skill `frontend-build` y normas Cursor/SddIA alineadas a `src/`; `.gitignore` sin rutas `Product/Front` ni Admin; guía `README-TESTS` con `@/`; `spec` de feature `product-front-objetivos-pendientes` cerrado (`done`).
+
 ## 2026-03-23
 
 - **Implementación por fases (commits):** (1) SddIA norma OpenAPI + `implementation.md` + README + evolution; (2) `scripts/tools` orden capas; (3) `src/` origen API **5020**, env, tests, guías; (4) `scripts/Propuesta/README` + `spec`/`clarify`/`plan` de la feature.

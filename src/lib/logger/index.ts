@@ -1,4 +1,5 @@
 import pino from 'pino';
+import { getPublicApiOrigin } from '@/lib/api-origin';
 
 // Interface para propiedades del log para evitar el uso de any
 interface LogProperties {
@@ -26,12 +27,7 @@ class TelemetryTransport {
   private readonly MAX_QUEUE_SIZE = 100;
 
   constructor() {
-    // Obtener la URL de la API desde la configuración
-    if (typeof window !== 'undefined') {
-      this.apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5020';
-    } else {
-      this.apiUrl = process.env.API_URL || 'http://localhost:5020';
-    }
+    this.apiUrl = getPublicApiOrigin();
     
     // Solo habilitar en producción o si está explícitamente configurado
     this.enabled = process.env.NODE_ENV === 'production' || process.env.NEXT_PUBLIC_ENABLE_TELEMETRY === 'true';

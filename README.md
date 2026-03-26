@@ -84,6 +84,16 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 
 Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
 
+## Imagen Docker (opcional)
+
+Build desde la **raíz del repositorio** (contexto `.`), usando el Dockerfile del paquete:
+
+```powershell
+docker build -f src/Dockerfile .
+```
+
+En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requieras) según el backend. Salida **standalone** de Next.js (`src/next.config.js`).
+
 ## Solución de problemas
 
 ### Error de conexión a la API

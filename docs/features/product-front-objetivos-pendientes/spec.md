@@ -3,8 +3,8 @@ id: "product-front-objetivos-pendientes-spec"
 action_id: spec
 feature_id: product-front-objetivos-pendientes
 title: "Especificación — Objetivos pendientes tras adaptación GesFer.Product.Front"
-date: "2026-03-23"
-status: in_progress
+date: "2026-03-26"
+status: done
 planning_ref: "docs/features/product-front-objetivos-pendientes/plan.md"
 clarify_ref: "docs/features/product-front-objetivos-pendientes/clarify.md"
 branch_sugerida: "feat/product-front-objetivos-pendientes"
