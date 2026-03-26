@@ -12,7 +12,7 @@ scope: |
   Definir y acotar el trabajo restante para cerrar la desacoplación del monolito:
   alineación de API y entorno, migración de TemporalShared, higiene documental
   y validación técnica. Depende de la adaptación ya aplicada (README, Objetivos,
-  SddIA, scripts, toques en src/README y next-build-fallback).
+  SddIA, scripts, README de raíz y next-build-fallback).
 acceptance_criteria:
   - "Existen criterios de aceptación medibles por cada bloque de trabajo (API, TemporalShared, docs, calidad)."
   - "Las variables de entorno canónicas están nombradas y referenciadas de forma coherente con src/lib/config.ts."
@@ -39,7 +39,7 @@ related_paths:
 
 | ID | Objetivo | Descripción | Criterios de aceptación |
 |----|----------|-------------|-------------------------|
-| O-API-01 | URL única de verdad | Documentar y usar **una** convención para desarrollo local respecto al backend (p. ej. `http://localhost:5020` según despliegue actual). | `src/.env.example` y fragmentos relevantes de `src/README.md`, `src/SETUP.md`, `src/CONFIGURACION-API.md`, `src/INSTRUCCIONES.md` muestran la **misma** URL base de ejemplo o explican que debe coincidir con la API levantada. |
+| O-API-01 | URL única de verdad | Documentar y usar **una** convención para desarrollo local respecto al backend (p. ej. `http://localhost:5020` según despliegue actual). | `src/.env.example` y fragmentos relevantes de `README.md` (raíz), `src/SETUP.md`, `src/CONFIGURACION-API.md`, `src/INSTRUCCIONES.md` muestran la **misma** URL base de ejemplo o explican que debe coincidir con la API levantada. |
 | O-API-02 | Coherencia con `config.ts` | Los fallbacks de `src/lib/config.ts`, `src/lib/config.test.ts`, `src/lib/logger/index.ts` y `src/next.config.js` no deben contradecir la guía de `.env` sin motivo documentado. | Tabla breve en `CONFIGURACION-API.md` o README: **cliente** → `NEXT_PUBLIC_API_URL`; **tests/servidor** → `API_URL`; cuándo usar cada una. |
 | O-API-03 | Tests E2E/API | Reducir dispersión de puertos en `src/tests/**`, `playwright*.ts` y `global-setup.ts` (5000, 5001, 5002, etc.). | Documento o comentario de convención: API real vs mock; variables mínimas para `npm run test:e2e` y `npm run test:e2e:api`. |
 
