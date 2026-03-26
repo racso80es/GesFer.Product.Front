@@ -31,7 +31,3 @@ Registro de **touchpoints** aplicados por fase (commits separados).
 ## Fase 4 — Propuesta
 
 - `scripts/Propuesta/README.md` (material histórico, no SSOT). Commit en fase 4.
-
-## TemporalShared
-
-- Inventario: carpeta `src/TemporalShared/` presente; **sin imports** desde aplicación en el árbol actual. Migración pendiente cuando se conecten componentes.

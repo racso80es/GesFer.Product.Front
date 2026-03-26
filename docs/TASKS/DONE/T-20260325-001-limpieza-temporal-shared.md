@@ -1,6 +1,8 @@
-# Tarea de limpieza TemporalShared
+# Tarea T-20260325-001 — migración de componentes compartidos (histórico)
 
-## Descripción
+> **Archivo histórico (marzo 2026).** El texto siguiente conserva el **enunciado original** de la tarea. La **ejecución aplicada** reubicó el código en `src/components/` y `src/lib/` con alias `@/`, sin depender del paquete `Shared` del monorepo; detalle en `docs/EVOLUTION_LOG.md`.
+
+## Descripción (estado en el momento del borrador)
 
 El proyecto actualmente utiliza una copia local de los componentes compartidos dentro del directorio `src/TemporalShared/Front`. Esto se debió a un error de configuración temporal donde el alias `@shared/` no podía resolver los componentes ubicados en el paquete `Shared` del monorepo, lo que causaba fallos en el proceso de compilación (`npm run build`).
 

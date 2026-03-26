@@ -17,9 +17,9 @@ decisions:
     resolucion: "Referencia http://localhost:5020/ (Swagger en /swagger/v1/swagger.json). Si cambia puerto o esquema, actualizar decisión y documentación."
     fuente: "Usuario (auditoría previa)"
   - id: D-03
-    tema: "TemporalShared"
-    resolucion: "src/TemporalShared es temporal; migrar a estructura definitiva y eliminar la carpeta."
-    fuente: "Usuario"
+    tema: "Código compartido en el árbol de aplicación"
+    resolucion: "Componentes y utilidades bajo `src/components/` y `src/lib/` (alias `@/`); sin carpeta provisional adicional."
+    fuente: "Usuario / estado del repo (post-migración 2026-03-25)"
   - id: D-04
     tema: "Variables canónicas de URL (modelo mental)"
     resolucion: "NEXT_PUBLIC_API_URL (cliente); API_URL (servidor/tests) según src/lib/config.ts. Alineación de rutas y contrato según D-09."

@@ -45,8 +45,6 @@ src/
 └── middleware.ts        # Enrutado / locale si aplica
 ```
 
-Código compartido **provisional** migrado desde el monolito: **`src/TemporalShared`** (reubicar y eliminar al integrar en la estructura definitiva).
-
 ## Autenticación
 
 Autenticación basada en sesión/tokens según la configuración actual (p. ej. NextAuth en `app/api/auth/` y `auth.ts`). El contexto de sesión y componentes como `ProtectedRoute` gestionan el acceso a rutas privadas.

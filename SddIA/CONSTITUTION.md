@@ -24,8 +24,6 @@ Las capas de componentes se organizan por nivel de abstracción:
 * Estructuras de página (navegación, shell, envoltorios).
 * Orquestan la disposición visual pero no contienen lógica de negocio.
 
-*Nota:* Mientras dure la migración desde el monorepo, piezas equivalentes pueden existir temporalmente en `src/TemporalShared` para su reubicación y posterior eliminación.
-
 ### 1.3. Lógica y Servicios (`src/lib/`)
 Capa de orquestación, configuración y acceso a datos:
 - `src/lib/api/`: Clientes HTTP para consumo de la **API backend** (producto).

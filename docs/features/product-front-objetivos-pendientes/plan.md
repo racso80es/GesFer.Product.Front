@@ -60,15 +60,14 @@ Orden fijado por **aislamiento de capas** (decisión **D-11**): primero **SddIA*
 
 ## Fase 3 — `src` (aplicación)
 
-**Objetivo:** Adecuar el cliente al **contrato real** del backend (swagger); unificar env; migrar TemporalShared; tests.
+**Objetivo:** Adecuar el cliente al **contrato real** del backend (swagger); unificar env; tests.
 
 | # | Tarea | Entregable / criterio |
 |---|--------|------------------------|
 | 3.1 | **API / env:** Alinear `NEXT_PUBLIC_API_URL`, `API_URL`, `.env.example`, `CONFIGURACION-API.md` y fallbacks en `config.ts` / `next.config.js` con **origen** del servicio y **paths** del OpenAPI. | O-API-01, O-API-02. |
 | 3.2 | **Clientes HTTP:** Revisar `src/lib/api/*` y `product-api.ts` frente a `paths` del swagger; corregir prefijos o rutas divergentes. | Sin rutas inventadas respecto al contrato. |
 | 3.3 | **Tests:** Documentar y homogeneizar escenarios **API real** vs **mock** (D-06); `global-setup`, Playwright, README de tests. | O-API-03. |
-| 3.4 | **TemporalShared:** Inventario (O-TMP-01); tabla migración (O-TMP-02); eliminar carpeta cuando no queden imports (O-TMP-03). | Lista en este plan o anexo; cierre sin referencias `TemporalShared`. |
-| 3.5 | **Calidad:** `npm run lint`, `npm run build`, `npm run test` en `src/`. | O-QA-01 | 
+| 3.4 | **Calidad:** `npm run lint`, `npm run build`, `npm run test` en `src/`. | O-QA-01 | 
 
 **Dependencias:** Fase 2 opcional para E2E que arranquen dev server; contrato API **siempre** desde backend/swagger.
 

@@ -6,10 +6,6 @@ Este repositorio es el **frontend de producto (cliente)** del ecosistema GesFer,
 
 El código de la aplicación vive en **`src/`** (paquete npm `gesfer-cliente`): **Next.js 14 (App Router)** que consume la **API de backend** como servicio externo vía HTTP (`NEXT_PUBLIC_API_URL`, `API_URL` en tests).
 
-## Código compartido temporal
-
-Las piezas pendientes de integrar en la estructura definitiva pueden estar en **`src/TemporalShared`**, con el objetivo de **moverlas, adaptarlas y eliminar** esa carpeta cuando ya no sea necesaria.
-
 ## Stack tecnológico (resumen)
 
 - **Framework:** Next.js 14 (App Router), TypeScript
@@ -30,7 +26,7 @@ Las piezas pendientes de integrar en la estructura definitiva pueden estar en **
    Cómo ejecutar, testear y desplegar el cliente; variables de entorno alineadas con `src/lib/config.ts`.
 
 3. **Claridad para nuevos desarrolladores**  
-   Entender de inmediato que es el **frontend de producto** GesFer y el rol de `TemporalShared` como puente temporal.
+   Entender de inmediato que es el **frontend de producto** GesFer y que el código de interfaz y utilidades vive bajo `src/components/` y `src/lib/` con el alias `@/`.
 
 4. **Alineación con `AGENTS.md`**  
    Entorno Windows/PowerShell, sin commits directos a `master`, build verificado, comandos vía skills/tools cuando aplique.
@@ -41,4 +37,3 @@ Las piezas pendientes de integrar en la estructura definitiva pueden estar en **
 ---
 
 *Este documento se actualizará cuando cambien los objetivos o el alcance del proyecto.*
-Home Publica Terminado
