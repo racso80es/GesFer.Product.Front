@@ -40,4 +40,8 @@ Transición a estado `DONE` tras el cumplimiento del proceso.
 Para el correcto funcionamiento de este proceso, el repositorio debe mantener la siguiente jerarquía:
 - `docs/TASKS/` -> Tareas pendientes (ficheros individuales).
 - `docs/TASKS/ACTIVE/` -> Tareas en ejecución en la rama actual.
+- `docs/TASKS/CLARIFY/` -> Tareas en ejecución en la rama actual que necesitan aclaración por parte de usuario.
 - `docs/TASKS/DONE/` -> Histórico de éxito.
+
+## Particularidades del proceso
+- Trabajar de la forma más autónoma posible, con el fin de obtener la éjecución de la tarea sin supervisión del usuario. En caso de no ser posible este resultado, mover a ruta de documentos a clarificar.
