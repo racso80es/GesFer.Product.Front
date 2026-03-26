@@ -69,7 +69,12 @@ Write-Host ""
 Write-Host "Paso 4: Configurando variables de entorno..." -ForegroundColor Yellow
 
 if (-not (Test-Path ".env.local")) {
-    $envContent = "# URL de la API backend`nNEXT_PUBLIC_API_URL=http://localhost:5020"
+    $envContent = @"
+# URL de la API backend
+NEXT_PUBLIC_API_URL=http://localhost:5020
+# Auth.js (NextAuth); alinear en local con Jwt:Key del backend si aplica
+AUTH_SECRET=YourSuperSecretKeyThatShouldBeAtLeast32CharactersLong
+"@
     $envContent | Out-File -FilePath ".env.local" -Encoding UTF8
     Write-Host "OK Archivo .env.local creado" -ForegroundColor Green
 } else {

@@ -2,8 +2,8 @@ import { render, screen, waitFor, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import LoginPage from '@/app/(client)/login/page'
 import { useAuth } from '@/contexts/auth-context'
-// Valores por defecto del login (coinciden con seeds demo-data.json)
-const DEFAULT_LOGIN_COMPANY = 'Organización Cliente'
+// Valores por defecto del login (coinciden con .env.example / seed demo)
+const DEFAULT_LOGIN_COMPANY = 'Empresa Demo'
 const DEFAULT_LOGIN_PASSWORD = 'admin123'
 
 // Mock the auth context
@@ -59,7 +59,7 @@ describe('LoginPage', () => {
     const contraseñaInput = screen.getByLabelText(/contraseña|password/i) as HTMLInputElement
     
     expect(companyInput.value).toBe(DEFAULT_LOGIN_COMPANY)
-    expect(usuarioInput.value).toBe('user_test')
+    expect(usuarioInput.value).toBe('admin')
     expect(contraseñaInput.value).toBe(DEFAULT_LOGIN_PASSWORD)
   })
 
@@ -78,7 +78,7 @@ describe('LoginPage', () => {
     await waitFor(() => {
       expect(mockLogin).toHaveBeenCalledWith({
         company: DEFAULT_LOGIN_COMPANY,
-        username: 'user_test',
+        username: 'admin',
         password: DEFAULT_LOGIN_PASSWORD,
       })
     })

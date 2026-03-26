@@ -129,6 +129,7 @@ export const authConfig: NextAuthConfig = {
     strategy: "jwt", // Usar JWT strategy para almacenar la sesión
     maxAge: 60 * 60, // 1 hora (debe coincidir con la expiración del JWT del backend)
   },
+  // Sesión NextAuth (cookie). Independiente del Jwt:Key del API, pero debe ser ≥32 caracteres.
   secret: process.env.AUTH_SECRET || "your-secret-key-change-in-production",
 };
 

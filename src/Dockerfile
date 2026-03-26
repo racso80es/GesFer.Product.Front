@@ -1,7 +1,7 @@
 # Imagen de producción — GesFer.Product.Front (Next.js standalone).
 # Contexto de build: raíz del repositorio (donde está la carpeta src/).
 #   docker build -f src/Dockerfile .
-#   docker run -p 3000:3000 -e NEXT_PUBLIC_API_URL=<url-api> <imagen>
+#   docker run -p 3000:3000 -e NEXT_PUBLIC_API_URL=<url-api> -e AUTH_SECRET=<secreto-min-32-caracteres> <imagen>
 
 FROM node:20-alpine AS base
 RUN apk add --no-cache libc6-compat
