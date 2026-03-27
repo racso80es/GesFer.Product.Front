@@ -6,7 +6,7 @@
 
 @layer mui {
   .MuiCssBaseline-root {
-    /* MUI Baseline isolation layer */
+    /* Capa MUI: evita solapamientos con Tailwind base */
   }
 }
 
