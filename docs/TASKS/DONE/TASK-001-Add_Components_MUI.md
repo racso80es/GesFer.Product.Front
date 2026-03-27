@@ -1,5 +1,7 @@
 Contexto de Tarea: Instalación y Configuración de Sistema de Diseño (MUI)
 
+Procedimiento de seguimiento IA: Se ha asignado el ID TASK-001 como parte del proceso de triaje, siguiendo una numeración secuencial con prefijo TASK- para tareas de propósito general.
+
 Instrucciones de Acción:
 
 Triaje de Dependencias: Instala las librerías base de MUI para TypeScript:

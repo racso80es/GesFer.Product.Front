@@ -8,18 +8,6 @@ import { QueryProvider } from "@/lib/providers/query-provider";
 import { AuthProvider } from "@/contexts/auth-context";
 import { OverlayFix } from "@/components/ui/overlay-fix";
 import { locales } from "@/i18n";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import theme from '@/theme/theme';
-import { Roboto } from 'next/font/google';
-
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-roboto',
-});
 
 export const metadata: Metadata = {
   title: "GesFer - Gestión de Chatarra",
@@ -44,20 +32,15 @@ export default async function LocaleLayout({
   const messages = await getMessages({ locale });
 
   return (
-    <html lang={locale} className={roboto.variable}>
-      <body className={roboto.className}>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <OverlayFix />
-            <Toaster richColors position="top-center" />
-            <NextIntlClientProvider locale={locale} messages={messages}>
-              <QueryProvider>
-                <AuthProvider>{children}</AuthProvider>
-              </QueryProvider>
-            </NextIntlClientProvider>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+    <html lang={locale}>
+      <body>
+        <OverlayFix />
+        <Toaster richColors position="top-center" />
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <QueryProvider>
+            <AuthProvider>{children}</AuthProvider>
+          </QueryProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

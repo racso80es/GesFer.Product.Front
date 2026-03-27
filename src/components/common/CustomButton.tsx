@@ -1,19 +1,35 @@
 import React from 'react';
 import Button, { ButtonProps } from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
 
 export interface CustomButtonProps extends ButtonProps {
-  customProp?: boolean;
+  /**
+   * Additional custom prop indicating if the button should be styled differently
+   * (for demonstration purposes of TypeScript interface extending)
+   */
+  isHighlighted?: boolean;
 }
 
-const StyledButton = styled(Button)<CustomButtonProps>(({ theme, customProp }) => ({
-  ...(customProp && {
-    border: `2px solid ${theme.palette.secondary.main}`,
-  }),
-}));
-
-export const CustomButton: React.FC<CustomButtonProps> = (props) => {
-  return <StyledButton {...props} />;
+export const CustomButton: React.FC<CustomButtonProps> = ({
+  isHighlighted = false,
+  children,
+  sx,
+  ...props
+}) => {
+  return (
+    <Button
+      {...props}
+      sx={{
+        ...(isHighlighted && {
+          border: '2px solid',
+          borderColor: 'secondary.main',
+          boxShadow: 2,
+        }),
+        ...sx,
+      }}
+    >
+      {children}
+    </Button>
+  );
 };
 
 export default CustomButton;
