@@ -51,9 +51,9 @@ Autenticación basada en sesión/tokens según la configuración actual (p. ej. 
 
 ### Credenciales de ejemplo (entorno demo)
 
-- **Company**: Empresa Demo  
-- **Usuario**: admin  
-- **Contraseña**: admin123  
+- **Company**: Empresa Demo
+- **Usuario**: admin
+- **Contraseña**: admin123
 
 (Ajustar según tu backend y seeds.)
 
@@ -98,14 +98,14 @@ En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requi
 
 ### Error de conexión a la API
 
-1. Comprueba que la API esté en ejecución.  
-2. Verifica `NEXT_PUBLIC_API_URL` en `.env.local`.  
+1. Comprueba que la API esté en ejecución.
+2. Verifica `NEXT_PUBLIC_API_URL` en `.env.local`.
 3. Revisa CORS en el backend.
 
 ### Problemas de autenticación
 
-1. Credenciales correctas y empresa válida.  
-2. Errores en la consola del navegador.  
+1. Credenciales correctas y empresa válida.
+2. Errores en la consola del navegador.
 3. Limpia almacenamiento local/cookies si quedan sesiones corruptas.
 
 ## Documentación

@@ -6,6 +6,10 @@ import { Roboto } from 'next/font/google';
 import "./globals.css";
 import { Toaster } from "sonner";
 import { QueryProvider } from "@/lib/providers/query-provider";
+import { SessionProvider } from "@/lib/providers/session-provider";
+import { AuthProvider } from "@/contexts/auth-context";
+import { OverlayFix } from "@/components/ui/overlay-fix";
+import ThemeRegistry from "@/components/common/ThemeRegistry";
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -13,10 +17,6 @@ const roboto = Roboto({
   display: 'swap',
   variable: '--font-roboto',
 });
-import { SessionProvider } from "@/lib/providers/session-provider";
-import { AuthProvider } from "@/contexts/auth-context";
-import { OverlayFix } from "@/components/ui/overlay-fix";
-import ThemeRegistry from "@/components/common/ThemeRegistry";
 
 export const metadata: Metadata = {
   title: "GesFer - Gestión de Chatarra",
