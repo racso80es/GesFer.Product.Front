@@ -15,6 +15,7 @@ const nextConfig = {
   // Deshabilitar la optimización de vendor chunks que está causando problemas
   experimental: {
     optimizePackageImports: ['@tanstack/react-query'],
+    serverComponentsExternalPackages: ['pino', 'pino-pretty'],
   },
   output: "standalone",
   webpack: (config) => {
