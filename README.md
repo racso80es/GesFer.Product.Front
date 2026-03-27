@@ -82,7 +82,21 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+## Documentación adicional en `src/`
+
+Para una comprensión más profunda sobre configuración, operativas y resolución de problemas, consulta las siguientes guías dentro de `src/`:
+
+| Recurso | Contenido |
+|--------|-----------|
+| `src/SETUP.md` | Guía de configuración y requisitos previos |
+| `src/INSTRUCCIONES.md` | Estado y estructura de instalación del cliente |
+| `src/CONFIGURACION-API.md` | Configuración de la URL de la API y contratos |
+| `src/README-TESTS.md` | Testing con Jest y React Testing Library |
+| `src/I18N-GUIDE.md` | Guía de internacionalización (estructura y uso) |
+| `src/I18N-STATUS.md` | Estado de la implementación de i18n |
+| `src/COMANDOS-GIT.md` | Comandos rápidos para Git |
+| `src/SOLUCION-PROBLEMAS.md` | Solución si el cliente no levanta |
+| `src/SOLUCION-CORS.md` | Solución a problemas de CORS |
 
 ## Imagen Docker (opcional)
 
