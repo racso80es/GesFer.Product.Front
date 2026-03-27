@@ -4,6 +4,7 @@ import * as React from "react";
 import { cn } from "../../lib/utils/cn";
 
 interface SelectContextValue {
+  id: string;
   value: string;
   onValueChange: (value: string) => void;
   open: boolean;
@@ -32,6 +33,7 @@ const Select = ({
   disabled,
   children,
 }: SelectProps) => {
+  const id = React.useId();
   const actualValue = value ?? defaultValue;
   const [internalOpen, setInternalOpen] = React.useState(false);
   const open = controlledOpen ?? internalOpen;
@@ -54,6 +56,7 @@ const Select = ({
   return (
     <SelectContext.Provider
       value={{
+        id,
         value: actualValue,
         onValueChange: handleValueChange ?? (() => {}),
         open,
@@ -78,6 +81,7 @@ const SelectTrigger = React.forwardRef<
       type="button"
       role="combobox"
       aria-expanded={ctx.open}
+      aria-controls={ctx.id}
       disabled={ctx.disabled}
       className={cn(
         "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
@@ -117,6 +121,7 @@ const SelectContent = React.forwardRef<
   return (
     <div
       ref={ref}
+      id={ctx.id}
       className={cn(
         "absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
         className
@@ -139,6 +144,7 @@ const SelectItem = React.forwardRef<
     <div
       ref={ref}
       role="option"
+      aria-selected={ctx.value === value}
       className={cn(
         "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className
