@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer mui {
+  .MuiCssBaseline-root {
+    /* To avoid conflicts with tailwind base */
+  }
+}
+
 @layer base {
   :root {
     --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;

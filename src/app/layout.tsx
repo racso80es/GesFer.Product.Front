@@ -2,12 +2,21 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getLocale } from 'next-intl/server';
 import type { AbstractIntlMessages } from 'next-intl';
+import { Roboto } from 'next/font/google';
 import "./globals.css";
 import { Toaster } from "sonner";
 import { QueryProvider } from "@/lib/providers/query-provider";
+
+const roboto = Roboto({
+  weight: ['300', '400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto',
+});
 import { SessionProvider } from "@/lib/providers/session-provider";
 import { AuthProvider } from "@/contexts/auth-context";
 import { OverlayFix } from "@/components/ui/overlay-fix";
+import ThemeRegistry from "@/components/common/ThemeRegistry";
 
 export const metadata: Metadata = {
   title: "GesFer - Gestión de Chatarra",
@@ -57,17 +66,19 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={roboto.variable}>
       <body>
-        <OverlayFix />
-        <Toaster richColors position="top-center" />
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <SessionProvider>
-            <QueryProvider>
-              <AuthProvider>{children}</AuthProvider>
-            </QueryProvider>
-          </SessionProvider>
-        </NextIntlClientProvider>
+        <ThemeRegistry>
+          <OverlayFix />
+          <Toaster richColors position="top-center" />
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <SessionProvider>
+              <QueryProvider>
+                <AuthProvider>{children}</AuthProvider>
+              </QueryProvider>
+            </SessionProvider>
+          </NextIntlClientProvider>
+        </ThemeRegistry>
       </body>
     </html>
   );
