@@ -91,3 +91,7 @@ La mejora continua (Kaizen) no es opcional; es estructural.
 
 * **Composición sobre herencia:** Preferir composición de componentes y hooks sobre jerarquías profundas.
 * **Desacoplamiento:** El proyecto aprende de su origen (monorepo GesFer) pero no hereda su deuda técnica. La estructura es limpia e independiente.
+
+## 5. Trazabilidad del protocolo SddIA (evolution)
+
+Los cambios bajo **`./SddIA/`** deben registrarse según la norma **`SddIA/norms/sddia-evolution-sync.md`**: identificador **UUID v4**, índice y detalle en las rutas definidas en el contrato de paths del Cúmulo (`paths.sddiaEvolutionPath`, `paths.sddiaEvolutionLogFile`, `paths.sddiaEvolutionContractFile`). La herramienta estándar de registro es el binario Rust **`sddia_evolution_register`** (cápsula `paths.skillCapsules.sddia-evolution-register`). Esta trazabilidad es independiente del registro de evolución de producto en `paths.evolutionPath`.

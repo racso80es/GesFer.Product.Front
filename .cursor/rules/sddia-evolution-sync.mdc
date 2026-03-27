@@ -1,0 +1,15 @@
+---
+description: Refuerzo de trazabilidad evolution para cambios bajo SddIA/
+globs: SddIA/**/*
+alwaysApply: false
+---
+
+# Evolution SddIA (recordatorio)
+
+- **Norma canónica:** `SddIA/norms/sddia-evolution-sync.md`
+- **Contrato:** `SddIA/evolution/evolution_contract.md` (rutas vía Cúmulo: `paths.sddiaEvolutionPath`, etc.)
+- **Registro:** binario `sddia_evolution_register` (cápsula `paths.skillCapsules.sddia-evolution-register`), no scripts `.ps1` como entrega principal.
+
+**Checklist mínimo al tocar `./SddIA/`:** índice `Evolution_log.md` + detalle `{uuid}.md`, `tipo_operacion`, hash; validación local/CI con `sddia_evolution_validate`.
+
+Si algo en `.cursor/rules` contradice **SddIA** o **AGENTS.md**, prevalece SddIA.

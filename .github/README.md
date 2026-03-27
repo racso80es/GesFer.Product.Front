@@ -135,3 +135,7 @@ Los artefactos en esta carpeta (templates, workflows) son **difusión** de las n
 - **Touchpoints:** [SddIA/norms/touchpoints-ia.md](../SddIA/norms/touchpoints-ia.md).
 
 Al modificar .github, mantener coherencia con SddIA (rutas vía Cúmulo, procesos feature/bug-fix/refactorization/create-tool). Acción de revisión: [SddIA/actions/sddia-difusion/](../SddIA/actions/sddia-difusion/).
+
+## PRs que alteran `./SddIA/`
+
+El workflow **PR Validation** compila y ejecuta `sddia_evolution_validate` para comprobar trazabilidad del protocolo evolution (índice + detalle UUID cuando el diff afecta a `SddIA/`). Norma: [SddIA/norms/sddia-evolution-sync.md](../SddIA/norms/sddia-evolution-sync.md). Alineación con agentes/Jules: [SddIA/norms/touchpoints-ia.md](../SddIA/norms/touchpoints-ia.md).

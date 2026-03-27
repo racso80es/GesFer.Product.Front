@@ -10,6 +10,11 @@ license = "UNLICENSED"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1", features = ["v4", "serde"] }
+sha2 = "0.10"
+hex = "0.4"
+notify = "6"
+regex = "1"
 
 [[bin]]
 name = "iniciar_rama"
@@ -34,3 +39,15 @@ path = "src/bin/push_and_create_pr.rs"
 [[bin]]
 name = "invoke_commit"
 path = "src/bin/invoke_commit.rs"
+
+[[bin]]
+name = "sddia_evolution_register"
+path = "src/bin/sddia_evolution_register.rs"
+
+[[bin]]
+name = "sddia_evolution_validate"
+path = "src/bin/sddia_evolution_validate.rs"
+
+[[bin]]
+name = "sddia_evolution_watch"
+path = "src/bin/sddia_evolution_watch.rs"

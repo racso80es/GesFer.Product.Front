@@ -41,3 +41,15 @@ jobs:
     - name: Test
       working-directory: src
       run: npm run test
+
+    - name: Setup Rust
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: SddIA evolution validate
+      run: |
+        set -e
+        git fetch origin "${{ github.base_ref }}" --depth=0 || true
+        cd scripts/skills-rs
+        cargo build --release --bin sddia_evolution_validate
+        cd ../..
+        ./scripts/skills-rs/target/release/sddia_evolution_validate --base "origin/${{ github.base_ref }}" --head HEAD

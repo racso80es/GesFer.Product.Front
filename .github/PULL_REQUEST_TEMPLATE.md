@@ -15,3 +15,4 @@ Las normas de trabajo (leyes GIT, procesos, rutas) están en **AGENTS.md** y **S
 - [ ] El trabajo está en rama `feat/` o `fix/`, no en `master`.
 - [ ] Documentación de la tarea en la carpeta correspondiente (objectives, spec, validación si aplica).
 - [ ] Build y tests pasan (Ley COMPILACIÓN).
+- [ ] Si el PR modifica `./SddIA/`, registro evolution aplicado (GUID en `SddIA/evolution/` + fila en `Evolution_log.md`) según `SddIA/norms/sddia-evolution-sync.md`.
