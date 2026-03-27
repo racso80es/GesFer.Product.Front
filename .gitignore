@@ -4,6 +4,7 @@
 
 # Logs
 logs/
+!src/app/api/logs/
 *.log
 !logFile!
 

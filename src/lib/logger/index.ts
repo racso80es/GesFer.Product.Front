@@ -29,12 +29,10 @@ class TelemetryTransport {
   constructor() {
     this.apiUrl = getPublicApiOrigin();
     
-    // Solo habilitar en producción o si está explícitamente configurado
-    this.enabled = process.env.NODE_ENV === 'production' || process.env.NEXT_PUBLIC_ENABLE_TELEMETRY === 'true';
+    // Habilitar para enviar los logs al servidor internamente
+    this.enabled = true;
     
-    if (this.enabled) {
-      this.startFlushInterval();
-    }
+    this.startFlushInterval();
   }
 
   private startFlushInterval() {
@@ -85,7 +83,7 @@ class TelemetryTransport {
     // Enviar logs uno por uno (se puede optimizar para batch en el futuro)
     for (const log of logsToSend) {
       try {
-        await fetch(`${this.apiUrl}/api/telemetry/logs`, {
+        await fetch(`/api/logs`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
