@@ -32,6 +32,12 @@ Registro de **touchpoints** aplicados por fase (commits separados).
 
 - `scripts/Propuesta/README.md` (material histórico, no SSOT). Commit en fase 4.
 
-## TemporalShared
+## Fase 5 — Kaizen cierre monorepo (2026-03-26)
 
-- Inventario: carpeta `src/TemporalShared/` presente; **sin imports** desde aplicación en el árbol actual. Migración pendiente cuando se conecten componentes.
+- `src/Dockerfile`: rutas de build alineadas al repo aislado (`src/` como paquete; contexto en raíz).
+- `src/next.config.js`: comentario webpack sin referencia a Shared/Product del monorepo.
+- `src/README-TESTS.md`: alias `@/` y estructura de carpetas; ejemplos en PowerShell.
+- `SddIA/skills/frontend-build/spec.md`: un solo front, `cwd: src`.
+- `SddIA/norms/interaction-triggers.md`, `SddIA/skills/README.md`, `.cursor/rules/skill-suggestions.mdc`: descripción skill `frontend-build`.
+- `.gitignore`: entradas `src/Product/Front`, Admin y backends del monorepo sustituidas por rutas del paquete `src/`.
+- `README.md` (raíz): sección Docker.

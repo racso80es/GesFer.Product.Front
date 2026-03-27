@@ -87,7 +87,6 @@ pub struct ToolResult {
 }
 
 impl ToolResult {
-    #[allow(dead_code)]
     pub fn ok(tool_id: &str, message: &str, feedback: Vec<FeedbackEntry>, data: Option<serde_json::Value>, duration_ms: u64) -> Self {
         Self {
             tool_id: tool_id.to_string(),

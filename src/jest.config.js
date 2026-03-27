@@ -38,6 +38,8 @@ const customJestConfig = {
   ],
   moduleDirectories: ['node_modules', '<rootDir>/node_modules'],
   roots: ['<rootDir>'],
+  // Evita colisión haste-map entre package.json raíz y .next/standalone/package.json tras `next build`
+  modulePathIgnorePatterns: ['<rootDir>/.next/'],
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

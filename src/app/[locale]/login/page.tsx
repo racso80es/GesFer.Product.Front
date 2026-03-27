@@ -14,8 +14,8 @@ import { useTranslations } from 'next-intl';
 // Credenciales por defecto: desde env (coinciden con seeds demo-data.json)
 function getDefaultLoginCredentials(): { company: string; username: string; password: string } {
   return {
-    company: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_COMPANY ?? "Organización Cliente",
-    username: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_USER ?? "user_test",
+    company: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_COMPANY ?? "Empresa Demo",
+    username: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_USER ?? "admin",
     password: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_PASSWORD ?? "admin123",
   };
 }

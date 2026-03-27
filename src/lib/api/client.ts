@@ -1,6 +1,6 @@
 import type { ApiError, ApiResponse } from "@/lib/types/api";
 
-// El origen de la API lo fija NEXT_PUBLIC_API_URL (.env.local); por defecto alineado al backend local (p. ej. :5020). Ver OpenAPI del servicio.
+// Origen API: getPublicApiOrigin() → lib/api-origin.ts + config/api-origin-defaults.json
 import { API_URL } from "@/lib/config";
 
 /**

@@ -25,7 +25,7 @@ Cuando el usuario escriba **#Skill** (solo o en un mensaje), responde sugiriendo
 | **documentation** | Estándares SSOT y gestión de documentación. Solo definición. |
 | **filesystem-ops** | Operaciones de archivo seguras (PowerShell). Solo definición. |
 | **dotnet-development** | Estándares .NET (build, test, logging). Solo definición. |
-| **frontend-build** | Build Next.js (Product, Admin) fallback. Solo definición. |
+| **frontend-build** | Build Next.js (`src/`, cliente) con fallback. Solo definición. |
 | **security-audit** | Auditoría y hooks pre-commit/pre-push. Solo definición. |
 
 ## Respuesta sugerida

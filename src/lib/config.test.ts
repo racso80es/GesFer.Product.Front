@@ -6,10 +6,11 @@
  */
 
 import type { AppConfig } from './config';
+import { getPublicApiOrigin } from './api-origin';
 
 export const testConfig: AppConfig = {
   api: {
-    url: process.env.API_URL || 'http://127.0.0.1:5020',
+    url: getPublicApiOrigin(),
   },
   client: {
     url: process.env.CLIENT_URL || 'http://127.0.0.1:3000',
