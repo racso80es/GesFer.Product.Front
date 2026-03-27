@@ -49,14 +49,14 @@
     {
       "id": "L7_DOMAIN_ENTITIES",
       "rule": "Domain Entities (SddIA Ecosystem)",
-      "description": "Entities that integrate the Token contract (paths.tokensPath) are domain entities. They must respect structure (Markdown with YAML frontmatter as canonical) except for JSON-only tokens. Norm: SddIA/norms/entidades-dominio-ecosistema-sddia.md.",
+      "description": "Entities that integrate the Token contract (paths.tokensPath) are domain entities. They must respect structure: Markdown with Frontmatter YAML (single .md per entity). Exception: tokens may be JSON-only per tokens-contract. Norm: SddIA/norms/entidades-dominio-ecosistema-sddia.md.",
       "severity": "HIGH"
     },
     {
       "id": "L8_SDDIA_EVOLUTION",
-      "rule": "SddIA evolution traceability",
-      "description": "Changes under ./SddIA/ must be recorded with UUID v4 id, index and detail per paths.sddiaEvolutionPath (Cumulo). Norm: SddIA/norms/sddia-evolution-sync.md. Registration via Rust binary sddia_evolution_register.",
-      "severity": "HIGH"
+      "rule": "SddIA protocol traceability",
+      "description": "Any material change under ./SddIA/ must be recorded under paths.sddiaEvolutionPath with UUID v4 detail file and index update, per SddIA/norms/sddia-evolution-sync.md and evolution_contract.md. Registration via Rust skills capsule; not optional for agents.",
+      "severity": "CRITICAL"
     }
   ],
   "configuration": {

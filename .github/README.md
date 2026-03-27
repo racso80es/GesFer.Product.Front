@@ -138,4 +138,4 @@ Al modificar .github, mantener coherencia con SddIA (rutas vía Cúmulo, proceso
 
 ## PRs que alteran `./SddIA/`
 
-El workflow **PR Validation** compila y ejecuta `sddia_evolution_validate` para comprobar trazabilidad del protocolo evolution (índice + detalle UUID cuando el diff afecta a `SddIA/`). Norma: [SddIA/norms/sddia-evolution-sync.md](../SddIA/norms/sddia-evolution-sync.md). Alineación con agentes/Jules: [SddIA/norms/touchpoints-ia.md](../SddIA/norms/touchpoints-ia.md).
+El workflow ejecuta `sddia_evolution_validate` cuando el diff incluye rutas bajo `SddIA/`. Los cambios deben ir acompañados de registro en el protocolo evolution (UUID, índice), según [SddIA/norms/sddia-evolution-sync.md](../SddIA/norms/sddia-evolution-sync.md). Alineado con [SddIA/norms/touchpoints-ia.md](../SddIA/norms/touchpoints-ia.md) (Jules / agentes).

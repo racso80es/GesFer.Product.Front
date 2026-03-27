@@ -1,36 +1,43 @@
-# Norma: sincronismo y trazabilidad SddIA (evolution)
+# Norma — Sincronismo y trazabilidad SddIA (evolution)
 
-## Ámbito
+**Ámbito:** cambios en artefactos bajo `./SddIA/` (normas, procesos, acciones, agentes, skills definición, tokens, etc.), salvo que la herramienta de validación excluya rutas puntuales (p. ej. detalles en `paths.sddiaEvolutionPath` según versión del binario).
 
-- Aplica a todo cambio de contenido bajo **`./SddIA/`** (normas, procesos, agentes, skills, tokens, etc.), salvo acuerdos explícitos de mantenimiento masivo documentados en otra norma.
-- **No** sustituye la evolución de producto en `paths.evolutionPath` / `paths.evolutionLogFile` (cierres de features). Conviven propósitos distintos.
+**Fuente de rutas:** únicamente claves `paths.*` del contrato Cúmulo (`SddIA/agents/cumulo.paths.json`). No usar rutas literales en documentación normativa.
 
-## Obligación
+## 1. Obligación de registro
 
-1. Toda **alta**, **baja** o **modificación** relevante bajo `./SddIA/` debe quedar registrada en el protocolo evolution:
-   - Un fichero de detalle `{id_cambio}.md` con frontmatter según **`paths.sddiaEvolutionPath`** + `evolution_contract.md` (versión **1.1**).
-   - **`id_cambio`** = **UUID v4**; nombre de fichero = `{id_cambio}.md`.
-   - Actualización del índice `paths.sddiaEvolutionLogFile` en la misma intervención o en el mismo PR.
-2. La implementación del registrador y del validador es **solo** mediante binarios **Rust** en `paths.skillsRustPath` y cápsulas en `paths.skillCapsules` (sin scripts `.ps1` como entrega principal de registro).
+Toda **alta**, **baja** o **modificación** material bajo `./SddIA/` debe quedar reflejada en el protocolo evolution **en la misma intervención o en el mismo PR**:
 
-## Herramientas
+1. Fichero de detalle `{id_cambio}.md` con frontmatter conforme a `paths.sddiaEvolutionContractFile` (contrato v1.1).
+2. Entrada correspondiente en el índice `paths.sddiaEvolutionLogFile`.
 
-| Binario | Función |
+**Identificador:** `id_cambio` = **UUID v4**; nombre de fichero = `{id_cambio}.md`.
+
+**Tipología (`tipo_operacion`):**
+
+| Valor | Uso mínimo |
 | :--- | :--- |
-| `sddia_evolution_register` | Genera GUID, escribe detalle, actualiza índice, calcula `hash_integridad`. |
-| `sddia_evolution_validate` | Valida trazabilidad respecto a un rango git (uso en local y CI). |
-| `sddia_evolution_watch` | Observa `./SddIA/` y avisa para ejecutar registro (debounce; v1 no exige metadatos automáticos). |
+| `alta` | Nuevo artefacto o entidad normativa. |
+| `baja` | Eliminación o retirada documentada; incluir `rutas_eliminadas` y `commit_referencia_previo` cuando aplique. |
+| `modificacion` | Cambio de contenido sin alta/baja estructural clara. |
 
-## Validación en CI
+## 2. Separación respecto a evolución de producto
 
-Los PR que modifiquen `./SddIA/` deben cumplir la validación configurada en `.github/workflows` y no contradecir esta norma.
+- **`paths.sddiaEvolutionPath`** — protocolo de trazabilidad del **ecosistema SddIA** en este repositorio.
+- **`paths.evolutionPath`** / `docs/evolution/` — evolución de **producto** (features, cierres). No son intercambiables.
 
-## Difusión IDE
+## 3. Implementación
 
-La regla `.cursor/rules/sddia-evolution-sync.mdc` refuerza el cumplimiento en editores compatibles; **no** sustituye CI ni esta norma.
+- **Registro y validación:** solo mediante **binarios Rust** publicados en `paths.skillsRustPath`, copiados a la cápsula `paths.skillCapsules.sddia-evolution-register`, con contrato JSON de entrada/salida alineado a `SddIA/skills/skills-contract.json` (sin `.ps1` como entrega principal del registro).
+- **Watcher local:** aviso ante cambios bajo `./SddIA/`; no sustituye el registro con metadatos completos.
+- **CI:** validación en PRs que alteren `./SddIA/` (ver workflow de repositorio).
 
-## Referencias
+## 4. Cumplimiento en agentes e IDE
 
-- `SddIA/agents/cumulo.paths.json` — claves `sddiaEvolutionPath`, `sddiaEvolutionLogFile`, `sddiaEvolutionContractFile`.
-- `SddIA/norms/paths-via-cumulo.md`
-- `SddIA/evolution/evolution_contract.md`
+Los agentes y editores (Cursor, Jules, etc.) deben asumir esta norma como **innegociable**. La difusión en `.cursor/rules` es refuerzo; la **fuente canónica** es esta norma + contrato + CI.
+
+## 5. Referencias
+
+- Contrato: `SddIA/evolution/evolution_contract.md` (vista vía `paths.sddiaEvolutionContractFile`).
+- Cúmulo: `SddIA/agents/cumulo.json` → `pathsContract`.
+- Touchpoints IA: `SddIA/norms/touchpoints-ia.md`.

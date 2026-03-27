@@ -1,26 +1,34 @@
 ---
 skill_id: sddia-evolution-register
-version: 1.0.0
+created: 2026-03-27
+capsule_ref: paths.skillCapsules.sddia-evolution-register
+implementation: scripts/skills-rs/src/bin/sddia_evolution_register.rs
 ---
 
 # Skill — sddia-evolution-register
 
-Registro de cambios del protocolo SddIA bajo `./SddIA/` con contrato YAML v1.1.
+Registra un cambio del protocolo SddIA bajo `./SddIA/`: genera UUID v4, escribe `SddIA/evolution/{uuid}.md`, actualiza `Evolution_log.md`, calcula `replicacion.hash_integrity` (SHA-256 del YAML canónico).
 
-## Ejecutables (cápsula `paths.skillCapsules.sddia-evolution-register`)
+## Invocación
 
-| Binario | Uso |
-| :--- | :--- |
-| `sddia_evolution_register` | Stdin: JSON con `request` (campos ver abajo). Stdout: JSON `success`, `idCambio`, `hashIntegridad`, `path`. |
-| `sddia_evolution_validate` | Args: `--base <ref>` `--head` (default `HEAD`). Exit ≠ 0 si falta trazabilidad y el diff toca `SddIA/`. |
-| `sddia_evolution_watch` | Observa `./SddIA/` con debounce; stderr con avisos. |
+- Ejecutable: `sddia_evolution_register.exe` (cápsula `scripts/skills/sddia-evolution/`, vía `install.ps1`).
+- Argumentos: `--input <fichero.json>` (o `-`) o JSON por stdin.
 
-## Request JSON (register)
+## Request JSON (camelCase)
 
-Campos principales: `autor`, `descripcion_breve`, `tipo_operacion` (`alta` \| `baja` \| `modificacion`), `proyecto_origen_cambio`, `contexto`, `cambios_realizados` (lista `{ "anterior", "nuevo" }`), `impacto`, `replicacion_instrucciones`, opcional `rutas_eliminadas`, `commit_referencia_previo`.
+| Campo | Obligatorio | Descripción |
+| :--- | :---: | :--- |
+| `autor` | Sí | Responsable del registro. |
+| `descripcionBreve` | Sí | Una línea (índice). |
+| `tipoOperacion` | Sí | `alta` \| `baja` \| `modificacion`. |
+| `contexto` | Sí | Motivación. |
+| `proyectoOrigenCambio` | Sí | Repositorio o producto. |
+| `cambiosRealizados` | Sí | Lista `{ anterior, nuevo }`. |
+| `impacto` | Sí | `Bajo` \| `Medio` \| `Alto`. |
+| `replicacionInstrucciones` | No | Texto para otros entornos. |
+| `rutasEliminadas` | No | Lista (operación `baja`). |
+| `commitReferenciaPrevio` | No | Trazabilidad en bajas. |
 
-También se acepta envelope `{ "request": { ... } }`.
+## Binarios hermanos
 
-## Variable de entorno
-
-- `SDDIA_REPO_ROOT`: raíz del repositorio si el binario no se ejecuta desde el layout estándar.
+En la misma cápsula: `sddia_evolution_validate`, `sddia_evolution_watch` (ver `manifest.json`).
