@@ -11,7 +11,6 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
-    '^@shared/(.*)$': '<rootDir>/../../Shared/Front/$1',
   },
   collectCoverageFrom: [
     'app/**/*.{js,jsx,ts,tsx}',
@@ -38,7 +37,9 @@ const customJestConfig = {
     'node_modules/(?!(next-auth|@auth)/)',
   ],
   moduleDirectories: ['node_modules', '<rootDir>/node_modules'],
-  roots: ['<rootDir>', '<rootDir>/../../Shared/Front'],
+  roots: ['<rootDir>'],
+  // Evita colisión haste-map entre package.json raíz y .next/standalone/package.json tras `next build`
+  modulePathIgnorePatterns: ['<rootDir>/.next/'],
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

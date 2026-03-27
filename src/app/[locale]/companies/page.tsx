@@ -2,10 +2,10 @@
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { MainLayout } from "@/components/layout/main-layout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/TemporalShared/Front/components/ui/card";
-import { Button } from "@/TemporalShared/Front/components/ui/button";
-import { Loading } from "@/TemporalShared/Front/components/ui/loading";
-import { ErrorMessage } from "@/TemporalShared/Front/components/ui/error-message";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Loading } from "@/components/ui/loading";
+import { ErrorMessage } from "@/components/ui/error-message";
 import {
   Dialog,
   DialogContent,
@@ -13,7 +13,7 @@ import {
   DialogTitle,
   DialogDescription,
   DialogClose,
-} from "@/TemporalShared/Front/components/ui/dialog";
+} from "@/components/ui/dialog";
 import { CompanyForm } from "@/components/companies/company-form";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { companiesApi } from "@/lib/api/companies";
@@ -22,7 +22,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from 'next-intl';
 import type { Company, CreateCompany, UpdateCompany } from "@/lib/types/api";
-import { DestructiveActionConfirm } from "@/TemporalShared/Front/components/shared/DestructiveActionConfirm";
+import { DestructiveActionConfirm } from "@/components/shared/DestructiveActionConfirm";
 
 export default function CompaniesPage() {
   const router = useRouter();

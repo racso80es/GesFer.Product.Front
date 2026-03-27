@@ -14,7 +14,15 @@ export default function MyCompanyPage() {
   useEffect(() => {
     const fetchCompany = async () => {
       try {
-        const response = await fetch("/api/my-company");
+        const token =
+          typeof window !== "undefined"
+            ? localStorage.getItem("auth_token")
+            : null;
+        const headers: HeadersInit = {};
+        if (token) {
+          headers.Authorization = `Bearer ${token}`;
+        }
+        const response = await fetch("/api/my-company", { headers });
         if (!response.ok) throw new Error("Error al cargar la organización");
         const data = await response.json();
         setCompany(data);
@@ -29,9 +37,19 @@ export default function MyCompanyPage() {
 
   const handleSubmit = async (data: CreateCompany | UpdateCompany) => {
     try {
+      const token =
+        typeof window !== "undefined"
+          ? localStorage.getItem("auth_token")
+          : null;
+      const headers: HeadersInit = {
+        "Content-Type": "application/json",
+      };
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
       const response = await fetch("/api/my-company", {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify(data),
       });
 

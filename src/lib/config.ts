@@ -1,3 +1,5 @@
+import { getPublicApiOrigin } from "@/lib/api-origin";
+
 /**
  * Sistema de configuración centralizado para GesFer
  * 
@@ -68,34 +70,38 @@ function getEnvironment(): Environment {
  */
 function loadConfig(): AppConfig {
   const env = getEnvironment();
-  
+  let config: AppConfig;
+
   try {
-    // En Node.js podemos cargar archivos JSON directamente
-    if (typeof window === 'undefined') {
-      const fs = require('fs');
-      const path = require('path');
-      const configPath = path.join(process.cwd(), 'config', `${env}.json`);
-      
+    if (typeof window === "undefined") {
+      const fs = require("fs");
+      const path = require("path");
+      const configPath = path.join(process.cwd(), "config", `${env}.json`);
+
       if (fs.existsSync(configPath)) {
-        const configContent = fs.readFileSync(configPath, 'utf-8');
-        const config = JSON.parse(configContent);
-        
-        // Generar connectionString si no está definido
+        const configContent = fs.readFileSync(configPath, "utf-8");
+        config = JSON.parse(configContent);
+
         if (config.database && !config.database.connectionString) {
-          config.database.connectionString = 
+          config.database.connectionString =
             `Server=${config.database.server};Port=${config.database.port};Database=${config.database.database};User=${config.database.user};Password=${config.database.password};CharSet=utf8mb4;AllowUserVariables=True;AllowLoadLocalInfile=True;`;
         }
-        
-        return config;
+      } else {
+        config = getDefaultConfig(env);
       }
+    } else {
+      config = getDefaultConfig(env);
     }
-    
-    // Fallback: usar variables de entorno o valores por defecto
-    return getDefaultConfig(env);
   } catch (error) {
     console.warn(`Error loading config for ${env}, using defaults:`, error);
-    return getDefaultConfig(env);
+    config = getDefaultConfig(env);
   }
+
+  if (!config.api) {
+    config.api = { url: "" };
+  }
+  config.api.url = getPublicApiOrigin();
+  return config;
 }
 
 /**
@@ -104,7 +110,7 @@ function loadConfig(): AppConfig {
 function getDefaultConfig(env: Environment): AppConfig {
   const configs: Record<Environment, AppConfig> = {
     local: {
-      api: { url: process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5020' },
+      api: { url: getPublicApiOrigin() },
       client: { url: 'http://localhost:3000' },
       database: {
         server: process.env.DB_SERVER || 'localhost',
@@ -121,7 +127,7 @@ function getDefaultConfig(env: Environment): AppConfig {
       environment: 'local',
     },
     development: {
-      api: { url: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5020' },
+      api: { url: getPublicApiOrigin() },
       client: { url: 'http://localhost:3000' },
       database: {
         server: process.env.DB_SERVER || 'localhost',
@@ -138,7 +144,7 @@ function getDefaultConfig(env: Environment): AppConfig {
       environment: 'development',
     },
     production: {
-      api: { url: process.env.NEXT_PUBLIC_API_URL || 'https://api.gesfer.com' },
+      api: { url: getPublicApiOrigin() },
       client: { url: process.env.NEXT_PUBLIC_CLIENT_URL || 'https://gesfer.com' },
       database: {
         server: process.env.DB_SERVER || 'localhost',
@@ -155,7 +161,7 @@ function getDefaultConfig(env: Environment): AppConfig {
       environment: 'production',
     },
     test: {
-      api: { url: process.env.API_URL || 'http://127.0.0.1:5020' },
+      api: { url: getPublicApiOrigin() },
       client: { url: process.env.CLIENT_URL || 'http://127.0.0.1:3000' },
       database: {
         server: process.env.DB_SERVER || '127.0.0.1',

@@ -24,8 +24,6 @@ Las capas de componentes se organizan por nivel de abstracción:
 * Estructuras de página (navegación, shell, envoltorios).
 * Orquestan la disposición visual pero no contienen lógica de negocio.
 
-*Nota:* Mientras dure la migración desde el monorepo, piezas equivalentes pueden existir temporalmente en `src/TemporalShared` para su reubicación y posterior eliminación.
-
 ### 1.3. Lógica y Servicios (`src/lib/`)
 Capa de orquestación, configuración y acceso a datos:
 - `src/lib/api/`: Clientes HTTP para consumo de la **API backend** (producto).
@@ -93,3 +91,7 @@ La mejora continua (Kaizen) no es opcional; es estructural.
 
 * **Composición sobre herencia:** Preferir composición de componentes y hooks sobre jerarquías profundas.
 * **Desacoplamiento:** El proyecto aprende de su origen (monorepo GesFer) pero no hereda su deuda técnica. La estructura es limpia e independiente.
+
+## 5. Trazabilidad del protocolo SddIA (evolution)
+
+Los cambios normativos o estructurales bajo `./SddIA/` deben quedar **auditables** según la norma **SddIA/norms/sddia-evolution-sync.md**: registro con **UUID v4**, índice en `paths.sddiaEvolutionLogFile` y detalle en `paths.sddiaEvolutionPath`, contrato en `paths.sddiaEvolutionContractFile`. Las rutas se resuelven **solo** vía Cúmulo (`SddIA/agents/cumulo.json` → `pathsContract`). La herramienta estándar de registro es el binario Rust **`sddia_evolution_register`** (cápsula `paths.skillCapsules.sddia-evolution-register`). Esta trazabilidad es independiente de la evolución de producto en `paths.evolutionPath` / `docs/evolution/`.

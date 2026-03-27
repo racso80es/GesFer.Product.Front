@@ -2,7 +2,7 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
-import { Button } from "@/TemporalShared/Front/components/shared/Button";
+import { Button } from "@/components/shared/Button";
 import {
   LayoutDashboard,
   LogOut,

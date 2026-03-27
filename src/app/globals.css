@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer mui {
+  .MuiCssBaseline-root {
+    /* Capa MUI: evita solapamientos con Tailwind base */
+  }
+}
+
 @layer base {
   :root {
     --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
@@ -61,4 +67,3 @@
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
   }
 }
-

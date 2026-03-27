@@ -15,32 +15,30 @@ El proyecto utiliza **Jest** y **React Testing Library** para testing.
 ## 🚀 Ejecutar Tests
 
 ### Ejecutar todos los tests
-```bash
+```powershell
 npm test
 ```
 
 ### Ejecutar tests en modo watch (desarrollo)
-```bash
+```powershell
 npm run test:watch
 ```
 
 ### Ejecutar tests con cobertura
-```bash
+```powershell
 npm run test:coverage
 ```
 
 ## 📁 Estructura de Tests
 
-Los tests están organizados en la carpeta `__tests__`:
+Los tests están organizados en la carpeta `__tests__` (y otros bajo `src/`, p. ej. `tests/` para E2E):
 
 ```
-Cliente/
-├── __tests__/
-│   ├── app/              # Tests de páginas
-│   ├── components/       # Tests de componentes
-│   └── lib/              # Tests de utilidades y servicios
-├── jest.config.js        # Configuración de Jest
-└── jest.setup.js         # Configuración inicial de tests
+src/
+├── __tests__/            # Tests Jest (app, components, lib, …)
+├── tests/                # Playwright y pruebas E2E
+├── jest.config.js
+└── jest.setup.js
 ```
 
 ## ✍️ Escribir Tests
@@ -50,7 +48,7 @@ Cliente/
 ```typescript
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { Button } from '@shared/components/ui/button'
+import { Button } from '@/components/ui/button'
 
 describe('Button Component', () => {
   it('should render button with text', () => {
@@ -134,7 +132,7 @@ describe('ApiClient', () => {
 
 Para ver la cobertura de código:
 
-```bash
+```powershell
 npm run test:coverage
 ```
 
@@ -147,19 +145,19 @@ Esto generará un reporte en la carpeta `coverage/` con:
 
 ### Ejecutar un test específico
 
-```bash
+```powershell
 npm test -- button.test.tsx
 ```
 
 ### Ejecutar tests que coincidan con un patrón
 
-```bash
+```powershell
 npm test -- --testNamePattern="should render"
 ```
 
 ### Ver output detallado
 
-```bash
+```powershell
 npm test -- --verbose
 ```
 

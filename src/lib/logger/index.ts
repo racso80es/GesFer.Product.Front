@@ -1,4 +1,5 @@
 import pino from 'pino';
+import { getPublicApiOrigin } from '@/lib/api-origin';
 
 // Interface para propiedades del log para evitar el uso de any
 interface LogProperties {
@@ -26,19 +27,12 @@ class TelemetryTransport {
   private readonly MAX_QUEUE_SIZE = 100;
 
   constructor() {
-    // Obtener la URL de la API desde la configuración
-    if (typeof window !== 'undefined') {
-      this.apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5020';
-    } else {
-      this.apiUrl = process.env.API_URL || 'http://localhost:5020';
-    }
+    this.apiUrl = getPublicApiOrigin();
     
-    // Solo habilitar en producción o si está explícitamente configurado
-    this.enabled = process.env.NODE_ENV === 'production' || process.env.NEXT_PUBLIC_ENABLE_TELEMETRY === 'true';
+    // Habilitar para enviar los logs al servidor internamente
+    this.enabled = true;
     
-    if (this.enabled) {
-      this.startFlushInterval();
-    }
+    this.startFlushInterval();
   }
 
   private startFlushInterval() {
@@ -89,7 +83,7 @@ class TelemetryTransport {
     // Enviar logs uno por uno (se puede optimizar para batch en el futuro)
     for (const log of logsToSend) {
       try {
-        await fetch(`${this.apiUrl}/api/telemetry/logs`, {
+        await fetch(`/api/logs`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

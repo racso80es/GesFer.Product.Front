@@ -3,8 +3,8 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/auth-context";
-import { Loading } from "@/TemporalShared/Front/components/ui/loading";
-import { Button } from "@/TemporalShared/Front/components/ui/button";
+import { Loading } from "@/components/ui/loading";
+import { Button } from "@/components/ui/button";
 import { useTranslations } from 'next-intl';
 
 export default function Home() {

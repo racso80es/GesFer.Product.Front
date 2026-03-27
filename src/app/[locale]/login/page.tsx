@@ -3,19 +3,19 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/auth-context";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/TemporalShared/Front/components/ui/card";
-import { Input } from "@/TemporalShared/Front/components/ui/input";
-import { Label } from "@/TemporalShared/Front/components/ui/label";
-import { Button } from "@/TemporalShared/Front/components/ui/button";
-import { ErrorMessage } from "@/TemporalShared/Front/components/ui/error-message";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { ErrorMessage } from "@/components/ui/error-message";
 import { Building2, User, Lock, Loader2 } from "lucide-react";
 import { useTranslations } from 'next-intl';
 
 // Credenciales por defecto: desde env (coinciden con seeds demo-data.json)
 function getDefaultLoginCredentials(): { company: string; username: string; password: string } {
   return {
-    company: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_COMPANY ?? "Organización Cliente",
-    username: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_USER ?? "user_test",
+    company: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_COMPANY ?? "Empresa Demo",
+    username: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_USER ?? "admin",
     password: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_PASSWORD ?? "admin123",
   };
 }
