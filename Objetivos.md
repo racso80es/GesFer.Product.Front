@@ -37,3 +37,4 @@ El código de la aplicación vive en **`src/`** (paquete npm `gesfer-cliente`): 
 ---
 
 *Este documento se actualizará cuando cambien los objetivos o el alcance del proyecto.*
+Home Publica Terminado
