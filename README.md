@@ -28,6 +28,8 @@ Por defecto, el servidor de desarrollo queda en **http://localhost:3000**.
 - **Next.js 14+** — App Router
 - **TypeScript**
 - **Tailwind CSS**
+- **Material UI (MUI v5)** — componentes y theme (vía `@mui/material-nextjs`)
+- **next-intl** — internacionalización bajo `src/app/[locale]`
 - **TanStack Query** — estado del servidor
 - **Lucide React** — iconos
 - **Shadcn/UI** — componentes base (estilo)
@@ -82,7 +84,7 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, y la guía detallada de testing en [`src/README-TESTS.md`](src/README-TESTS.md).
 
 ## Imagen Docker (opcional)
 
