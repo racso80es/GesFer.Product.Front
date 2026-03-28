@@ -5,6 +5,11 @@ Objetivo Home Publica
 [2026-03-27] [feat/add-logs] [Implementación de sistema de logging persistente con Pino, endpoint API para capturas de cliente, y manejador global de errores. Cierre de Tarea TASK-20260327-001.] [DONE].
 [2026-03-27] [feat/kaizen-enforce-import-rule] [Configuración de eslint-plugin-import y regla import/first para garantizar la integridad de imports en Next.js. Tarea automática. Cierre de Tarea Kaizen_2026_03_27_Enforce_Import_Rule.] [DONE].
 [2026-03-27] [feat/add-components-mui] [Instalación de dependencias de MUI y Emotion. Configuración de Next.js App Router con ThemeProvider y AppRouterCacheProvider. Integración de tipados fuertes y prevención de conflictos con Tailwind CSS. Cierre de Tarea TASK-001-Add_Components_MUI.] [DONE].
+[2026-03-28] [feat/update-readme] [Consolidación de las instrucciones y guías de configuración fragmentadas en src/ hacia el archivo README.md en la raíz del repositorio. Eliminación de archivos redundantes. Tarea automática. Cierre de Tarea TASK-20260328-001.] [DONE].
+
+## feature: update-readme
+Resumen: Se han centralizado las instrucciones de instalación, solución de problemas, y configuración de la API que residían divididas en varios markdown en la carpeta `src/`. Todo el contenido relevante ha sido unificado en un nuevo `README.md` estructurado en la raíz del repositorio. Se eliminaron los ficheros originales fragmentados en `src/`.
+Referencia archivada: [docs/TASKS/DONE/TASK-20260328-001-Actualizacion_Readme.md](./TASKS/DONE/TASK-20260328-001-Actualizacion_Readme.md)
 
 ## feature: kaizen-enforce-import-rule
 Resumen: Se ha integrado `eslint-plugin-import` y configurado la regla `import/first` en el archivo `.eslintrc.json`. Esta mejora fue realizada de forma autónoma siguiendo el proceso `automatic_task` como parte de una iniciativa de Mejora Continua (Kaizen).
