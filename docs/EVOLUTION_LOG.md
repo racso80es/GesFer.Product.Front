@@ -1,3 +1,8 @@
+[2026-03-28] [feat/TASK-20260328-actualizacion-readme] [Unificación de README.md principal y reubicación de documentación dispersa de src/ a docs/] [DONE].
+## feature: TASK-20260328-actualizacion-readme
+Resumen: Se ha unificado el README.md principal con los documentos de instrucciones en src/ y se han movido las guías de testing, i18n y arquitectura a docs/ según la convención del proyecto.
+Referencia archivada: [docs/TASKS/DONE/Actualizacion_Readme.md](./TASKS/DONE/Actualizacion_Readme.md)
+
 Objetivo Home Publica
 
 [2026-03-28] [fix/fix-select-a11y] [Resolución de advertencias de accesibilidad (A11y) en el componente Select. Añadidos aria-controls y aria-selected. Tarea Kaizen completada.] [DONE].
