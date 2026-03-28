@@ -9,7 +9,11 @@ Frontend **cliente** del ecosistema GesFer: aplicación Next.js 14 (App Router),
 - **Windows** con **PowerShell 7+** (convención del proyecto; ver `AGENTS.md`)
 - API backend disponible (desarrollo típico: `http://localhost:5020`; alinear con tu despliegue y con `NEXT_PUBLIC_API_URL`)
 
-## Inicio rápido
+## Inicio rápido y Configuración
+
+### Requisitos Previos
+- **Node.js 18+** (recomendado 20+) - [Descargar Node.js](https://nodejs.org/)
+- **npm** (viene incluido con Node.js)
 
 Desde la raíz del repositorio:
 
@@ -17,11 +21,24 @@ Desde la raíz del repositorio:
 cd src
 npm install
 Copy-Item .env.example .env.local
-# Editar .env.local: NEXT_PUBLIC_API_URL apuntando a la API backend
-npm run dev
 ```
 
-Por defecto, el servidor de desarrollo queda en **http://localhost:3000**.
+### Configuración de la API (Backend)
+La **realidad** a la que debe adecuarse el front es la del **API backend**. El contrato vigente se obtiene del **OpenAPI** expuesto por el servicio.
+Edita `.env.local` y ajusta `NEXT_PUBLIC_API_URL`:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5020
+```
+
+Tras cambiar la URL, reinicia el servidor de Next.js. Si el backend cambia de versión o rutas, revalida clientes en `src/lib/api/` y variables de entorno frente al OpenAPI del servicio.
+
+### Ejecutar la Aplicación
+
+```bash
+npm run dev
+```
+La aplicación estará disponible en **http://localhost:3000**.
 
 ## Tecnologías
 
@@ -82,7 +99,16 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+### Testing
+El proyecto utiliza Jest y Playwright. Las guías detalladas de pruebas están en:
+- Componentes y Unit Testing: `src/README-TESTS.md`
+- E2E / API Testing: `src/tests/README.md` y `src/tests/README-BEST-PRACTICES.md`
+
+Para ejecutar los tests, desde `src/`:
+```powershell
+npm run test:all    # Todos los unitarios con Jest
+npm run test:e2e    # Tests End-to-End con Playwright
+```
 
 ## Imagen Docker (opcional)
 
