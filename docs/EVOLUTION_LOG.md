@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-03-28] [feat/actualizacion-readme] [Unificación del README principal con archivos src/SETUP.md y src/CONFIGURACION-API.md. Cierre de Tarea TASK-20260328-001-Actualizacion_Readme.] [DONE].
+
+## feature: actualizacion-readme
+Resumen: Se ha actualizado el README.md principal consolidando las instrucciones de configuración y testing. Se eliminaron los ficheros redundantes src/SETUP.md y src/CONFIGURACION-API.md.
+Referencia archivada: [docs/TASKS/DONE/TASK-20260328-001-Actualizacion_Readme.md](./TASKS/DONE/TASK-20260328-001-Actualizacion_Readme.md)
+
 [2026-03-25] [feat/limpieza-temporal-shared] [Migrado TemporalShared a src/components/ y src/lib/. Actualizados imports a alias locales. Cierre de Tarea T-20260325-001.] [DONE].
 [2026-03-26] [feat/add-mui-components] [Integración de MUI para Next.js App Router, ThemeRegistry y CustomButton. Cierre de Tarea TASK-001.] [DONE].
 [2026-03-27] [feat/add-logs] [Implementación de sistema de logging persistente con Pino, endpoint API para capturas de cliente, y manejador global de errores. Cierre de Tarea TASK-20260327-001.] [DONE].
