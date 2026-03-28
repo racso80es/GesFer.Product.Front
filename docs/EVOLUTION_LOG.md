@@ -1,5 +1,7 @@
 Objetivo Home Publica
 
+[2026-03-28] [feat/TASK-001-update-readme] [Unificar readme.md principal con posibles readme en src. Adecuado contenido de Tecnologías. Cierre de Tarea TASK-001.] [DONE].
+
 [2026-03-25] [feat/limpieza-temporal-shared] [Migrado TemporalShared a src/components/ y src/lib/. Actualizados imports a alias locales. Cierre de Tarea T-20260325-001.] [DONE].
 [2026-03-26] [feat/add-mui-components] [Integración de MUI para Next.js App Router, ThemeRegistry y CustomButton. Cierre de Tarea TASK-001.] [DONE].
 [2026-03-27] [feat/add-logs] [Implementación de sistema de logging persistente con Pino, endpoint API para capturas de cliente, y manejador global de errores. Cierre de Tarea TASK-20260327-001.] [DONE].
