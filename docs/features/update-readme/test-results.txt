@@ -1,0 +1,837 @@
+
+> gesfer-cliente@0.1.0 test:all
+> jest --coverage --verbose
+
+(node:4672) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  console.warn
+    API no está disponible en http://localhost:5020. Saltando test de health check.
+
+      86 |     } catch (error) {
+      87 |       // Si el servidor no está disponible, saltar el test
+    > 88 |       console.warn(`API no está disponible en ${API_URL}. Saltando test de health check.`);
+         |               ^
+      89 |       return;
+      90 |     }
+      91 |
+
+      at Object.warn (__tests__/integration/system-integrity.test.ts:88:15)
+
+  console.warn
+    API no está disponible en http://localhost:5020. Saltando test de login.
+
+      107 |     } catch (error) {
+      108 |       // Si el servidor no está disponible, saltar el test
+    > 109 |       console.warn(`API no está disponible en ${API_URL}. Saltando test de login.`);
+          |               ^
+      110 |       return;
+      111 |     }
+      112 |
+
+      at Object.warn (__tests__/integration/system-integrity.test.ts:109:15)
+
+  console.warn
+    API no está disponible en http://localhost:5020. Saltando test de integridad completo.
+
+      153 |     } catch (error) {
+      154 |       // Si el servidor no está disponible, saltar el test
+    > 155 |       console.warn(`API no está disponible en ${API_URL}. Saltando test de integridad completo.`);
+          |               ^
+      156 |       return;
+      157 |     }
+      158 |
+
+      at Object.warn (__tests__/integration/system-integrity.test.ts:155:15)
+
+  console.warn
+    Cliente no está disponible en http://127.0.0.1:3000. Saltando test de integridad del cliente.
+
+      277 |     } catch (error) {
+      278 |       // Si el servidor no está disponible, saltar el test
+    > 279 |       console.warn(`Cliente no está disponible en ${CLIENT_URL}. Saltando test de integridad del cliente.`);
+          |               ^
+      280 |       return;
+      281 |     }
+      282 |
+
+      at Object.warn (__tests__/integration/system-integrity.test.ts:279:15)
+
+PASS __tests__/integration/system-integrity.test.ts
+  Auditoría de integridad API + Cliente
+    ✓ API: health responde healthy (60 ms)
+    ✓ API: login funciona correctamente con credenciales demo (8 ms)
+    ✓ API: test de integridad completo de login con datos de prueba (5 ms)
+    ✓ Cliente: la pantalla de login responde 200 y sirve HTML (5 ms)
+
+(node:4671) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  console.warn
+    No se pudo obtener token de autenticación. Algunos tests pueden fallar.
+
+      109 |       }
+      110 |     } catch (error) {
+    > 111 |       console.warn("No se pudo obtener token de autenticación. Algunos tests pueden fallar.");
+          |               ^
+      112 |       // No lanzar error aquí, permitir que los tests individuales manejen la falta de token
+      113 |       authToken = "";
+      114 |     }
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:111:15)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      118 |     it("debe listar todas las companies", async () => {
+      119 |       if (!authToken) {
+    > 120 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      121 |         return;
+      122 |       }
+      123 |
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:120:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      137 |     it("debe crear una company correctamente", async () => {
+      138 |       if (!authToken) {
+    > 139 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      140 |         return;
+      141 |       }
+      142 |
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:139:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      176 |     it("debe obtener la company creada", async () => {
+      177 |       if (!authToken) {
+    > 178 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      179 |         return;
+      180 |       }
+      181 |       expect(testCompanyId).toBeTruthy();
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:178:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      195 |     it("debe editar una company correctamente", async () => {
+      196 |       if (!authToken) {
+    > 197 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      198 |         return;
+      199 |       }
+      200 |       expect(testCompanyId).toBeTruthy();
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:197:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      232 |     it("debe verificar que la company se editó correctamente", async () => {
+      233 |       if (!authToken) {
+    > 234 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      235 |         return;
+      236 |       }
+      237 |       expect(testCompanyId).toBeTruthy();
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:234:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      252 |     it("debe eliminar una company correctamente", async () => {
+      253 |       if (!authToken) {
+    > 254 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      255 |         return;
+      256 |       }
+      257 |       expect(testCompanyId).toBeTruthy();
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:254:17)
+
+  console.warn
+    Saltando setup de usuarios: no hay token de autenticación
+
+      285 |     beforeAll(async () => {
+      286 |       if (!authToken) {
+    > 287 |         console.warn("Saltando setup de usuarios: no hay token de autenticación");
+          |                 ^
+      288 |         return;
+      289 |       }
+      290 |       // Asegurar que tenemos una company para los tests de usuarios
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:287:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      337 |     it("debe listar todos los usuarios", async () => {
+      338 |       if (!authToken) {
+    > 339 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      340 |         return;
+      341 |       }
+      342 |       const resp = await httpRequest(`${API_URL}/api/user`, {
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:339:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      355 |     it("debe crear un usuario correctamente", async () => {
+      356 |       if (!authToken) {
+    > 357 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      358 |         return;
+      359 |       }
+      360 |       expect(userTestCompanyId).toBeTruthy();
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:357:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      398 |     it("debe obtener el usuario creado", async () => {
+      399 |       if (!authToken) {
+    > 400 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      401 |         return;
+      402 |       }
+      403 |       expect(testUserId).toBeTruthy();
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:400:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      417 |     it("debe editar un usuario correctamente", async () => {
+      418 |       if (!authToken) {
+    > 419 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      420 |         return;
+      421 |       }
+      422 |       expect(testUserId).toBeTruthy();
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:419:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      454 |     it("debe verificar que el usuario se editó correctamente", async () => {
+      455 |       if (!authToken) {
+    > 456 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      457 |         return;
+      458 |       }
+      459 |       expect(testUserId).toBeTruthy();
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:456:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      475 |     it("debe eliminar un usuario correctamente", async () => {
+      476 |       if (!authToken) {
+    > 477 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      478 |         return;
+      479 |       }
+      480 |       expect(testUserId).toBeTruthy();
+
+      at Object.warn (__tests__/integration/users-companies-integrity.test.ts:477:17)
+
+PASS __tests__/integration/users-companies-integrity.test.ts
+  Integridad E2E: Usuarios y Companies
+    Companies - Flujo completo
+      ✓ debe listar todas las companies (8 ms)
+      ✓ debe crear una company correctamente (3 ms)
+      ✓ debe obtener la company creada (2 ms)
+      ✓ debe editar una company correctamente (2 ms)
+      ✓ debe verificar que la company se editó correctamente (2 ms)
+      ✓ debe eliminar una company correctamente (2 ms)
+    Usuarios - Flujo completo
+      ✓ debe listar todos los usuarios (4 ms)
+      ✓ debe crear un usuario correctamente (3 ms)
+      ✓ debe obtener el usuario creado (3 ms)
+      ✓ debe editar un usuario correctamente (2 ms)
+      ✓ debe verificar que el usuario se editó correctamente (2 ms)
+      ✓ debe eliminar un usuario correctamente (1 ms)
+
+  console.warn
+    No se pudo obtener token de autenticación. Algunos tests pueden fallar.
+
+       98 |       expect(authToken).toBeTruthy();
+       99 |     } catch (error) {
+    > 100 |       console.warn("No se pudo obtener token de autenticación. Algunos tests pueden fallar.");
+          |               ^
+      101 |       // Continuar de todas formas para que los tests que no requieren auth puedan ejecutarse
+      102 |     }
+      103 |
+
+      at Object.warn (__tests__/integration/id-validation.test.ts:100:15)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      146 |     it("debe rechazar actualización con ID mal formateado (contiene caracteres inválidos)", async () => {
+      147 |       if (!authToken) {
+    > 148 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      149 |         return;
+      150 |       }
+      151 |
+
+      at Object.warn (__tests__/integration/id-validation.test.ts:148:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      178 |     it("debe validar que el ID de company sea un GUID válido antes de actualizar", async () => {
+      179 |       if (!authToken) {
+    > 180 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      181 |         return;
+      182 |       }
+      183 |
+
+      at Object.warn (__tests__/integration/id-validation.test.ts:180:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      210 |     it("debe rechazar actualización con ID que contiene caracteres especiales", async () => {
+      211 |       if (!authToken) {
+    > 212 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      213 |         return;
+      214 |       }
+      215 |
+
+      at Object.warn (__tests__/integration/id-validation.test.ts:212:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      242 |     it("debe rechazar actualización con ID mal formateado (contiene caracteres inválidos)", async () => {
+      243 |       if (!authToken) {
+    > 244 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      245 |         return;
+      246 |       }
+      247 |
+
+      at Object.warn (__tests__/integration/id-validation.test.ts:244:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      275 |     it("debe validar que el ID de usuario sea un GUID válido antes de actualizar", async () => {
+      276 |       if (!authToken) {
+    > 277 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      278 |         return;
+      279 |       }
+      280 |
+
+      at Object.warn (__tests__/integration/id-validation.test.ts:277:17)
+
+  console.warn
+    Saltando test: no hay token de autenticación
+
+      308 |     it("debe rechazar actualización con ID que contiene caracteres especiales", async () => {
+      309 |       if (!authToken) {
+    > 310 |         console.warn("Saltando test: no hay token de autenticación");
+          |                 ^
+      311 |         return;
+      312 |       }
+      313 |
+
+      at Object.warn (__tests__/integration/id-validation.test.ts:310:17)
+
+PASS __tests__/integration/id-validation.test.ts
+  Validación de IDs en peticiones API
+    Companies - Validación de IDs
+      ✓ debe rechazar actualización con ID mal formateado (contiene caracteres inválidos) (2 ms)
+      ✓ debe validar que el ID de company sea un GUID válido antes de actualizar (1 ms)
+      ✓ debe rechazar actualización con ID que contiene caracteres especiales (2 ms)
+    Usuarios - Validación de IDs
+      ✓ debe rechazar actualización con ID mal formateado (contiene caracteres inválidos) (3 ms)
+      ✓ debe validar que el ID de usuario sea un GUID válido antes de actualizar (2 ms)
+      ✓ debe rechazar actualización con ID que contiene caracteres especiales (2 ms)
+
+PASS __tests__/integration/api-contracts.test.ts
+  Contratos API - Verificación de Interfaces
+    Contrato: Usuarios API
+      ✓ debe cumplir contrato de CreateUser (4 ms)
+      ✓ debe cumplir contrato de UpdateUser (1 ms)
+      ✓ debe retornar array de User en getAll (12 ms)
+    Contrato: Companies API
+      ✓ debe cumplir contrato de CreateCompany (2 ms)
+      ✓ debe cumplir contrato de UpdateCompany
+    Contrato: Autenticación API
+      ✓ debe cumplir contrato de LoginResponse (1 ms)
+    Validación de Tipos
+      ✓ debe validar que los IDs son strings (1 ms)
+      ✓ debe validar que las fechas son strings ISO
+      ✓ debe validar que los campos opcionales pueden ser undefined (1 ms)
+
+(node:4670) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+PASS __tests__/integration/integrity.test.tsx
+  Tests de Integridad - Auditoría Completa
+    1. Integridad de Autenticación
+      ✓ debe realizar login completo y guardar credenciales (16 ms)
+      ✓ debe manejar errores de autenticación correctamente (19 ms)
+      ✓ debe realizar logout y limpiar almacenamiento (1 ms)
+    2. Integridad CRUD de Usuarios
+      ✓ debe listar todos los usuarios correctamente (2 ms)
+      ✓ debe obtener un usuario por ID (1 ms)
+      ✓ debe crear un nuevo usuario (1 ms)
+      ✓ debe actualizar un usuario existente (1 ms)
+      ✓ debe eliminar un usuario (1 ms)
+      ✓ debe manejar errores en operaciones CRUD (2 ms)
+    3. Integridad CRUD de Companies
+      ✓ debe listar todas las companies (1 ms)
+      ✓ debe obtener una company por ID (1 ms)
+      ✓ debe crear una nueva company
+      ✓ debe actualizar una company existente (1 ms)
+      ✓ debe eliminar una company (1 ms)
+    4. Integridad del Cliente API
+      ✓ debe incluir token de autenticación en peticiones
+      ✓ debe manejar errores de red correctamente (1 ms)
+      ✓ debe manejar respuestas de error HTTP (2 ms)
+    5. Integridad de Flujos Completos
+      ✓ debe completar flujo completo de creación de usuario (1 ms)
+      ✓ debe completar flujo completo de edición de company (1 ms)
+      ✓ debe completar flujo completo de eliminación (1 ms)
+    6. Integridad de Validaciones
+      ✓ debe validar que companyId es requerido al crear usuario (1 ms)
+      ✓ debe validar formato de email (1 ms)
+    7. Integridad de Manejo de Errores
+      ✓ debe manejar errores 404 correctamente (1 ms)
+      ✓ debe manejar errores 500 del servidor (1 ms)
+      ✓ debe manejar errores de conexión (1 ms)
+    8. Integridad de Estado y Caché
+      ✓ debe invalidar caché después de crear usuario (3 ms)
+
+PASS __tests__/lib/api/id-validation-api.test.ts
+  Validación de IDs en APIs
+    companiesApi
+      ✓ debe validar ID antes de getById (2 ms)
+      ✓ debe validar ID antes de update (1 ms)
+      ✓ debe validar ID antes de delete (1 ms)
+      ✓ debe permitir operaciones con IDs válidos (2 ms)
+    usersApi
+      ✓ debe validar ID antes de getById (1 ms)
+      ✓ debe validar ID antes de update (1 ms)
+      ✓ debe validar ID antes de delete (2 ms)
+      ✓ debe validar companyId en getAll (1 ms)
+      ✓ debe permitir operaciones con IDs válidos (1 ms)
+
+PASS __tests__/integration/e2e-flows.test.tsx
+  Flujos E2E - Interacciones Completas
+    Flujo E2E: Gestión Completa de Usuarios
+      ✓ debe completar flujo completo de operaciones CRUD de usuarios (4 ms)
+      ✓ debe manejar errores en operaciones de usuarios (12 ms)
+    Flujo E2E: Gestión Completa de Companies
+      ✓ debe completar flujo completo de operaciones CRUD de companies (2 ms)
+      ✓ debe manejar lista vacía de companies (1 ms)
+    Flujo E2E: Autenticación y Navegación
+      ✓ debe mantener sesión después de login (1 ms)
+
+PASS __tests__/lib/api/client.test.ts
+  ApiClient
+    GET requests
+      ✓ should make GET request successfully (4 ms)
+      ✓ should handle GET request with query parameters (2 ms)
+    POST requests
+      ✓ should make POST request with data (1 ms)
+    Error handling
+      ✓ should throw error on failed request (15 ms)
+      ✓ should handle network errors (2 ms)
+    Authentication
+      ✓ should include Authorization header when token exists (2 ms)
+
+PASS __tests__/lib/api/article-families-api.test.ts
+  articleFamiliesApi
+    getAll
+      ✓ should fetch all article families (2 ms)
+    getById
+      ✓ should fetch article family by id (1 ms)
+    create
+      ✓ should create article family and return id (1 ms)
+    update
+      ✓ should update article family (1 ms)
+    delete
+      ✓ should delete article family (1 ms)
+
+PASS __tests__/lib/api/companies.test.ts
+  companiesApi
+    getAll
+      ✓ should fetch all companies (1 ms)
+    getById
+      ✓ should fetch company by id (1 ms)
+    create
+      ✓ should create a new company (1 ms)
+    update
+      ✓ should update an existing company (1 ms)
+    delete
+      ✓ should delete a company (1 ms)
+
+PASS __tests__/lib/utils/id-validation.test.ts
+  id-validation
+    isValidGuid
+      ✓ debe validar GUIDs correctos (5 ms)
+      ✓ debe rechazar GUIDs incorrectos (2 ms)
+    sanitizeId
+      ✓ debe sanitizar IDs válidos correctamente
+      ✓ debe retornar null para IDs inválidos (3 ms)
+    validateId
+      ✓ debe validar y retornar IDs válidos (1 ms)
+      ✓ debe lanzar error para IDs inválidos (15 ms)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+      83 |       // El login actualiza el estado, lo que activará el useEffect para redirigir
+      84 |       // No necesitamos redirigir manualmente aquí, el useEffect lo hará
+    > 85 |       setIsLoading(false);
+         |       ^
+      86 |     } catch (err) {
+      87 |       setError(
+      88 |         err instanceof Error
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at setIsLoading (/app/src/app/(client)../../login/page.tsx:85:7)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+      85 |       setIsLoading(false);
+      86 |     } catch (err) {
+    > 87 |       setError(
+         |       ^
+      88 |         err instanceof Error
+      89 |           ? err.message
+      90 |           : t('loginError')
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at setError (/app/src/app/(client)../../login/page.tsx:87:7)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+      90 |           : t('loginError')
+      91 |       );
+    > 92 |       setIsLoading(false);
+         |       ^
+      93 |     }
+      94 |   };
+      95 |
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at setIsLoading (/app/src/app/(client)../../login/page.tsx:92:7)
+
+PASS __tests__/app/login/page.test.tsx
+  LoginPage
+    ✓ should render login form (183 ms)
+    ✓ should have default values in form (17 ms)
+    ✓ should handle form submission (120 ms)
+    ✓ should show error message on login failure (75 ms)
+    ✓ should disable submit button while loading (45 ms)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at setVisible (node_modules/next/src/client/use-intersection.tsx:125:56)
+      at cb (node_modules/next/src/client/request-idle-callback.ts:8:7)
+      at Timeout.task [as _onTimeout] (node_modules/jsdom/lib/jsdom/browser/Window.js:520:19)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at setVisible (node_modules/next/src/client/use-intersection.tsx:125:56)
+      at cb (node_modules/next/src/client/request-idle-callback.ts:8:7)
+      at Timeout.task [as _onTimeout] (node_modules/jsdom/lib/jsdom/browser/Window.js:520:19)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at setVisible (node_modules/next/src/client/use-intersection.tsx:125:56)
+      at cb (node_modules/next/src/client/request-idle-callback.ts:8:7)
+      at Timeout.task [as _onTimeout] (node_modules/jsdom/lib/jsdom/browser/Window.js:520:19)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at setVisible (node_modules/next/src/client/use-intersection.tsx:125:56)
+      at cb (node_modules/next/src/client/request-idle-callback.ts:8:7)
+      at Timeout.task [as _onTimeout] (node_modules/jsdom/lib/jsdom/browser/Window.js:520:19)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at setVisible (node_modules/next/src/client/use-intersection.tsx:125:56)
+      at cb (node_modules/next/src/client/request-idle-callback.ts:8:7)
+      at Timeout.task [as _onTimeout] (node_modules/jsdom/lib/jsdom/browser/Window.js:520:19)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at setVisible (node_modules/next/src/client/use-intersection.tsx:125:56)
+      at cb (node_modules/next/src/client/request-idle-callback.ts:8:7)
+      at Timeout.task [as _onTimeout] (node_modules/jsdom/lib/jsdom/browser/Window.js:520:19)
+
+PASS __tests__/components/shared/Button.test.tsx
+  Shared Button Component
+    ✓ should render button with text (9 ms)
+    ✓ should render button with custom data-testid (3 ms)
+    ✓ should render button with different variants (6 ms)
+    ✓ should be disabled when disabled prop is true (3 ms)
+    ✓ should apply custom className (3 ms)
+
+PASS __tests__/app/usuarios/page.test.tsx
+  UsuariosPage
+    ✓ should render usuarios list (185 ms)
+    ✓ should open create modal when clicking new user button (197 ms)
+
+PASS components/shared/Button.spec.tsx
+  Shared Button
+    ✓ renders correctly with default props (49 ms)
+    ✓ renders correctly with variant destructive (11 ms)
+    ✓ handles click events (9 ms)
+    ✓ generates correct data-testid (12 ms)
+    ✓ respects provided data-testid (8 ms)
+
+PASS __tests__/components/ui/input.test.tsx
+  Input Component
+    ✓ should render input element (11 ms)
+    ✓ should handle user input (99 ms)
+    ✓ should be disabled when disabled prop is true (6 ms)
+    ✓ should apply custom className (4 ms)
+    ✓ should handle different input types (4 ms)
+
+PASS __tests__/components/ui/button.test.tsx
+  Button Component
+    ✓ should render button with text (39 ms)
+    ✓ should handle click events (30 ms)
+    ✓ should be disabled when disabled prop is true (9 ms)
+    ✓ should apply variant classes (3 ms)
+    ✓ should apply size classes (2 ms)
+
+PASS components/shared/Input.spec.tsx
+  Shared Input
+    ✓ renders correctly (10 ms)
+    ✓ handles change events (19 ms)
+    ✓ generates correct data-testid based on type (7 ms)
+    ✓ respects provided data-testid (6 ms)
+
+PASS components/companies/company-form.spec.tsx
+  CompanyForm
+    ✓ renders correctly (190 ms)
+    ✓ submits valid data (576 ms)
+    ✓ handles edit mode correctly (43 ms)
+
+PASS __tests__/utils/cn.test.ts
+  cn utility
+    ✓ should merge class names correctly (4 ms)
+    ✓ should handle conditional classes (1 ms)
+    ✓ should handle undefined and null values (1 ms)
+    ✓ should override conflicting Tailwind classes
+
+PASS components/masters/TaxTypeForm.spec.tsx
+  TaxTypeForm
+    ✓ renders correctly when open (80 ms)
+
+---------------------------------------|---------|----------|---------|---------|-------------------------------------------------------------------------------
+File                                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+---------------------------------------|---------|----------|---------|---------|-------------------------------------------------------------------------------
+All files                              |   25.13 |    25.98 |   18.62 |   25.37 |
+ app                                   |       0 |      100 |       0 |       0 |
+  global-error.tsx                     |       0 |      100 |       0 |       0 | 3-35
+  layout.tsx                           |       0 |      100 |       0 |       0 | 2-63
+ app/(client)                          |       0 |      100 |       0 |       0 |
+  layout.tsx                           |       0 |      100 |       0 |       0 | 5
+ app/(client)/clientes                 |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-153
+ app/(client)/companies                |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-42
+ app/(client)/companies/[id]           |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-104
+ app/(client)/dashboard                |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-13
+ app/(client)/login                    |   68.08 |    33.33 |    62.5 |   67.39 |
+  page.tsx                             |   68.08 |    33.33 |    62.5 |   67.39 | 34-40,59-64,119-157
+ app/(client)/perfil                   |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-198
+ app/(client)/usuarios                 |   43.75 |     37.5 |   15.38 |   44.68 |
+  page.tsx                             |   43.75 |     37.5 |   15.38 |   44.68 | 38,48-52,59-71,78-106,111-114,119-129,135-136,144-145,149-159,164,211,272-335
+ app/(client)/usuarios/[id]            |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-107
+ app/[locale]                          |       0 |        0 |       0 |       0 |
+  layout.tsx                           |       0 |        0 |       0 |       0 | 2-32
+  page.tsx                             |       0 |        0 |       0 |       0 | 4-71
+ app/[locale]/clientes                 |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-151
+ app/[locale]/companies                |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-289
+ app/[locale]/companies/[id]           |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-102
+ app/[locale]/dashboard                |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-13
+ app/[locale]/login                    |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-170
+ app/[locale]/masters/article-families |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-186
+ app/[locale]/masters/tax-types        |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-173
+ app/[locale]/usuarios                 |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-372
+ app/[locale]/usuarios/[id]            |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-105
+ app/api/auth/[...nextauth]            |       0 |      100 |     100 |       0 |
+  route.ts                             |       0 |      100 |     100 |       0 | 1-3
+ app/api/logs                          |       0 |        0 |       0 |       0 |
+  route.ts                             |       0 |        0 |       0 |       0 | 1-42
+ app/api/my-company                    |       0 |        0 |       0 |       0 |
+  route.ts                             |       0 |        0 |       0 |       0 | 1-49
+ app/my-company                        |       0 |        0 |       0 |       0 |
+  page.tsx                             |       0 |        0 |       0 |       0 | 3-63
+ components/auth                       |   59.37 |    27.27 |   57.14 |   60.31 |
+  protected-route.tsx                  |   59.37 |    27.27 |   57.14 |   60.31 | 27-35,56-72,79-80,90-95,111-112,150
+ components/common                     |       0 |        0 |       0 |       0 |
+  CustomButton.tsx                     |       0 |        0 |       0 |       0 | 1-35
+  ThemeRegistry.tsx                    |       0 |      100 |       0 |       0 | 3-9
+ components/companies                  |   77.77 |    78.26 |      60 |   84.61 |
+  company-form.tsx                     |   77.77 |    78.26 |      60 |   84.61 | 36-39,114,126
+ components/layout                     |   44.21 |       34 |      32 |   44.21 |
+  Sidebar.tsx                          |       0 |        0 |       0 |       0 | 3-76
+  admin-layout.tsx                     |       0 |        0 |       0 |       0 | 3-82
+  main-layout.tsx                      |   79.24 |    77.27 |   57.14 |   79.24 | 54-55,68-114,149
+ components/masters                    |    37.5 |    15.38 |   22.22 |   38.29 |
+  ArticleFamilyForm.tsx                |       0 |        0 |       0 |       0 | 4-156
+  TaxTypeForm.tsx                      |      90 |    33.33 |   66.66 |      90 | 67,84
+ components/shared                     |   54.05 |       40 |   29.41 |   54.16 |
+  Button.tsx                           |     100 |      100 |     100 |     100 |
+  DataTable.tsx                        |       0 |        0 |       0 |       0 | 3-231
+  DestructiveActionConfirm.tsx         |   48.14 |    39.13 |      20 |      50 | 52-64,69-97
+  Input.tsx                            |     100 |      100 |     100 |     100 |
+  ModalBase.tsx                        |   68.42 |       50 |      50 |   66.66 | 128-131,136-137,144
+ components/ui                         |   55.08 |    29.88 |   51.35 |   55.34 |
+  alert-dialog.tsx                     |       0 |      100 |     100 |       0 | 1-64
+  button.tsx                           |    87.5 |      100 |     100 |     100 |
+  card.tsx                             |   92.85 |      100 |     100 |     100 |
+  dialog.tsx                           |   81.81 |       90 |      70 |   81.39 | 55-58,74-75,86-98
+  error-message.tsx                    |     100 |      100 |     100 |     100 |
+  form.tsx                             |   96.96 |    63.63 |     100 |   96.87 | 140
+  input.tsx                            |     100 |      100 |     100 |     100 |
+  label.tsx                            |     100 |      100 |     100 |     100 |
+  loading.tsx                          |      75 |        0 |       0 |      75 | 16
+  overlay-fix.tsx                      |       0 |        0 |       0 |       0 | 3-107
+  select.tsx                           |   71.05 |    52.63 |      40 |   73.33 | 40-41,48-49,86,136-146
+  table.tsx                            |       0 |      100 |     100 |       0 | 1-80
+ components/usuarios                   |   37.83 |    37.36 |   23.52 |   38.57 |
+  user-form.tsx                        |   37.83 |    37.36 |   23.52 |   38.57 | 87-92,106-129,133-314,338
+ contexts                              |    8.06 |        0 |       0 |    8.62 |
+  auth-context.tsx                     |   10.86 |        0 |       0 |   10.86 | 23-98,120-124
+  sidebar-context.tsx                  |       0 |        0 |       0 |       0 | 3-40
+ lib                                   |      50 |    81.57 |   66.66 |   61.03 |
+  api-origin.ts                        |   43.75 |        0 |   33.33 |   43.75 | 9,19,22-24,28,36-38
+  config.test.ts                       |   66.66 |    96.66 |     100 |     100 | 38
+  config.ts                            |   47.27 |       80 |     100 |   54.34 | 44-54,59,62,77-90,96-97,101
+  legacy-constants.ts                  |      50 |      100 |     100 |     100 |
+ lib/api                               |   32.09 |    26.08 |   31.14 |      32 |
+  article-families-api.ts              |     100 |      100 |     100 |     100 |
+  auth-helper.ts                       |       0 |        0 |       0 |       0 | 1-21
+  auth.ts                              |    23.8 |        0 |       0 |      20 | 9-53
+  client-client.ts                     |       0 |        0 |       0 |       0 | 3-31
+  client-server.ts                     |       0 |        0 |       0 |       0 | 2-104
+  client.ts                            |   72.09 |    65.38 |      50 |   73.17 | 30,58,87,95,103,125-138
+  companies.ts                         |     100 |      100 |     100 |     100 |
+  customers.ts                         |       0 |        0 |       0 |       0 | 1-23
+  logs.ts                              |       0 |        0 |       0 |       0 | 1-83
+  my-company.ts                        |       0 |      100 |       0 |       0 | 1-10
+  product-api.ts                       |       0 |        0 |       0 |       0 | 1-36
+  tax-types-api.ts                     |       0 |        0 |       0 |       0 | 1-51
+  users.ts                             |   84.61 |       50 |      80 |   83.33 | 8,17
+ lib/hooks                             |       0 |        0 |       0 |       0 |
+  use-locale.ts                        |       0 |        0 |       0 |       0 | 3-52
+  use-session.ts                       |       0 |      100 |       0 |       0 | 3-12
+ lib/logger                            |       0 |        0 |       0 |       0 |
+  index.ts                             |       0 |        0 |       0 |       0 | 1-183
+  server.ts                            |       0 |        0 |       0 |       0 | 1-51
+ lib/providers                         |       0 |        0 |       0 |       0 |
+  query-provider.tsx                   |       0 |        0 |       0 |       0 | 3-87
+  session-provider.tsx                 |       0 |      100 |       0 |       0 | 3-6
+ lib/utils                             |   20.17 |    19.14 |   36.36 |   21.29 |
+  client-init.ts                       |       0 |        0 |       0 |       0 | 14-184
+  cn.ts                                |     100 |      100 |     100 |     100 |
+  id-validation.ts                     |     100 |       90 |     100 |     100 | 50
+  locale.ts                            |       0 |        0 |       0 |       0 | 1-44
+ lib/validations                       |       0 |      100 |     100 |       0 |
+  company.ts                           |       0 |      100 |     100 |       0 | 1-44
+  user.ts                              |       0 |      100 |     100 |       0 | 1-53
+---------------------------------------|---------|----------|---------|---------|-------------------------------------------------------------------------------
+Test Suites: 1 skipped, 21 passed, 21 of 22 total
+Tests:       1 skipped, 132 passed, 133 total
+Snapshots:   0 total
+Time:        9.075 s
+Ran all test suites.
