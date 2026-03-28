@@ -17,7 +17,23 @@ Desde la raíz del repositorio:
 cd src
 npm install
 Copy-Item .env.example .env.local
-# Editar .env.local: NEXT_PUBLIC_API_URL apuntando a la API backend
+```
+
+### Configuración de la URL de la API
+
+Edita el archivo `.env.local` y cambia la URL si es necesario:
+
+```env
+# URL de la API backend
+NEXT_PUBLIC_API_URL=http://localhost:5020
+```
+
+Para aplicar cambios en variables de entorno, es necesario **reiniciar** el servidor de desarrollo (`npm run dev`).
+
+### Ejecutar la Aplicación
+
+```powershell
+# Iniciar servidor de desarrollo
 npm run dev
 ```
 
@@ -55,19 +71,13 @@ Autenticación basada en sesión/tokens según la configuración actual (p. ej. 
 - **Usuario**: admin  
 - **Contraseña**: admin123  
 
-(Ajustar según tu backend y seeds.)
+*(Ajustar según tu backend y seeds.)*
 
-## Componentes UI
+## Componentes UI & Cliente API
 
-Componentes al estilo Shadcn en `components/ui/` (Button, Input, Card, Label, Loading, ErrorMessage, etc.).
-
-## Cliente API
-
-Cliente HTTP en `lib/api/` (p. ej. `client-client.ts`, `client-server.ts` según el proyecto). Funciones por dominio: `auth.ts`, `users.ts`, `customers.ts`, empresas, maestros, etc.
-
-## TanStack Query
-
-Configuración habitual: `staleTime` ~1 minuto, `refetchOnWindowFocus`: false, `retry`: 1 (revisar en el provider de la app).
+- **Componentes UI:** Al estilo Shadcn en `src/components/ui/` (Button, Input, Card, Label, Loading, ErrorMessage, etc.).
+- **Cliente API:** Cliente HTTP en `src/lib/api/` (p. ej. `client-client.ts`, `client-server.ts`). Funciones por dominio: `auth.ts`, `users.ts`, `customers.ts`, empresas, maestros, etc.
+- **TanStack Query:** Configuración habitual: `staleTime` ~1 minuto, `refetchOnWindowFocus`: false, `retry`: 1.
 
 ## Rutas protegidas
 
@@ -81,10 +91,10 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm run build` | Build de producción |
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
+| `npm test` | Testing (Jest + React Testing Library) |
+| `npm run test:e2e` | End-to-End Testing (Playwright) |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
-
-## Imagen Docker (opcional)
+## Docker (opcional)
 
 Build desde la **raíz del repositorio** (contexto `.`), usando el Dockerfile del paquete:
 
@@ -96,29 +106,42 @@ En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requi
 
 ## Solución de problemas
 
+### Error: "npm no se reconoce"
+Asegúrate de tener Node.js instalado y reinicia la terminal para actualizar el `PATH`.
+
+### Error: "Cannot find module"
+Elimina `node_modules` y `package-lock.json` en `src/`, y ejecuta `npm install` nuevamente.
+
+### El servidor no responde en el navegador (Puerto ocupado/No levanta)
+- Verifica que no haya procesos zombis de Node.js en el puerto 3000:
+  ```powershell
+  # Detener procesos Node.js en Windows
+  Get-Process -Name node | Stop-Process -Force
+  ```
+- Limpia la cache de Next.js:
+  ```powershell
+  Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue
+  ```
+- Inicia el servidor de nuevo.
+
 ### Error de conexión a la API
+1. Comprueba que la API esté en ejecución.
+2. Verifica `NEXT_PUBLIC_API_URL` en `.env.local` (el puerto debe coincidir).
+3. Asegúrate de que no haya una barra final (`/`) en la URL de `.env.local`.
+4. Revisa CORS en el backend si las peticiones fallan en el cliente (Network en DevTools).
 
-1. Comprueba que la API esté en ejecución.  
-2. Verifica `NEXT_PUBLIC_API_URL` en `.env.local`.  
-3. Revisa CORS en el backend.
-
-### Problemas de autenticación
-
-1. Credenciales correctas y empresa válida.  
-2. Errores en la consola del navegador.  
-3. Limpia almacenamiento local/cookies si quedan sesiones corruptas.
-
-## Documentación
+## Documentación y Guías
 
 | Recurso | Contenido |
 |--------|-----------|
+| `docs/testing/testing-guide.md` | Guía de Testing Unitario, Integración y E2E |
+| `docs/architecture/i18n-guide.md` | Guía de Arquitectura para Internacionalización |
 | `AGENTS.md` | Protocolo multi-agente y leyes del repositorio |
 | `Objetivos.md` | Alcance, objetivos y contexto del proyecto |
 | `SddIA/` | Normas, procesos, acciones y skills/tools (SSOT para IA) |
 | `SddIA/norms/openapi-contract-rest-frontend.md` | Contrato REST: OpenAPI del backend como fuente de verdad |
-| Este archivo | Vista unificada del repo y del paquete en `src/` |
 
-## Scripts y automatización
+## Scripts y automatización (SddIA)
 
 Herramientas y cápsulas en `scripts/` (índice: `scripts/tools/index.json`). Rutas canónicas en `SddIA/agents/cumulo.paths.json` (agente Cúmulo).
 

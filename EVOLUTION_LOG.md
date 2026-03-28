@@ -18,3 +18,9 @@ Registro obligatorio de cambios relevantes de evolución del repositorio (Cúmul
 ## 2026-03-23 (entrada anterior)
 
 - **Clarify** inicial: decisiones D-05 a D-08 — HTTP y HTTPS locales; tests API real + mock; `EVOLUTION_LOG.md` obligatorio.
+
+## 2026-03-28: Unificación del README principal
+**Feature:** `feat/TASK-001-actualizacion-readme`
+**Resumen:** Consolidación de documentación dispersa de `src/` (setup, tests, api, troubleshooting, comandos git) en el `README.md` de la raíz. Traslado de documentación especializada a `docs/testing/` y `docs/architecture/` según normas de soberanía documental.
+**Documentación:** `docs/features/TASK-001-actualizacion-readme/objectives.md`
+**Estado:** DONE.
