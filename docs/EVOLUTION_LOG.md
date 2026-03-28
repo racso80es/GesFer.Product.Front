@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-03-28] [feat/actualizacion-readme] [Unificación del README principal con archivos locales de src/ (SETUP, CONFIGURACION-API, INSTRUCCIONES, SOLUCION-PROBLEMAS, README-TESTS). Cierre de Tarea TASK-20260328-Actualizacion_Readme.] [DONE].
+
+## feature: actualizacion-readme
+Resumen: Se ha unificado la documentación dispersa en `src/` (como configuración, tests y solución de problemas) en un único y consolidado `README.md` en la raíz. Los archivos redundantes en `src/` fueron eliminados. Tarea procesada autónomamente.
+Referencia archivada: [docs/TASKS/DONE/TASK-20260328-Actualizacion_Readme.md](./TASKS/DONE/TASK-20260328-Actualizacion_Readme.md)
+
 [2026-03-28] [fix/fix-select-a11y] [Resolución de advertencias de accesibilidad (A11y) en el componente Select. Añadidos aria-controls y aria-selected. Tarea Kaizen completada.] [DONE].
 [2026-03-25] [feat/limpieza-temporal-shared] [Migrado TemporalShared a src/components/ y src/lib/. Actualizados imports a alias locales. Cierre de Tarea T-20260325-001.] [DONE].
 [2026-03-26] [feat/add-mui-components] [Integración de MUI para Next.js App Router, ThemeRegistry y CustomButton. Cierre de Tarea TASK-001.] [DONE].
