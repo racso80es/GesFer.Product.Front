@@ -82,7 +82,7 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+Más detalle operativo: véase la sección de configuración y tests más abajo.
 
 ## Imagen Docker (opcional)
 
@@ -93,6 +93,57 @@ docker build -f src/Dockerfile .
 ```
 
 En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requieras) según el backend. Salida **standalone** de Next.js (`src/next.config.js`).
+
+## Configuración de Entornos
+
+Este proyecto admite diferentes configuraciones según el entorno, situadas en `src/config/`:
+- **`local.json`**: Desarrollo local (127.0.0.1)
+- **`development.json`**: Desarrollo (localhost)
+- **`production.json`**: Producción
+- **`test.json`**: Tests (igual que local)
+
+### Variables de entorno clave
+- `NODE_ENV` / `NEXT_PUBLIC_ENV`: Determina el entorno.
+- `NEXT_PUBLIC_API_URL` / `API_URL`: URL de la API backend.
+- `DB_SERVER`, `DB_PORT`, `DB_DATABASE`, `DB_USER`, `DB_PASSWORD`: Base de datos (tests o uso directo).
+- `CACHE_SERVER`, `CACHE_PORT`, `CACHE_ENABLED`: Configuración para caché tipo Memcached.
+
+En código, importa la configuración unificada desde `@/lib/config`.
+
+---
+
+## 🧪 Pruebas (Tests)
+
+### Unitarios y de Componentes (Jest + React Testing Library)
+Ejecución:
+```powershell
+npm test
+npm run test:watch
+npm run test:coverage
+```
+*Carpeta:* `src/__tests__/`. *Mejores prácticas:* usar accesibilidad (`getByRole`), mockear dependencias externas y enfocarse en comportamiento en vez de implementación.
+
+### End-to-End y API (Playwright)
+Los tests E2E viven en `src/tests/` (subcarpetas `e2e/`, `api/`, `page-objects/`, `fixtures/`).
+
+Comandos de Playwright:
+```powershell
+npm run test:e2e          # Todos
+npm run test:e2e:ui       # Modo interactivo
+npm run test:e2e:report   # Reporte HTML
+npm run test:e2e:api      # Solo API (backend directo)
+```
+
+**Requisitos Previos E2E:**
+La web debe estar en `localhost:3000` (Playwright suele levantarla), pero la **API Backend** debe estar ejecutándose real (ej. `localhost:5020`) o mockeada.
+
+#### Mejores prácticas de Playwright
+1. **TypeScript** para tests y Page Objects.
+2. **Page Object Model (POM)**: Encapsular lógica por página.
+3. **Selectores con TestID**: Usar `page.getByTestId('test-id')` con fallbacks `.or()`.
+4. **Limpieza (Teardown)**: Siempre borrar datos de prueba creados (`test.afterEach` con `TestDataCleanup`).
+
+---
 
 ## Solución de problemas
 
