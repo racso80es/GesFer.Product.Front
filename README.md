@@ -82,7 +82,11 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `docs/testing/testing-guide.md`.
+
+## Configuración de Entornos
+
+Las URLs de la API (`NEXT_PUBLIC_API_URL`) y del cliente pueden configurarse a través de variables de entorno. Para los tests o configuraciones estáticas del cliente, en `src/config/` se detecta automáticamente el entorno para resolver la conexión a base de datos y memoria caché, soportando variables como `NODE_ENV`, `DB_SERVER`, y `CACHE_ENABLED`.
 
 ## Imagen Docker (opcional)
 
@@ -114,6 +118,7 @@ En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requi
 |--------|-----------|
 | `AGENTS.md` | Protocolo multi-agente y leyes del repositorio |
 | `Objetivos.md` | Alcance, objetivos y contexto del proyecto |
+| `docs/testing/testing-guide.md` | Guía de pruebas unitarias y E2E |
 | `SddIA/` | Normas, procesos, acciones y skills/tools (SSOT para IA) |
 | `SddIA/norms/openapi-contract-rest-frontend.md` | Contrato REST: OpenAPI del backend como fuente de verdad |
 | Este archivo | Vista unificada del repo y del paquete en `src/` |

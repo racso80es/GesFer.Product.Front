@@ -4,6 +4,10 @@ Registro obligatorio de cambios relevantes de evolución del repositorio (Cúmul
 
 ---
 
+## 2026-03-29
+
+- **TASK-20260329-001-actualizacion-readme:** Consolidación de documentación. Centralización de guías de pruebas (`docs/testing/testing-guide.md`) y eliminación de archivos `README.md` locales en `src/` unificando información en el `README.md` principal. `docs/features/task-20260329-001-actualizacion-readme/objectives.md`.
+
 ## 2026-03-26
 
 - **Kaizen / cierre adaptación monorepo:** Dockerfile para árbol aislado (`docker build -f src/Dockerfile .`); skill `frontend-build` y normas Cursor/SddIA alineadas a `src/`; `.gitignore` sin rutas `Product/Front` ni Admin; guía `README-TESTS` con `@/`; `spec` de feature `product-front-objetivos-pendientes` cerrado (`done`).
