@@ -1,11 +1,16 @@
 Objetivo Home Publica
 
+[2026-03-29] [feat/actualizacion-readme] [Unificación de READMEs en src y traslado a docs/testing] [DONE].
 [2026-03-28] [fix/fix-select-a11y] [Resolución de advertencias de accesibilidad (A11y) en el componente Select. Añadidos aria-controls y aria-selected. Tarea Kaizen completada.] [DONE].
 [2026-03-25] [feat/limpieza-temporal-shared] [Migrado TemporalShared a src/components/ y src/lib/. Actualizados imports a alias locales. Cierre de Tarea T-20260325-001.] [DONE].
 [2026-03-26] [feat/add-mui-components] [Integración de MUI para Next.js App Router, ThemeRegistry y CustomButton. Cierre de Tarea TASK-001.] [DONE].
 [2026-03-27] [feat/add-logs] [Implementación de sistema de logging persistente con Pino, endpoint API para capturas de cliente, y manejador global de errores. Cierre de Tarea TASK-20260327-001.] [DONE].
 [2026-03-27] [feat/kaizen-enforce-import-rule] [Configuración de eslint-plugin-import y regla import/first para garantizar la integridad de imports en Next.js. Tarea automática. Cierre de Tarea Kaizen_2026_03_27_Enforce_Import_Rule.] [DONE].
 [2026-03-27] [feat/add-components-mui] [Instalación de dependencias de MUI y Emotion. Configuración de Next.js App Router con ThemeProvider y AppRouterCacheProvider. Integración de tipados fuertes y prevención de conflictos con Tailwind CSS. Cierre de Tarea TASK-001-Add_Components_MUI.] [DONE].
+
+## feature: actualizacion-readme
+Resumen: Se completó la limpieza y consolidación de la documentación del proyecto. Los archivos dispersos en la carpeta `src/` (`SETUP.md`, `CONFIGURACION-API.md`, y el `README.md` de config) se unificaron en el `README.md` de la raíz del proyecto para asegurar una única fuente de verdad sobre su configuración y uso. Adicionalmente, las guías de testing y buenas prácticas se centralizaron en `docs/testing/` y se actualizaron las referencias.
+Referencia archivada: [docs/TASKS/DONE/TASK-001-Actualizacion_Readme.md](./TASKS/DONE/TASK-001-Actualizacion_Readme.md)
 
 ## feature: kaizen-enforce-import-rule
 Resumen: Se ha integrado `eslint-plugin-import` y configurado la regla `import/first` en el archivo `.eslintrc.json`. Esta mejora fue realizada de forma autónoma siguiendo el proceso `automatic_task` como parte de una iniciativa de Mejora Continua (Kaizen).
