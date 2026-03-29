@@ -1,3 +1,5 @@
+[2026-03-29] [feat/actualizacion-readme] [Consolidated src/ READMEs into root README.md and moved testing/architecture docs. Cierre de Tarea TASK-20260329-001.] [DONE].
+
 Objetivo Home Publica
 
 [2026-03-28] [fix/fix-select-a11y] [Resolución de advertencias de accesibilidad (A11y) en el componente Select. Añadidos aria-controls y aria-selected. Tarea Kaizen completada.] [DONE].
