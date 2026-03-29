@@ -193,4 +193,3 @@ npm test -- --verbose
 - [React Testing Library](https://testing-library.com/react)
 - [Testing Library User Event](https://testing-library.com/docs/user-event/intro)
 - [Next.js Testing](https://nextjs.org/docs/testing)
-
