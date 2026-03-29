@@ -1,5 +1,6 @@
 Objetivo Home Publica
 
+[2026-03-29] [feat/TASK-20260329-001-Actualizacion_Readme] [Unificación y limpieza de la documentación de src/, moviendo Testing e i18n a docs/ y consolidando información de Setup en el README.md raíz.] [DONE].
 [2026-03-28] [fix/fix-select-a11y] [Resolución de advertencias de accesibilidad (A11y) en el componente Select. Añadidos aria-controls y aria-selected. Tarea Kaizen completada.] [DONE].
 [2026-03-25] [feat/limpieza-temporal-shared] [Migrado TemporalShared a src/components/ y src/lib/. Actualizados imports a alias locales. Cierre de Tarea T-20260325-001.] [DONE].
 [2026-03-26] [feat/add-mui-components] [Integración de MUI para Next.js App Router, ThemeRegistry y CustomButton. Cierre de Tarea TASK-001.] [DONE].
@@ -26,6 +27,10 @@ Referencia a la tarea: [docs/features/mui-integration/README.md](./features/mui-
 [2026-03-26] [kaizen-adaptacion-monorepo] [Dockerfile, gitignore, skill frontend-build, README-TESTS, normas SddIA/Cursor; cierre spec product-front-objetivos-pendientes.] [DONE].
 
 [2026-03-25] [feat/limpieza-temporal-shared] [Migrado código provisional del monolito a src/components/ y src/lib/. Actualizados imports a alias locales. Cierre de Tarea T-20260325-001.] [DONE].
+
+## feature: actualizacion-readme
+Resumen: Se eliminaron 8 archivos de documentación .md redundantes de la carpeta `src/`. Se reubicó la guía de testing a `docs/testing/testing-guide.md` y la guía de i18n a `docs/architecture/i18n-guide.md`. El `README.md` de la raíz se actualizó con la información unificada de Setup, CORS, Troubleshooting y enlaces a las nuevas guías según el proceso `automatic_task`.
+Referencia archivada: [docs/TASKS/DONE/TASK-20260329-001-Actualizacion_Readme.md](./TASKS/DONE/TASK-20260329-001-Actualizacion_Readme.md)
 
 ## feature: fix-select-a11y
 Resumen: Se resolvieron problemas de accesibilidad (A11y) detectados por el linter en el componente Select (`src/components/ui/select.tsx`). Se añadió un ID único al contexto para vincular `aria-controls` en el combobox y el contenido, y se agregó `aria-selected` a las opciones.

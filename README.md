@@ -82,7 +82,7 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+Más detalle operativo sobre testing en `docs/testing/testing-guide.md` y sobre internacionalización en `docs/architecture/i18n-guide.md`.
 
 ## Imagen Docker (opcional)
 
@@ -94,16 +94,27 @@ docker build -f src/Dockerfile .
 
 En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requieras) según el backend. Salida **standalone** de Next.js (`src/next.config.js`).
 
+## Configuración de la API (CORS y Conexión)
+
+La realidad a la que debe adecuarse el front es la del API backend. El contrato vigente se obtiene del OpenAPI expuesto por el servicio.
+`NEXT_PUBLIC_API_URL` debe apuntar al origen del servicio (ej. `http://localhost:5020` o `https://localhost:5001`).
+
+1. Edita el archivo `src/.env.local` y cambia la URL según sea necesario.
+2. Si usas HTTPS en local, el navegador puede mostrar una advertencia de certificado. Acepta la excepción para continuar.
+3. Si experimentas el error de políticas CORS, asegúrate de que el backend tenga configurado `AllowAll` o contenga el origen del frontend.
+
 ## Solución de problemas
 
-### Error de conexión a la API
+### Error: "npm no se reconoce"
+- Asegúrate de tener Node.js instalado y añade la ruta de Node.js a las variables de entorno `PATH`.
+- Reinicia la terminal.
 
-1. Comprueba que la API esté en ejecución.  
-2. Verifica `NEXT_PUBLIC_API_URL` en `.env.local`.  
-3. Revisa CORS en el backend.
+### El servidor de desarrollo no responde en el navegador (ERR_EMPTY_RESPONSE)
+1. Verifica que la API esté corriendo.
+2. Verifica que el puerto en `src/.env.local` sea correcto y coincide con el puerto de ejecución del API.
+3. Reinicia el servidor de Next.js después de modificar `.env.local` o si el puerto 3000 se ha quedado colgado (`Get-Process -Name node | Stop-Process -Force`).
 
 ### Problemas de autenticación
-
 1. Credenciales correctas y empresa válida.  
 2. Errores en la consola del navegador.  
 3. Limpia almacenamiento local/cookies si quedan sesiones corruptas.
@@ -116,6 +127,8 @@ En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requi
 | `Objetivos.md` | Alcance, objetivos y contexto del proyecto |
 | `SddIA/` | Normas, procesos, acciones y skills/tools (SSOT para IA) |
 | `SddIA/norms/openapi-contract-rest-frontend.md` | Contrato REST: OpenAPI del backend como fuente de verdad |
+| `docs/testing/testing-guide.md` | Guía de testing para el proyecto |
+| `docs/architecture/i18n-guide.md` | Guía de arquitectura de internacionalización |
 | Este archivo | Vista unificada del repo y del paquete en `src/` |
 
 ## Scripts y automatización
