@@ -82,7 +82,18 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`. Para las pruebas (E2E y API) usando Playwright, consultar la [Guía de Tests](docs/testing/testing-guide.md).
+
+## Configuración de Entornos
+
+El sistema carga configuraciones para distintos entornos (local, development, production, test) desde `src/config/*.json`.
+Se puede acceder a estas configuraciones en código y tests mediante `src/lib/config` y `src/lib/config.test`.
+
+El sistema detecta automáticamente el entorno (vía `NODE_ENV` o `NEXT_PUBLIC_ENV`) y puede personalizarse con las siguientes variables de entorno:
+
+- **API y Cliente**: `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_CLIENT_URL`, `API_URL`, `CLIENT_URL`.
+- **Base de Datos**: `DB_SERVER`, `DB_PORT`, `DB_DATABASE`, `DB_USER`, `DB_PASSWORD`.
+- **Caché (Memcached)**: `CACHE_SERVER`, `CACHE_PORT`, `CACHE_ENABLED`.
 
 ## Imagen Docker (opcional)
 
@@ -117,6 +128,7 @@ En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requi
 | `SddIA/` | Normas, procesos, acciones y skills/tools (SSOT para IA) |
 | `SddIA/norms/openapi-contract-rest-frontend.md` | Contrato REST: OpenAPI del backend como fuente de verdad |
 | Este archivo | Vista unificada del repo y del paquete en `src/` |
+| `docs/testing/testing-guide.md` | Guía de testing E2E y API con Playwright |
 
 ## Scripts y automatización
 
