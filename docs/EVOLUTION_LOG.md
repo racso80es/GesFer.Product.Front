@@ -34,3 +34,9 @@ Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_03_28_fix_select_a11y.md](./T
 ## feature: limpieza-temporal-shared (histórico)
 Resumen: Se completó la migración del directorio temporal de componentes compartidos del monorepo a la arquitectura nativa del proyecto, abandonando el enfoque de paquete "Shared" externo por incompatibilidad de contexto. Se reescribieron alias, tsconfig y tailwind.
 Referencia archivada: [docs/TASKS/DONE/T-20260325-001-limpieza-temporal-shared.md](./TASKS/DONE/T-20260325-001-limpieza-temporal-shared.md)
+[2026-03-29] [feat/limpieza-temporal-shared] [Se eliminó la referencia remanente a TemporalShared en la configuración de tailwind, limpiando código no utilizado.] [DONE].
+
+## [2026-03-29] Limpieza de TemporalShared
+
+Resumen: Se eliminaron las referencias remanentes a `TemporalShared` en `src/tailwind.config.ts`, dado que el directorio ya no existía en el proyecto.
+Referencia: docs/features/limpieza-temporal-shared/objectives.md
