@@ -5,23 +5,69 @@ Frontend **cliente** del ecosistema GesFer: aplicación Next.js 14 (App Router),
 ## Requisitos
 
 - **Node.js** 18+ (recomendado 20+)
-- **npm**
+- **npm** (viene incluido con Node.js)
 - **Windows** con **PowerShell 7+** (convención del proyecto; ver `AGENTS.md`)
 - API backend disponible (desarrollo típico: `http://localhost:5020`; alinear con tu despliegue y con `NEXT_PUBLIC_API_URL`)
 
-## Inicio rápido
+## Configuración e Instalación
 
-Desde la raíz del repositorio:
+### Inicio rápido (Recomendado con script automático)
+
+Una vez que tengas Node.js instalado, ejecuta en PowerShell desde la raíz:
+
+```powershell
+cd src
+.\setup.ps1
+```
+
+Este script:
+- Verificará que Node.js y npm estén instalados.
+- Instalará todas las dependencias (`npm install`).
+- Creará el archivo `.env.local` con la configuración por defecto.
+
+### Inicio rápido (Manual)
+
+Si prefieres hacerlo manualmente, desde la raíz del repositorio:
 
 ```powershell
 cd src
 npm install
 Copy-Item .env.example .env.local
 # Editar .env.local: NEXT_PUBLIC_API_URL apuntando a la API backend
+```
+
+## Configuración de la API
+
+La **realidad** a la que debe adecuarse el front es la del **API backend**. El contrato vigente (rutas, esquemas) se obtiene del **OpenAPI** expuesto por el servicio, p. ej. `{origen}/swagger/v1/swagger.json`. Si el backend cambia de versión o rutas, hay que **revalidar** clientes en `src/lib/api/` y variables de entorno frente a ese documento.
+
+La URL de la API se configura en el archivo `src/.env.local`. Por defecto:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5020
+```
+
+`NEXT_PUBLIC_API_URL` debe apuntar al **origen** del servicio (esquema + host + puerto). Ajusta el puerto (ej. `5000` para HTTP, `5001` para HTTPS local) si tu API backend usa otro.
+
+⚠️ **Importante:** Después de cambiar la URL en `.env.local`, debes reiniciar el servidor de desarrollo (`npm run dev`).
+
+## Ejecutar la Aplicación
+
+### Modo Desarrollo
+
+Desde la carpeta `src`:
+```powershell
 npm run dev
 ```
 
-Por defecto, el servidor de desarrollo queda en **http://localhost:3000**.
+La aplicación estará disponible en: **http://localhost:3000**
+
+### Modo Producción
+
+Desde la carpeta `src`:
+```powershell
+npm run build
+npm start
+```
 
 ## Tecnologías
 
@@ -81,8 +127,7 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm run build` | Build de producción |
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
-
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+| `npm test` | Ejecutar pruebas (Jest/React Testing Library) |
 
 ## Imagen Docker (opcional)
 
@@ -96,17 +141,47 @@ En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requi
 
 ## Solución de problemas
 
-### Error de conexión a la API
+### El servidor no responde en el navegador (Localhost no carga)
 
-1. Comprueba que la API esté en ejecución.  
-2. Verifica `NEXT_PUBLIC_API_URL` en `.env.local`.  
-3. Revisa CORS en el backend.
+1. **Esperar compilación:** Espera a ver `✓ Ready in X.Xs` en la terminal antes de abrir el navegador.
+2. **Probar diferentes URLs:** `http://localhost:3000`, `http://127.0.0.1:3000`, `http://[::1]:3000`.
+3. **Verificar puerto en uso:** Ejecuta `netstat -ano | findstr :3000`. Si hay procesos, detenlos (`Get-Process -Name node | Stop-Process -Force`) o usa otro puerto (`$env:PORT=3001; npm run dev`).
+4. **Limpiar cache y reinstalar:**
+   ```powershell
+   Get-Process -Name node | Stop-Process -Force
+   Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue
+   Remove-Item -Recurse -Force node_modules -ErrorAction SilentlyContinue
+   Remove-Item package-lock.json -ErrorAction SilentlyContinue
+   npm install
+   npm run dev
+   ```
+5. **Diagnóstico automático:** Ejecuta `.\diagnostico.ps1` dentro de `src/` para revisar configuración.
+
+### Error de conexión a la API (ERR_EMPTY_RESPONSE / Failed to fetch)
+
+1. Comprueba que la API esté en ejecución abriendo `http://localhost:5020/swagger` (u origen configurado) en tu navegador.
+2. Verifica que `NEXT_PUBLIC_API_URL` en `src/.env.local` sea correcta y corresponda al perfil de la API (`http` vs `https`).
+3. Asegúrate de reiniciar el servidor frontend (Ctrl+C y `npm run dev`) si cambiaste `.env.local`.
+4. Revisa CORS en el backend (asegurar que `UseCors()` esté antes de `UseHttpsRedirection()`).
 
 ### Problemas de autenticación
 
-1. Credenciales correctas y empresa válida.  
-2. Errores en la consola del navegador.  
-3. Limpia almacenamiento local/cookies si quedan sesiones corruptas.
+1. Verifica las credenciales correctas y empresa válida.
+2. Revisa errores en la consola del navegador (F12).
+3. Limpia el almacenamiento local/cookies en tu navegador si quedan sesiones corruptas.
+
+### Error: "npm no se reconoce"
+
+- Asegúrate de tener Node.js instalado, reinicia tu terminal y verifica que Node.js esté en tu `PATH`.
+
+## Pruebas y Comandos Git
+
+- **Pruebas**: Consulta la guía de testing en `docs/testing/testing-guide.md` para detalles sobre Jest y Playwright.
+- **Git para Pruebas**: Al realizar commits con nuevos tests, usa comandos desde la raíz del repositorio y referencia los archivos dentro de `src/`. Ejemplo:
+  ```powershell
+  git add src/__tests__/integration/
+  git commit -m "Añadiendo test a cliente: Se han añadido tests de integridad"
+  ```
 
 ## Documentación
 
@@ -116,7 +191,8 @@ En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requi
 | `Objetivos.md` | Alcance, objetivos y contexto del proyecto |
 | `SddIA/` | Normas, procesos, acciones y skills/tools (SSOT para IA) |
 | `SddIA/norms/openapi-contract-rest-frontend.md` | Contrato REST: OpenAPI del backend como fuente de verdad |
-| Este archivo | Vista unificada del repo y del paquete en `src/` |
+| `docs/architecture/` | Guías de arquitectura, incluyendo `i18n-guide.md` |
+| `docs/testing/` | Guías de testing, incluyendo `testing-guide.md` |
 
 ## Scripts y automatización
 
