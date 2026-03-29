@@ -6,6 +6,7 @@ Objetivo Home Publica
 [2026-03-27] [feat/add-logs] [Implementación de sistema de logging persistente con Pino, endpoint API para capturas de cliente, y manejador global de errores. Cierre de Tarea TASK-20260327-001.] [DONE].
 [2026-03-27] [feat/kaizen-enforce-import-rule] [Configuración de eslint-plugin-import y regla import/first para garantizar la integridad de imports en Next.js. Tarea automática. Cierre de Tarea Kaizen_2026_03_27_Enforce_Import_Rule.] [DONE].
 [2026-03-27] [feat/add-components-mui] [Instalación de dependencias de MUI y Emotion. Configuración de Next.js App Router con ThemeProvider y AppRouterCacheProvider. Integración de tipados fuertes y prevención de conflictos con Tailwind CSS. Cierre de Tarea TASK-001-Add_Components_MUI.] [DONE].
+[2024-05-23] [feat/TASK-001-unificar-readmes] [Centralización de documentación de setup y troubleshooting en el README principal y reubicación de documentación técnica en docs/testing y docs/architecture. Cierre de Tarea TASK-001.] [DONE].
 
 ## feature: kaizen-enforce-import-rule
 Resumen: Se ha integrado `eslint-plugin-import` y configurado la regla `import/first` en el archivo `.eslintrc.json`. Esta mejora fue realizada de forma autónoma siguiendo el proceso `automatic_task` como parte de una iniciativa de Mejora Continua (Kaizen).
@@ -18,6 +19,10 @@ Referencia archivada: [docs/TASKS/DONE/TASK-20260327-001-AddLogs.md](./TASKS/DON
 ## feature: add-components-mui
 Resumen: Se ha integrado Material UI en el proyecto con tipado fuerte y convivencia con Tailwind CSS mediante `@layer`. Se configuró la fuente Roboto (next/font) y el componente `CustomButton` con el sistema `sx` de MUI.
 Referencia archivada: [docs/TASKS/DONE/TASK-001-Add_Components_MUI.md](./TASKS/DONE/TASK-001-Add_Components_MUI.md)
+
+## feature: TASK-001-unificar-readmes
+Resumen: Se ha centralizado la información de SETUP, solución de problemas y comandos git en el `README.md` principal, eliminando múltiples archivos redundantes en `src/`. Además, se crearon los directorios `docs/testing/` y `docs/architecture/` para alojar los archivos técnicos de i18n y testing de acuerdo a los estándares del repositorio.
+Referencia archivada: [docs/TASKS/DONE/TASK-001-unificar-readmes.md](./TASKS/DONE/TASK-001-unificar-readmes.md)
 
 ## feature: mui-integration
 Resumen: Se instalaron las dependencias de Material UI (MUI) y @mui/material-nextjs para compatibilidad con el App Router de Next.js. Se configuró un tema fuertemente tipado en src/theme/theme.ts y un ThemeRegistry como Client Component. Se añadió el componente CustomButton demostrando el uso robusto de interfaces de TypeScript para props, y se configuró la fuente Roboto usando next/font/google.
