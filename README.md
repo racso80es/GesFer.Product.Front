@@ -2,76 +2,66 @@
 
 Frontend **cliente** del ecosistema GesFer: aplicación Next.js 14 (App Router), TypeScript y Tailwind CSS para la gestión de compra/venta de chatarra. El código de aplicación vive en **`src/`**. Este repositorio es **independiente** del monorepo GesFer original.
 
-## Requisitos
+## Tecnologías
 
-- **Node.js** 18+ (recomendado 20+)
-- **npm**
+- **Next.js 14+** — App Router
+- **TypeScript** — Tipado estricto con interfaces para todas las respuestas de la API
+- **Tailwind CSS** — Diseño moderno estilo Shadcn/UI
+- **TanStack Query** — Estado del servidor
+- **Lucide React** — Iconos
+- **Shadcn/UI** — Componentes base (estilo)
+
+## Requisitos y Setup Completo
+
+### 1. Instalar Node.js
+- **Node.js** 18+ (recomendado 24+)
+- **npm** (recomendado v11+)
 - **Windows** con **PowerShell 7+** (convención del proyecto; ver `AGENTS.md`)
-- API backend disponible (desarrollo típico: `http://localhost:5020`; alinear con tu despliegue y con `NEXT_PUBLIC_API_URL`)
 
-## Inicio rápido
+Descarga e instala desde [nodejs.org](https://nodejs.org/).
 
-Desde la raíz del repositorio:
+### 2. Instalación de Dependencias
+
+Desde la raíz del repositorio, entra a `src/` e instala:
 
 ```powershell
 cd src
 npm install
+```
+
+### 3. Configuración del Entorno y API
+
+Crea el archivo `.env.local`:
+
+```powershell
 Copy-Item .env.example .env.local
-# Editar .env.local: NEXT_PUBLIC_API_URL apuntando a la API backend
+```
+
+La **realidad** a la que debe adecuarse el front es la del **API backend**. El contrato vigente se obtiene del **OpenAPI** expuesto por el servicio. Edita `.env.local` apuntando al backend (habitualmente el puerto 5020):
+
+```env
+# URL de la API backend
+NEXT_PUBLIC_API_URL=http://localhost:5020
+```
+
+*Si tu API está en HTTP (puerto 5000), usa `http://localhost:5000`. Si usas HTTPS (puerto 5001), usa `https://localhost:5001` y acepta la excepción de certificado en tu navegador.*
+
+### 4. Iniciar la Aplicación
+
+```powershell
 npm run dev
 ```
 
-Por defecto, el servidor de desarrollo queda en **http://localhost:3000**.
+La aplicación estará disponible por defecto en: **http://localhost:3000**
 
-## Tecnologías
+*(Opcional) Puedes ejecutar el script automático de Setup en PowerShell: `cd src; .\setup.ps1`*
 
-- **Next.js 14+** — App Router
-- **TypeScript**
-- **Tailwind CSS**
-- **TanStack Query** — estado del servidor
-- **Lucide React** — iconos
-- **Shadcn/UI** — componentes base (estilo)
+## Credenciales de Prueba
 
-## Estructura del paquete (`src/`)
-
-```
-src/
-├── app/                 # App Router: rutas por locale, grupos (client), API NextAuth, etc.
-├── components/          # UI reutilizable (ui/, layout/, auth/, masters/, …)
-├── lib/                 # api/, providers/, utils/, tipos, configuración
-├── public/              # Estáticos
-├── messages/            # Cadenas i18n (es, en, ca, …)
-├── auth.ts              # Configuración NextAuth (según versión del proyecto)
-└── middleware.ts        # Enrutado / locale si aplica
-```
-
-## Autenticación
-
-Autenticación basada en sesión/tokens según la configuración actual (p. ej. NextAuth en `app/api/auth/` y `auth.ts`). El contexto de sesión y componentes como `ProtectedRoute` gestionan el acceso a rutas privadas.
-
-### Credenciales de ejemplo (entorno demo)
-
-- **Company**: Empresa Demo  
-- **Usuario**: admin  
-- **Contraseña**: admin123  
-
-(Ajustar según tu backend y seeds.)
-
-## Componentes UI
-
-Componentes al estilo Shadcn en `components/ui/` (Button, Input, Card, Label, Loading, ErrorMessage, etc.).
-
-## Cliente API
-
-Cliente HTTP en `lib/api/` (p. ej. `client-client.ts`, `client-server.ts` según el proyecto). Funciones por dominio: `auth.ts`, `users.ts`, `customers.ts`, empresas, maestros, etc.
-
-## TanStack Query
-
-Configuración habitual: `staleTime` ~1 minuto, `refetchOnWindowFocus`: false, `retry`: 1 (revisar en el provider de la app).
-
-## Rutas protegidas
-
-Las rutas que requieren sesión usan el patrón de componente/layout que verifica autenticación antes de renderizar (p. ej. `ProtectedRoute`).
+Una vez que la aplicación esté ejecutándose, y si tu backend tiene los seeds configurados, puedes probar con:
+- **Organización**: `Demo Company`
+- **Usuario**: `admin`
+- **Contraseña**: `admin123`
 
 ## Scripts disponibles (`src/`)
 
@@ -81,8 +71,48 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm run build` | Build de producción |
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
+| `npm test` | Ejecutar tests unitarios (Jest/RTL) |
+| `npm run test:all` | Ejecutar todos los tests e integraciones |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+## Solución de Problemas Frecuentes
+
+### 1. El servidor no responde en el navegador
+- **Verificar Puerto en Uso**: `netstat -ano | findstr :3000`. Si hay múltiples, detén los procesos `node`.
+- **Reinicio Limpio**:
+  ```powershell
+  Get-Process -Name node | Stop-Process -Force
+  Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue
+  npm run dev
+  ```
+- **Espera**: Asegúrate de ver `✓ Ready in X.Xs` en la consola antes de abrir el navegador.
+- **Alternativas**: Prueba `http://127.0.0.1:3000` o asigna otro puerto: `$env:PORT=3001; npm run dev`.
+
+### 2. Error CORS o de Conexión a la API ("ERR_EMPTY_RESPONSE" / "Failed to fetch")
+- **¿API Corriendo?**: Verifica abriendo `http://localhost:5020/swagger` en tu navegador.
+- **Variable de Entorno**: Comprueba que `NEXT_PUBLIC_API_URL` coincide con el puerto real de tu API en `launchSettings.json`.
+- **Reinicio**: Si cambias `.env.local`, debes **detener y reiniciar** Next.js (`npm run dev`).
+
+### 3. Error de instalación (npm)
+- Si ves errores de dependencias perdidas, elimina la caché y reinstala:
+  ```powershell
+  Remove-Item -Recurse -Force node_modules
+  Remove-Item package-lock.json
+  npm install
+  ```
+
+## Estructura del Paquete (`src/`)
+
+```
+src/
+├── app/                 # App Router: rutas por locale, API NextAuth
+├── components/          # UI reutilizable (ui/, layout/, auth/)
+├── contexts/            # Contextos de React
+├── lib/                 # api/, providers/, utils/, tipos
+├── public/              # Estáticos
+├── messages/            # Cadenas i18n
+├── auth.ts              # Configuración NextAuth
+└── middleware.ts        # Enrutado / locale
+```
 
 ## Imagen Docker (opcional)
 
@@ -92,36 +122,20 @@ Build desde la **raíz del repositorio** (contexto `.`), usando el Dockerfile de
 docker build -f src/Dockerfile .
 ```
 
-En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requieras) según el backend. Salida **standalone** de Next.js (`src/next.config.js`).
-
-## Solución de problemas
-
-### Error de conexión a la API
-
-1. Comprueba que la API esté en ejecución.  
-2. Verifica `NEXT_PUBLIC_API_URL` en `.env.local`.  
-3. Revisa CORS en el backend.
-
-### Problemas de autenticación
-
-1. Credenciales correctas y empresa válida.  
-2. Errores en la consola del navegador.  
-3. Limpia almacenamiento local/cookies si quedan sesiones corruptas.
-
-## Documentación
+## Documentación del Proyecto
 
 | Recurso | Contenido |
 |--------|-----------|
 | `AGENTS.md` | Protocolo multi-agente y leyes del repositorio |
 | `Objetivos.md` | Alcance, objetivos y contexto del proyecto |
+| `docs/architecture/` | Guías de arquitectura (ej: i18n-guide.md) |
+| `docs/testing/` | Guías de testing y QA (ej: testing-guide.md) |
 | `SddIA/` | Normas, procesos, acciones y skills/tools (SSOT para IA) |
-| `SddIA/norms/openapi-contract-rest-frontend.md` | Contrato REST: OpenAPI del backend como fuente de verdad |
-| Este archivo | Vista unificada del repo y del paquete en `src/` |
 
-## Scripts y automatización
+## Comandos Git para Colaboración (Ejemplo)
 
-Herramientas y cápsulas en `scripts/` (índice: `scripts/tools/index.json`). Rutas canónicas en `SddIA/agents/cumulo.paths.json` (agente Cúmulo).
-
-## Licencia
-
-Este proyecto es parte del sistema GesFer.
+```bash
+git add .
+git commit -m "feat/test: Añadiendo cobertura a cliente" -m "Tests de integridad y e2e añadidos"
+git push origin <tu-rama>
+```
