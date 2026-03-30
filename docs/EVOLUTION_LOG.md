@@ -1,5 +1,6 @@
 Objetivo Home Publica
 
+[2026-03-30] [feat/limpieza-temporal-shared] [Limpieza de referencias huérfanas a TemporalShared en tailwind.config.ts. Cierre de Tarea TASK-001.] [DONE].
 [2026-03-28] [fix/fix-select-a11y] [Resolución de advertencias de accesibilidad (A11y) en el componente Select. Añadidos aria-controls y aria-selected. Tarea Kaizen completada.] [DONE].
 [2026-03-25] [feat/limpieza-temporal-shared] [Migrado TemporalShared a src/components/ y src/lib/. Actualizados imports a alias locales. Cierre de Tarea T-20260325-001.] [DONE].
 [2026-03-26] [feat/add-mui-components] [Integración de MUI para Next.js App Router, ThemeRegistry y CustomButton. Cierre de Tarea TASK-001.] [DONE].
@@ -34,3 +35,7 @@ Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_03_28_fix_select_a11y.md](./T
 ## feature: limpieza-temporal-shared (histórico)
 Resumen: Se completó la migración del directorio temporal de componentes compartidos del monorepo a la arquitectura nativa del proyecto, abandonando el enfoque de paquete "Shared" externo por incompatibilidad de contexto. Se reescribieron alias, tsconfig y tailwind.
 Referencia archivada: [docs/TASKS/DONE/T-20260325-001-limpieza-temporal-shared.md](./TASKS/DONE/T-20260325-001-limpieza-temporal-shared.md)
+
+## feature: limpieza-temporal-shared
+Resumen: Se eliminaron las referencias huérfanas a `TemporalShared` en `src/tailwind.config.ts` como parte del backlog de limpieza técnica.
+Referencia archivada: [docs/TASKS/DONE/TASK-001-limpieza-temporal-shared.md](./TASKS/DONE/TASK-001-limpieza-temporal-shared.md)
