@@ -82,7 +82,7 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `docs/testing/`.
 
 ## Imagen Docker (opcional)
 
@@ -117,6 +117,8 @@ En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requi
 | `SddIA/` | Normas, procesos, acciones y skills/tools (SSOT para IA) |
 | `SddIA/norms/openapi-contract-rest-frontend.md` | Contrato REST: OpenAPI del backend como fuente de verdad |
 | Este archivo | Vista unificada del repo y del paquete en `src/` |
+| `docs/testing/` | Documentación sobre testing (Jest, Playwright) |
+| `docs/architecture/README-CONFIG.md` | Documentación sobre configuración del entorno |
 
 ## Scripts y automatización
 
