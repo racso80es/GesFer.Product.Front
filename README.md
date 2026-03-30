@@ -2,28 +2,59 @@
 
 Frontend **cliente** del ecosistema GesFer: aplicación Next.js 14 (App Router), TypeScript y Tailwind CSS para la gestión de compra/venta de chatarra. El código de aplicación vive en **`src/`**. Este repositorio es **independiente** del monorepo GesFer original.
 
-## Requisitos
+## ⚠️ Requisitos Previos
+
+Antes de continuar, asegúrate de tener instalado:
 
 - **Node.js** 18+ (recomendado 20+)
-- **npm**
+- **npm** (viene incluido con Node.js)
 - **Windows** con **PowerShell 7+** (convención del proyecto; ver `AGENTS.md`)
 - API backend disponible (desarrollo típico: `http://localhost:5020`; alinear con tu despliegue y con `NEXT_PUBLIC_API_URL`)
 
-## Inicio rápido
+## 🚀 Inicio Rápido e Instalación
 
-Desde la raíz del repositorio:
+### Configuración Automática (Recomendado)
+
+Si estás en Windows y cumples los requisitos de PowerShell, puedes usar el script automatizado para la instalación:
+
+```powershell
+cd src
+.\setup.ps1
+```
+
+Este script verificará Node.js, instalará dependencias (`npm install`) y creará tu entorno `.env.local`.
+
+Una vez finalizado, puedes iniciar la aplicación:
+
+```powershell
+npm run dev
+```
+
+La aplicación estará disponible en: **http://localhost:3000**
+
+### Configuración Manual
+
+Si prefieres o necesitas hacerlo manualmente desde la raíz del repositorio:
 
 ```powershell
 cd src
 npm install
 Copy-Item .env.example .env.local
-# Editar .env.local: NEXT_PUBLIC_API_URL apuntando a la API backend
+# Editar .env.local: NEXT_PUBLIC_API_URL apuntando a la API backend (ej. http://localhost:5020)
 npm run dev
 ```
 
-Por defecto, el servidor de desarrollo queda en **http://localhost:3000**.
+## 🔐 Autenticación y Credenciales de Prueba
 
-## Tecnologías
+Autenticación basada en sesión/tokens (ej. NextAuth en `app/api/auth/` y `auth.ts`). Las rutas que requieren sesión usan el componente `ProtectedRoute`.
+
+Una vez que la aplicación esté ejecutándose, puedes usar estas credenciales (entorno demo/semillas):
+
+- **Company / Organización**: Empresa Demo
+- **Usuario**: admin
+- **Contraseña**: admin123
+
+## 🛠 Tecnologías
 
 - **Next.js 14+** — App Router
 - **TypeScript**
@@ -32,59 +63,56 @@ Por defecto, el servidor de desarrollo queda en **http://localhost:3000**.
 - **Lucide React** — iconos
 - **Shadcn/UI** — componentes base (estilo)
 
-## Estructura del paquete (`src/`)
+## 📁 Estructura del Proyecto (`src/`)
 
 ```
 src/
 ├── app/                 # App Router: rutas por locale, grupos (client), API NextAuth, etc.
 ├── components/          # UI reutilizable (ui/, layout/, auth/, masters/, …)
+├── contexts/            # Contextos de React (Auth)
 ├── lib/                 # api/, providers/, utils/, tipos, configuración
 ├── public/              # Estáticos
 ├── messages/            # Cadenas i18n (es, en, ca, …)
-├── auth.ts              # Configuración NextAuth (según versión del proyecto)
-└── middleware.ts        # Enrutado / locale si aplica
+├── auth.ts              # Configuración NextAuth
+├── middleware.ts        # Enrutado / locale si aplica
+└── __tests__/           # Tests Jest (app, components, lib, …)
 ```
 
-## Autenticación
+## 🔗 Cliente API y TanStack Query
 
-Autenticación basada en sesión/tokens según la configuración actual (p. ej. NextAuth en `app/api/auth/` y `auth.ts`). El contexto de sesión y componentes como `ProtectedRoute` gestionan el acceso a rutas privadas.
+- **Cliente HTTP**: Ubicado en `lib/api/` (`client-client.ts`, `client-server.ts`). Funciones por dominio en `auth.ts`, `users.ts`, `customers.ts`, etc.
+- **TanStack Query**: Configurado con `staleTime` ~1 minuto, `refetchOnWindowFocus: false`, `retry: 1` (ajustado en `QueryProvider`).
 
-### Credenciales de ejemplo (entorno demo)
+## 🧪 Testing
 
-- **Company**: Empresa Demo  
-- **Usuario**: admin  
-- **Contraseña**: admin123  
+El proyecto utiliza **Jest** y **React Testing Library**. Para detalles sobre Playwright revisar la documentación correspondiente o `src/tests/README.md`.
 
-(Ajustar según tu backend y seeds.)
+### Dependencias Principales
+- `jest`, `jest-environment-jsdom`
+- `@testing-library/react`, `@testing-library/jest-dom`, `@testing-library/user-event`
 
-## Componentes UI
+### Comandos de Testing (desde `src/`)
 
-Componentes al estilo Shadcn en `components/ui/` (Button, Input, Card, Label, Loading, ErrorMessage, etc.).
+| Comando | Descripción |
+|--------|-------------|
+| `npm test` | Ejecutar todos los tests |
+| `npm run test:watch` | Ejecutar tests en modo watch (desarrollo) |
+| `npm run test:coverage`| Ejecutar tests y generar reporte de cobertura en `coverage/` |
 
-## Cliente API
+### Estructura de Tests
+Los tests unitarios y de componentes están en `src/__tests__/`. Las pruebas de integración/E2E viven en `src/tests/`. Se mockean dependencias como llamadas a la API o `localStorage` en `jest.setup.js`.
 
-Cliente HTTP en `lib/api/` (p. ej. `client-client.ts`, `client-server.ts` según el proyecto). Funciones por dominio: `auth.ts`, `users.ts`, `customers.ts`, empresas, maestros, etc.
-
-## TanStack Query
-
-Configuración habitual: `staleTime` ~1 minuto, `refetchOnWindowFocus`: false, `retry`: 1 (revisar en el provider de la app).
-
-## Rutas protegidas
-
-Las rutas que requieren sesión usan el patrón de componente/layout que verifica autenticación antes de renderizar (p. ej. `ProtectedRoute`).
-
-## Scripts disponibles (`src/`)
+## 📦 Scripts Disponibles (`src/`)
 
 | Comando | Descripción |
 |--------|-------------|
 | `npm run dev` | Servidor de desarrollo |
-| `npm run build` | Build de producción |
-| `npm start` | Servidor de producción |
-| `npm run lint` | Linter |
+| `npm run build` | Construir para producción (Build de producción) |
+| `npm start` | Iniciar servidor de producción |
+| `npm run lint` | Ejecutar Linter |
+| `npm test` | Ejecutar Tests |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
-
-## Imagen Docker (opcional)
+## 🐳 Imagen Docker (opcional)
 
 Build desde la **raíz del repositorio** (contexto `.`), usando el Dockerfile del paquete:
 
@@ -92,23 +120,29 @@ Build desde la **raíz del repositorio** (contexto `.`), usando el Dockerfile de
 docker build -f src/Dockerfile .
 ```
 
-En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requieras) según el backend. Salida **standalone** de Next.js (`src/next.config.js`).
+En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y variables necesarias) según el backend. Salida es **standalone** de Next.js (`src/next.config.js`).
 
-## Solución de problemas
+## 🐛 Solución de problemas
+
+### Error: "npm no se reconoce" o "Cannot find module"
+- Asegúrate de tener Node.js instalado. Reinicia la terminal.
+- Si fallan los módulos, elimina `node_modules/` y `package-lock.json` y vuelve a ejecutar `npm install`.
 
 ### Error de conexión a la API
-
-1. Comprueba que la API esté en ejecución.  
-2. Verifica `NEXT_PUBLIC_API_URL` en `.env.local`.  
-3. Revisa CORS en el backend.
+- Comprueba que la API esté en ejecución.
+- Verifica `NEXT_PUBLIC_API_URL` en `.env.local` y que CORS esté configurado en el backend.
 
 ### Problemas de autenticación
+- Comprueba las credenciales correctas y empresa válida.
+- Limpia almacenamiento local/cookies si hay sesiones corruptas o errores en la consola del navegador.
 
-1. Credenciales correctas y empresa válida.  
-2. Errores en la consola del navegador.  
-3. Limpia almacenamiento local/cookies si quedan sesiones corruptas.
+### El script de PowerShell no se ejecuta
+Ejecuta PowerShell como administrador o cambia la política de ejecución:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
 
-## Documentación
+## 📚 Documentación
 
 | Recurso | Contenido |
 |--------|-----------|
@@ -116,12 +150,15 @@ En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requi
 | `Objetivos.md` | Alcance, objetivos y contexto del proyecto |
 | `SddIA/` | Normas, procesos, acciones y skills/tools (SSOT para IA) |
 | `SddIA/norms/openapi-contract-rest-frontend.md` | Contrato REST: OpenAPI del backend como fuente de verdad |
-| Este archivo | Vista unificada del repo y del paquete en `src/` |
+| `src/CONFIGURACION-API.md` | Detalle específico operativo de la API |
+| `src/tests/README.md` | Testing avanzado e Integración/E2E |
 
-## Scripts y automatización
+*(Nota: La documentación general de setup e instrucciones de despliegue han sido unificadas en este mismo archivo).*
+
+## ⚙️ Scripts y automatización
 
 Herramientas y cápsulas en `scripts/` (índice: `scripts/tools/index.json`). Rutas canónicas en `SddIA/agents/cumulo.paths.json` (agente Cúmulo).
 
-## Licencia
+## 📄 Licencia
 
 Este proyecto es parte del sistema GesFer.
