@@ -2,35 +2,68 @@
 
 Frontend **cliente** del ecosistema GesFer: aplicación Next.js 14 (App Router), TypeScript y Tailwind CSS para la gestión de compra/venta de chatarra. El código de aplicación vive en **`src/`**. Este repositorio es **independiente** del monorepo GesFer original.
 
-## Requisitos
+## Requisitos y Estado Actual
+
+El proyecto está configurado con Next.js 14+ con TypeScript, Tailwind CSS con tema Shadcn/UI, TanStack Query y componentes de Material UI (MUI). Además cuenta con un sistema robusto de logs integrado con Pino (server-side en `logs/app.log` y endpoint de captura client-side `/api/logs`).
 
 - **Node.js** 18+ (recomendado 20+)
-- **npm**
+- **npm** (viene incluido con Node.js)
 - **Windows** con **PowerShell 7+** (convención del proyecto; ver `AGENTS.md`)
 - API backend disponible (desarrollo típico: `http://localhost:5020`; alinear con tu despliegue y con `NEXT_PUBLIC_API_URL`)
 
-## Inicio rápido
+Para verificar que están instalados:
+```bash
+node --version
+npm --version
+```
 
-Desde la raíz del repositorio:
+## Instalación y Configuración Inicial
+
+Desde la raíz del repositorio, sigue estos pasos para configurar el entorno:
 
 ```powershell
+# Accede al directorio del código fuente
 cd src
+
+# Instala todas las dependencias
 npm install
+
+# Crea la configuración local basada en el ejemplo
 Copy-Item .env.example .env.local
-# Editar .env.local: NEXT_PUBLIC_API_URL apuntando a la API backend
+```
+
+### Configuración de la URL de la API (y Solución CORS)
+
+El frontend se acopla a un contrato REST expuesto por el backend, basado en su OpenAPI (Swagger). La URL de la API se configura en el archivo `.env.local` en el directorio `src/`.
+
+Abre `src/.env.local` y ajusta `NEXT_PUBLIC_API_URL` apuntando al origen de tu API (esquema + host + puerto). Por ejemplo:
+
+```env
+# URL de la API backend (ajustar si usa otro puerto o si expone en HTTPS)
+NEXT_PUBLIC_API_URL=http://localhost:5020
+```
+
+> **Nota sobre CORS**: Asegúrate de que tu backend tenga los encabezados CORS configurados para permitir peticiones desde el origen del frontend (por defecto `http://localhost:3000`). Si experimentas el error `ERR_EMPTY_RESPONSE` en peticiones preflight (OPTIONS), revisa las políticas CORS en la API.
+
+## Servidor de Desarrollo
+
+Una vez configurado, inicia el servidor:
+
+```powershell
 npm run dev
 ```
 
-Por defecto, el servidor de desarrollo queda en **http://localhost:3000**.
+Por defecto, el servidor de desarrollo queda en **http://localhost:3000**. Espera a ver el mensaje `✓ Ready in X.Xs` en la terminal antes de intentar abrir el navegador.
 
 ## Tecnologías
 
 - **Next.js 14+** — App Router
 - **TypeScript**
 - **Tailwind CSS**
-- **TanStack Query** — estado del servidor
-- **Lucide React** — iconos
-- **Shadcn/UI** — componentes base (estilo)
+- **Material UI (MUI v5)** — Conviviendo con Tailwind mediante `@layer mui` y `@mui/material-nextjs`
+- **TanStack Query** — Estado del servidor (staleTime ~1 minuto, refetchOnWindowFocus: false)
+- **Lucide React** — Iconos
+- **Shadcn/UI** — Componentes base
 
 ## Estructura del paquete (`src/`)
 
@@ -47,7 +80,7 @@ src/
 
 ## Autenticación
 
-Autenticación basada en sesión/tokens según la configuración actual (p. ej. NextAuth en `app/api/auth/` y `auth.ts`). El contexto de sesión y componentes como `ProtectedRoute` gestionan el acceso a rutas privadas.
+Autenticación basada en sesión/tokens. El contexto de sesión y componentes como `ProtectedRoute` gestionan el acceso a rutas privadas.
 
 ### Credenciales de ejemplo (entorno demo)
 
@@ -55,25 +88,9 @@ Autenticación basada en sesión/tokens según la configuración actual (p. ej. 
 - **Usuario**: admin  
 - **Contraseña**: admin123  
 
-(Ajustar según tu backend y seeds.)
-
-## Componentes UI
-
-Componentes al estilo Shadcn en `components/ui/` (Button, Input, Card, Label, Loading, ErrorMessage, etc.).
-
-## Cliente API
-
-Cliente HTTP en `lib/api/` (p. ej. `client-client.ts`, `client-server.ts` según el proyecto). Funciones por dominio: `auth.ts`, `users.ts`, `customers.ts`, empresas, maestros, etc.
-
-## TanStack Query
-
-Configuración habitual: `staleTime` ~1 minuto, `refetchOnWindowFocus`: false, `retry`: 1 (revisar en el provider de la app).
-
-## Rutas protegidas
-
-Las rutas que requieren sesión usan el patrón de componente/layout que verifica autenticación antes de renderizar (p. ej. `ProtectedRoute`).
-
 ## Scripts disponibles (`src/`)
+
+Desde el directorio `src/`:
 
 | Comando | Descripción |
 |--------|-------------|
@@ -81,8 +98,12 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm run build` | Build de producción |
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
+| `npm run test:all` | Ejecuta todos los tests |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+## Testing
+
+El proyecto utiliza **Jest**, **React Testing Library** y **Playwright** para la suite de pruebas.
+Toda la documentación específica sobre las pruebas se encuentra consolidada en `docs/testing/README-TESTS.md`.
 
 ## Imagen Docker (opcional)
 
@@ -92,35 +113,53 @@ Build desde la **raíz del repositorio** (contexto `.`), usando el Dockerfile de
 docker build -f src/Dockerfile .
 ```
 
-En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requieras) según el backend. Salida **standalone** de Next.js (`src/next.config.js`).
+## Solución de Problemas (Troubleshooting)
 
-## Solución de problemas
+### El servidor no responde en el navegador
+
+1. **Reiniciar completamente**:
+   ```powershell
+   Get-Process -Name node | Stop-Process -Force
+   cd src
+   Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue
+   npm run dev
+   ```
+2. **Puerto bloqueado**: Prueba con otro puerto:
+   ```powershell
+   $env:PORT=3001
+   npm run dev
+   ```
+3. **Verificar que esté Listo**: No accedas a la URL hasta ver `✓ Ready` en la consola.
+4. **Verifica firewall y otros procesos** buscando el puerto en uso: `netstat -ano | findstr :3000`.
 
 ### Error de conexión a la API
-
-1. Comprueba que la API esté en ejecución.  
+1. Verifica que la API esté en ejecución.
 2. Verifica `NEXT_PUBLIC_API_URL` en `.env.local`.  
-3. Revisa CORS en el backend.
+3. Revisa la consola del navegador y los logs del backend para identificar fallos CORS o rutas incorrectas.
 
-### Problemas de autenticación
-
-1. Credenciales correctas y empresa válida.  
-2. Errores en la consola del navegador.  
-3. Limpia almacenamiento local/cookies si quedan sesiones corruptas.
-
-## Documentación
+## Documentación General
 
 | Recurso | Contenido |
 |--------|-----------|
 | `AGENTS.md` | Protocolo multi-agente y leyes del repositorio |
-| `Objetivos.md` | Alcance, objetivos y contexto del proyecto |
+| `docs/architecture/` | Guías de arquitectura (ej. `I18N-GUIDE.md`) |
+| `docs/testing/` | Documentación técnica y ejecución de tests |
 | `SddIA/` | Normas, procesos, acciones y skills/tools (SSOT para IA) |
-| `SddIA/norms/openapi-contract-rest-frontend.md` | Contrato REST: OpenAPI del backend como fuente de verdad |
 | Este archivo | Vista unificada del repo y del paquete en `src/` |
 
-## Scripts y automatización
+## Comandos Git Comunes
 
-Herramientas y cápsulas en `scripts/` (índice: `scripts/tools/index.json`). Rutas canónicas en `SddIA/agents/cumulo.paths.json` (agente Cúmulo).
+Convenciones y comandos frecuentes para subir cambios al repositorio:
+
+```bash
+# Formato de ramas: feat/kebab-case, fix/kebab-case
+git checkout -b feat/mi-nueva-caracteristica
+
+# Formato de commits (mensaje descriptivo)
+git add .
+git commit -m "feat: descripción de los cambios aplicados"
+git push origin feat/mi-nueva-caracteristica
+```
 
 ## Licencia
 
