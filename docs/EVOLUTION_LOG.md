@@ -1,3 +1,10 @@
+
+[2026-03-31] [feat/task-actualizacion-readme] [Unificación del README.md principal eliminando instrucciones dispersas en src/, y movimiento de guías de i18n y testing a docs/. Cierre de Tarea TASK-20260331-001.] [DONE].
+
+## feature: task-actualizacion-readme
+Resumen: Se consolidaron las instrucciones de configuracion, uso, problemas, cors, git y comandos en la raíz `README.md`. Se limpiaron archivos redundantes de `src/` (SETUP.md, CONFIGURACION-API.md, etc.) y se reubicó la documentación de testing e i18n a los directorios de arquitectura correspondientes.
+Referencia archivada: [docs/TASKS/DONE/TASK-20260331-001-actualizacion-readme.md](./TASKS/DONE/TASK-20260331-001-actualizacion-readme.md)
+
 Objetivo Home Publica
 
 [2026-03-28] [fix/fix-select-a11y] [Resolución de advertencias de accesibilidad (A11y) en el componente Select. Añadidos aria-controls y aria-selected. Tarea Kaizen completada.] [DONE].
