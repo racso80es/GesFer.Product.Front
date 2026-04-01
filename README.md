@@ -82,7 +82,7 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+Más detalle arquitectónico en `docs/architecture/` (ej. Guía i18n). Para tests, ver `docs/testing/README-TESTS.md`.
 
 ## Imagen Docker (opcional)
 
@@ -96,11 +96,18 @@ En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requi
 
 ## Solución de problemas
 
-### Error de conexión a la API
+### La aplicación no se conecta a la API o CORS error (ERR_EMPTY_RESPONSE)
 
-1. Comprueba que la API esté en ejecución.  
-2. Verifica `NEXT_PUBLIC_API_URL` en `.env.local`.  
-3. Revisa CORS en el backend.
+1. Verifica que la API backend esté ejecutándose.
+2. Verifica el valor de `NEXT_PUBLIC_API_URL` en `.env.local` y comprueba que coincide con el origen del backend (ej. `http://localhost:5020` o `https://localhost:5001`). Reinicia el servidor de Next.js (`npm run dev`) si cambias este valor.
+3. Asegúrate de que los CORS en el backend están configurados para permitir peticiones desde tu origen (`http://localhost:3000`).
+
+### El servidor no responde en el navegador
+
+1. Asegúrate de tener Node.js instalado (`node --version`).
+2. Detén cualquier proceso previo (ej. `Get-Process -Name node | Stop-Process -Force` en Windows).
+3. Limpia el caché de Next.js (`rm -rf .next`).
+4. Ejecuta `npm run dev` y espera el mensaje `Ready in X.Xs` antes de abrir el navegador.
 
 ### Problemas de autenticación
 
