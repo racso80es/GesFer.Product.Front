@@ -1,127 +1,130 @@
 # GesFer.Product.Front
 
-Frontend **cliente** del ecosistema GesFer: aplicación Next.js 14 (App Router), TypeScript y Tailwind CSS para la gestión de compra/venta de chatarra. El código de aplicación vive en **`src/`**. Este repositorio es **independiente** del monorepo GesFer original.
+Frontend **cliente** del ecosistema GesFer: aplicación Next.js 14 (App Router), TypeScript, Tailwind CSS, y Material UI (MUI v5) para la gestión de compra/venta de chatarra. El código de aplicación vive en **`src/`**. Este repositorio es **independiente** del monorepo GesFer original.
 
-## Requisitos
-
-- **Node.js** 18+ (recomendado 20+)
-- **npm**
-- **Windows** con **PowerShell 7+** (convención del proyecto; ver `AGENTS.md`)
-- API backend disponible (desarrollo típico: `http://localhost:5020`; alinear con tu despliegue y con `NEXT_PUBLIC_API_URL`)
-
-## Inicio rápido
-
-Desde la raíz del repositorio:
-
-```powershell
-cd src
-npm install
-Copy-Item .env.example .env.local
-# Editar .env.local: NEXT_PUBLIC_API_URL apuntando a la API backend
-npm run dev
-```
-
-Por defecto, el servidor de desarrollo queda en **http://localhost:3000**.
-
-## Tecnologías
+## Tecnologías Principales
 
 - **Next.js 14+** — App Router
 - **TypeScript**
 - **Tailwind CSS**
-- **TanStack Query** — estado del servidor
-- **Lucide React** — iconos
-- **Shadcn/UI** — componentes base (estilo)
+- **Material UI (MUI v5)** — con `@mui/material-nextjs` y `ThemeRegistry`
+- **TanStack Query** — Gestión de estado del servidor
+- **Next-Intl** — Internacionalización estricta bajo `src/app/[locale]/`
+- **Lucide React** y **Shadcn/UI** — Iconos y componentes base estilizados
+- **Pino** — Telemetría y Logging (servidor y cliente)
 
-## Estructura del paquete (`src/`)
+## ⚠️ Requisitos Previos
 
+1. **Node.js 18+** (recomendado 20+) y **npm**
+2. **Windows con PowerShell 7+** (para uso opcional de los scripts de inicialización, aunque `npm` es multiplataforma)
+3. API backend disponible (desarrollo típico: `http://localhost:5020` o `http://localhost:5000` / `https://localhost:5001`)
+
+Verificar instalación de Node:
+```bash
+node --version
+npm --version
 ```
-src/
-├── app/                 # App Router: rutas por locale, grupos (client), API NextAuth, etc.
-├── components/          # UI reutilizable (ui/, layout/, auth/, masters/, …)
-├── lib/                 # api/, providers/, utils/, tipos, configuración
-├── public/              # Estáticos
-├── messages/            # Cadenas i18n (es, en, ca, …)
-├── auth.ts              # Configuración NextAuth (según versión del proyecto)
-└── middleware.ts        # Enrutado / locale si aplica
+
+## 🚀 Inicio Rápido y Configuración
+
+Desde la raíz del repositorio, entra en `src/` e instala las dependencias:
+
+```bash
+cd src
+npm install
 ```
 
-## Autenticación
+Copia el archivo de ejemplo para las variables de entorno:
+```bash
+# Windows
+Copy-Item .env.example .env.local
+# Linux/Mac
+cp .env.example .env.local
+```
 
-Autenticación basada en sesión/tokens según la configuración actual (p. ej. NextAuth en `app/api/auth/` y `auth.ts`). El contexto de sesión y componentes como `ProtectedRoute` gestionan el acceso a rutas privadas.
+### Configuración de Variables de Entorno (`.env.local`)
+Ajusta la URL a la que corresponda tu backend API (revisa el `launchSettings.json` de la API):
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5020
+```
 
-### Credenciales de ejemplo (entorno demo)
+*Nota: si la API está en HTTP, usa puerto 5000 (o 5020). Si usas HTTPS (5001), el navegador podría advertir sobre el certificado local, lo cual es normal.*
 
-- **Company**: Empresa Demo  
+### Ejecutar la Aplicación
+```bash
+# Desarrollo
+npm run dev
+
+# Producción
+npm run build
+npm start
+
+# Linting y Tests
+npm run lint
+npm run test:all
+```
+
+La aplicación estará disponible por defecto en: **http://localhost:3000**
+
+### Ejecución Automática (Opcional - PowerShell)
+Si prefieres el setup automático desde Windows:
+```powershell
+cd src
+.\setup.ps1
+```
+
+## 🔐 Credenciales de Prueba
+
+- **Organización / Company**: Empresa Demo
 - **Usuario**: admin  
 - **Contraseña**: admin123  
 
-(Ajustar según tu backend y seeds.)
+## 📂 Estructura del Paquete (`src/`)
 
-## Componentes UI
+```
+src/
+├── app/[locale]/        # App Router: rutas por locale (es, en, ca), API NextAuth, logs, etc.
+├── components/          # UI reutilizable (ui/, layout/, auth/, etc.)
+├── lib/                 # api/, providers/, utils/, tipos
+├── public/              # Archivos estáticos
+├── messages/            # Cadenas i18n
+├── theme/               # Tema Material UI y ThemeRegistry
+└── config/              # Configuraciones adicionales
+```
 
-Componentes al estilo Shadcn en `components/ui/` (Button, Input, Card, Label, Loading, ErrorMessage, etc.).
+## 🐛 Solución de Problemas y Troubleshooting
 
-## Cliente API
+### Error: "npm no se reconoce"
+Instala Node.js, reinicia tu terminal, y asegúrate de que esté en las variables de entorno PATH.
 
-Cliente HTTP en `lib/api/` (p. ej. `client-client.ts`, `client-server.ts` según el proyecto). Funciones por dominio: `auth.ts`, `users.ts`, `customers.ts`, empresas, maestros, etc.
+### Error: "Cannot find module"
+Borra la carpeta `node_modules/` y el archivo `package-lock.json`, y ejecuta de nuevo `npm install`.
 
-## TanStack Query
+### El Cliente No Levanta o se queda "Pensando"
+1. Asegúrate de que no haya otro proceso ocupando el puerto 3000: `netstat -ano | findstr :3000`.
+2. Borra la caché de Next.js: `Remove-Item -Recurse -Force .next` y reinicia `npm run dev`.
+3. Prueba acceder a `http://127.0.0.1:3000` si `localhost` falla.
 
-Configuración habitual: `staleTime` ~1 minuto, `refetchOnWindowFocus`: false, `retry`: 1 (revisar en el provider de la app).
+### Problemas de CORS y "ERR_EMPTY_RESPONSE"
+Si el navegador arroja errores de CORS en peticiones preflight (OPTIONS):
+1. Asegúrate de que la API backend esté en ejecución y funcionando (prueba `http://localhost:5020/swagger` en tu navegador).
+2. Verifica que `NEXT_PUBLIC_API_URL` en `.env.local` coincide **exactamente** con la URL del Swagger de la API.
+3. Si cambias el `.env.local`, debes **reiniciar el servidor de Next.js** (`npm run dev`).
+4. La API en backend ya tiene `AllowAll` para CORS, pero asegúrate de que en su código `UseCors()` ocurre **antes** de `UseHttpsRedirection()`.
 
-## Rutas protegidas
+## 📚 Documentación Adicional
 
-Las rutas que requieren sesión usan el patrón de componente/layout que verifica autenticación antes de renderizar (p. ej. `ProtectedRoute`).
-
-## Scripts disponibles (`src/`)
-
-| Comando | Descripción |
-|--------|-------------|
-| `npm run dev` | Servidor de desarrollo |
-| `npm run build` | Build de producción |
-| `npm start` | Servidor de producción |
-| `npm run lint` | Linter |
-
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+La documentación especializada y arquitectónica se encuentra en:
+- `AGENTS.md` - Protocolo multi-agente, IA, y Leyes del Repositorio.
+- `docs/architecture/` - Decisiones arquitectónicas, incluyendo `i18n-guide.md`.
+- `docs/testing/` - Documentación específica de pruebas y E2E Playwright.
 
 ## Imagen Docker (opcional)
 
 Build desde la **raíz del repositorio** (contexto `.`), usando el Dockerfile del paquete:
 
-```powershell
+```bash
 docker build -f src/Dockerfile .
 ```
 
-En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requieras) según el backend. Salida **standalone** de Next.js (`src/next.config.js`).
-
-## Solución de problemas
-
-### Error de conexión a la API
-
-1. Comprueba que la API esté en ejecución.  
-2. Verifica `NEXT_PUBLIC_API_URL` en `.env.local`.  
-3. Revisa CORS en el backend.
-
-### Problemas de autenticación
-
-1. Credenciales correctas y empresa válida.  
-2. Errores en la consola del navegador.  
-3. Limpia almacenamiento local/cookies si quedan sesiones corruptas.
-
-## Documentación
-
-| Recurso | Contenido |
-|--------|-----------|
-| `AGENTS.md` | Protocolo multi-agente y leyes del repositorio |
-| `Objetivos.md` | Alcance, objetivos y contexto del proyecto |
-| `SddIA/` | Normas, procesos, acciones y skills/tools (SSOT para IA) |
-| `SddIA/norms/openapi-contract-rest-frontend.md` | Contrato REST: OpenAPI del backend como fuente de verdad |
-| Este archivo | Vista unificada del repo y del paquete en `src/` |
-
-## Scripts y automatización
-
-Herramientas y cápsulas en `scripts/` (índice: `scripts/tools/index.json`). Rutas canónicas en `SddIA/agents/cumulo.paths.json` (agente Cúmulo).
-
-## Licencia
-
-Este proyecto es parte del sistema GesFer.
+La imagen genera una salida **standalone** de Next.js. Define `NEXT_PUBLIC_API_URL` en tiempo de ejecución.
