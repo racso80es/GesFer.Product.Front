@@ -1,3 +1,9 @@
+[2026-04-02] [feat/actualizacion-readme] [Consolidación de README principal eliminando redundancias en src/. Cierre de TASK-20260402-001.] [DONE].
+
+## feature: actualizacion-readme
+Resumen: Se ha consolidado la documentación del proyecto, agrupando `src/INSTRUCCIONES.md`, `src/SETUP.md`, `src/CONFIGURACION-API.md`, y de troubleshooting, en el `README.md` de la raíz del proyecto. El archivo `src/README-TESTS.md` fue movido a `docs/testing/` y los archivos redundantes fueron borrados de `src/` manteniendose el SSOT.
+Referencia archivada: [docs/TASKS/DONE/TASK-20260402-001-Actualizacion_Readme.md](./TASKS/DONE/TASK-20260402-001-Actualizacion_Readme.md)
+
 Objetivo Home Publica
 
 [2026-03-28] [fix/fix-select-a11y] [Resolución de advertencias de accesibilidad (A11y) en el componente Select. Añadidos aria-controls y aria-selected. Tarea Kaizen completada.] [DONE].
