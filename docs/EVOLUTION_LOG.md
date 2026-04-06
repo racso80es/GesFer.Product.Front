@@ -34,3 +34,8 @@ Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_03_28_fix_select_a11y.md](./T
 ## feature: limpieza-temporal-shared (histórico)
 Resumen: Se completó la migración del directorio temporal de componentes compartidos del monorepo a la arquitectura nativa del proyecto, abandonando el enfoque de paquete "Shared" externo por incompatibilidad de contexto. Se reescribieron alias, tsconfig y tailwind.
 Referencia archivada: [docs/TASKS/DONE/T-20260325-001-limpieza-temporal-shared.md](./TASKS/DONE/T-20260325-001-limpieza-temporal-shared.md)
+[2026-04-06] [feat/task-20260406-001-actualizacion-readme] [Unificación de READMEs y reorganización de la documentación en docs/architecture y docs/testing. Eliminación de redundancias en src/. Tarea automática.] [DONE].
+
+## feature: task-20260406-001-actualizacion-readme
+Resumen: Se ha reorganizado la documentación del repositorio. Documentos de testing e i18n se movieron de `src/` a `docs/testing/` y `docs/architecture/`. Documentación redundante en `src/` como comandos, setups y configuraciones ya cubiertas por el README principal ha sido eliminada.
+Referencia archivada: [docs/TASKS/DONE/TASK-20260406-001-Actualizacion_Readme.md](./TASKS/DONE/TASK-20260406-001-Actualizacion_Readme.md)
