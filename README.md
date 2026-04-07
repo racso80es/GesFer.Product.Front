@@ -18,10 +18,16 @@ cd src
 npm install
 Copy-Item .env.example .env.local
 # Editar .env.local: NEXT_PUBLIC_API_URL apuntando a la API backend
-npm run dev
+npm run dev # (Ejecutar el servidor de desarrollo)
 ```
 
 Por defecto, el servidor de desarrollo queda en **http://localhost:3000**.
+Alternativamente, existe un script de automatización `setup.ps1` en `src/`:
+
+```powershell
+cd src
+.\setup.ps1
+```
 
 ## Tecnologías
 
@@ -82,7 +88,7 @@ Las rutas que requieren sesión usan el patrón de componente/layout que verific
 | `npm start` | Servidor de producción |
 | `npm run lint` | Linter |
 
-Más detalle operativo: `src/SETUP.md`, `src/CONFIGURACION-API.md`, tests en `src/tests/README.md`.
+Más detalle operativo en tests se encuentra en `docs/testing/README-TESTS.md`.
 
 ## Imagen Docker (opcional)
 
@@ -96,17 +102,35 @@ En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requi
 
 ## Solución de problemas
 
-### Error de conexión a la API
+### 1. El servidor no responde o hay problemas en puerto 3000
 
-1. Comprueba que la API esté en ejecución.  
-2. Verifica `NEXT_PUBLIC_API_URL` en `.env.local`.  
-3. Revisa CORS en el backend.
+- **Síntoma**: No se abre en el navegador a pesar de ejecutar el servidor de desarrollo.
+- **Solución**:
+  1. Verifica que en consola dice `✓ Ready in X.Xs`
+  2. Prueba `http://127.0.0.1:3000` o `http://[::1]:3000`
+  3. Si el puerto 3000 está ocupado: cambia con `$env:PORT=3001` y ejecuta el servidor de desarrollo.
+  4. Detén procesos trabados: `Get-Process -Name node | Stop-Process -Force` y borra la caché: `Remove-Item -Recurse -Force .next`
 
-### Problemas de autenticación
+### 2. Error de conexión a la API (CORS / Failed to fetch / ERR_EMPTY_RESPONSE)
+
+- **Síntoma**: Peticiones preflight que fallan o errores CORS.
+- **Causa**: La URL en `.env.local` es incorrecta o la API no está corriendo.
+- **Solución**:
+  1. Verifica que la API backend esté ejecutándose (por ejemplo, en `http://localhost:5020` o `https://localhost:5001`).
+  2. Ajusta `NEXT_PUBLIC_API_URL` en `.env.local` apuntando al origen de la API (esquema + host + puerto) sin barra final (`/`).
+  3. Reinicia el servidor de Next.js después de modificar `.env.local`.
+  4. Comprueba Swagger de la API (`http://localhost:5020/swagger`) en el navegador.
+
+### 3. Problemas de autenticación
 
 1. Credenciales correctas y empresa válida.  
 2. Errores en la consola del navegador.  
 3. Limpia almacenamiento local/cookies si quedan sesiones corruptas.
+
+### 4. Error "Cannot find module" o "npm no se reconoce"
+
+- Si npm no se reconoce, instala/reinstala Node.js (asegúrate de que esté en el PATH).
+- Si faltan módulos, borra `node_modules/` y `package-lock.json`, y vuelve a instalar las dependencias.
 
 ## Documentación
 
@@ -116,6 +140,8 @@ En tiempo de ejecución, define `NEXT_PUBLIC_API_URL` (y las variables que requi
 | `Objetivos.md` | Alcance, objetivos y contexto del proyecto |
 | `SddIA/` | Normas, procesos, acciones y skills/tools (SSOT para IA) |
 | `SddIA/norms/openapi-contract-rest-frontend.md` | Contrato REST: OpenAPI del backend como fuente de verdad |
+| `docs/architecture/` | Guías de arquitectura, incluyendo `I18N-GUIDE.md` |
+| `docs/testing/` | Guías y utilidades para pruebas (`README-TESTS.md`) |
 | Este archivo | Vista unificada del repo y del paquete en `src/` |
 
 ## Scripts y automatización

@@ -49,3 +49,9 @@ Referencia archivada: [docs/TASKS/DONE/TASK-001-limpieza-temporal-shared.md](./T
 ## feature: unificacion-ramas
 Resumen: Se realizó una unificación manual de ramas pendientes de revisión. El PR incluye la consolidación de la limpieza técnica de Tailwind (TemporalShared) y la re-organización y actualización de la documentación de `src/` al directorio raíz y las carpetas `docs/`. Los conflictos en `EVOLUTION_LOG.md` han sido resueltos.
 Referencia archivada: [docs/features/unificacion-ramas/README.md](./features/unificacion-ramas/README.md)
+
+[2024-04-07] [feat/actualizacion-readme] [Unificación de READMEs y reorganización de la documentación en docs/architecture y docs/testing. Eliminación de redundancias en src/. Tarea automática.] [DONE].
+
+## feature: actualizacion-readme
+Resumen: Se ha reorganizado la documentación del repositorio. Documentos de testing e i18n se movieron de `src/` a `docs/testing/` y `docs/architecture/`. Documentación redundante en `src/` como comandos, setups y configuraciones ya cubiertas por el README principal ha sido eliminada y el contenido útil se consolidó en el README.md de la raíz.
+Referencia archivada: [docs/TASKS/DONE/Actualizacion_Readme.md](./TASKS/DONE/Actualizacion_Readme.md)
