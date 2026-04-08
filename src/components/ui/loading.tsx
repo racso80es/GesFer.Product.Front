@@ -5,6 +5,7 @@ interface LoadingProps {
   className?: string;
   size?: "sm" | "md" | "lg";
   text?: string;
+  'data-testid'?: string;
 }
 
 const sizeClasses = {
@@ -13,11 +14,12 @@ const sizeClasses = {
   lg: "h-12 w-12",
 };
 
-export function Loading({ className, size = "md", text }: LoadingProps) {
+export function Loading({ className, size = "md", text, 'data-testid': testId }: LoadingProps) {
   return (
     <div 
       className={cn("flex flex-col items-center justify-center gap-2", className)}
       style={{ pointerEvents: 'none' }} // Permitir que los clicks pasen a través si es necesario
+      data-testid={testId}
     >
       <Loader2 className={cn("animate-spin text-primary", sizeClasses[size])} />
       {text && <p className="text-sm text-muted-foreground">{text}</p>}
