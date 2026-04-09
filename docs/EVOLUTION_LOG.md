@@ -1,5 +1,6 @@
 Objetivo Home Publica
 
+[2026-04-08] [feat/kaizen-typing-improvements] [Adición de tipados explícitos para data-testid en el componente Loading para estandarizar testing. Tarea automática Kaizen completada.] [DONE].
 [2026-04-06] [feat/unificacion-ramas] [Consolidación de ramas huérfanas sobre la actualización del readme general y la limpieza de temporal-shared para preparar el PR final. Resolución de conflictos y unificación de logs. Tarea manual completada.] [DONE].
 [2026-03-30] [feat/limpieza-temporal-shared] [Limpieza de referencias huérfanas a TemporalShared en tailwind.config.ts. Cierre de Tarea TASK-001.] [DONE].
 [2026-03-28] [fix/fix-select-a11y] [Resolución de advertencias de accesibilidad (A11y) en el componente Select. Añadidos aria-controls y aria-selected. Tarea Kaizen completada.] [DONE].
@@ -8,6 +9,10 @@ Objetivo Home Publica
 [2026-03-27] [feat/add-logs] [Implementación de sistema de logging persistente con Pino, endpoint API para capturas de cliente, y manejador global de errores. Cierre de Tarea TASK-20260327-001.] [DONE].
 [2026-03-27] [feat/kaizen-enforce-import-rule] [Configuración de eslint-plugin-import y regla import/first para garantizar la integridad de imports en Next.js. Tarea automática. Cierre de Tarea Kaizen_2026_03_27_Enforce_Import_Rule.] [DONE].
 [2026-03-27] [feat/add-components-mui] [Instalación de dependencias de MUI y Emotion. Configuración de Next.js App Router con ThemeProvider y AppRouterCacheProvider. Integración de tipados fuertes y prevención de conflictos con Tailwind CSS. Cierre de Tarea TASK-001-Add_Components_MUI.] [DONE].
+
+## feature: kaizen-typing-improvements
+Resumen: Se han añadido tipados explícitos para el atributo `data-testid` en el interfaz de propiedades del componente `src/components/ui/loading.tsx`. Esta mejora estandariza la escritura de hooks de prueba a través de los componentes UI y previene errores de validación de TypeScript en modos estrictos.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_08_typing_improvements.md](./TASKS/DONE/Kaizen_2026_04_08_typing_improvements.md)
 
 ## feature: kaizen-enforce-import-rule
 Resumen: Se ha integrado `eslint-plugin-import` y configurado la regla `import/first` en el archivo `.eslintrc.json`. Esta mejora fue realizada de forma autónoma siguiendo el proceso `automatic_task` como parte de una iniciativa de Mejora Continua (Kaizen).
