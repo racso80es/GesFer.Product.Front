@@ -66,3 +66,9 @@ Referencia archivada: [docs/TASKS/DONE/Actualizacion_Readme.md](./TASKS/DONE/Act
 ## bug-fix: bug-log-sddia
 Resumen: Se ha alineado la ruta física del archivo `EVOLUTION_LOG.md` genérico moviéndolo a `docs/evolution/EVOLUTION_LOG.md` para cumplir con lo establecido por la configuración `evolutionPath` de Cúmulo. Se ha actualizado `SddIA/actions/finalize/spec.md` quitando las referencias "quemadas" a la antigua ubicación. Se registró la alteración de la configuración de SddIA en `SddIA/evolution/`.
 Referencia archivada: [docs/bugs/bug-log-sddia/objectives.md](./bugs/bug-log-sddia/objectives.md)
+
+[2026-04-10] [fix/ui-components-testid] [Añadido data-testid a props de componentes UI] [DONE].
+
+## feature: ui-components-testid
+Resumen: Se ha añadido explícitamente `'data-testid'?: string;` a las interfaces de `InputProps` y `ButtonProps` en los componentes base de UI para estandarizar los hooks de testing y cumplir con las guidelines de memoria del proyecto.
+Referencia archivada: docs/features/ui-components-testid/objectives.md
