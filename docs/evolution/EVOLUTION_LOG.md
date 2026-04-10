@@ -60,3 +60,9 @@ Referencia archivada: [docs/features/unificacion-ramas/README.md](./features/uni
 ## feature: actualizacion-readme
 Resumen: Se ha reorganizado la documentación del repositorio. Documentos de testing e i18n se movieron de `src/` a `docs/testing/` y `docs/architecture/`. Documentación redundante en `src/` como comandos, setups y configuraciones ya cubiertas por el README principal ha sido eliminada y el contenido útil se consolidó en el README.md de la raíz.
 Referencia archivada: [docs/TASKS/DONE/Actualizacion_Readme.md](./TASKS/DONE/Actualizacion_Readme.md)
+
+[2026-04-10] [fix/bug-log-sddia] [Alineación de rutas de Evolution Logs de producto (docs/evolution/) e incorporación de cambios de Cúmulo al registro oficial SddIA.] [DONE].
+
+## bug-fix: bug-log-sddia
+Resumen: Se ha alineado la ruta física del archivo `EVOLUTION_LOG.md` genérico moviéndolo a `docs/evolution/EVOLUTION_LOG.md` para cumplir con lo establecido por la configuración `evolutionPath` de Cúmulo. Se ha actualizado `SddIA/actions/finalize/spec.md` quitando las referencias "quemadas" a la antigua ubicación. Se registró la alteración de la configuración de SddIA en `SddIA/evolution/`.
+Referencia archivada: [docs/bugs/bug-log-sddia/objectives.md](./bugs/bug-log-sddia/objectives.md)
