@@ -43,7 +43,7 @@ La acción **finalize** (finalizar) cierra el ciclo de la feature: asegura commi
 
 - **Rama publicada (subir / push):** La rama actual debe quedar subida en `origin`; es una salida obligatoria de finalize antes de considerar el PR creado.
 - **Evolution Logs actualizados:**
-  - paths.evolutionPath + paths.evolutionLogFile (raíz docs: docs/EVOLUTION_LOG.md según proyecto): una línea con formato `[YYYY-MM-DD] [feat/<nombre>] [Descripción breve del resultado.] [Estado].`
+  - paths.evolutionPath + paths.evolutionLogFile (raíz docs: docs/evolution/EVOLUTION_LOG.md según proyecto): una línea con formato `[YYYY-MM-DD] [feat/<nombre>] [Descripción breve del resultado.] [Estado].`
   - paths.evolutionPath + paths.evolutionLogFile: una sección con fecha, título de la feature, resumen de acción/alcance/resultado y referencia a la carpeta de la feature (Cúmulo)/objectives.md.
 - **Pull Request:** Creado hacia `master`, con descripción que enlace a la documentación de la feature (ej. paths.featurePath/<nombre_feature>/).
 - **Opcional:** Referencia al PR o estado en validacion.md o finalize.md de la carpeta de la feature (Cúmulo) (ej. URL del PR, timestamp de cierre en frontmatter).
@@ -76,7 +76,7 @@ Para **ejecutar** la acción finalize (pasos de push y PR), se debe invocar el s
    - Comando: `cargo run --bin verify_pr_protocol`.
    - Si la skill falla (exit code != 0), la acción **finalize** debe abortar inmediatamente. El agente debe reportar los errores y no proceder al paso 5.
 4. **Actualización de Evolution Logs:**
-   - Añadir entrada en docs/EVOLUTION_LOG.md (raíz) o paths.evolutionPath + paths.evolutionLogFile.
+   - Añadir entrada en docs/evolution/EVOLUTION_LOG.md (raíz) o paths.evolutionPath + paths.evolutionLogFile.
    - Añadir sección en paths.evolutionPath + paths.evolutionLogFile con resumen y enlace a la carpeta de la feature.
 5. **Ejecutar script finalize (push + PR):** **Invocar** `.\scripts\actions\finalize\Invoke-Finalize.ps1 -Persist "docs/features/<nombre_feature>/"` desde la raíz del repo. Este script comprueba precondiciones, opcionalmente ejecuta verify-pr-protocol y **invoca la skill finalizar-proceso** (Push-And-CreatePR.ps1 de la cápsula), que realiza el push y la creación del PR. Sin este paso ejecutado con éxito, el cierre no está completo. El agente no ejecuta `git push` ni `gh pr create` directamente; toda la interacción Git se hace a través de la skill (Ley COMANDOS).
 6. **Persistencia opcional:** Escribir finalize.md en la carpeta de la feature (Cúmulo) con YAML Frontmatter (pr_url, branch, timestamp); no finalize.json separado. Norma: SddIA/norms/features-documentation-frontmatter.md.
