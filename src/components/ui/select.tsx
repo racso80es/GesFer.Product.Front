@@ -22,6 +22,7 @@ interface SelectProps {
   onOpenChange?: (open: boolean) => void;
   disabled?: boolean;
   children: React.ReactNode;
+  'data-testid'?: string;
 }
 
 const Select = ({
@@ -32,6 +33,7 @@ const Select = ({
   onOpenChange,
   disabled,
   children,
+  'data-testid': testId,
 }: SelectProps) => {
   const id = React.useId();
   const actualValue = value ?? defaultValue;
@@ -64,14 +66,14 @@ const Select = ({
         disabled,
       }}
     >
-      <div className="relative">{children}</div>
+      <div className="relative" data-testid={testId}>{children}</div>
     </SelectContext.Provider>
   );
 };
 
 const SelectTrigger = React.forwardRef<
   HTMLButtonElement,
-  React.ButtonHTMLAttributes<HTMLButtonElement> & { children?: React.ReactNode }
+  React.ButtonHTMLAttributes<HTMLButtonElement> & { children?: React.ReactNode; 'data-testid'?: string; }
 >(({ className, children, ...props }, ref) => {
   const ctx = React.useContext(SelectContext);
   if (!ctx) return null;
@@ -114,7 +116,7 @@ const SelectValue = ({
 
 const SelectContent = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  React.HTMLAttributes<HTMLDivElement> & { 'data-testid'?: string }
 >(({ className, children, ...props }, ref) => {
   const ctx = React.useContext(SelectContext);
   if (!ctx || !ctx.open) return null;
@@ -136,7 +138,7 @@ SelectContent.displayName = "SelectContent";
 
 const SelectItem = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & { value: string; children?: React.ReactNode }
+  React.HTMLAttributes<HTMLDivElement> & { value: string; children?: React.ReactNode; 'data-testid'?: string; }
 >(({ className, value, children, ...props }, ref) => {
   const ctx = React.useContext(SelectContext);
   if (!ctx) return null;

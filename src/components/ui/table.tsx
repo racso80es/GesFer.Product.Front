@@ -3,7 +3,7 @@ import { cn } from "../../lib/utils/cn";
 
 const Table = React.forwardRef<
   HTMLTableElement,
-  React.HTMLAttributes<HTMLTableElement>
+  React.HTMLAttributes<HTMLTableElement> & { 'data-testid'?: string }
 >(({ className, ...props }, ref) => (
   <div className="relative w-full overflow-auto">
     <table
@@ -17,7 +17,7 @@ Table.displayName = "Table";
 
 const TableHeader = React.forwardRef<
   HTMLTableSectionElement,
-  React.HTMLAttributes<HTMLTableSectionElement>
+  React.HTMLAttributes<HTMLTableSectionElement> & { 'data-testid'?: string }
 >(({ className, ...props }, ref) => (
   <thead ref={ref} className={cn("[&_tr]:border-b", className)} {...props} />
 ));
@@ -25,7 +25,7 @@ TableHeader.displayName = "TableHeader";
 
 const TableBody = React.forwardRef<
   HTMLTableSectionElement,
-  React.HTMLAttributes<HTMLTableSectionElement>
+  React.HTMLAttributes<HTMLTableSectionElement> & { 'data-testid'?: string }
 >(({ className, ...props }, ref) => (
   <tbody
     ref={ref}
@@ -37,7 +37,7 @@ TableBody.displayName = "TableBody";
 
 const TableRow = React.forwardRef<
   HTMLTableRowElement,
-  React.HTMLAttributes<HTMLTableRowElement>
+  React.HTMLAttributes<HTMLTableRowElement> & { 'data-testid'?: string }
 >(({ className, ...props }, ref) => (
   <tr
     ref={ref}
@@ -52,7 +52,7 @@ TableRow.displayName = "TableRow";
 
 const TableHead = React.forwardRef<
   HTMLTableCellElement,
-  React.ThHTMLAttributes<HTMLTableCellElement>
+  React.ThHTMLAttributes<HTMLTableCellElement> & { 'data-testid'?: string }
 >(({ className, ...props }, ref) => (
   <th
     ref={ref}
@@ -67,7 +67,7 @@ TableHead.displayName = "TableHead";
 
 const TableCell = React.forwardRef<
   HTMLTableCellElement,
-  React.TdHTMLAttributes<HTMLTableCellElement>
+  React.TdHTMLAttributes<HTMLTableCellElement> & { 'data-testid'?: string }
 >(({ className, ...props }, ref) => (
   <td
     ref={ref}
