@@ -56,7 +56,7 @@ const useFormField = () => {
 
 const FormItem = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  React.HTMLAttributes<HTMLDivElement> & { 'data-testid'?: string }
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
@@ -68,7 +68,7 @@ FormItem.displayName = "FormItem";
 
 const FormLabel = React.forwardRef<
   HTMLLabelElement,
-  React.LabelHTMLAttributes<HTMLLabelElement>
+  React.LabelHTMLAttributes<HTMLLabelElement> & { 'data-testid'?: string }
 >(({ className, ...props }, ref) => {
   const { error, formItemId } = useFormField();
 
@@ -89,7 +89,7 @@ FormLabel.displayName = "FormLabel";
 
 const FormControl = React.forwardRef<
   HTMLElement,
-  React.HTMLAttributes<HTMLElement>
+  React.HTMLAttributes<HTMLElement> & { 'data-testid'?: string }
 >(({ className, children, ...props }, ref) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
   const child = React.Children.only(children) as React.ReactElement;
@@ -108,7 +108,7 @@ FormControl.displayName = "FormControl";
 
 const FormMessage = React.forwardRef<
   HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
+  React.HTMLAttributes<HTMLParagraphElement> & { 'data-testid'?: string }
 >(({ className, children, ...props }, ref) => {
   const { error, formMessageId } = useFormField();
   const body = (error?.message && typeof error.message === "string"

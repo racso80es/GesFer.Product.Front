@@ -7,30 +7,36 @@ interface DialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   children: React.ReactNode;
+  'data-testid'?: string;
 }
 
 interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
+  'data-testid'?: string;
 }
 
 interface DialogHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
+  'data-testid'?: string;
 }
 
 interface DialogTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
   children: React.ReactNode;
+  'data-testid'?: string;
 }
 
 interface DialogDescriptionProps
   extends React.HTMLAttributes<HTMLParagraphElement> {
   children: React.ReactNode;
+  'data-testid'?: string;
 }
 
 interface DialogFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
+  'data-testid'?: string;
 }
 
-const Dialog = ({ open, onOpenChange, children }: DialogProps) => {
+const Dialog = ({ open, onOpenChange, children, 'data-testid': testId }: DialogProps) => {
   // Efecto para manejar el overflow del body
   React.useEffect(() => {
     if (open) {
@@ -89,6 +95,7 @@ const Dialog = ({ open, onOpenChange, children }: DialogProps) => {
       }}
       role="dialog"
       aria-modal="true"
+      data-testid={testId}
     >
       <div
         className="fixed inset-0 bg-black/50"
@@ -175,6 +182,7 @@ const DialogClose = React.forwardRef<
   HTMLButtonElement,
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
     onClose: () => void;
+    'data-testid'?: string;
   }
 >(({ className, onClose, ...props }, ref) => (
   <Button
