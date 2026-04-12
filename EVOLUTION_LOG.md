@@ -18,3 +18,9 @@ Registro obligatorio de cambios relevantes de evolución del repositorio (Cúmul
 ## 2026-03-23 (entrada anterior)
 
 - **Clarify** inicial: decisiones D-05 a D-08 — HTTP y HTTPS locales; tests API real + mock; `EVOLUTION_LOG.md` obligatorio.
+
+[2026-04-12] [feat/optimize-theme-and-fonts] [Optimización de tema MUI y fuentes Roboto.] [DONE].
+
+## feature: optimize-theme-and-fonts
+Resumen: Se añadió la directiva 'use client' al tema MUI y se configuró la carga óptima de la fuente Roboto.
+Referencia archivada: [docs/features/optimize-theme-and-fonts/objectives.md](docs/features/optimize-theme-and-fonts/objectives.md)
