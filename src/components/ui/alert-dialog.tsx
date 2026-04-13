@@ -13,7 +13,7 @@ import { cn } from "../../lib/utils/cn";
 const AlertDialog = Dialog;
 const AlertDialogContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof DialogContent>
+  React.ComponentProps<typeof DialogContent> & { 'data-testid'?: string }
 >(({ className, ...props }, ref) => (
   <DialogContent
     ref={ref}
@@ -30,7 +30,7 @@ const AlertDialogFooter = DialogFooter;
 
 const AlertDialogAction = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
+  React.ComponentProps<typeof Button> & { 'data-testid'?: string }
 >(({ className, ...props }, ref) => (
   <Button
     ref={ref}
@@ -42,7 +42,7 @@ AlertDialogAction.displayName = "AlertDialogAction";
 
 const AlertDialogCancel = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
+  React.ComponentProps<typeof Button> & { 'data-testid'?: string }
 >(({ className, ...props }, ref) => (
   <Button
     ref={ref}
