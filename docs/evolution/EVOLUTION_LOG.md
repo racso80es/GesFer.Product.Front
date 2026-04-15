@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-04-15] [feat/kaizen-audit-norms] [Auditoría Kaizen: Se añadió YAML Frontmatter al archivo de norma SddIA/norms/commands-via-skills-or-tools.md para estandarizar las entidades del SDDIA.] [DONE].
+
+## feature: kaizen-audit-norms
+Resumen: Como parte de la iniciativa de Mejora Continua (Kaizen) identificada durante una evaluación de rutina bajo el proceso automatic_task, se insertó YAML Frontmatter en `SddIA/norms/commands-via-skills-or-tools.md`. Esta modificación estandariza las normas SddIA con el patrón prescrito de metadatos estructurados sin alterar sus contenidos operativos.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_15_audit_norms_frontmatter.md](./TASKS/DONE/Kaizen_2026_04_15_audit_norms_frontmatter.md)
+
 [2026-04-08] [feat/kaizen-typing-improvements] [Adición de tipados explícitos para data-testid en el componente Loading para estandarizar testing. Tarea automática Kaizen completada.] [DONE].
 [2026-04-06] [feat/unificacion-ramas] [Consolidación de ramas huérfanas sobre la actualización del readme general y la limpieza de temporal-shared para preparar el PR final. Resolución de conflictos y unificación de logs. Tarea manual completada.] [DONE].
 [2026-03-30] [feat/limpieza-temporal-shared] [Limpieza de referencias huérfanas a TemporalShared en tailwind.config.ts. Cierre de Tarea TASK-001.] [DONE].
