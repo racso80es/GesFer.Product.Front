@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-04-16] [feat/kaizen-audit-norms-git] [Auditoría Kaizen: Se añadió YAML Frontmatter al archivo de norma SddIA/norms/git-via-skills-or-process.md para estandarizar su metadata.] [DONE].
+
+## feature: kaizen-audit-norms-git
+Resumen: Como parte de la iniciativa de Mejora Continua (Kaizen) iniciada tras identificar una falta de metadatos, se insertó YAML Frontmatter en `SddIA/norms/git-via-skills-or-process.md`. Esta modificación estandariza las normas SddIA con el patrón prescrito de metadatos estructurados sin alterar sus contenidos operativos.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_16_audit_norms_frontmatter_git.md](./TASKS/DONE/Kaizen_2026_04_16_audit_norms_frontmatter_git.md)
+
 [2026-04-15] [feat/kaizen-audit-norms] [Auditoría Kaizen: Se añadió YAML Frontmatter al archivo de norma SddIA/norms/commands-via-skills-or-tools.md para estandarizar las entidades del SDDIA.] [DONE].
 
 ## feature: kaizen-audit-norms
