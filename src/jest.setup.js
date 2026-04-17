@@ -48,6 +48,15 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 })
 
+// Mock next-intl
+jest.mock('next-intl/server', () => ({
+  getRequestConfig: jest.fn(),
+}));
+
+jest.mock('next-intl', () => ({
+  useTranslations: () => (key) => key,
+}));
+
 // Mock localStorage
 const localStorageMock = {
   getItem: jest.fn(),

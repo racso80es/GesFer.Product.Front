@@ -34,7 +34,7 @@ const customJestConfig = {
     '/test-results/',
   ],
   transformIgnorePatterns: [
-    'node_modules/(?!(next-auth|@auth)/)',
+    'node_modules/(?!(next-auth|@auth|next-intl)/)',
   ],
   moduleDirectories: ['node_modules', '<rootDir>/node_modules'],
   roots: ['<rootDir>'],
