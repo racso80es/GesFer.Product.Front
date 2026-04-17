@@ -1,3 +1,9 @@
+---
+id: "norm-git-via-skills-or-process"
+name: "Git solo vía skill, herramienta, acción o proceso"
+type: "norm"
+status: "active"
+---
 # Norma: Git solo vía skill, herramienta, acción o proceso
 
 **Fuente:** SddIA/norms. Aplicable a todo agente o IA que opere en el repositorio.
