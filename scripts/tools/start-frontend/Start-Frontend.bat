@@ -24,5 +24,5 @@ if not exist "%SCRIPT_DIR%start_frontend.exe" (
 )
 
 "%SCRIPT_DIR%start_frontend.exe" %*
-exit /b !ERRORLEVEL!
+exit /b %ERRORLEVEL%
 endlocal

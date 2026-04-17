@@ -36,7 +36,7 @@ version: 1.0.0
 **Definición (SddIA):** Este directorio.
 **Implementación (scripts):** Ruta canónica en Cúmulo → **implementation_path_ref:** `paths.toolCapsules.start-frontend`.
 
-**Implementación Rust:** Ejecutable `start_frontend.exe` en la ruta de la tool (junto al .bat). Fuente: `scripts/tools-rs/src/bin/start_frontend.rs`. Launcher `.bat` invoca el .exe. Compilación: `cargo build --release` en tools-rs; despliegue: `install.ps1`.
+**Implementación Rust:** Ejecutable `start_frontend.exe` en la ruta de la tool (junto al .bat). Fuente: `scripts/tools-rs/src/bin/start_frontend.rs`. Launcher `.bat` invoca el .exe. Compilación: `cargo build --release` en tools-rs; despliegue: `install.ps1`. En **Windows**, el binario lanza `npm run dev` mediante `cmd /C npm …` porque `npm` es un `.cmd` y `CreateProcess` no lo resuelve igual que el shell (evita error «program not found»).
 
 ## Objetivo
 
