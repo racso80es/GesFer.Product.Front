@@ -1,11 +1,5 @@
 Objetivo Home Publica
 
-[2026-04-18] [feat/adecuar-companies-a-mycompany-1181935355670548290] [Documentación S+ PR54, proceso automatic_task 1.3.0 (carpetas-tarea); tarea s-plus-pr54-mycompany archivada en DONE] [DONE].
-
-## feature: s-plus-pr54-mycompany
-Resumen: Entregada la carpeta-tarea con objectives, spec, plan, implementation, validacion y finalize para el plan de cumplimiento S+ post-revisión PR #54 (MyCompany). Se actualizó `SddIA/process/automatic_task/spec.md` a la versión 1.3.0 para reconocer unidades de tarea en subcarpetas bajo `paths.tasksPath`. Los ítems de implementación de código del plan (hook en `src/lib/hooks/`, tests, E2E, Kaizen navegación) pueden seguir como trabajo pendiente hasta merge o iteración posterior.
-Referencia archivada: [docs/TASKS/DONE/s-plus-pr54-mycompany/finalize.md](./TASKS/DONE/s-plus-pr54-mycompany/finalize.md)
-
 [2024-04-18] [feat/adecuar-companies-a-mycompany] [Adecuar modulo Companies a endpoint MyCompany usando Clean Architecture y hooks] [DONE].
 
 ## feature: adecuar-companies-a-mycompany
