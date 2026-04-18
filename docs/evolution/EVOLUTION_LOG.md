@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-04-18] [feat/adecuar-companies-a-mycompany] [Adecuar modulo Companies a endpoint MyCompany usando Clean Architecture y hooks] [DONE].
+
+## feature: adecuar-companies-a-mycompany
+Resumen: Refactorizada la vista de /companies para consumir un hook de react-query `useMyCompany` y un servicio de `myCompanyApi`, eliminando la logica de listar/borrar multi-companies y transformandola en una vista "My Company" con formulario de edicion.
+Referencia archivada: [docs/TASKS/DONE/T-20260418-001.md](../../docs/TASKS/DONE/T-20260418-001.md)
+
 [2026-04-16] [feat/kaizen-audit-norms-git] [Auditoría Kaizen: Se añadió YAML Frontmatter al archivo de norma SddIA/norms/git-via-skills-or-process.md para estandarizar su metadata.] [DONE].
 
 ## feature: kaizen-audit-norms-git
@@ -67,7 +73,7 @@ Referencia archivada: [docs/TASKS/DONE/TASK-001-limpieza-temporal-shared.md](./T
 Resumen: Se realizó una unificación manual de ramas pendientes de revisión. El PR incluye la consolidación de la limpieza técnica de Tailwind (TemporalShared) y la re-organización y actualización de la documentación de `src/` al directorio raíz y las carpetas `docs/`. Los conflictos en `EVOLUTION_LOG.md` han sido resueltos.
 Referencia archivada: [docs/features/unificacion-ramas/README.md](./features/unificacion-ramas/README.md)
 
-[2024-04-07] [feat/actualizacion-readme] [Unificación de READMEs y reorganización de la documentación en docs/architecture y docs/testing. Eliminación de redundancias en src/. Tarea automática.] [DONE].
+[2026-04-07] [feat/actualizacion-readme] [Unificación de READMEs y reorganización de la documentación en docs/architecture y docs/testing. Eliminación de redundancias en src/. Tarea automática.] [DONE].
 
 ## feature: actualizacion-readme
 Resumen: Se ha reorganizado la documentación del repositorio. Documentos de testing e i18n se movieron de `src/` a `docs/testing/` y `docs/architecture/`. Documentación redundante en `src/` como comandos, setups y configuraciones ya cubiertas por el README principal ha sido eliminada y el contenido útil se consolidó en el README.md de la raíz.
