@@ -93,3 +93,7 @@ src/playwright-report/
 **/TestResults/
 infrastructure/mock-apis/node_modules/
 **/target/
+
+# Next.js (artefactos de build; regenerables con npm run build)
+.next/
+**/.next/
