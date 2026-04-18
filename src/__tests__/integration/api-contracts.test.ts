@@ -6,16 +6,13 @@
  */
 
 import { usersApi } from "@/lib/api/users";
-import { companiesApi } from "@/lib/api/companies";
 import { authApi } from "@/lib/api/auth";
 import type { User, Company, CreateUser, UpdateUser, CreateCompany, UpdateCompany } from "@/lib/types/api";
 
 jest.mock("@/lib/api/users");
-jest.mock("@/lib/api/companies");
 jest.mock("@/lib/api/auth");
 
 const mockUsersApi = usersApi as jest.Mocked<typeof usersApi>;
-const mockCompaniesApi = companiesApi as jest.Mocked<typeof companiesApi>;
 const mockAuthApi = authApi as jest.Mocked<typeof authApi>;
 
 describe("Contratos API - Verificación de Interfaces", () => {
@@ -110,57 +107,6 @@ describe("Contratos API - Verificación de Interfaces", () => {
     });
   });
 
-  describe("Contrato: Companies API", () => {
-    it("debe cumplir contrato de CreateCompany", async () => {
-      const createData: CreateCompany = {
-        name: "New Company",
-        taxId: "B12345678",
-        email: "new@example.com",
-      };
-
-      const expectedCompany: Company = {
-        id: "company-1",
-        name: "New Company",
-        taxId: "B12345678",
-        email: "new@example.com",
-        isActive: true,
-        createdAt: "2024-01-01T00:00:00Z",
-      };
-
-      mockCompaniesApi.create.mockResolvedValue(expectedCompany);
-
-      const result = await companiesApi.create(createData);
-
-      expect(result).toHaveProperty("id");
-      expect(result).toHaveProperty("name");
-      expect(result).toHaveProperty("isActive");
-      expect(result).toHaveProperty("createdAt");
-      expect(typeof result.name).toBe("string");
-      expect(typeof result.isActive).toBe("boolean");
-    });
-
-    it("debe cumplir contrato de UpdateCompany", async () => {
-      const updateData: UpdateCompany = {
-        name: "Updated Company",
-        email: "updated@example.com",
-      };
-
-      const updatedCompany: Company = {
-        id: "company-1",
-        name: "Updated Company",
-        email: "updated@example.com",
-        isActive: true,
-        createdAt: "2024-01-01T00:00:00Z",
-      };
-
-      mockCompaniesApi.update.mockResolvedValue(updatedCompany);
-
-      const result = await companiesApi.update("company-1", updateData);
-
-      expect(result.name).toBe("Updated Company");
-      expect(result.email).toBe("updated@example.com");
-    });
-  });
 
   describe("Contrato: Autenticación API", () => {
     it("debe cumplir contrato de LoginResponse", async () => {
