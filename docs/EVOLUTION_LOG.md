@@ -9,3 +9,9 @@ Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_11_test_id_standardization
 ## feature: Fix duplicate html tags in locale layout
 Resumen: Se eliminaron las etiquetas <html> y <body> y los providers redundantes de src/app/[locale]/layout.tsx que causaban duplicados ya que están en el layout raíz.
 Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_14_fix_duplicate_html_layouts.md](docs/TASKS/DONE/Kaizen_2026_04_14_fix_duplicate_html_layouts.md)
+
+[2024-04-17] [feat/kaizen-add-locale-tests] [Agregar tests para utilidades de locale] [DONE].
+
+## feature: Agregar tests para utilidades de locale
+Resumen: Se agregaron pruebas unitarias para getLocaleFromUser en locale.ts y se actualizó la configuración de Jest para procesar next-intl.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2024_04_17_add_locale_tests.md](docs/TASKS/DONE/Kaizen_2024_04_17_add_locale_tests.md)
