@@ -4,7 +4,7 @@ action_id: validate
 feature_id: s-plus-pr54-mycompany
 title: "Validación — Checklist S+"
 date: "2026-04-18"
-status: draft
+status: done
 global: |
   Cierre de tarea s-plus-pr54-mycompany cuando todos los checks pasan.
 checks: |

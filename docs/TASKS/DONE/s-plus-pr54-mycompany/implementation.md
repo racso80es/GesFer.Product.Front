@@ -4,7 +4,7 @@ action_id: implementation
 feature_id: s-plus-pr54-mycompany
 title: "Implementación — Pasos concretos S+"
 date: "2026-04-18"
-status: draft
+status: done
 touchpoints: |
   src/hooks/use-my-company.ts
   src/lib/hooks/use-my-company.ts

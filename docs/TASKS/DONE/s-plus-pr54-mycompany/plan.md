@@ -4,7 +4,7 @@ action_id: planning
 feature_id: s-plus-pr54-mycompany
 title: "Plan — Fases S+ PR #54"
 date: "2026-04-18"
-status: draft
+status: done
 phases: |
   Fase A: Arquitectura (bloqueante merge estricto SDdIA).
   Fase B: Tests unitarios / contrato API.

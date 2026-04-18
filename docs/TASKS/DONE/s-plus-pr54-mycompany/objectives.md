@@ -4,7 +4,7 @@ action_id: objectives
 feature_id: s-plus-pr54-mycompany
 title: "Objetivos — Cumplimiento S+ post-revisión PR #54 (MyCompany)"
 date: "2026-04-18"
-status: draft
+status: done
 branch: "feat/adecuar-companies-a-mycompany-1181935355670548290"
 scope: |
   Cerrar brechas detectadas en revisión SDdIA (architect, qa-judge, security ya OK):

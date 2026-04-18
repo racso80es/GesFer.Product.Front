@@ -4,7 +4,7 @@ action_id: spec
 feature_id: s-plus-pr54-mycompany
 title: "Especificación — Cumplimiento S+ PR #54"
 date: "2026-04-18"
-status: draft
+status: done
 scope: |
   Tareas correctivas y de calidad sobre el refactor MyCompany ya mergeado o en PR,
   sin reintroducir multi-empresa salvo que el dominio lo exija.
