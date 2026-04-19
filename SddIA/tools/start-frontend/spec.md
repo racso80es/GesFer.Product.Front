@@ -24,6 +24,7 @@ output:
     - init
     - port-check
     - port-kill
+    - next-cache
     - launch
     - healthcheck
     - done
@@ -90,4 +91,6 @@ Cumple `SddIA/tools/tools-contract.json`: objeto JSON con toolId, exitCode, succ
 
 ## Fases (feedback)
 
-init → port-check → [port-kill si PortBlocked kill y aplica] → launch → healthcheck → done | error.
+init → port-check → [port-kill si PortBlocked kill y aplica] → [next-cache si aplica] → launch → healthcheck → done | error.
+
+**Fase `next-cache` (opcional):** Antes de `launch`, si existe `.next` con artefactos que referencian el vendor chunk de TanStack (`@tanstack.js`) pero el fichero falta en disco (caché incoherente, p. ej. tras un build interrumpido), la implementación **elimina** el directorio `.next` del frontend y emite feedback informativo; si el borrado falla, emite advertencia. Así se evita el error de runtime `Cannot find module './vendor-chunks/@tanstack.js'` al arrancar `next dev`.

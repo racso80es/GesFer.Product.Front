@@ -12,9 +12,9 @@ const withNextIntl = createNextIntlPlugin('./i18n.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Deshabilitar la optimización de vendor chunks que está causando problemas
+  // Sin optimizePackageImports para react-query/TanStack: en dev puede dejar referencias a
+  // vendor-chunks incoherentes tras cambios interrumpidos en `.next`.
   experimental: {
-    optimizePackageImports: ['@tanstack/react-query'],
     serverComponentsExternalPackages: ['pino', 'pino-pretty'],
   },
   output: "standalone",
