@@ -6,13 +6,17 @@ spec_ref: SddIA/tools/start-frontend/spec.md
 
 # Salida JSON — start-frontend: Análisis, especificación y clarificación
 
+## Entradas (referencia; no son el JSON de salida)
+
+La política ante puerto ocupado (**PortBlocked**) puede indicarse por CLI (`--port-blocked false|kill`) y por la clave **`portBlocked`** en `start-frontend-config.json` (booleano `false` o cadena `"kill"`). **Precedencia:** CLI sobre escribe el valor del fichero; sin flag CLI se usa el config; sin clave en el config, `false`. Detalle: [spec.md](./spec.md) v1.2.0, [clarify.md](./clarify.md) (D-06).
+
 ## Tabla codificada de salidas (tools-contract.output.output_codes_table)
 
 | exitCode | success | message_resumen | data_presente | descripción |
 |----------|---------|-----------------|---------------|-------------|
 | 0 | true | "Frontend levantado; health OK" | Sí: url_base, port, pid, healthy | Éxito: dev server levantado y respondiendo en la URL. |
 | 1 | false | "Config no encontrado o inválido" | No | Config no encontrado o JSON inválido; no se intentó arrancar. |
-| 2 | false | "Puerto ocupado" | Sí: port, port_in_use | Puerto en uso; usar --port-blocked kill o --port. |
+| 2 | false | "Puerto ocupado" | Sí: port, port_in_use | Puerto en uso; cambiar `--port`, `portBlocked` en config o `--port-blocked kill`. |
 | 3 | false | "No se pudo liberar el puerto" / "Puerto aún ocupado" | Sí o No | Fallo al liberar puerto (kill) o puerto sigue ocupado tras kill. |
 | 4 | false | "Directorio frontend no encontrado" | No | frontendWorkingDir no existe; precondición fallida. |
 | 6 | false | "Error al lanzar frontend" | No | npm run dev no ejecutó (PATH, permisos, etc.). |

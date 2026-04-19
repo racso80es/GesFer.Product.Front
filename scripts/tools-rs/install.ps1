@@ -38,9 +38,7 @@ if ($LASTEXITCODE -ne 0) {
 $toolsDir = Join-Path $scriptDir "..\tools"
 $releaseDir = Join-Path $scriptDir "target\release"
 $capsules = @(
-    @{ exe = "start_frontend"; capsule = "start-frontend" },
-    @{ exe = "prepare_frontend_env"; capsule = "prepare-frontend-env" },
-    @{ exe = "run_tests_frontend"; capsule = "run-tests-frontend" }
+    @{ exe = "start_frontend"; capsule = "start-frontend" }
 )
 foreach ($cap in $capsules) {
     $src = Join-Path $releaseDir "$($cap.exe).exe"

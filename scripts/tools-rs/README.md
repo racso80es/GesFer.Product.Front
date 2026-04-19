@@ -18,9 +18,7 @@ cargo build --release
 
 El script `install.ps1` compila y **copia los ejecutables a la ruta de cada cápsula** (rutas canónicas: Cúmulo **paths.toolCapsules**, `SddIA/agents/cumulo.json`):
 
-- **paths.toolCapsules['start-frontend']** + `start_frontend.exe` — Start-Frontend (dev server Next.js)
-- **paths.toolCapsules['prepare-frontend-env']** + `prepare_frontend_env.exe` — Prepare-FrontendEnv (npm install + .env)
-- **paths.toolCapsules['run-tests-frontend']** + `run_tests_frontend.exe` — Run-Tests-Frontend (lint, build, unit, e2e)
+- **paths.toolCapsules['start-frontend']** + `start_frontend.exe` — Start-Frontend (dev server Next.js; ver `SddIA/tools/start-frontend/spec.md`)
 
 ## Uso
 
@@ -39,7 +37,5 @@ Argumentos:
 
 - `src/lib.rs` — Tipos del contrato (`ToolResult`, `FeedbackEntry`, `to_contract_json`).
 - `src/bin/start_frontend.rs` — Herramienta start-frontend.
-- `src/bin/prepare_frontend_env.rs` — Herramienta prepare-frontend-env.
-- `src/bin/run_tests_frontend.rs` — Herramienta run-tests-frontend.
 
 Referencia: `SddIA/tools/tools-contract.json`, `SddIA/agents/security-engineer.json`.
