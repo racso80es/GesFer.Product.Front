@@ -14,15 +14,8 @@ clap = { version = "4.4", features = ["derive"] }
 tokio = { version = "1.0", features = ["full"] }
 reqwest = { version = "0.11", features = ["json", "blocking"] }
 anyhow = "1.0"
+sysinfo = "0.32"
 
 [[bin]]
 name = "start_frontend"
 path = "src/bin/start_frontend.rs"
-
-[[bin]]
-name = "prepare_frontend_env"
-path = "src/bin/prepare_frontend_env.rs"
-
-[[bin]]
-name = "run_tests_frontend"
-path = "src/bin/run_tests_frontend.rs"

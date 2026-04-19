@@ -1,3 +1,9 @@
+---
+id: "norm-commands-via-skills-or-tools"
+name: "Comandos solo vía skill, herramienta, acción o proceso"
+type: "norm"
+status: "active"
+---
 # Norma: Comandos solo vía skill, herramienta, acción o proceso
 
 **Fuente:** SddIA/norms. Aplicable a todo agente o IA que opere en el repositorio.

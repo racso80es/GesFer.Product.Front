@@ -1,5 +1,23 @@
 Objetivo Home Publica
 
+[2024-04-18] [feat/adecuar-companies-a-mycompany] [Adecuar modulo Companies a endpoint MyCompany usando Clean Architecture y hooks] [DONE].
+
+## feature: adecuar-companies-a-mycompany
+Resumen: Refactorizada la vista de /companies para consumir un hook de react-query `useMyCompany` y un servicio de `myCompanyApi`, eliminando la logica de listar/borrar multi-companies y transformandola en una vista "My Company" con formulario de edicion.
+Referencia archivada: [docs/TASKS/DONE/T-20240418-001.md](../../docs/TASKS/DONE/T-20240418-001.md)
+
+[2026-04-16] [feat/kaizen-audit-norms-git] [Auditoría Kaizen: Se añadió YAML Frontmatter al archivo de norma SddIA/norms/git-via-skills-or-process.md para estandarizar su metadata.] [DONE].
+
+## feature: kaizen-audit-norms-git
+Resumen: Como parte de la iniciativa de Mejora Continua (Kaizen) iniciada tras identificar una falta de metadatos, se insertó YAML Frontmatter en `SddIA/norms/git-via-skills-or-process.md`. Esta modificación estandariza las normas SddIA con el patrón prescrito de metadatos estructurados sin alterar sus contenidos operativos.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_16_audit_norms_frontmatter_git.md](./TASKS/DONE/Kaizen_2026_04_16_audit_norms_frontmatter_git.md)
+
+[2026-04-15] [feat/kaizen-audit-norms] [Auditoría Kaizen: Se añadió YAML Frontmatter al archivo de norma SddIA/norms/commands-via-skills-or-tools.md para estandarizar las entidades del SDDIA.] [DONE].
+
+## feature: kaizen-audit-norms
+Resumen: Como parte de la iniciativa de Mejora Continua (Kaizen) identificada durante una evaluación de rutina bajo el proceso automatic_task, se insertó YAML Frontmatter en `SddIA/norms/commands-via-skills-or-tools.md`. Esta modificación estandariza las normas SddIA con el patrón prescrito de metadatos estructurados sin alterar sus contenidos operativos.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_15_audit_norms_frontmatter.md](./TASKS/DONE/Kaizen_2026_04_15_audit_norms_frontmatter.md)
+
 [2026-04-08] [feat/kaizen-typing-improvements] [Adición de tipados explícitos para data-testid en el componente Loading para estandarizar testing. Tarea automática Kaizen completada.] [DONE].
 [2026-04-06] [feat/unificacion-ramas] [Consolidación de ramas huérfanas sobre la actualización del readme general y la limpieza de temporal-shared para preparar el PR final. Resolución de conflictos y unificación de logs. Tarea manual completada.] [DONE].
 [2026-03-30] [feat/limpieza-temporal-shared] [Limpieza de referencias huérfanas a TemporalShared en tailwind.config.ts. Cierre de Tarea TASK-001.] [DONE].

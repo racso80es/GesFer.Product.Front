@@ -23,6 +23,15 @@ if not exist "%SCRIPT_DIR%start_frontend.exe" (
     exit /b 1
 )
 
-"%SCRIPT_DIR%start_frontend.exe" %*
-exit /b !ERRORLEVEL!
+if "%~1"=="" (
+  "%SCRIPT_DIR%start_frontend.exe" --output-json
+) else (
+  echo %*| findstr /i "output-json" >nul
+  if errorlevel 1 (
+    "%SCRIPT_DIR%start_frontend.exe" --output-json %*
+  ) else (
+    "%SCRIPT_DIR%start_frontend.exe" %*
+  )
+)
+exit /b %ERRORLEVEL%
 endlocal

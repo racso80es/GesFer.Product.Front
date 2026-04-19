@@ -8,19 +8,16 @@
 import { QueryClient } from "@tanstack/react-query";
 import { authApi } from "@/lib/api/auth";
 import { usersApi } from "@/lib/api/users";
-import { companiesApi } from "@/lib/api/companies";
 import { apiClient } from "@/lib/api/client";
 import type { CreateUser, User } from "@/lib/types/api";
 
 // Mock de las APIs
 jest.mock("@/lib/api/auth");
 jest.mock("@/lib/api/users");
-jest.mock("@/lib/api/companies");
 jest.mock("@/lib/api/client");
 
 const mockAuthApi = authApi as jest.Mocked<typeof authApi>;
 const mockUsersApi = usersApi as jest.Mocked<typeof usersApi>;
-const mockCompaniesApi = companiesApi as jest.Mocked<typeof companiesApi>;
 const mockApiClient = apiClient as jest.Mocked<typeof apiClient>;
 
 // Helper para crear QueryClient para cada test
@@ -190,83 +187,6 @@ describe("Tests de Integridad - Auditoría Completa", () => {
     });
   });
 
-  describe("3. Integridad CRUD de Companies", () => {
-    const mockCompany = {
-      id: "company-1",
-      name: "Test Company",
-      taxId: "B12345678",
-      address: "Test Address",
-      phone: "123456789",
-      email: "company@example.com",
-      isActive: true,
-      createdAt: "2024-01-01T00:00:00Z",
-    };
-
-    it("debe listar todas las companies", async () => {
-      mockCompaniesApi.getAll.mockResolvedValue([mockCompany]);
-
-      const result = await companiesApi.getAll();
-
-      expect(result).toHaveLength(1);
-      expect(result[0]).toEqual(mockCompany);
-      expect(mockCompaniesApi.getAll).toHaveBeenCalled();
-    });
-
-    it("debe obtener una company por ID", async () => {
-      mockCompaniesApi.getById.mockResolvedValue(mockCompany);
-
-      const result = await companiesApi.getById("company-1");
-
-      expect(result).toEqual(mockCompany);
-      expect(mockCompaniesApi.getById).toHaveBeenCalledWith("company-1");
-    });
-
-    it("debe crear una nueva company", async () => {
-      const newCompany = {
-        name: "New Company",
-        taxId: "B87654321",
-        email: "new@example.com",
-      };
-
-      mockCompaniesApi.create.mockResolvedValue({
-        ...mockCompany,
-        ...newCompany,
-        id: "company-2",
-      });
-
-      const result = await companiesApi.create(newCompany);
-
-      expect(result.name).toBe("New Company");
-      expect(mockCompaniesApi.create).toHaveBeenCalledWith(newCompany);
-    });
-
-    it("debe actualizar una company existente", async () => {
-      const updateData = {
-        name: "Updated Company",
-        email: "updated@example.com",
-      };
-
-      mockCompaniesApi.update.mockResolvedValue({
-        ...mockCompany,
-        ...updateData,
-      });
-
-      const result = await companiesApi.update("company-1", updateData);
-
-      expect(result.name).toBe("Updated Company");
-      expect(mockCompaniesApi.update).toHaveBeenCalledWith("company-1", updateData);
-    });
-
-    it("debe eliminar una company", async () => {
-      mockCompaniesApi.delete.mockResolvedValue(undefined);
-
-      await companiesApi.delete("company-1");
-
-      expect(mockCompaniesApi.delete).toHaveBeenCalledWith("company-1");
-    });
-  });
-
-  describe("4. Integridad del Cliente API", () => {
     it("debe incluir token de autenticación en peticiones", async () => {
       // Verificar que las APIs usan el token cuando está disponible
       localStorage.setItem("auth_token", "test-token");
@@ -356,69 +276,7 @@ describe("Tests de Integridad - Auditoría Completa", () => {
       expect(users[0].username).toBe("newuser");
     });
 
-    it("debe completar flujo completo de edición de company", async () => {
-      const originalCompany = {
-        id: "company-1",
-        name: "Original Company",
-        taxId: "B12345678",
-        isActive: true,
-        createdAt: "2024-01-01T00:00:00Z",
-      };
 
-      const updatedCompany = {
-        ...originalCompany,
-        name: "Updated Company",
-        email: "updated@example.com",
-      };
-
-      // 1. Obtener company (usar mockResolvedValueOnce para la primera llamada)
-      mockCompaniesApi.getById.mockResolvedValueOnce(originalCompany);
-
-      // 2. Actualizar company
-      mockCompaniesApi.update.mockResolvedValue(updatedCompany);
-
-      // 3. Verificar actualización (segunda llamada a getById)
-      mockCompaniesApi.getById.mockResolvedValueOnce(updatedCompany);
-
-      const company = await companiesApi.getById("company-1");
-      expect(company.name).toBe("Original Company");
-
-      const updated = await companiesApi.update("company-1", {
-        name: "Updated Company",
-        email: "updated@example.com",
-      });
-      expect(updated.name).toBe("Updated Company");
-
-      const verified = await companiesApi.getById("company-1");
-      expect(verified.name).toBe("Updated Company");
-    });
-
-    it("debe completar flujo completo de eliminación", async () => {
-      const mockCompany = {
-        id: "company-1",
-        name: "Test Company",
-        isActive: true,
-        createdAt: "2024-01-01T00:00:00Z",
-      };
-
-      // 1. Listar companies (incluye la que se va a eliminar) - usar mockResolvedValueOnce
-      mockCompaniesApi.getAll.mockResolvedValueOnce([mockCompany]);
-
-      // 2. Eliminar company
-      mockCompaniesApi.delete.mockResolvedValue(undefined);
-
-      // 3. Listar companies (ya no debe aparecer) - segunda llamada
-      mockCompaniesApi.getAll.mockResolvedValueOnce([]);
-
-      const before = await companiesApi.getAll();
-      expect(before).toHaveLength(1);
-
-      await companiesApi.delete("company-1");
-
-      const after = await companiesApi.getAll();
-      expect(after).toHaveLength(0);
-    });
-  });
 
   describe("6. Integridad de Validaciones", () => {
     it("debe validar que companyId es requerido al crear usuario", async () => {
@@ -523,5 +381,5 @@ describe("Tests de Integridad - Auditoría Completa", () => {
       expect(afterRemoval).toBeUndefined();
     });
   });
-});
 
+});

@@ -1,9 +1,10 @@
 {
-  "version": "1.0.0",
-  "description": "Configuracion para start-frontend: directorio del frontend, comando y salud.",
+  "version": "1.1.0",
+  "description": "Configuracion para start-frontend: directorio del frontend, comando, salud y politica ante puerto ocupado.",
   "frontendWorkingDir": "src",
   "command": "npm run dev",
   "defaultPort": 3000,
+  "portBlocked": false,
   "protocol": "http",
   "healthUrl": "http://localhost:3000",
   "healthCheckTimeoutSeconds": 30
