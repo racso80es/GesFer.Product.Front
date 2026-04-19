@@ -3,10 +3,10 @@ import type { Company, UpdateCompany } from "@/lib/types/api";
 
 export const myCompanyApi = {
   get: async (): Promise<Company> => {
-    return apiClient.get<Company>("/api/MyCompany");
+    return apiClient.get<Company>("/api/my-company");
   },
 
   update: async (data: UpdateCompany): Promise<Company> => {
-    return apiClient.put<Company>("/api/MyCompany", data);
+    return apiClient.put<Company>("/api/my-company", data);
   },
 };
