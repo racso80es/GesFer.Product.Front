@@ -90,3 +90,8 @@ Referencia archivada: [docs/bugs/bug-log-sddia/objectives.md](./bugs/bug-log-sdd
 ## feature: ui-components-testid
 Resumen: Se ha añadido explícitamente `'data-testid'?: string;` a las interfaces de `InputProps` y `ButtonProps` en los componentes base de UI para estandarizar los hooks de testing y cumplir con las guidelines de memoria del proyecto.
 Referencia archivada: docs/features/ui-components-testid/objectives.md
+[2026-04-18] [feat/refactorization-mycompany-routes] [Refactorización de alineación rutas My Company completada] [DONE].
+
+## feature: refactorization-mycompany-routes
+Resumen: Alinear las rutas de /api/MyCompany a /api/my-company para cumplir la convención de URLs del proyecto y documentar las variables de entorno de la URL de API. Además, se añadió el test unitario de useMyCompany.
+Referencia archivada: [docs/TASKS/DONE/20260418-Refactor-Alineacion-rutas-MyCompany.md](../../docs/TASKS/DONE/20260418-Refactor-Alineacion-rutas-MyCompany.md)
