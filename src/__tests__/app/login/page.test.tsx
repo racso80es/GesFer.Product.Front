@@ -1,6 +1,6 @@
 import { render, screen, waitFor, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import LoginPage from '@/app/(client)/login/page'
+import LoginPage from '@/app/[locale]/login/page'
 import { useAuth } from '@/contexts/auth-context'
 // Valores por defecto del login (coinciden con .env.example / seed demo)
 const DEFAULT_LOGIN_COMPANY = 'Empresa Demo'
