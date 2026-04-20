@@ -36,6 +36,12 @@ export class MyCompanyPage extends BasePage {
     address?: string;
     phone?: string;
   }) {
+    const putResponse = this.page.waitForResponse(
+      (r) =>
+        r.url().includes("/api/my-company") && r.request().method() === "PUT",
+      { timeout: 15000 }
+    );
+
     if (data.name !== undefined) await this.nameInput.fill(data.name);
     if (data.taxId !== undefined) await this.taxIdInput.fill(data.taxId);
     if (data.email !== undefined) await this.emailInput.fill(data.email);
@@ -43,6 +49,13 @@ export class MyCompanyPage extends BasePage {
     if (data.phone !== undefined) await this.phoneInput.fill(data.phone);
 
     await this.saveButton.click();
+    const resp = await putResponse;
+    const body = await resp.text();
+    if (!resp.ok()) {
+      throw new Error(
+        `PUT mi organización falló: ${resp.status} ${resp.statusText} — ${body}`
+      );
+    }
   }
 
   async verifySuccessMessage() {

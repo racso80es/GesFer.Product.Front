@@ -39,6 +39,12 @@ branch: fix/mycompany-rastros-ui-i18n
 
 - El middleware **no** trata `/companies` de forma especial: 404 como cualquier ruta sin página.
 
+## PUT mi organización — cuerpo y 500 (2026-04-20)
+
+- **Causa habitual de 500:** envío de `postalCodeId`, `cityId`, `stateId`, `countryId` o `languageId` como cadena vacía `""`; el API de producto (binder Guid) suele fallar. **Corrección:** `sanitizeCompanyMutationBody` en `src/lib/utils/company-payload.ts` y uso en `CompanyForm`; inclusión opcional de `id` de la empresa en el cuerpo.
+- **Diagnóstico:** `getProductApi` ahora lee el cuerpo de error del upstream; la ruta BFF reenvía el mensaje en `{ error }`.
+- **E2E:** `MyCompanyPage.updateOrganization` espera la respuesta `PUT` y falla con mensaje explícito si no es 2xx.
+
 ## Seguimiento — hidratación y documentación (2026-04-20)
 
 - **Nota técnica del bug:** `technical-note-hydration.md` en esta carpeta.

@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select";
 import { ErrorMessage } from "@/components/ui/error-message";
 import type { Company, CreateCompany, UpdateCompany } from "@/lib/types/api";
+import { sanitizeCompanyMutationBody } from "@/lib/utils/company-payload";
 import { useTranslations, useLocale } from "next-intl";
 import { useMemo, useState } from "react";
 
@@ -139,7 +140,13 @@ export function CompanyForm({
       if (!dataToSubmit.phone) delete dataToSubmit.phone;
       if (!dataToSubmit.taxId) delete dataToSubmit.taxId;
 
-      await onSubmit(dataToSubmit as CreateCompany | UpdateCompany);
+      if (company?.id) {
+        dataToSubmit.id = company.id;
+      }
+
+      const payload = sanitizeCompanyMutationBody(dataToSubmit);
+
+      await onSubmit(payload as CreateCompany | UpdateCompany);
     } catch (error) {
       setSubmitError(
         error instanceof Error ? error.message : t("saveError")

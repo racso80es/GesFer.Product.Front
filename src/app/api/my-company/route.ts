@@ -46,8 +46,9 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: "No autorizado" }, { status: 401 });
     }
     console.error("Error updating my company:", error);
+    const clientMessage = msg.replace(/^API error \d+:\s*/i, "").trim() || msg;
     return NextResponse.json(
-      { error: "Error al actualizar la organización" },
+      { error: clientMessage || "Error al actualizar la organización" },
       { status: 500 }
     );
   }
