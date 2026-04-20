@@ -23,7 +23,7 @@ jest.mock('next-intl', () => ({
       'common.loading': 'Cargando...',
       'navigation.dashboard': 'Panel de control',
       'navigation.users': 'Usuarios',
-      'navigation.companies': 'Companies',
+      'navigation.myCompany': 'Mi organización',
       'navigation.customers': 'Clientes',
       'auth.logout': 'Cerrar sesión',
       'users.title': 'Usuarios',

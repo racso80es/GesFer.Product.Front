@@ -22,8 +22,9 @@ import {
 } from "@/components/ui/select";
 import { ErrorMessage } from "@/components/ui/error-message";
 import type { Company, CreateCompany, UpdateCompany } from "@/lib/types/api";
-import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { sanitizeCompanyMutationBody } from "@/lib/utils/company-payload";
+import { useTranslations, useLocale } from "next-intl";
+import { useMemo, useState } from "react";
 
 // Language options mapping (Codes to GUIDs from seed-data.sql)
 const LANGUAGE_OPTIONS = [
@@ -68,16 +69,11 @@ export function CompanyForm({
   onCancel,
   isLoading = false,
 }: CompanyFormProps) {
-  const t = useTranslations("companies.form");
+  const t = useTranslations("myCompany.form");
   const tCommon = useTranslations("common");
+  const locale = useLocale();
   const isEditing = !!company;
   const [submitError, setSubmitError] = useState<string | null>(null);
-
-  // Determine current locale for displaying language names
-  const locale =
-    typeof window !== "undefined"
-      ? window.location.pathname.split("/")[1] || "es"
-      : "es";
 
   const languageNames: Record<string, Record<string, string>> = {
     es: { es: "Español", en: "English", ca: "Català" },
@@ -87,41 +83,70 @@ export function CompanyForm({
 
   const currentLanguageNames = languageNames[locale] || languageNames.es;
 
+  const emptyDefaults = useMemo(
+    (): FormValues => ({
+      name: "",
+      taxId: "",
+      address: "",
+      phone: "",
+      email: "",
+      postalCodeId: "",
+      cityId: "",
+      stateId: "",
+      countryId: "",
+      languageId: "",
+      isActive: true,
+    }),
+    []
+  );
+
+  const companyFormValues = useMemo((): FormValues | undefined => {
+    if (!company) return undefined;
+    return {
+      name: company.name,
+      taxId: company.taxId || "",
+      address: company.address || "",
+      phone: company.phone || "",
+      email: company.email || "",
+      postalCodeId: company.postalCodeId || "",
+      cityId: company.cityId || "",
+      stateId: company.stateId || "",
+      countryId: company.countryId || "",
+      languageId: company.languageId || "",
+      isActive: company.isActive,
+    };
+  }, [company]);
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: company?.name || "",
-      taxId: company?.taxId || "",
-      address: company?.address || "",
-      phone: company?.phone || "",
-      email: company?.email || "",
-      postalCodeId: company?.postalCodeId || "",
-      cityId: company?.cityId || "",
-      stateId: company?.stateId || "",
-      countryId: company?.countryId || "",
-      languageId: company?.languageId || "",
-      isActive: isEditing ? company?.isActive : true,
-    },
+    defaultValues: emptyDefaults,
+    ...(companyFormValues ? { values: companyFormValues } : {}),
   });
 
   const handleSubmit = async (values: FormValues) => {
     setSubmitError(null);
     try {
-      const dataToSubmit: any = { ...values };
+      const dataToSubmit: Record<string, unknown> = { ...values };
 
       // Handle languageId logic
       if (dataToSubmit.languageId) {
-        dataToSubmit.languageId = getLanguageId(dataToSubmit.languageId);
+        dataToSubmit.languageId = getLanguageId(dataToSubmit.languageId as string);
       } else {
         delete dataToSubmit.languageId;
       }
-      
+
       // Clean empty strings for optional fields
       if (!dataToSubmit.email) delete dataToSubmit.email;
       if (!dataToSubmit.phone) delete dataToSubmit.phone;
       if (!dataToSubmit.taxId) delete dataToSubmit.taxId;
 
-      await onSubmit(dataToSubmit);
+      if (company?.id) {
+        dataToSubmit.id = company.id;
+      }
+
+      const payload = sanitizeCompanyMutationBody(dataToSubmit);
+
+      await onSubmit(payload as unknown as CreateCompany | UpdateCompany);
     } catch (error) {
       setSubmitError(
         error instanceof Error ? error.message : t("saveError")
@@ -149,7 +174,7 @@ export function CompanyForm({
                         <Input
                             {...field}
                             disabled={isLoading}
-                            data-test-id="company-form-name"
+                            data-testid="my-company-form-name"
                         />
                       </FormControl>
                       <FormMessage />
@@ -169,7 +194,7 @@ export function CompanyForm({
                     <Input
                         {...field}
                         disabled={isLoading}
-                        data-test-id="company-form-taxId"
+                        data-testid="my-company-form-taxId"
                     />
                   </FormControl>
                   <FormMessage />
@@ -185,7 +210,12 @@ export function CompanyForm({
                 <FormItem>
                   <FormLabel>{t("phone")}</FormLabel>
                   <FormControl>
-                    <Input {...field} type="tel" disabled={isLoading} />
+                    <Input
+                      {...field}
+                      type="tel"
+                      disabled={isLoading}
+                      data-testid="my-company-form-phone"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -204,7 +234,7 @@ export function CompanyForm({
                         {...field}
                         type="email"
                         disabled={isLoading}
-                        data-test-id="company-form-email"
+                        data-testid="my-company-form-email"
                     />
                   </FormControl>
                   <FormMessage />
@@ -223,7 +253,11 @@ export function CompanyForm({
                         {t("address")} <span className="text-destructive">*</span>
                       </FormLabel>
                       <FormControl>
-                        <Input {...field} disabled={isLoading} />
+                        <Input
+                          {...field}
+                          disabled={isLoading}
+                          data-testid="my-company-form-address"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -240,7 +274,7 @@ export function CompanyForm({
                   <FormLabel>{t("language")}</FormLabel>
                   <Select
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
+                    value={field.value || undefined}
                     disabled={isLoading}
                   >
                     <FormControl>

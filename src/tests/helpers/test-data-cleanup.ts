@@ -66,7 +66,7 @@ export class TestDataCleanup {
       }
     }
 
-    // Limpiar companies
+    // Limpiar datos de organización / tenant de prueba
     for (const companyId of this.createdCompanyIds) {
       try {
         await this.apiClient.deleteCompany(companyId, this.authToken);

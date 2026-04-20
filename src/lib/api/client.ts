@@ -1,5 +1,3 @@
-import type { ApiError, ApiResponse } from "@/lib/types/api";
-
 // Origen API: getPublicApiOrigin() → lib/api-origin.ts + config/api-origin-defaults.json
 import { API_URL } from "@/lib/config";
 
@@ -30,11 +28,30 @@ class ApiClient {
     this.accessToken = token;
   }
 
+  /**
+   * Rutas implementadas solo en Next (Route Handlers / BFF), no en el API de producto
+   * bajo el mismo path cuando NEXT_PUBLIC_API_URL apunta al backend (p. ej. :5020).
+   * En el navegador deben usarse como URL relativa al origen de la app.
+   */
+  private effectiveBaseUrl(pathOnly: string): string {
+    if (typeof window === "undefined") {
+      return this.baseUrl;
+    }
+    if (
+      pathOnly === "/api/my-company" ||
+      pathOnly.startsWith("/api/my-company/")
+    ) {
+      return "";
+    }
+    return this.baseUrl;
+  }
+
   private async request<T>(
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
-    const url = `${this.baseUrl}${endpoint}`;
+    const pathOnly = endpoint.split("?")[0] ?? endpoint;
+    const url = `${this.effectiveBaseUrl(pathOnly)}${endpoint}`;
     
     const config: RequestInit = {
       ...options,
@@ -76,10 +93,16 @@ class ApiClient {
       const response = await fetch(url, config);
 
       if (!response.ok) {
-        const errorData: ApiError = await response.json().catch(() => ({
-          message: `Error ${response.status}: ${response.statusText}`,
-        }));
-        throw new Error(errorData.message || "Error en la petición");
+        const raw = await response.json().catch(() => null);
+        const fromJson =
+          raw && typeof raw === "object"
+            ? (raw as { message?: string; error?: string })
+            : null;
+        const msg =
+          fromJson?.message ||
+          fromJson?.error ||
+          `Error ${response.status}: ${response.statusText}`;
+        throw new Error(msg);
       }
 
       // Si la respuesta es 204 No Content, retornar void
@@ -105,7 +128,13 @@ class ApiClient {
   }
 
   async get<T>(endpoint: string, params?: Record<string, string>): Promise<T> {
-    const url = new URL(`${this.baseUrl}${endpoint}`);
+    const pathOnly = endpoint.split("?")[0] ?? endpoint;
+    const base = this.effectiveBaseUrl(pathOnly);
+    const baseForConstructor =
+      base === "" && typeof window !== "undefined"
+        ? window.location.origin
+        : base || "http://localhost";
+    const url = new URL(endpoint, `${baseForConstructor}/`);
     if (params) {
       Object.entries(params).forEach(([key, value]) => {
         url.searchParams.append(key, value);
@@ -129,7 +158,13 @@ class ApiClient {
   }
 
   async delete<T>(endpoint: string, params?: Record<string, string>): Promise<T> {
-    const url = new URL(`${this.baseUrl}${endpoint}`);
+    const pathOnly = endpoint.split("?")[0] ?? endpoint;
+    const base = this.effectiveBaseUrl(pathOnly);
+    const baseForConstructor =
+      base === "" && typeof window !== "undefined"
+        ? window.location.origin
+        : base || "http://localhost";
+    const url = new URL(endpoint, `${baseForConstructor}/`);
     if (params) {
       Object.entries(params).forEach(([key, value]) => {
         url.searchParams.append(key, value);

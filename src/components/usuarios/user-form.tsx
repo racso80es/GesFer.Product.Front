@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { ErrorMessage } from "@/components/ui/error-message";
 import type { User, CreateUser, UpdateUser } from "@/lib/types/api";
 import { useAuth } from "@/contexts/auth-context";
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 interface UserFormProps {
   user?: User;
@@ -25,6 +25,7 @@ export function UserForm({
   const { user: loggedUser } = useAuth();
   const t = useTranslations('users.form');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
   const isEditing = !!user;
   
   // La company siempre es la del usuario logueado
@@ -68,12 +69,7 @@ export function UserForm({
     { value: "10000000-0000-0000-0000-000000000003", label: "Català", code: "ca" },
   ];
   
-  // Obtener el locale actual para mostrar los nombres de idioma en el idioma correcto
-  const locale = typeof window !== 'undefined' 
-    ? window.location.pathname.split('/')[1] || 'es'
-    : 'es';
-  
-  // Mapeo de nombres de idioma según el locale
+  // Mapeo de nombres de idioma según el locale (next-intl; no usar window.location en render — ver SddIA/norms/nextjs-hydration-client-state.md)
   const languageNames: Record<string, Record<string, string>> = {
     es: { es: "Español", en: "English", ca: "Català" },
     en: { es: "Spanish", en: "English", ca: "Catalan" },

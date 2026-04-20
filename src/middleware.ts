@@ -54,7 +54,7 @@ function getLocaleFromUser(request: NextRequest): Locale {
 const publicRoutes = ['/login', '/api/auth'];
 
 // Rutas que requieren autenticación
-const protectedRoutes = ['/dashboard', '/usuarios', '/clientes', '/companies', '/maestros'];
+const protectedRoutes = ['/dashboard', '/usuarios', '/clientes', '/my-company', '/maestros'];
 
 /**
  * Normaliza la URL base corrigiendo localhost.com a localhost
@@ -74,7 +74,7 @@ function getNormalizedBaseUrl(request: NextRequest): string {
 export default async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const baseUrl = getNormalizedBaseUrl(request);
-  
+
   // Eliminar cualquier locale de la URL si existe (redirigir a la ruta sin locale)
   const pathnameParts = pathname.split('/').filter(Boolean);
   const firstPart = pathnameParts[0];

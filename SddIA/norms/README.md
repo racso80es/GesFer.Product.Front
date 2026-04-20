@@ -14,5 +14,6 @@ Este directorio contiene **normas de comportamiento** del agente definidas en el
 | **agents-principles-contract.md** | Implementación del contrato de principios en agentes (principlesContract). |
 | **patterns-in-planning-implementation-execution.md** | Aplicación de patrones en planning, implementation, execution. |
 | **obediencia-procesos.md** | La IA no debe validar o cuestionar las indicaciones dadas por el proceso, sino ejecutarlas literalmente. |
+| **nextjs-hydration-client-state.md** | Paridad de hidratación en Next.js App Router: no usar `localStorage` / `window` en el primer render para ramificar UI; `useHasMounted`, `useLocale`, `useSyncExternalStore`. Tests: `src/__tests__/policies/nextjs-hydration-policy.test.ts`. |
 
 **Referencia en protocolo:** AGENTS.md (leyes universales, disparadores) indica que el comportamiento lo define SddIA y remite a este directorio.

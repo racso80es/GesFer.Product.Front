@@ -15,7 +15,25 @@ export const getProductApi = () => {
     const response = await fetch(url, { ...options, headers });
 
     if (!response.ok) {
-      throw new Error(`API error: ${response.statusText}`);
+      const rawText = await response.text();
+      let detail = response.statusText || "Error";
+      if (rawText) {
+        try {
+          const parsed = JSON.parse(rawText) as {
+            message?: string;
+            error?: string;
+            title?: string;
+          };
+          detail =
+            parsed.message ||
+            parsed.error ||
+            parsed.title ||
+            rawText.slice(0, 500);
+        } catch {
+          detail = rawText.slice(0, 500);
+        }
+      }
+      throw new Error(`API error ${response.status}: ${detail}`);
     }
 
     if (response.status === 204) {

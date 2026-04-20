@@ -5,6 +5,15 @@ import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/contexts/auth-context";
 import { Loading } from "@/components/ui/loading";
 import { useTranslations } from 'next-intl';
+import { useHasMounted } from "@/hooks/use-has-mounted";
+
+function readStoredAuthUser(): string | null {
+  try {
+    return localStorage.getItem("auth_user");
+  } catch {
+    return null;
+  }
+}
 
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -15,6 +24,10 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const hasRedirectedRef = useRef(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [forceAllowInteraction, setForceAllowInteraction] = useState(false);
+  /** Evita leer localStorage en el primer render del cliente para coincidir con el SSR y no romper la hidratación */
+  const hasMounted = useHasMounted();
+
+  const storedAuthUser = hasMounted ? readStoredAuthUser() : null;
 
   useEffect(() => {
     // Si ya verificamos, no hacer nada más
@@ -27,7 +40,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
       if (!hasCheckedAuth) {
         console.warn("ProtectedRoute: Timeout de seguridad activado, forzando verificación de autenticación");
         // Verificar localStorage directamente si isLoading tarda mucho
-        const storedUser = typeof window !== 'undefined' ? localStorage.getItem('auth_user') : null;
+        const storedUser = readStoredAuthUser();
         if (storedUser) {
           setHasCheckedAuth(true);
         } else {
@@ -46,7 +59,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
       }
 
       // Verificar tanto el estado de React como localStorage
-      const storedUser = typeof window !== 'undefined' ? localStorage.getItem('auth_user') : null;
+      const storedUser = readStoredAuthUser();
       const actuallyAuthenticated = isAuthenticated || !!storedUser;
       
       setHasCheckedAuth(true);
@@ -62,7 +75,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
     } else {
       // Si isLoading es true, intentar verificar inmediatamente desde localStorage
       // Esto evita bloqueos innecesarios si hay datos en localStorage
-      const storedUser = typeof window !== 'undefined' ? localStorage.getItem('auth_user') : null;
+      const storedUser = readStoredAuthUser();
       if (storedUser && !hasCheckedAuth) {
         // Si hay usuario en localStorage, marcar como verificado inmediatamente
         if (timeoutRef.current) {
@@ -108,8 +121,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   
   if (isLoading && !hasCheckedAuth && !forceAllowInteraction) {
     // Si hay usuario en localStorage pero isLoading todavía es true, permitir acceso
-    const storedUser = typeof window !== 'undefined' ? localStorage.getItem('auth_user') : null;
-    if (storedUser) {
+    if (storedAuthUser) {
       // Si hay usuario almacenado, permitir acceso sin esperar
       // El useEffect manejará la verificación completa
       return <>{children}</>;
@@ -142,8 +154,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }
 
   // Verificar tanto el estado de React como localStorage antes de renderizar
-  const storedUser = typeof window !== 'undefined' ? localStorage.getItem('auth_user') : null;
-  const actuallyAuthenticated = isAuthenticated || !!storedUser;
+  const actuallyAuthenticated = isAuthenticated || !!storedAuthUser;
 
   // Si no está autenticado después de verificar, no renderizar nada (se redirigirá)
   if (!actuallyAuthenticated && !isLoginPage) {

@@ -101,24 +101,26 @@ describe("Validación de IDs en peticiones API", () => {
       // Continuar de todas formas para que los tests que no requieren auth puedan ejecutarse
     }
 
-    // Obtener una company válida (solo si tenemos token)
+    // ID de organización vía GET /api/company (API de producto; listado administrativo, no pantalla "Mi organización")
     if (authToken) {
       try {
-        const companiesResp = await httpRequest(`${API_URL}/api/company`, {
+        const companyListResp = await httpRequest(`${API_URL}/api/company`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
         });
 
-        if (companiesResp.status === 200) {
-          const companies = JSON.parse(companiesResp.body);
-          if (companies.length > 0) {
-            validCompanyId = companies[0].id;
+        if (companyListResp.status === 200) {
+          const organizations = JSON.parse(companyListResp.body) as Array<{ id: string }>;
+          if (organizations.length > 0) {
+            validCompanyId = organizations[0].id;
           }
         }
       } catch (error) {
-        console.warn("No se pudo obtener companies. Algunos tests pueden fallar.");
+        console.warn(
+          "No se pudo obtener GET /api/company para ID de prueba. Algunos tests pueden fallar."
+        );
       }
 
       // Obtener un usuario válido
@@ -142,7 +144,7 @@ describe("Validación de IDs en peticiones API", () => {
     }
   });
 
-  describe("Companies - Validación de IDs", () => {
+  describe("GET/PUT /api/company (API producto) — Validación de IDs", () => {
     it("debe rechazar actualización con ID mal formateado (contiene caracteres inválidos)", async () => {
       if (!authToken) {
         console.warn("Saltando test: no hay token de autenticación");
@@ -175,14 +177,14 @@ describe("Validación de IDs en peticiones API", () => {
       }
     });
 
-    it("debe validar que el ID de company sea un GUID válido antes de actualizar", async () => {
+    it("debe validar que el id de organización sea un GUID válido antes de actualizar (PUT)", async () => {
       if (!authToken) {
         console.warn("Saltando test: no hay token de autenticación");
         return;
       }
 
       if (!validCompanyId) {
-        console.warn("No hay company válida disponible para el test");
+        console.warn("No hay ID de organización de prueba (GET /api/company falló o vacío)");
         return;
       }
 

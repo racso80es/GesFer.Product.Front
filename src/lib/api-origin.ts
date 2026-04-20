@@ -32,9 +32,9 @@ export function getPublicApiOrigin(): string {
 
 /**
  * Base URL del API de producto (rutas tipo `/mycompany` bajo `/api`).
- * NOTA: Cuando apiClient llama a `/api/my-company`, si NEXT_PUBLIC_API_URL
- * apunta al origen de la app Next.js (ej: localhost:3000), el request es
- * interceptado por el Route Handler BFF en `src/app/api/my-company/route.ts`.
+ * NOTA: En el **navegador**, `apiClient` usa URL relativa al origen de la app para
+ * `/api/my-company` (ver `effectiveBaseUrl` en `lib/api/client.ts`), de modo que el BFF
+ * en Next recibe la petición aunque `NEXT_PUBLIC_API_URL` apunte al API de producto (:5020).
  */
 export function getProductApiBaseUrl(): string {
   const origin = getPublicApiOrigin();
