@@ -20,3 +20,9 @@ Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_14_fix_duplicate_html_layo
 ## feature: Agregar tests para utilidades de locale
 Resumen: Se agregaron pruebas unitarias para getLocaleFromUser en locale.ts y se actualizó la configuración de Jest para procesar next-intl.
 Referencia archivada: [docs/TASKS/DONE/Kaizen_2024_04_17_add_locale_tests.md](docs/TASKS/DONE/Kaizen_2024_04_17_add_locale_tests.md)
+
+[2026-04-19] [feat/kaizen-add-table-tests] [Add unit tests for Table UI component] [DONE].
+
+## feature: Add unit tests for Table UI component
+Resumen: Se agregaron tests unitarios para los componentes de Table (Table, TableHeader, TableBody, TableRow, TableHead, TableCell) para mejorar la cobertura de código y asegurar su correcto funcionamiento.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_19_add_table_tests.md](docs/TASKS/DONE/Kaizen_2026_04_19_add_table_tests.md)
