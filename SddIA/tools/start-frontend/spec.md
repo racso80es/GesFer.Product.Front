@@ -67,7 +67,7 @@ Herramienta que **levanta el dev server** del proyecto GesFer.Product.Front (Nex
 
 ## Validación de éxito
 
-La herramienta considera la ejecución **correcta** si y solo si `http://localhost:<port>` responde (HTTP 200) dentro del timeout configurado.
+La herramienta considera la ejecución **correcta** si y solo si la URL de salud (`http://127.0.0.1:<port>` + **`healthPath`** en `start-frontend-config.json`, por defecto **`/api/health`**, ruta dedicada que responde 200 sin depender del rewrite i18n) responde con HTTP **2xx** dentro del timeout configurado (`healthCheckTimeoutSeconds`).
 
 ## Códigos de salida (exitCode)
 

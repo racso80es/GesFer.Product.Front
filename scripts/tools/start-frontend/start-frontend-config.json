@@ -6,6 +6,6 @@
   "defaultPort": 3000,
   "portBlocked": false,
   "protocol": "http",
-  "healthUrl": "http://localhost:3000",
-  "healthCheckTimeoutSeconds": 30
+  "healthPath": "/api/health",
+  "healthCheckTimeoutSeconds": 120
 }
