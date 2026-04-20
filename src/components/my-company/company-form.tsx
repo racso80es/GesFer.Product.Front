@@ -146,7 +146,7 @@ export function CompanyForm({
 
       const payload = sanitizeCompanyMutationBody(dataToSubmit);
 
-      await onSubmit(payload as CreateCompany | UpdateCompany);
+      await onSubmit(payload as unknown as CreateCompany | UpdateCompany);
     } catch (error) {
       setSubmitError(
         error instanceof Error ? error.message : t("saveError")
