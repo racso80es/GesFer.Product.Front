@@ -25,7 +25,7 @@ El PR unifica la pantalla de compañías en una vista **“mi compañía”**: d
 * **Reporte Architect:** **Aprobado** en la rama `feat/adecuar-companies-a-mycompany-1181935355670548290`.
   - Página bajo `src/app/[locale]/companies/page.tsx`, consumo vía `@/hooks/use-my-company` y `@/lib/api/my-company`, imports con alias `@/`. Separación UI ↔ acceso a datos acorde al proyecto.
 * **Reporte QA-Judge:** **Aprobado**.
-  - Endpoints referenciados en `src/lib/api/my-company.ts`; estados de carga, error y vacío tratados en la página. Existen pruebas E2E de flujo en `src/tests/e2e/companies.spec.ts`. No hay tests unitarios dedicados al hook: no se considera bloqueante aquí; queda como mejora en semilla Kaizen.
+  - Endpoints referenciados en `src/lib/api/my-company.ts`; estados de carga, error y vacío tratados en la página. Existen pruebas E2E de flujo en `src/tests/e2e/my-company.spec.ts` (anteriormente `companies.spec.ts`). No hay tests unitarios dedicados al hook: no se considera bloqueante aquí; queda como mejora en semilla Kaizen.
 * **Reporte Security-Engineer:** **Aprobado**.
   - Formulario con validación Zod. Ruta BFF `src/app/api/my-company/route.ts` reenvía cuerpo y cabecera de autorización al API de producto; sin indicios de exposición de secretos en el alcance revisado.
 

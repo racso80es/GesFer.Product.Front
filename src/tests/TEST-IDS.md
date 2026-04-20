@@ -19,10 +19,18 @@ Este documento lista todos los `data-testid` agregados a los componentes para fa
 |----------|---------|-------------|
 | Título | `dashboard-title` | Título principal del dashboard |
 | Link Dashboard | `dashboard-dashboard-link` | Link de navegación al dashboard |
-| Link Companys | `dashboard-companies-link` | Link de navegación a companies |
+| Link Mi organización | `dashboard-my-company-link` | Link de navegación a `/my-company` |
 | Link Usuarios | `dashboard-usuarios-link` | Link de navegación a usuarios |
 | Link Clientes | `dashboard-clientes-link` | Link de navegación a clientes |
 | Botón Logout | `dashboard-logout-button` | Botón para cerrar sesión |
+
+## Mi organización (`/my-company`)
+
+| Elemento | Test ID | Descripción |
+|----------|---------|-------------|
+| Nombre (modal edición) | `my-company-form-name` | Input nombre en el formulario del modal |
+| CIF/NIF | `my-company-form-taxId` | Input identificador fiscal |
+| Email | `my-company-form-email` | Input correo |
 
 ## Página de Usuarios (`/usuarios`)
 

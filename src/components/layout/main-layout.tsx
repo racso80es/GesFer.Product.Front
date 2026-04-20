@@ -36,7 +36,7 @@ export function MainLayout({ children }: MainLayoutProps) {
 
   const navigation = [
     { name: t('dashboard'), href: "/dashboard", icon: LayoutDashboard },
-    { name: t('companies'), href: "/companies", icon: Briefcase },
+    { name: t('myCompany'), href: "/my-company", icon: Briefcase },
     { name: t('users'), href: "/usuarios", icon: Users },
     { name: t('customers'), href: "/clientes", icon: Building2 },
     {
@@ -180,7 +180,7 @@ function SidebarContent({
           // Mapear hrefs a test-ids
           const testIdMap: Record<string, string> = {
             '/dashboard': 'dashboard-dashboard-link',
-            '/companies': 'dashboard-companies-link',
+            '/my-company': 'dashboard-my-company-link',
             '/usuarios': 'dashboard-usuarios-link',
             '/clientes': 'dashboard-clientes-link',
           };

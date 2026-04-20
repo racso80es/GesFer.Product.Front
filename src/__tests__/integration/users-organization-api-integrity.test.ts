@@ -1,12 +1,12 @@
 /**
- * Tests de integridad E2E para Usuarios y Companies
- * 
- * Estos tests verifican el flujo completo de creación y edición
- * de usuarios y companies contra la API real.
- * 
+ * Integridad contra API real: usuarios (`/api/user`) y recurso **Company** del backend (`/api/company`).
+ *
+ * No confundir con la pantalla cliente «Mi organización» (`/my-company` → BFF `/api/my-company`).
+ * Aquí se usa el listado y CRUD REST de **`/api/company`** solo para datos de prueba y flujos administrativos.
+ *
  * Requiere:
  * - API ejecutándose (p. ej. http://localhost:5020)
- * - Credenciales de prueba: company "Emp" + "resa Demo", usuario "admin", contraseña "admin123"
+ * - Credenciales: organización "Emp" + "resa Demo", usuario "admin", contraseña "admin123"
  */
 
 import http from "node:http";
@@ -95,7 +95,7 @@ const getAuthToken = async (): Promise<string> => {
   return loginData.token || "";
 };
 
-describe("Integridad E2E: Usuarios y Companies", () => {
+describe("Integridad API: usuarios y recurso Company (backend)", () => {
   let authToken: string;
   let testCompanyId: string;
   let testUserId: string;
@@ -114,8 +114,8 @@ describe("Integridad E2E: Usuarios y Companies", () => {
     }
   });
 
-  describe("Companies - Flujo completo", () => {
-    it("debe listar todas las companies", async () => {
+  describe("/api/company — flujo CRUD (API producto)", () => {
+    it("debe listar organizaciones (GET colección)", async () => {
       if (!authToken) {
         console.warn("Saltando test: no hay token de autenticación");
         return;
@@ -129,12 +129,12 @@ describe("Integridad E2E: Usuarios y Companies", () => {
       });
 
       expect(resp.status).toBe(200);
-      const companies = JSON.parse(resp.body);
-      expect(Array.isArray(companies)).toBe(true);
-      expect(companies.length).toBeGreaterThan(0);
+      const organizationList = JSON.parse(resp.body) as unknown[];
+      expect(Array.isArray(organizationList)).toBe(true);
+      expect(organizationList.length).toBeGreaterThan(0);
     });
 
-    it("debe crear una company correctamente", async () => {
+    it("debe crear una organización vía POST", async () => {
       if (!authToken) {
         console.warn("Saltando test: no hay token de autenticación");
         return;
@@ -159,7 +159,7 @@ describe("Integridad E2E: Usuarios y Companies", () => {
       });
 
       if (resp.status !== 201) {
-        console.error("Error al crear company:", resp.body);
+        console.error("Error al crear organización (POST /api/company):", resp.body);
         console.error("Status:", resp.status);
       }
       expect(resp.status).toBe(201);
@@ -173,7 +173,7 @@ describe("Integridad E2E: Usuarios y Companies", () => {
       testCompanyId = company.id;
     });
 
-    it("debe obtener la company creada", async () => {
+    it("debe obtener por id (GET) la organización creada", async () => {
       if (!authToken) {
         console.warn("Saltando test: no hay token de autenticación");
         return;
@@ -192,7 +192,7 @@ describe("Integridad E2E: Usuarios y Companies", () => {
       expect(company.id).toBe(testCompanyId);
     });
 
-    it("debe editar una company correctamente", async () => {
+    it("debe actualizar la organización vía PUT", async () => {
       if (!authToken) {
         console.warn("Saltando test: no hay token de autenticación");
         return;
@@ -229,7 +229,7 @@ describe("Integridad E2E: Usuarios y Companies", () => {
       expect(company.isActive).toBe(true);
     });
 
-    it("debe verificar que la company se editó correctamente", async () => {
+    it("debe reflejar la actualización en un GET posterior", async () => {
       if (!authToken) {
         console.warn("Saltando test: no hay token de autenticación");
         return;
@@ -249,7 +249,7 @@ describe("Integridad E2E: Usuarios y Companies", () => {
       expect(company.languageId).toBe(LANGUAGE_IDS.en);
     });
 
-    it("debe eliminar una company correctamente", async () => {
+    it("debe eliminar la organización vía DELETE", async () => {
       if (!authToken) {
         console.warn("Saltando test: no hay token de autenticación");
         return;
@@ -266,7 +266,7 @@ describe("Integridad E2E: Usuarios y Companies", () => {
       // DELETE puede devolver 200 o 204 según la implementación
       expect([200, 204]).toContain(resp.status);
 
-      // Verificar que la company ya no existe
+      // Verificar que el registro ya no es accesible como antes
       const getResp = await httpRequest(`${API_URL}/api/company/${testCompanyId}`, {
         method: "GET",
         headers: {
@@ -274,7 +274,7 @@ describe("Integridad E2E: Usuarios y Companies", () => {
         },
       });
 
-      // La company debería estar eliminada (soft delete) o no encontrada
+      // Puede ser soft delete u otra semántica según backend
       expect([404, 200]).toContain(getResp.status);
     });
   });
@@ -287,27 +287,28 @@ describe("Integridad E2E: Usuarios y Companies", () => {
         console.warn("Saltando setup de usuarios: no hay token de autenticación");
         return;
       }
-      // Asegurar que tenemos una company para los tests de usuarios
-      // Usar la company demo o crear una nueva
-      const companiesResp = await httpRequest(`${API_URL}/api/company`, {
+      // Resolver un `companyId` de tenant para tests de usuario (GET listado `/api/company`)
+      const companyListResp = await httpRequest(`${API_URL}/api/company`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
       });
 
-      if (companiesResp.status === 200) {
-        const companies = JSON.parse(companiesResp.body);
-        const demoCompany = companies.find((c: { name: string; id: string }) => c.name === "Emp" + "resa Demo");
-        if (demoCompany) {
-          userTestCompanyId = demoCompany.id;
-        } else if (companies.length > 0) {
-          // Usar la primera company disponible
-          userTestCompanyId = companies[0].id;
+      if (companyListResp.status === 200) {
+        const organizationList = JSON.parse(companyListResp.body) as Array<{
+          name: string;
+          id: string;
+        }>;
+        const demoOrg = organizationList.find((c) => c.name === "Emp" + "resa Demo");
+        if (demoOrg) {
+          userTestCompanyId = demoOrg.id;
+        } else if (organizationList.length > 0) {
+          userTestCompanyId = organizationList[0].id;
         }
       }
 
-      // Si no hay company disponible, crear una
+      // Si no hay organización disponible, crear una
       if (!userTestCompanyId) {
         const companyData = {
           name: `Test Company for Users ${Date.now()}`,
