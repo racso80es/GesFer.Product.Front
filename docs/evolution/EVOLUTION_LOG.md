@@ -95,3 +95,9 @@ Referencia archivada: docs/features/ui-components-testid/objectives.md
 ## feature: refactorization-mycompany-routes
 Resumen: Alinear las rutas de /api/MyCompany a /api/my-company para cumplir la convención de URLs del proyecto y documentar las variables de entorno de la URL de API. Además, se añadió el test unitario de useMyCompany.
 Referencia archivada: [docs/TASKS/DONE/20260418-Refactor-Alineacion-rutas-MyCompany.md](../../docs/TASKS/DONE/20260418-Refactor-Alineacion-rutas-MyCompany.md)
+
+[2026-04-20] [fix/remove-obsolete-test] [Se ha eliminado company-form.spec.tsx obsoleto que rompía CI.] [DONE].
+
+## feature: remove-obsolete-test
+Resumen: Eliminación de archivo test roto src/components/companies/company-form.spec.tsx.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_20_remove_obsolete_test.md]
