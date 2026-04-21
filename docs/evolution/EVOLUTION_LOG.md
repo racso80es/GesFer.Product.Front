@@ -101,3 +101,9 @@ Referencia archivada: [docs/TASKS/DONE/20260418-Refactor-Alineacion-rutas-MyComp
 ## feature: remove-obsolete-test
 Resumen: Eliminación de archivo test roto src/components/companies/company-form.spec.tsx.
 Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_20_remove_obsolete_test.md]
+
+[2026-04-21] [feat/task-actualizar-diseny] [Implementado sistema de diseño de Vercel/Geist con refactorización de componentes de Scope Fase 1 (Login, MyCompany, Layout) mediante SmartInput y AdaptiveDataCard] [DONE].
+
+## feature: task-actualizar-diseny
+Resumen: Refactorización visual bajo arquitectura atómica introduciendo el sistema de diseño inspirado en Vercel (monochrome core). Se estandarizaron los tokens en Tailwind y se implementaron los componentes `SmartInput` (Átomo) y `AdaptiveDataCard` (Organismo). Se adaptaron los flujos del layout principal, página de inicio, login y la gestión de "Mi Empresa".
+Referencia archivada: docs/TASKS/DONE/Actualizar_diseny.md
