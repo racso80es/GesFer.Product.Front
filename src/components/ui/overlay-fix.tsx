@@ -6,7 +6,7 @@ import { useEffect } from "react";
  * Componente de seguridad para prevenir overlays bloqueantes
  * Verifica y limpia cualquier overlay que pueda estar bloqueando la interacción
  */
-export function OverlayFix() {
+export function OverlayFix({ 'data-testid': testId }: { 'data-testid'?: string }) {
   useEffect(() => {
     // Verificar si hay overlays bloqueantes al montar y periódicamente
     const checkAndFixOverlays = () => {
@@ -104,5 +104,5 @@ export function OverlayFix() {
     };
   }, []);
 
-  return null; // Componente sin UI
+  return <div data-testid={testId} style={{ display: 'none' }} aria-hidden="true" />; // Componente sin UI visible, pero presente en DOM para testing
 }
