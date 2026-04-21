@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { MainLayout } from "@/components/layout/main-layout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { AdaptiveDataCard } from "@/components/ui/adaptive-data-card";
 import { Button } from "@/components/ui/button";
 import { Loading } from "@/components/ui/loading";
 import { ErrorMessage } from "@/components/ui/error-message";
@@ -42,13 +42,13 @@ export default function MyCompanyPage() {
     <ProtectedRoute>
       <MainLayout>
         <div className="space-y-6">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pb-4 border-b border-border/50">
             <div>
-              <h1 className="text-3xl font-bold">{t("title")}</h1>
-              <p className="text-muted-foreground">{t("subtitle")}</p>
+              <h1 className="text-2xl font-bold tracking-tight text-foreground">{t("title")}</h1>
+              <p className="text-sm text-muted-foreground mt-1">{t("subtitle")}</p>
             </div>
             {company && (
-              <Button onClick={() => setIsEditModalOpen(true)}>
+              <Button onClick={() => setIsEditModalOpen(true)} className="shadow-subtle">
                 <Edit className="h-4 w-4 mr-2" />
                 {t("editDetails")}
               </Button>
@@ -70,85 +70,90 @@ export default function MyCompanyPage() {
           )}
 
           {!isLoading && !error && !company && (
-            <Card>
-              <CardContent className="flex flex-col items-center justify-center py-12">
-                <Building2 className="h-12 w-12 text-muted-foreground mb-4" />
-                <p className="text-muted-foreground mb-4">
+            <AdaptiveDataCard>
+              <div className="flex flex-col items-center justify-center py-12">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-border bg-secondary text-foreground mb-4 shadow-subtle">
+                  <Building2 className="h-6 w-6 text-muted-foreground" />
+                </div>
+                <p className="text-muted-foreground mb-6 font-medium text-sm">
                   {t("emptyState")}
                 </p>
-                <Button onClick={() => setIsEditModalOpen(true)}>
+                <Button onClick={() => setIsEditModalOpen(true)} className="shadow-subtle">
                   <Edit className="h-4 w-4 mr-2" />
                   {t("editDetails")}
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </AdaptiveDataCard>
           )}
 
           {!isLoading && !error && company && (
-            <Card>
-              <CardHeader>
-                <CardTitle>{company.name}</CardTitle>
-                <CardDescription>
-                  {company.isActive ? (
-                    <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">
-                      {t("table.active")}
-                    </span>
-                  ) : (
-                    <span className="inline-flex items-center rounded-full bg-red-100 px-2 py-1 text-xs font-medium text-red-800">
-                      {t("table.inactive")}
-                    </span>
-                  )}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div>
-                    <h3 className="text-sm font-medium text-muted-foreground">
-                      {t("table.taxId")}
-                    </h3>
-                    <p className="mt-1">{company.taxId || "-"}</p>
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-medium text-muted-foreground">
-                      {t("table.email")}
-                    </h3>
-                    <p className="mt-1">{company.email || "-"}</p>
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-medium text-muted-foreground">
-                      {t("table.phone")}
-                    </h3>
-                    <p className="mt-1">{company.phone || "-"}</p>
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-medium text-muted-foreground">
-                      {t("table.address")}
-                    </h3>
-                    <p className="mt-1">{company.address || "-"}</p>
-                  </div>
+            <AdaptiveDataCard
+              title={company.name}
+              description="Información general de la empresa"
+              headerAction={
+                company.isActive ? (
+                  <span className="inline-flex items-center rounded-md border border-border bg-background px-2.5 py-0.5 text-xs font-semibold text-foreground shadow-sm">
+                    <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+                    {t("table.active")}
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center rounded-md border border-border bg-background px-2.5 py-0.5 text-xs font-semibold text-foreground shadow-sm">
+                    <span className="w-2 h-2 rounded-full bg-red-500 mr-2"></span>
+                    {t("table.inactive")}
+                  </span>
+                )
+              }
+            >
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="flex flex-col space-y-1">
+                  <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                    {t("table.taxId")}
+                  </h3>
+                  <p className="text-sm font-medium text-foreground">{company.taxId || "-"}</p>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="flex flex-col space-y-1">
+                  <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                    {t("table.email")}
+                  </h3>
+                  <p className="text-sm font-medium text-foreground">{company.email || "-"}</p>
+                </div>
+                <div className="flex flex-col space-y-1">
+                  <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                    {t("table.phone")}
+                  </h3>
+                  <p className="text-sm font-medium text-foreground">{company.phone || "-"}</p>
+                </div>
+                <div className="flex flex-col space-y-1">
+                  <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                    {t("table.address")}
+                  </h3>
+                  <p className="text-sm font-medium text-foreground">{company.address || "-"}</p>
+                </div>
+              </div>
+            </AdaptiveDataCard>
           )}
 
           <Dialog
             open={isEditModalOpen}
             onOpenChange={setIsEditModalOpen}
           >
-            <DialogContent>
-              <DialogClose onClose={() => setIsEditModalOpen(false)} />
-              <DialogHeader>
-                <DialogTitle>{t("editDetails")}</DialogTitle>
-                <DialogDescription>
-                  {t("editDescription")}
-                </DialogDescription>
-              </DialogHeader>
-              <CompanyForm
-                company={company || undefined}
-                onSubmit={handleUpdate}
-                onCancel={() => setIsEditModalOpen(false)}
-                isLoading={isUpdating}
-              />
+            <DialogContent className="sm:max-w-[600px] p-0 overflow-hidden">
+              <div className="p-6 pb-0">
+                <DialogHeader>
+                  <DialogTitle className="text-xl">{t("editDetails")}</DialogTitle>
+                  <DialogDescription>
+                    {t("editDescription")}
+                  </DialogDescription>
+                </DialogHeader>
+              </div>
+              <div className="p-6 pt-4">
+                <CompanyForm
+                  company={company || undefined}
+                  onSubmit={handleUpdate}
+                  onCancel={() => setIsEditModalOpen(false)}
+                  isLoading={isUpdating}
+                />
+              </div>
             </DialogContent>
           </Dialog>
         </div>
