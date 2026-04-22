@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-04-21] [feat/kaizen-overlay-fix-test-id] [Se añadió data-testid a OverlayFix y se estandarizó el retorno del componente] [DONE].
+
+## feature: kaizen-overlay-fix-test-id
+Resumen: Se añadió soporte de data-testid al componente OverlayFix para asegurar trazabilidad en las pruebas e2e y de integración, modificando el componente para que retorne un div oculto en lugar de null.
+Referencia archivada: docs/features/kaizen-overlay-fix-test-id/objectives.md
+
 [2024-04-18] [feat/adecuar-companies-a-mycompany] [Adecuar modulo Companies a endpoint MyCompany usando Clean Architecture y hooks] [DONE].
 
 ## feature: adecuar-companies-a-mycompany
