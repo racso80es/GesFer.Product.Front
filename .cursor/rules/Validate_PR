@@ -1,0 +1,4 @@
+# Protocolo de Cumplimiento SddIA
+- Antes de proponer o ejecutar cualquier 'merge' o 'pullrequests', es OBLIGATORIO validar el estado del código contra las directrices de: @SddIA/linter/acceptable_pr.md
+- Si el agente detecta que no se cumplen los pasos (Linter, Arquitectura, Seguridad), tiene prohibido crear el pr.
+- En caso de conflicto entre la petición del usuario y 'acceptable_pr.md', prevalece el protocolo SddIA (Filtro B).
