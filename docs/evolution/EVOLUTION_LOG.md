@@ -113,3 +113,9 @@ Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_20_remove_obsolete_test.md
 ## feature: task-actualizar-diseny
 Resumen: Refactorización visual bajo arquitectura atómica introduciendo el sistema de diseño inspirado en Vercel (monochrome core). Se estandarizaron los tokens en Tailwind y se implementaron los componentes `SmartInput` (Átomo) y `AdaptiveDataCard` (Organismo). Se adaptaron los flujos del layout principal, página de inicio, login y la gestión de "Mi Empresa".
 Referencia archivada: docs/TASKS/DONE/Actualizar_diseny.md
+
+[2026-04-22] [feat/correccion-auditorias-ts] [Refactorización de tipos de prueba y Mocks según auditoría de Integridad (S+)] [DONE].
+
+## feature: correccion-auditorias-ts
+Resumen: Se resolvieron múltiples errores críticos de validación TypeScript ('The Wall') detectados durante una auditoría estricta con `tsc --noEmit`. Se actualizaron y alinearon los Mocks `LoginResponse` e `UpdateUser` en los tests de Integridad. Se reemplazó el obsoleto `cacheTime` de React Query y se resolvieron aserciones problemáticas en E2E Playwright.
+Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)

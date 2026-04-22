@@ -9,7 +9,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider } from "@/contexts/auth-context";
-import UsuariosPage from "@/app/(client)/usuarios/page";
+import UsuariosPage from "@/app/[locale]/usuarios/page";
 import { usersApi } from "@/lib/api/users";
 import { authApi } from "@/lib/api/auth";
 
@@ -31,7 +31,7 @@ const mockAuthApi = authApi as jest.Mocked<typeof authApi>;
 const createTestQueryClient = () => {
   return new QueryClient({
     defaultOptions: {
-      queries: { retry: false, cacheTime: 0 },
+      queries: { retry: false, gcTime: 0 },
       mutations: { retry: false },
     },
   });
@@ -112,7 +112,7 @@ describe("Flujos E2E - Interacciones Completas", () => {
       // 4. Actualizar usuario
       const updatedUser = { ...newUser, firstName: "Updated" };
       mockUsersApi.update.mockResolvedValue(updatedUser);
-      const updated = await usersApi.update("user-2", { firstName: "Updated" });
+      const updated = await usersApi.update("user-2", { username: "newuser", firstName: "Updated", lastName: "User", isActive: true });
       expect(updated.firstName).toBe("Updated");
 
       // 5. Eliminar usuario
@@ -145,6 +145,7 @@ describe("Flujos E2E - Interacciones Completas", () => {
       const loginResponse = {
         ...mockUser,
         token: "new-token",
+        cursorId: "cursor-1",
       };
 
       mockAuthApi.login.mockResolvedValue(loginResponse);
