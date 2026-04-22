@@ -58,9 +58,11 @@ describe("Contratos API - Verificación de Interfaces", () => {
 
     it("debe cumplir contrato de UpdateUser", async () => {
       const updateData: UpdateUser = {
+        username: "testuser",
         firstName: "Updated",
         lastName: "Name",
         email: "updated@example.com",
+        isActive: true,
       };
 
       const updatedUser: User = {
@@ -119,14 +121,15 @@ describe("Contratos API - Verificación de Interfaces", () => {
         companyName: "Test Company",
         permissions: ["read", "write"],
         token: "auth-token-123",
+        cursorId: "cursor-1",
       };
 
       mockAuthApi.login.mockResolvedValue(loginResponse);
 
       const result = await authApi.login({
         company: "Test Company",
-        usuario: "testuser",
-        contraseña: "password",
+        username: "testuser",
+        password: "password",
       });
 
       expect(result).toHaveProperty("userId");

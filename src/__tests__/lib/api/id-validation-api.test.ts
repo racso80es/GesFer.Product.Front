@@ -41,6 +41,7 @@ describe("Validación de IDs en APIs", () => {
           username: "test",
           firstName: "Test",
           lastName: "User",
+          isActive: true,
         });
       } catch (e: unknown) {
         threw = true;
@@ -83,11 +84,12 @@ describe("Validación de IDs en APIs", () => {
       await usersApi.getById(validId);
       expect(apiClient.get).toHaveBeenCalledWith(`/api/user/${validId}`);
 
-      await usersApi.update(validId, { username: "updated", firstName: "Test", lastName: "User" });
+      await usersApi.update(validId, { username: "updated", firstName: "Test", lastName: "User", isActive: true });
       expect(apiClient.put).toHaveBeenCalledWith(`/api/user/${validId}`, {
         username: "updated",
         firstName: "Test",
         lastName: "User",
+        isActive: true,
       });
 
       await usersApi.delete(validId);

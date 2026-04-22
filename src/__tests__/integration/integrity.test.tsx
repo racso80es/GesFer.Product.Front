@@ -26,7 +26,7 @@ const createTestQueryClient = () => {
     defaultOptions: {
       queries: {
         retry: false,
-        cacheTime: 0,
+        gcTime: 0,
       },
       mutations: {
         retry: false,
@@ -52,21 +52,22 @@ describe("Tests de Integridad - Auditoría Completa", () => {
         companyName: "Test Company",
         permissions: [],
         token: "mock-token-123",
+        cursorId: "cursor-1",
       };
 
       mockAuthApi.login.mockResolvedValue(mockLoginResponse);
 
       const result = await authApi.login({
         company: "Test Company",
-        usuario: "testuser",
-        contraseña: "password123",
+        username: "testuser",
+        password: "password123",
       });
 
       expect(result).toEqual(mockLoginResponse);
       expect(mockAuthApi.login).toHaveBeenCalledWith({
         company: "Test Company",
-        usuario: "testuser",
-        contraseña: "password123",
+        username: "testuser",
+        password: "password123",
       });
     });
 
@@ -76,8 +77,8 @@ describe("Tests de Integridad - Auditoría Completa", () => {
       await expect(
         authApi.login({
           company: "Test Company",
-          usuario: "wronguser",
-          contraseña: "wrongpass",
+          username: "wronguser",
+          password: "wrongpass",
         })
       ).rejects.toThrow("Credenciales inválidas");
     });
@@ -156,9 +157,11 @@ describe("Tests de Integridad - Auditoría Completa", () => {
 
     it("debe actualizar un usuario existente", async () => {
       const updateData = {
+        username: "user1",
         firstName: "Updated",
         lastName: "Name",
         email: "updated@example.com",
+        isActive: true,
       };
 
       mockUsersApi.update.mockResolvedValue({
@@ -244,6 +247,7 @@ describe("Tests de Integridad - Auditoría Completa", () => {
         companyName: "Test Company",
         permissions: [],
         token: "token",
+        cursorId: "cursor-1",
       });
 
       // 2. Crear usuario
@@ -255,8 +259,8 @@ describe("Tests de Integridad - Auditoría Completa", () => {
       // Ejecutar flujo
       await authApi.login({
         company: "Test Company",
-        usuario: "admin",
-        contraseña: "password",
+        username: "admin",
+        password: "password",
       });
 
       const created = await usersApi.create({

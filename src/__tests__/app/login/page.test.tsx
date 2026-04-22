@@ -38,6 +38,7 @@ describe('LoginPage', () => {
       isLoading: false,
       login: mockLogin,
       logout: jest.fn(),
+      updateUser: jest.fn(),
       isAuthenticated: false,
     })
   })

@@ -77,6 +77,7 @@ describe("UsuariosPage", () => {
     companyName: "Test Company",
     permissions: [],
     token: "token",
+    cursorId: "cursor-1",
   };
 
   const mockUsers = [
