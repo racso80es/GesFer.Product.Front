@@ -119,3 +119,9 @@ Referencia archivada: docs/TASKS/DONE/Actualizar_diseny.md
 ## feature: correccion-auditorias-ts
 Resumen: Se resolvieron múltiples errores críticos de validación TypeScript ('The Wall') detectados durante una auditoría estricta con `tsc --noEmit`. Se actualizaron y alinearon los Mocks `LoginResponse` e `UpdateUser` en los tests de Integridad. Se reemplazó el obsoleto `cacheTime` de React Query y se resolvieron aserciones problemáticas en E2E Playwright.
 Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)
+
+[2026-04-23] [feat/correccion-auditorias-ts-jest] [Refactorización del Global Typescript en Tests resolviendo integracion Jest DOM] [DONE].
+
+## feature: correccion-auditorias-ts-jest
+Resumen: Se ha documentado y resuelto el pain point crítico respecto a la falta de tipado estricto en los tests en base a `jest-dom`, implementando un entorno global con `src/global.d.ts`. Las pruebas unitarias y validaciones de compilación The Wall de TS ahora se ejecutan de manera limpia.
+Referencia archivada: [docs/features/correccion-auditorias-ts/finalize.md](./features/correccion-auditorias-ts/finalize.md)
