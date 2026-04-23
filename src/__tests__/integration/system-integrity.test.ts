@@ -19,8 +19,8 @@ type HttpResult = { status: number; body: string; headers: http.IncomingHttpHead
  */
 const demoLoginCredentials = {
   company: process.env.TEST_LOGIN_COMPANY?.trim() || "Empresa Demo",
-  usuario: process.env.TEST_LOGIN_USER?.trim() || "admin",
-  contraseña: process.env.TEST_LOGIN_PASSWORD?.trim() || "admin123",
+  username: process.env.TEST_LOGIN_USER?.trim() || "admin",
+  password: process.env.TEST_LOGIN_PASSWORD?.trim() || "admin123",
 };
 
 function skipLoginTestIfUnauthorized(loginResp: HttpResult, context: string): boolean {
@@ -138,7 +138,7 @@ describe("Auditoría de integridad API + Cliente", () => {
       companyName?: string;
     };
 
-    expect(loginJson.username).toBe(demoLoginCredentials.usuario);
+    expect(loginJson.username).toBe(demoLoginCredentials.username);
     expect(loginJson.userId).toBeDefined();
     expect(loginJson.companyName).toBe(demoLoginCredentials.company);
     // El token puede venir vacío en entorno local, solo verificamos que exista la clave
@@ -204,7 +204,7 @@ describe("Auditoría de integridad API + Cliente", () => {
     expect(loginJson.userId).toBeDefined();
     expect(loginJson.userId).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i);
     
-    expect(loginJson.username).toBe(demoLoginCredentials.usuario);
+    expect(loginJson.username).toBe(demoLoginCredentials.username);
     expect(loginJson.firstName).toBeDefined();
     expect(loginJson.lastName).toBeDefined();
     
@@ -256,8 +256,8 @@ describe("Auditoría de integridad API + Cliente", () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         company: demoLoginCredentials.company,
-        usuario: demoLoginCredentials.usuario,
-        contraseña: "contraseña_incorrecta",
+        username: demoLoginCredentials.username,
+        password: "wrong_password",
       }),
     });
 

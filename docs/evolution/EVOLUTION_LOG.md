@@ -119,3 +119,9 @@ Referencia archivada: docs/TASKS/DONE/Actualizar_diseny.md
 ## feature: correccion-auditorias-ts
 Resumen: Se resolvieron múltiples errores críticos de validación TypeScript ('The Wall') detectados durante una auditoría estricta con `tsc --noEmit`. Se actualizaron y alinearon los Mocks `LoginResponse` e `UpdateUser` en los tests de Integridad. Se reemplazó el obsoleto `cacheTime` de React Query y se resolvieron aserciones problemáticas en E2E Playwright.
 Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)
+
+[2026-04-23] [feat/correccion-auditorias] Erradicación de entropía en payloads de autenticación [DONE].
+
+## feature: correccion-auditorias
+Resumen: Se eliminaron las claves obsoletas `usuario` y `contraseña` por `username` y `password` en los payloads de pruebas de integración para alinear el repositorio de pruebas con los contratos de las APIs (Single Source of Truth).
+Referencia archivada: [Kaizen_2026_04_23_erradicacion_entropia_auth](../TASKS/DONE/Kaizen_2026_04_23_erradicacion_entropia_auth.md)

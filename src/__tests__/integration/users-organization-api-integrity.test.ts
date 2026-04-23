@@ -81,8 +81,8 @@ const getAuthToken = async (): Promise<string> => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       company: "Emp" + "resa Demo",
-      usuario: "admin",
-      contraseña: "admin123",
+      username: "admin",
+      password: "admin123",
     }),
   });
 
