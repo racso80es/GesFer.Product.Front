@@ -120,8 +120,16 @@ Referencia archivada: docs/TASKS/DONE/Actualizar_diseny.md
 Resumen: Se resolvieron múltiples errores críticos de validación TypeScript ('The Wall') detectados durante una auditoría estricta con `tsc --noEmit`. Se actualizaron y alinearon los Mocks `LoginResponse` e `UpdateUser` en los tests de Integridad. Se reemplazó el obsoleto `cacheTime` de React Query y se resolvieron aserciones problemáticas en E2E Playwright.
 Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)
 
+<<<<<<< feat/correccion-auditorias-6004153064351472195
 [2026-04-23] [feat/correccion-auditorias] Erradicación de entropía en payloads de autenticación [DONE].
 
 ## feature: correccion-auditorias
 Resumen: Se eliminaron las claves obsoletas `usuario` y `contraseña` por `username` y `password` en los payloads de pruebas de integración para alinear el repositorio de pruebas con los contratos de las APIs (Single Source of Truth).
 Referencia archivada: [Kaizen_2026_04_23_erradicacion_entropia_auth](../TASKS/DONE/Kaizen_2026_04_23_erradicacion_entropia_auth.md)
+=======
+[2026-04-23] [feat/correccion-auditorias-ts-jest] [Refactorización del Global Typescript en Tests resolviendo integracion Jest DOM] [DONE].
+
+## feature: correccion-auditorias-ts-jest
+Resumen: Se ha documentado y resuelto el pain point crítico respecto a la falta de tipado estricto en los tests en base a `jest-dom`, implementando un entorno global con `src/global.d.ts`. Las pruebas unitarias y validaciones de compilación The Wall de TS ahora se ejecutan de manera limpia.
+Referencia archivada: [docs/features/correccion-auditorias-ts/finalize.md](./features/correccion-auditorias-ts/finalize.md)
+>>>>>>> main
