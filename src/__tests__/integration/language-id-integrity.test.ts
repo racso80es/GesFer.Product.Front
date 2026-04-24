@@ -11,7 +11,7 @@
  * 
  * Requiere:
  * - API ejecutándose (p. ej. http://localhost:5020)
- * - Credenciales de prueba: company "Emp" + "resa Demo", usuario "admin", contraseña "admin123"
+ * - Credenciales de prueba: company "Emp" + "resa Demo", username "admin", password "admin123"
  */
 
 // DESHABILITADO: El sistema de rutas por idioma se ha eliminado
