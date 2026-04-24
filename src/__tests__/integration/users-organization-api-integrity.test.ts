@@ -6,7 +6,7 @@
  *
  * Requiere:
  * - API ejecutándose (p. ej. http://localhost:5020)
- * - Credenciales: organización "Emp" + "resa Demo", usuario "admin", contraseña "admin123"
+ * - Credenciales: organización "Emp" + "resa Demo", username "admin", password "admin123"
  */
 
 import http from "node:http";
