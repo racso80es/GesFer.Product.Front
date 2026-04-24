@@ -131,6 +131,11 @@ Referencia archivada: [Kaizen_2026_04_23_erradicacion_entropia_auth](../TASKS/DO
 ## feature: correccion-auditorias-ts-jest
 Resumen: Se ha documentado y resuelto el pain point crítico respecto a la falta de tipado estricto en los tests en base a `jest-dom`, implementando un entorno global con `src/global.d.ts`. Las pruebas unitarias y validaciones de compilación The Wall de TS ahora se ejecutan de manera limpia.
 Referencia archivada: [docs/features/correccion-auditorias-ts/finalize.md](./features/correccion-auditorias-ts/finalize.md)
+[2026-04-24] [feat/correccion-auditorias-2026-04-23] [Refactorización de entropía en pruebas y payloads (S+)] [DONE].
+
+## feature: correccion-auditorias-2026-04-23
+Resumen: Corrección de fallos identificados en AUDITORIA_2026_04_22_01.md mediante unificación de payloads de auth y eliminación de variables en español de tests.
+Referencia archivada: [docs/features/correccion-auditorias-2026-04-23/finalize.md](./features/correccion-auditorias-2026-04-23/finalize.md)
 
 [2026-04-24] [feat/correccion-auditorias] [Aplicación completa de hallazgos S+ (global.d.ts y contratos API)] [DONE].
 
