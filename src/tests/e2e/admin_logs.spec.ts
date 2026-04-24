@@ -15,17 +15,17 @@ test.describe('Admin Logs - Verificación de 403', () => {
     }
     
     // Paso 1: Hacer login con admin@gesfer.local
-    // Nota: El login de admin usa el campo "usuario" (username), no email
+    // Nota: El login de admin usa el campo "username", no email
     // El usuario admin@gesfer.local probablemente tiene username "admin"
     await page.goto(`${CLIENT_URL}/admin/login`);
     
     // Esperar a que el formulario esté visible
-    await page.waitForSelector('input[type="text"], input[name="usuario"]', { timeout: 10000 });
+    await page.waitForSelector('input[type="text"], input[name="username"]', { timeout: 10000 });
     
     // Autenticarse como admin
     // Intentar primero con "admin" como username (el email admin@gesfer.local probablemente tiene username "admin")
-    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="usuario"]')).first();
-    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="contraseña"]')).first();
+    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="username"]')).first();
+    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="password"]')).first();
     const loginButton = page.getByRole('button', { name: /acceder.*panel|panel.*administrativo/i }).first();
     
     // Intentar login con username "admin" (el usuario admin@gesfer.local tiene este username)
@@ -114,7 +114,7 @@ test.describe('Admin Logs - Verificación de 403', () => {
     // Verificar el estado de la respuesta
     if (logsResponseStatus === 403) {
       // El test debe fallar aquí para confirmar el problema
-      expect(logsResponseStatus as unknown as number).not.toBe(403);
+      expect(Number(logsResponseStatus)).not.toBe(403);
     } else if (logsResponseStatus === 200) {
       // Verificar que la tabla de logs se carga correctamente
       await expect(logsPage.logsTable).toBeVisible({ timeout: 15000 });
@@ -143,7 +143,7 @@ test.describe('Admin Logs - Verificación de 403', () => {
       // Verificar que la página se carga independientemente del estado
       await expect(logsPage.title).toBeVisible({ timeout: 15000 });
       // El test falla si hay un error diferente a 403
-      expect(logsResponseStatus as unknown as number).toBe(200);
+      expect(Number(logsResponseStatus)).toBe(200);
     }
   });
 });
