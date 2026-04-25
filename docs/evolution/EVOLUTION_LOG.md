@@ -142,3 +142,9 @@ Referencia archivada: [docs/features/correccion-auditorias-2026-04-23/finalize.m
 ## feature: correccion-auditorias-finalizacion
 Resumen: Se ha documentado y resuelto los pain points críticos y medios correspondientes a las dos últimas auditorías de calidad (S+). Se arregló la integración TypeScript+Jest mediante `src/global.d.ts`, se refactorizaron los mocks de `LoginResponse`, se actualizaron comentarios con credenciales antiguas (`usuario` a `username`) y se sorteó el límite de inferencia de Playwright con aserciones tipadas.
 Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)
+
+[2026-04-25] [feat/correccion-auditorias-2026-04-25] [Corrección de fallos identificados en AUDITORIA_2026_04_25_01.md removiendo comentarios TODO.] [DONE].
+
+## feature: correccion-auditorias-2026-04-25
+Resumen: Se resolvieron pain points (TODOs técnicos) documentados en AUDITORIA_2026_04_25_01.md en archivos de tests E2E y componentes de UI, manteniendo el 100% de métricas de salud (testing, building, the wall).
+Referencia archivada: [docs/features/correccion-auditorias-2026-04-25/finalize.md](./features/correccion-auditorias-2026-04-25/finalize.md)
