@@ -142,3 +142,9 @@ Referencia archivada: [docs/features/correccion-auditorias-2026-04-23/finalize.m
 ## feature: correccion-auditorias-finalizacion
 Resumen: Se ha documentado y resuelto los pain points críticos y medios correspondientes a las dos últimas auditorías de calidad (S+). Se arregló la integración TypeScript+Jest mediante `src/global.d.ts`, se refactorizaron los mocks de `LoginResponse`, se actualizaron comentarios con credenciales antiguas (`usuario` a `username`) y se sorteó el límite de inferencia de Playwright con aserciones tipadas.
 Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)
+
+[2026-04-26] [fix/kaizen-clean-todos] [Limpieza de comentarios TODO huérfanos en pruebas e2e] [DONE].
+
+## feature: kaizen-clean-todos
+Resumen: Se eliminó un comentario TODO huérfano en `src/tests/e2e/login.spec.ts` para reducir la deuda técnica.
+Referencia archivada: [docs/features/kaizen-clean-todos/finalize.md](./features/kaizen-clean-todos/finalize.md)
