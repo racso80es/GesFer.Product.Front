@@ -142,3 +142,9 @@ Referencia archivada: [docs/features/correccion-auditorias-2026-04-23/finalize.m
 ## feature: correccion-auditorias-finalizacion
 Resumen: Se ha documentado y resuelto los pain points críticos y medios correspondientes a las dos últimas auditorías de calidad (S+). Se arregló la integración TypeScript+Jest mediante `src/global.d.ts`, se refactorizaron los mocks de `LoginResponse`, se actualizaron comentarios con credenciales antiguas (`usuario` a `username`) y se sorteó el límite de inferencia de Playwright con aserciones tipadas.
 Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)
+
+[2026-04-25] [feat/correccion-auditorias-25] [Resolución de hallazgos S+ en base a auditoría de código confirmados] [DONE].
+
+## feature: correccion-auditorias-25
+Resumen: Se constató y documentó la resolución de los pain points críticos y medios detectados en `AUDITORIA_2026_04_24_01.md`. Los campos de idioma fueron confirmados en los mocks de `LoginResponse` de los contratos API y se verificó que el bypass de inferencia de TypeScript `Number()` en los tests E2E estaba aplicado sin usar casts peligrosos. El código base compila correctamente sin emitir errores de TypeScript.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_25_correccion_auditorias.md](./TASKS/DONE/Kaizen_2026_04_25_correccion_auditorias.md)
