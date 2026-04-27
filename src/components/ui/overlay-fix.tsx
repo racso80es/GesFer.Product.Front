@@ -28,7 +28,6 @@ export function OverlayFix({ 'data-testid': testId }: { 'data-testid'?: string }
       }
 
       // Verificar si hay overlays con bg-black/50 que puedan estar bloqueando sin Dialog padre
-      // CRÍTICO: Buscar TODOS los overlays, incluso si no tienen las clases exactas
       const allOverlays = document.querySelectorAll('[class*="bg-black"], [class*="backdrop"], .fixed.inset-0');
       allOverlays.forEach((overlay) => {
         const style = window.getComputedStyle(overlay);
