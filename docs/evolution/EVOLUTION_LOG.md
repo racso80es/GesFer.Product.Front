@@ -143,6 +143,11 @@ Referencia archivada: [docs/features/correccion-auditorias-2026-04-23/finalize.m
 Resumen: Se ha documentado y resuelto los pain points críticos y medios correspondientes a las dos últimas auditorías de calidad (S+). Se arregló la integración TypeScript+Jest mediante `src/global.d.ts`, se refactorizaron los mocks de `LoginResponse`, se actualizaron comentarios con credenciales antiguas (`usuario` a `username`) y se sorteó el límite de inferencia de Playwright con aserciones tipadas.
 Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)
 
+[2026-04-26] [feat/correccion-auditorias-splus] [Aplicación completa de correcciones de Auditoría S+ y resolución The Wall (2026-04-22)] [DONE].
+
+## feature: correccion-auditorias-splus
+Resumen: Se resolvieron los hallazgos críticos y medios de AUDITORIA_2026_04_22_01.md. Se alinearon los Mocks de `LoginResponse` y `UpdateUser` a la API real, se corrigieron los payloads de auth eliminando variables en español, se actualizaron los mocks de `useAuth` en tests UI, y se aplicó un workaround seguro para aserciones de E2E en Playwright contra inferencias erróneas de TypeScript.
+Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)
 [2026-04-26] [fix/kaizen-clean-todos] [Limpieza de comentarios TODO huérfanos en pruebas e2e] [DONE].
 
 ## feature: kaizen-clean-todos
