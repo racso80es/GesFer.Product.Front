@@ -148,3 +148,23 @@ Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./featur
 ## feature: correccion-segun-auditorias
 Resumen: Se ha documentado y resuelto los pain points críticos y medios correspondientes a la auditoría de calidad (S+) del 2026-04-24. Se refactorizaron los mocks de `LoginResponse` en las pruebas de integración y se corrigió una aserción problemática en E2E Playwright de logs.
 Referencia archivada: [docs/features/correccion-auditorias-2026-04-24/finalize.md](./features/correccion-auditorias-2026-04-24/finalize.md)
+[2026-04-26] [feat/correccion-auditorias-splus] [Aplicación completa de correcciones de Auditoría S+ y resolución The Wall (2026-04-22)] [DONE].
+
+## feature: correccion-auditorias-splus
+Resumen: Se resolvieron los hallazgos críticos y medios de AUDITORIA_2026_04_22_01.md. Se alinearon los Mocks de `LoginResponse` y `UpdateUser` a la API real, se corrigieron los payloads de auth eliminando variables en español, se actualizaron los mocks de `useAuth` en tests UI, y se aplicó un workaround seguro para aserciones de E2E en Playwright contra inferencias erróneas de TypeScript.
+Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)
+[2026-04-26] [fix/kaizen-clean-todos] [Limpieza de comentarios TODO huérfanos en pruebas e2e] [DONE].
+
+## feature: kaizen-clean-todos
+Resumen: Se eliminó un comentario TODO huérfano en `src/tests/e2e/login.spec.ts` para reducir la deuda técnica.
+Referencia archivada: [docs/features/kaizen-clean-todos/finalize.md](./features/kaizen-clean-todos/finalize.md)
+[2026-04-25] [feat/correccion-auditorias-2026-04-25] [Corrección de fallos identificados en AUDITORIA_2026_04_25_01.md removiendo comentarios TODO.] [DONE].
+
+## feature: correccion-auditorias-2026-04-25
+Resumen: Se resolvieron pain points (TODOs técnicos) documentados en AUDITORIA_2026_04_25_01.md en archivos de tests E2E y componentes de UI, manteniendo el 100% de métricas de salud (testing, building, the wall).
+Referencia archivada: [docs/features/correccion-auditorias-2026-04-25/finalize.md](./features/correccion-auditorias-2026-04-25/finalize.md)
+[2026-04-25] [feat/correccion-auditorias-25] [Resolución de hallazgos S+ en base a auditoría de código confirmados] [DONE].
+
+## feature: correccion-auditorias-25
+Resumen: Se constató y documentó la resolución de los pain points críticos y medios detectados en `AUDITORIA_2026_04_24_01.md`. Los campos de idioma fueron confirmados en los mocks de `LoginResponse` de los contratos API y se verificó que el bypass de inferencia de TypeScript `Number()` en los tests E2E estaba aplicado sin usar casts peligrosos. El código base compila correctamente sin emitir errores de TypeScript.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_25_correccion_auditorias.md](./TASKS/DONE/Kaizen_2026_04_25_correccion_auditorias.md)
