@@ -20,7 +20,6 @@ test.describe('Login E2E Tests', () => {
     
     cleanup = new TestDataCleanup(request, process.env.API_URL || appConfig.api.url);
     // Nota: DEMO_COMPANY_NAME es el dato de seed actual.
-    // TODO: Actualizar seed para usar terminología "Organización" si es posible en el futuro.
     await cleanup.setAuthToken(DEMO_COMPANY_NAME, 'admin', 'admin123');
   });
 
