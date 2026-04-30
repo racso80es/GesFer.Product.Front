@@ -173,6 +173,11 @@ Referencia archivada: [docs/features/correccion-auditorias-2026-04-25/finalize.m
 ## feature: correccion-auditorias-25
 Resumen: Se constató y documentó la resolución de los pain points críticos y medios detectados en `AUDITORIA_2026_04_24_01.md`. Los campos de idioma fueron confirmados en los mocks de `LoginResponse` de los contratos API y se verificó que el bypass de inferencia de TypeScript `Number()` en los tests E2E estaba aplicado sin usar casts peligrosos. El código base compila correctamente sin emitir errores de TypeScript.
 Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_25_correccion_auditorias.md](./TASKS/DONE/Kaizen_2026_04_25_correccion_auditorias.md)
+[2026-04-29] [feat/correccion-auditorias-2026-04-29] [Resolución de hallazgos en import mapping] [DONE].
+
+## feature: correccion-auditorias-2026-04-29
+Resumen: Se resolvieron los hallazgos críticos detectados en AUDITORIA_2026_04_29_01.md reemplazando las importaciones relativas `../../lib/utils/cn` por el alias de path mapping `@/lib/utils/cn` en el directorio `src/components/`.
+Referencia archivada: [docs/features/correccion-auditorias-2026-04-29/finalize.md](./features/correccion-auditorias-2026-04-29/finalize.md)
 [2026-04-28] [feat/correccion-auditorias-2026-04-28] [Aplicación completa de hallazgos S+ de la auditoría 2026-04-28_01] [DONE].
 
 ## feature: correccion-auditorias-2026-04-28
