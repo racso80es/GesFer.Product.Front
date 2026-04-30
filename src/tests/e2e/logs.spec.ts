@@ -18,11 +18,11 @@ test.describe('Sistema de Logs E2E Tests', () => {
     await page.goto('/admin/login');
     
     // Esperar a que el formulario esté visible
-    await page.waitForSelector('input[type="text"], input[name="usuario"]', { timeout: 10000 });
+    await page.waitForSelector('input[type="text"], input[name="username"]', { timeout: 10000 });
     
     // Autenticarse como admin
-    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="usuario"]')).first();
-    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="contraseña"]')).first();
+    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="username"]')).first();
+    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="password"]')).first();
     const loginButton = page.getByRole('button', { name: /acceder.*panel|panel.*administrativo/i }).first();
     
     await usuarioInput.fill('admin');
@@ -55,10 +55,10 @@ test.describe('Sistema de Logs E2E Tests', () => {
   test('debe insertar un log en la BD y mostrarlo en la pantalla de consulta', async ({ page, request }) => {
     // Paso 1: Autenticarse como admin
     await page.goto('/admin/login');
-    await page.waitForSelector('input[type="text"], input[name="usuario"]', { timeout: 10000 });
+    await page.waitForSelector('input[type="text"], input[name="username"]', { timeout: 10000 });
     
-    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="usuario"]')).first();
-    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="contraseña"]')).first();
+    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="username"]')).first();
+    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="password"]')).first();
     const loginButton = page.getByRole('button', { name: /acceder.*panel|panel.*administrativo/i }).first();
     
     await usuarioInput.fill('admin');
@@ -126,10 +126,10 @@ test.describe('Sistema de Logs E2E Tests', () => {
   test('debe filtrar logs por nivel', async ({ page }) => {
     // Autenticarse como admin
     await page.goto('/admin/login');
-    await page.waitForSelector('input[type="text"], input[name="usuario"]', { timeout: 10000 });
+    await page.waitForSelector('input[type="text"], input[name="username"]', { timeout: 10000 });
     
-    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="usuario"]')).first();
-    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="contraseña"]')).first();
+    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="username"]')).first();
+    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="password"]')).first();
     const loginButton = page.getByRole('button', { name: /acceder.*panel|panel.*administrativo/i }).first();
     
     await usuarioInput.fill('admin');
@@ -176,10 +176,10 @@ test.describe('Sistema de Logs E2E Tests', () => {
   test('debe filtrar logs por rango de fechas', async ({ page }) => {
     // Autenticarse como admin
     await page.goto('/admin/login');
-    await page.waitForSelector('input[type="text"], input[name="usuario"]', { timeout: 10000 });
+    await page.waitForSelector('input[type="text"], input[name="username"]', { timeout: 10000 });
     
-    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="usuario"]')).first();
-    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="contraseña"]')).first();
+    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="username"]')).first();
+    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="password"]')).first();
     const loginButton = page.getByRole('button', { name: /acceder.*panel|panel.*administrativo/i }).first();
     
     await usuarioInput.fill('admin');
@@ -236,10 +236,10 @@ test.describe('Sistema de Logs E2E Tests', () => {
   test('debe expandir y mostrar detalles de un log', async ({ page }) => {
     // Autenticarse como admin
     await page.goto('/admin/login');
-    await page.waitForSelector('input[type="text"], input[name="usuario"]', { timeout: 10000 });
+    await page.waitForSelector('input[type="text"], input[name="username"]', { timeout: 10000 });
     
-    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="usuario"]')).first();
-    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="contraseña"]')).first();
+    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="username"]')).first();
+    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="password"]')).first();
     const loginButton = page.getByRole('button', { name: /acceder.*panel|panel.*administrativo/i }).first();
     
     await usuarioInput.fill('admin');
@@ -288,10 +288,10 @@ test.describe('Sistema de Logs E2E Tests', () => {
   test('debe mostrar paginación cuando hay más de una página', async ({ page }) => {
     // Autenticarse como admin
     await page.goto('/admin/login');
-    await page.waitForSelector('input[type="text"], input[name="usuario"]', { timeout: 10000 });
+    await page.waitForSelector('input[type="text"], input[name="username"]', { timeout: 10000 });
     
-    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="usuario"]')).first();
-    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="contraseña"]')).first();
+    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="username"]')).first();
+    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="password"]')).first();
     const loginButton = page.getByRole('button', { name: /acceder.*panel|panel.*administrativo/i }).first();
     
     await usuarioInput.fill('admin');
@@ -353,10 +353,10 @@ test.describe('Sistema de Logs E2E Tests', () => {
   test('debe limpiar filtros correctamente', async ({ page }) => {
     // Autenticarse como admin
     await page.goto('/admin/login');
-    await page.waitForSelector('input[type="text"], input[name="usuario"]', { timeout: 10000 });
+    await page.waitForSelector('input[type="text"], input[name="username"]', { timeout: 10000 });
     
-    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="usuario"]')).first();
-    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="contraseña"]')).first();
+    const usuarioInput = page.locator('input[type="text"]').or(page.locator('input[name="username"]')).first();
+    const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="password"]')).first();
     const loginButton = page.getByRole('button', { name: /acceder.*panel|panel.*administrativo/i }).first();
     
     await usuarioInput.fill('admin');

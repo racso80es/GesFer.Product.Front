@@ -16,8 +16,8 @@ test.describe('Logging Persistence Test', () => {
     // Autenticarse como admin para obtener token
     const adminLoginResponse = await request.post(`${API_URL}/api/admin/auth/login`, {
       data: {
-        usuario: 'admin',
-        contraseña: 'admin123',
+        username: 'admin',
+        password: 'admin123',
       },
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ test.describe('Logging Persistence Test', () => {
     
     // Intentar login con credenciales inválidas para generar un error
     const companyInput = page.locator('input[name="company"]').or(page.locator('input[type="text"]').first());
-    const usuarioInput = page.locator('input[name="usuario"]').or(page.locator('input[type="text"]').nth(1));
+    const usuarioInput = page.locator('input[name="username"]').or(page.locator('input[type="text"]').nth(1));
     const passwordInput = page.locator('input[type="password"]');
     const loginButton = page.getByRole('button', { name: /iniciar.*sesión|login/i }).first();
     
