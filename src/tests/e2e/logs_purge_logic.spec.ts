@@ -10,8 +10,8 @@ test.describe('Logs Purge Logic - Backend Focus', () => {
     // Paso 1: Autenticarse como admin
     const loginResponse = await request.post(`${API_URL}/api/admin/auth/login`, {
       data: {
-        usuario: 'admin',
-        contraseña: 'admin123',
+        username: 'admin',
+        password: 'admin123',
       },
       headers: {
         'Content-Type': 'application/json',
@@ -83,8 +83,8 @@ test.describe('Logs Purge Logic - Backend Focus', () => {
     // Paso 1: Autenticarse como admin
     const loginResponse = await request.post(`${API_URL}/api/admin/auth/login`, {
       data: {
-        usuario: 'admin',
-        contraseña: 'admin123',
+        username: 'admin',
+        password: 'admin123',
       },
       headers: {
         'Content-Type': 'application/json',
@@ -152,11 +152,11 @@ test.describe('Logs Purge Logic - Frontend E2E', () => {
     await page.waitForTimeout(2000);
     
     // Esperar a que el formulario esté visible - intentar múltiples selectores
-    await page.waitForSelector('input[type="text"], input[id="usuario"], #usuario', { timeout: 20000 });
+    await page.waitForSelector('input[type="text"], input[id="username"], #username', { timeout: 20000 });
     
     // Usar los IDs específicos de la página de login del admin
-    const usuarioInput = page.locator('#usuario').or(page.locator('input[type="text"]').first());
-    const passwordInput = page.locator('#contraseña').or(page.locator('input[type="password"]').first());
+    const usuarioInput = page.locator('#username').or(page.locator('input[type="text"]').first());
+    const passwordInput = page.locator('#password').or(page.locator('input[type="password"]').first());
     
     // Esperar a que los inputs estén visibles
     await expect(usuarioInput).toBeVisible({ timeout: 10000 });
