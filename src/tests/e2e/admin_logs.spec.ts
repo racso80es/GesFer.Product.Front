@@ -114,7 +114,7 @@ test.describe('Admin Logs - Verificación de 403', () => {
     // Verificar el estado de la respuesta
     if (logsResponseStatus === 403) {
       // El test debe fallar aquí para confirmar el problema
-      expect(Number(logsResponseStatus)).not.toBe(403);
+      expect(logsResponseStatus === null ? null : Number(logsResponseStatus)).not.toBe(403);
     } else if (logsResponseStatus === 200) {
       // Verificar que la tabla de logs se carga correctamente
       await expect(logsPage.logsTable).toBeVisible({ timeout: 15000 });
@@ -143,7 +143,7 @@ test.describe('Admin Logs - Verificación de 403', () => {
       // Verificar que la página se carga independientemente del estado
       await expect(logsPage.title).toBeVisible({ timeout: 15000 });
       // El test falla si hay un error diferente a 403
-      expect(Number(logsResponseStatus)).toBe(200);
+      expect(logsResponseStatus === null ? null : Number(logsResponseStatus)).toBe(200);
     }
   });
 });

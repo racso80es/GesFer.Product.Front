@@ -139,6 +139,10 @@ describe("Contratos API - Verificación de Interfaces", () => {
       expect(result).toHaveProperty("userId");
       expect(result).toHaveProperty("username");
       expect(result).toHaveProperty("companyId");
+      expect(result).toHaveProperty("userLanguageId");
+      expect(result).toHaveProperty("companyLanguageId");
+      expect(result).toHaveProperty("countryLanguageId");
+      expect(result).toHaveProperty("effectiveLanguageId");
       expect(result).toHaveProperty("token");
       expect(Array.isArray(result.permissions)).toBe(true);
     });
