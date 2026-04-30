@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2024-04-30] [feat/kaizen-remove-obsolete-tests] [Eliminar test obsoleto de language-id] [DONE].
+
+## feature: kaizen-remove-obsolete-tests
+Resumen: Se eliminó el archivo de pruebas `src/__tests__/integration/language-id-integrity.test.ts` que contenía código muerto deshabilitado (.skip) reduciendo la deuda técnica.
+Referencia archivada: [docs/features/kaizen-remove-obsolete-tests/objectives.md](./features/kaizen-remove-obsolete-tests/objectives.md)
+
 [2026-04-21] [feat/kaizen-overlay-fix-test-id] [Se añadió data-testid a OverlayFix y se estandarizó el retorno del componente] [DONE].
 
 ## feature: kaizen-overlay-fix-test-id
