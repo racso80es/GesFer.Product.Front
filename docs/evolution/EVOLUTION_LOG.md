@@ -143,6 +143,11 @@ Referencia archivada: [docs/features/correccion-auditorias-2026-04-23/finalize.m
 Resumen: Se ha documentado y resuelto los pain points críticos y medios correspondientes a las dos últimas auditorías de calidad (S+). Se arregló la integración TypeScript+Jest mediante `src/global.d.ts`, se refactorizaron los mocks de `LoginResponse`, se actualizaron comentarios con credenciales antiguas (`usuario` a `username`) y se sorteó el límite de inferencia de Playwright con aserciones tipadas.
 Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)
 
+[2026-04-27] [feat/kaizen-coverage-modal-base] [Se añadieron pruebas unitarias para ModalBase incrementando su cobertura al 100%] [DONE].
+
+## feature: kaizen-coverage-modal-base
+Resumen: Se han implementado pruebas exhaustivas para `src/components/shared/ModalBase.tsx` cubriendo las funciones de confirmación, cancelación y renderizado personalizado.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_27_coverage_modal_base.md](./TASKS/DONE/Kaizen_2026_04_27_coverage_modal_base.md)
 [2026-04-27] [feat/correccion-segun-auditorias] [Aplicación completa de hallazgos S+ de la auditoría 2026-04-24_01] [DONE].
 
 ## feature: correccion-segun-auditorias
