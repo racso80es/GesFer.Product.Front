@@ -143,6 +143,11 @@ Referencia archivada: [docs/features/correccion-auditorias-2026-04-23/finalize.m
 Resumen: Se ha documentado y resuelto los pain points críticos y medios correspondientes a las dos últimas auditorías de calidad (S+). Se arregló la integración TypeScript+Jest mediante `src/global.d.ts`, se refactorizaron los mocks de `LoginResponse`, se actualizaron comentarios con credenciales antiguas (`usuario` a `username`) y se sorteó el límite de inferencia de Playwright con aserciones tipadas.
 Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)
 
+[2026-04-27] [feat/kaizen-coverage-modal-base] [Se añadieron pruebas unitarias para ModalBase incrementando su cobertura al 100%] [DONE].
+
+## feature: kaizen-coverage-modal-base
+Resumen: Se han implementado pruebas exhaustivas para `src/components/shared/ModalBase.tsx` cubriendo las funciones de confirmación, cancelación y renderizado personalizado.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_27_coverage_modal_base.md](./TASKS/DONE/Kaizen_2026_04_27_coverage_modal_base.md)
 [2026-04-27] [feat/correccion-segun-auditorias] [Aplicación completa de hallazgos S+ de la auditoría 2026-04-24_01] [DONE].
 
 ## feature: correccion-segun-auditorias
@@ -173,3 +178,8 @@ Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_25_correccion_auditorias.m
 ## feature: correccion-auditorias-2026-04-28
 Resumen: Se ha documentado y resuelto el pain point medio correspondiente a la auditoría de calidad (S+) del 2026-04-28. Se reemplazó el casteo "any" por "Record<string, unknown>" en src/lib/logger/server.ts, asegurando estricto apego a The Wall (TypeScript strict typing) sin afectar the build o coverage.
 Referencia archivada: [docs/features/correccion-auditorias-2026-04-28/finalize.md](./features/correccion-auditorias-2026-04-28/finalize.md)
+[2026-04-28] [feat/kaizen-monitoreo-ts-logs] [Kaizen de monitoreo de TS The Wall y validación de EVOLUTION_LOG para asegurar consistencia del repositorio.] [DONE].
+
+## feature: kaizen-monitoreo-ts-logs
+Resumen: Se cumplió con la recomendación de la última auditoría (2026-04-27) monitoreando e inspeccionando la estabilidad estática del código base TypeScript (`tsc --noEmit`) y la coherencia del log de evolución. Se comprobó un estado de integridad total sin deudas o conflictos.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_28_monitoreo_ts_y_logs.md](./TASKS/DONE/Kaizen_2026_04_28_monitoreo_ts_y_logs.md)
