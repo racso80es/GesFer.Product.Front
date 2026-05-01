@@ -36,7 +36,7 @@ phases:
     id: '8'
     name: Validar
   - description: >-
-      Acción finalize; Evolution Logs. Ejecutar git-sync-remote y git-create-pr incorporando al cuerpo del Pull Request
+      Acción finalize-process; Evolution Logs. Ejecutar git-sync-remote y git-create-pr incorporando al cuerpo del Pull Request
       el resumen de objectives.md, hallazgos abordados y validacion (referencia a paths.featurePath/<nombre_correccion>).
     id: '9'
     name: Finalizar
@@ -49,7 +49,7 @@ related_actions:
   - implementation
   - execution
   - validate
-  - finalize
+  - finalize-process
 related_skills:
   - git-workspace-recon
   - git-branch-manager
