@@ -66,5 +66,6 @@ Alineado a **SddIA/skills/skills-contract.md**:
 - Contrato: SddIA/skills/skills-contract.md, skills-contract.json.
 - Cúmulo: paths.skillsDefinitionPath, paths.skillCapsules, paths.skillsIndexPath, paths.skillsRustPath.
 - Proceso análogo: paths.processPath/create-tool/spec.md.
-- Portabilidad del proceso: SddIA/norms/reproducir-create-skill-en-otros-entornos-sddia.md.
+- Portabilidad del proceso: SddIA/norms/reproducir-create-skill-en-otros-entornos-sddia.md; skill asociada: paths.skillsDefinitionPath/reproducir-create-skill-sddia/spec.md.
+- Portabilidad de una skill concreta: paths.skillsDefinitionPath/reproducir-skills-en-otros-entornos-sddia/spec.md.
 - Machine-readable: paths.processPath/create-skill/spec.json.

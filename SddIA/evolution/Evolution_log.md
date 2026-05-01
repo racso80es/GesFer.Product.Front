@@ -4,6 +4,7 @@
 
 | ID (GUID) | Fecha | Descripción breve |
 | :--- | :--- | :--- |
+| c58d4a10-2e7f-4b6a-9d12-4f0e1a2b3c4d | 2026-05-01 | Skills reproducir-create-skill-sddia y reproducir-skills-en-otros-entornos-sddia (definición); índices #Skill y norma portabilidad |
 | 7c2e9f41-b8d0-4a1e-9f63-2c5d8e7a1b04 | 2026-05-01 | Proceso create-skill, guías de portabilidad y difusión (AGENTS, triggers, README procesos) |
 | 0c009e75-0c73-4a64-96bd-46d9ab380f60 | 2026-03-27 | Norma y herramientas evolution SddIA (register, validate, watch, CI) |
 | b4e8a1c3-7f2d-4e9a-b5c1-6d7e8f9a0b1c | 2026-03-27T18:00:00+00:00 | Kaizen automatic_task + alineación sddia-evolution (Rust, CI, normas) |

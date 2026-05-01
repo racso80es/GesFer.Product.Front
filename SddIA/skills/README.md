@@ -35,6 +35,8 @@ Cada skill tiene en este directorio una carpeta con:
 | dotnet-development | Estándares .NET (build, test, logging). | — |
 | frontend-build | Build Next.js (GesFer.Product.Front en `src/`) con fallback. | — |
 | security-audit | Auditoría y hooks pre-commit/pre-push. | — |
+| reproducir-create-skill-sddia | Portar el proceso `create-skill` a otro repo SddIA (ver norma asociada). | — |
+| reproducir-skills-en-otros-entornos-sddia | Portar una skill concreta (definición + cápsula + índice) a otro entorno. | — |
 
 ## Referencias
 

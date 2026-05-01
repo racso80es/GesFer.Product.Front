@@ -27,9 +27,11 @@ Cuando el usuario escriba **#Skill** (solo o en un mensaje), responde sugiriendo
 | **dotnet-development** | Estándares .NET (build, test, logging). Solo definición. |
 | **frontend-build** | Build Next.js (`src/`, cliente) con fallback. Solo definición. |
 | **security-audit** | Auditoría y hooks pre-commit/pre-push. Solo definición. |
+| **reproducir-create-skill-sddia** | Portar el proceso create-skill a otro repo SddIA (norma asociada). Solo definición. |
+| **reproducir-skills-en-otros-entornos-sddia** | Portar una skill concreta a otro entorno. Solo definición. |
 
 ## Respuesta sugerida
 
-Ofrecer el listado en español y añadir, si aplica: *"¿Con cuál quieres trabajar o qué necesitas hacer?"* Para más detalle: definición en paths.skillsDefinitionPath/\<skill-id\>/ (spec.md, spec.json); implementación en paths.skillCapsules[skill-id] (Cúmulo).
+Ofrecer el listado en español y añadir, si aplica: *"¿Con cuál quieres trabajar o qué necesitas hacer?"* Para más detalle: definición en paths.skillsDefinitionPath/\<skill-id\>/ (`spec.md` con YAML Frontmatter); implementación en paths.skillCapsules[skill-id] (Cúmulo) si aplica.
 
 Listado canónico en **SddIA/norms/interaction-triggers.md** (disparador #Skill) y **SddIA/skills/**.

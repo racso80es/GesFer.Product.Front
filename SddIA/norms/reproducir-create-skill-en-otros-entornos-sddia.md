@@ -20,7 +20,7 @@ descripcion: >-
 
 Esta guía describe **qué artefactos copiar, qué índices actualizar y cómo validar** para que el proceso **`create-skill`** exista y sea descubrible en **otro repo** que siga el mismo ecosistema SddIA. Las rutas lógicas son siempre las del **Cúmulo** (`SddIA/agents/cumulo.json` → `pathsContract` → `SddIA/agents/cumulo.paths.json`); no documentar rutas físicas como SSOT sin anclarlas a claves `paths.*`.
 
-**Alcance de este documento:** portar la **definición del proceso** (`paths.processPath/create-skill/`) y su **visibilidad** (README de procesos, disparador `#Process`, difusión Cursor si aplica). **No** incluye portar skills concretas; para eso usar `SddIA/skills/reproducir-skills-en-otros-entornos-sddia.md`.
+**Alcance de este documento:** portar la **definición del proceso** (`paths.processPath/create-skill/`) y su **visibilidad** (README de procesos, disparador `#Process`, difusión Cursor si aplica). **No** incluye portar skills concretas; para eso usar **`paths.skillsDefinitionPath/reproducir-skills-en-otros-entornos-sddia/spec.md`** (skill `reproducir-skills-en-otros-entornos-sddia`).
 
 ## 1. Prerrequisitos del entorno destino
 
@@ -92,7 +92,8 @@ Nombre sugerido de feature: p. ej. `create-process-create-skill` o `port-process
 
 - Proceso canónico: `paths.processPath/create-skill/spec.md`  
 - Proceso análogo: `paths.processPath/create-tool/spec.md`  
-- Portar skills ejecutables: `SddIA/skills/reproducir-skills-en-otros-entornos-sddia.md`  
+- Portar skills ejecutables: `paths.skillsDefinitionPath/reproducir-skills-en-otros-entornos-sddia/spec.md`
+- Skill de portar el proceso (resumen + enlace a esta norma): `paths.skillsDefinitionPath/reproducir-create-skill-sddia/spec.md`  
 - Rutas: `SddIA/norms/paths-via-cumulo.md`  
 - E/S JSON agentes: `SddIA/norms/capsule-json-io.md`
 
