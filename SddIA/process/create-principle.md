@@ -1,3 +1,36 @@
+---
+contract_ref: paths.processPath/process-contract.json
+name: Create Principle
+persist_ref: paths.principlesPath/<principle-id>
+process_id: create-principle
+related_skills:
+  - git-workspace-recon
+  - git-branch-manager
+  - git-save-snapshot
+  - git-sync-remote
+  - git-tactical-retreat
+  - git-create-pr
+spec_version: 2.0.0
+phases:
+  - description: >-
+      Ejecutar git-workspace-recon para validar entorno limpio. Tras confirmar, usar git-branch-manager para aislar el
+      contexto en una rama de trabajo (p. ej. feat/create-principle-<principle-id>) si la incorporación se versiona vía PR.
+    id: '0'
+    name: Preparar entorno
+  - description: Definición del principio (carpeta kebab-case, spec.md, spec.json) según secciones siguientes.
+    id: '1'
+    name: Definición
+  - description: >-
+      Validación contractual. Durante la edición, consolidar hitos con git-save-snapshot. Ante fallo estructural,
+      valorar git-tactical-retreat según política.
+    id: '2'
+    name: Validación
+  - description: >-
+      Cierre. git-sync-remote y git-create-pr incorporando paths.principlesPath/<principle-id> y el resumen del principio en el cuerpo del Pull Request.
+    id: '3'
+    name: Finalizar
+---
+
 # Proceso: Creación de Principio (create-principle)
 
 Este documento define el **proceso** para añadir nuevos principios técnicos a `paths.principlesPath` (SddIA/principles/).
@@ -13,6 +46,11 @@ Estandarizar la incorporación de principios (guías técnicas, normas de nomenc
 - **Contenido:** spec.md (legible) y spec.json (metadatos). Ambos obligatorios según principles-contract.
 
 ## Fases del Proceso
+
+### 0. Preparar entorno
+
+1. **git-workspace-recon** (entorno limpio).
+2. **git-branch-manager** para rama de trabajo si el cambio se integra vía PR (recomendado).
 
 ### 1. Definición
 
@@ -41,6 +79,12 @@ Estandarizar la incorporación de principios (guías técnicas, normas de nomenc
 1. Verificar que spec.json cumple SddIA/principles/principles-contract.json.
 2. Asegurar que spec.md tiene formato claro y contenido útil.
 3. Si **blocking_for_pr** es true: confirmar que la acción validate (paths.actionsPath/validate/) incluye la comprobación de este principio y que el resultado es bloqueante (global fail / blocking).
+4. Consolidar hitos con **git-save-snapshot**; **git-tactical-retreat** solo ante fallo estructural y con confirmación.
+
+### 3. Cierre
+
+1. **git-sync-remote** para publicar la rama.
+2. **git-create-pr** con referencia a `paths.principlesPath/<principle-id>/` y resumen del principio en el cuerpo del PR.
 
 ## Principio bloqueante para PR
 

@@ -4,32 +4,41 @@ input_ref: paths.auditsPath
 name: Corrección según Auditorías
 persist_ref: paths.featurePath/<nombre_correccion>
 phases:
-  - description: Revisar últimos informes en paths.auditsPath; consolidar hallazgos (críticos/medios/bajos).
+  - description: >-
+      Ejecutar git-workspace-recon para validar entorno limpio. Tras confirmar, usar git-branch-manager para aislar el
+      contexto en la rama feat/correccion-segun-auditorias o feat/correccion-auditorias-<identificador> (nunca master como trabajo activo).
     id: '0'
+    name: Preparar entorno
+  - description: Revisar últimos informes en paths.auditsPath; consolidar hallazgos (críticos/medios/bajos).
+    id: '1'
     name: Análisis de auditorías
   - description: objectives.md con hallazgos priorizados y criterios de cierre.
-    id: '1'
+    id: '2'
     name: Documentación de objetivos
   - description: Acción spec; spec.md, spec.json.
-    id: '2'
+    id: '3'
     name: Especificación
   - description: Acción clarify si aplica; clarify.md, clarify.json.
-    id: '3'
+    id: '4'
     name: Clarificación
   - description: Acción planning; plan.
-    id: '4'
+    id: '5'
     name: Planificación
   - description: Acción implementation; implementation.md, implementation.json.
-    id: '5'
-    name: Implementación (doc)
-  - description: Acción execution; execution.json.
     id: '6'
+    name: Implementación (doc)
+  - description: >-
+      Acción execution; execution.json o registro equivalente. Consolidar hitos atómicos con git-save-snapshot. Ante fallo
+      estructural del entorno, valorar git-tactical-retreat según política y confirmación requerida.
+    id: '7'
     name: Ejecución
   - description: Acción validate; validacion.json.
-    id: '7'
-    name: Validar
-  - description: Acción finalize; Evolution Logs, PR.
     id: '8'
+    name: Validar
+  - description: >-
+      Acción finalize; Evolution Logs. Ejecutar git-sync-remote y git-create-pr incorporando al cuerpo del Pull Request
+      el resumen de objectives.md, hallazgos abordados y validacion (referencia a paths.featurePath/<nombre_correccion>).
+    id: '9'
     name: Finalizar
 principles_ref: paths.principlesPath
 process_id: correccion-auditorias
@@ -42,11 +51,15 @@ related_actions:
   - validate
   - finalize
 related_skills:
-  - iniciar-rama
-  - finalizar-git
+  - git-workspace-recon
+  - git-branch-manager
+  - git-save-snapshot
+  - git-sync-remote
+  - git-tactical-retreat
+  - git-create-pr
   - documentation
   - security-audit
-spec_version: 1.0.0
+spec_version: 2.0.0
 ---
 # Proceso: Corrección según Auditorías
 
@@ -65,18 +78,21 @@ El proceso **correccion-auditorias** orquesta el ciclo de corrección de hallazg
 
 ## Alcance
 
-- **Rama:** feat/correccion-segun-auditorias o feat/correccion-auditorias-<identificador> (nunca master).
+- **Rama:** feat/correccion-segun-auditorias o feat/correccion-auditorias-<identificador> (nunca master). **Inicio:** git-workspace-recon → git-branch-manager.
 - **Documentación:** Carpeta paths.featurePath/<nombre_correccion>/ con objectives.md (objetivo, hallazgos consolidados, prioridades), spec.md/spec.json, clarify.md si aplica, implementation, validacion.json.
-- **Skills:** iniciar-rama, documentation, invoke-command, security-audit cuando aplique.
+- **Skills Git (Grado S+):** git-workspace-recon, git-branch-manager, git-save-snapshot, git-sync-remote, git-tactical-retreat, git-create-pr. **Dominio:** documentation, invoke-command, security-audit cuando aplique.
+- **Ejecución:** hitos con git-save-snapshot; rescate con git-tactical-retreat si aplica.
+- **Cierre:** git-sync-remote → git-create-pr con objectives y validacion enlazados en el cuerpo del PR.
 - **Restricciones:** Priorizar hallazgos críticos (compilación, seguridad, violación de capas); alcance acotado por lo reportado en auditorías.
 
 ## Fases
 
+0. **Preparar entorno:** git-workspace-recon; git-branch-manager para la rama de corrección.
 1. **Análisis de auditorías:** Revisar últimos informes en paths.auditsPath y consolidar hallazgos (críticos / medios / bajos).
 2. **Documentación de objetivos:** Redactar objectives.md con hallazgos priorizados y criterios de cierre.
 3. **Especificación y plan:** Acciones spec, clarify, planning según ciclo feature.
-4. **Implementación y ejecución:** Aplicar correcciones; cada hallazgo puede ser un ítem de implementation.
-5. **Validación y cierre:** validacion.json; registrar en paths.auditsPath o Evolution Logs que los hallazgos fueron abordados.
+4. **Implementación y ejecución:** Aplicar correcciones; cada hallazgo puede ser un ítem de implementation; consolidar con git-save-snapshot.
+5. **Validación y cierre:** validacion.json; registrar en paths.auditsPath o Evolution Logs; git-sync-remote y git-create-pr con artefactos de la tarea en el PR.
 
 ## Integración
 

@@ -3,7 +3,9 @@ contract_ref: paths.processPath/process-contract.json
 name: Refactorization
 persist_ref: paths.featurePath/refactorization-<nombre_refactor>
 phases:
-  - description: Rama feat/refactorization-<nombre_refactor>; skill iniciar-rama.
+  - description: >-
+      Ejecutar git-workspace-recon para validar entorno limpio. Tras confirmar, usar git-branch-manager para crear o
+      seleccionar la rama feat/refactorization-<nombre_refactor> desde la base acordada (nunca master como trabajo activo).
     id: '0'
     name: Preparar entorno
   - description: objectives.md.
@@ -21,13 +23,17 @@ phases:
   - description: Acción implementation.
     id: '5'
     name: Implementación (doc)
-  - description: Acción execution.
+  - description: >-
+      Acción execution. Consolidar hitos atómicos con git-save-snapshot. Ante fallo estructural, aplicar
+      git-tactical-retreat según contrato y confirmación requerida.
     id: '6'
     name: Ejecución
   - description: Acción validate.
     id: '7'
     name: Validar
-  - description: Acción finalize.
+  - description: >-
+      Acción finalize. Ejecutar git-sync-remote y, a continuación, git-create-pr incorporando al cuerpo del Pull Request
+      el resumen de objectives.md, plan.md e ítems relevantes de validacion.md (referencia explícita a la carpeta de la tarea en Cúmulo).
     id: '8'
     name: Finalizar
 process_id: refactorization
@@ -40,9 +46,13 @@ related_actions:
   - validate
   - finalize
 related_skills:
-  - iniciar-rama
-  - finalizar-git
-spec_version: 1.0.0
+  - git-workspace-recon
+  - git-branch-manager
+  - git-save-snapshot
+  - git-sync-remote
+  - git-tactical-retreat
+  - git-create-pr
+spec_version: 2.0.0
 ---
 # Proceso: Refactorización
 
@@ -62,15 +72,15 @@ Ruta de la tarea: Cúmulo (paths.featurePath/refactorization-<nombre_refactor>).
 
 | Fase | Nombre | Descripción |
 | :--- | :--- | :--- |
-| **0** | Preparar entorno | Crear rama feat/refactorization-<nombre_refactor> desde `master` actualizado. **Skill:** iniciar-rama (paths.skillCapsules[\"iniciar-rama\"]). |
+| **0** | Preparar entorno | **git-workspace-recon** (entorno limpio) → **git-branch-manager** para rama feat/refactorization-<nombre_refactor>. No trabajar en `master`. |
 | **1** | Documentación con objetivos | objectives.md en carpeta de la tarea (Cúmulo). |
 | **2** | Especificación | Acción spec. Salida: spec.md (YAML Frontmatter). |
 | **3** | Clarificación | Acción clarify. Salida: clarify.md (YAML Frontmatter). |
 | **4** | Planificación | Acción planning. Salida: plan. |
 | **5** | Implementación (doc) | Acción implementation. Salida: implementation.md (YAML Frontmatter). |
-| **6** | Ejecución | Acción execution. Salida: execution.md (YAML Frontmatter). |
+| **6** | Ejecución | Acción execution. Salida: execution.md (YAML Frontmatter). **git-save-snapshot** para hitos; **git-tactical-retreat** si el entorno queda irrecuperable. |
 | **7** | Validar | Acción validate. Salida: validacion.md (YAML Frontmatter). |
-| **8** | Finalizar | Acción finalize. Evolution Logs y PR. |
+| **8** | Finalizar | **git-sync-remote** → **git-create-pr** con resumen de objectives/plan/validacion en el cuerpo del PR. Evolution Logs. |
 
 ## Contenido mínimo de la carpeta de la tarea (Cúmulo)
 
@@ -98,7 +108,7 @@ El proceso **refactorization** utiliza las mismas acciones que **feature** en pa
 
 ## Estándares de Calidad
 
-- **Grado S+:** Trazabilidad desde el objetivo hasta el PR.
+- **Grado S+:** Trazabilidad desde el objetivo hasta el PR; arsenal táctico Git en Cúmulo (git-workspace-recon, git-branch-manager, git-save-snapshot, git-sync-remote, git-tactical-retreat, git-create-pr).
 - **Ley GIT:** Ningún commit en `master`; documentación en la carpeta de la tarea (Cúmulo).
 - **Single Source of Truth:** Documentación canónica en la carpeta de la tarea (Cúmulo).
 

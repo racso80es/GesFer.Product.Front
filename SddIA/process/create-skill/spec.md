@@ -11,6 +11,29 @@ paths:
   skillsIndexPath_ref: paths.skillsIndexPath (Cúmulo)
   skillsRustPath_ref: paths.skillsRustPath (Cúmulo)
 persist_ref: paths.featurePath/create-skill-<skill-id>
+phases:
+  - description: >-
+      Ejecutar git-workspace-recon para validar entorno limpio. Tras confirmar, usar git-branch-manager para aislar el
+      contexto en la rama feat/create-skill-<skill-id> (nunca master como trabajo activo).
+    id: '0'
+    name: Preparar entorno
+  - description: objectives.md y spec.md (YAML Frontmatter); acción spec según contrato de acciones.
+    id: '1'
+    name: Objetivos y especificación
+  - description: >-
+      Definición en paths.skillsDefinitionPath, cápsula opcional en paths.skillCapsules, índice y Cúmulo. Durante la
+      mutación del repositorio, consolidar hitos con git-save-snapshot. Ante fallo estructural, valorar git-tactical-retreat
+      según política y confirmación requerida.
+    id: '2'
+    name: Definición, cápsula e integración
+  - description: Acción validate; validacion.md (YAML Frontmatter). Verificar contrato skills y binario/cápsula si aplica.
+    id: '3'
+    name: Validar
+  - description: >-
+      Cierre. Ejecutar git-sync-remote y git-create-pr incorporando al cuerpo del Pull Request objectives.md,
+      validacion.md y referencia a paths.skillsDefinitionPath / paths.skillCapsules.
+    id: '4'
+    name: Finalizar
 process_doc_ref: paths.processPath/create-skill/
 process_id: create-skill
 process_interface_compliance: 'Genera en carpeta de la tarea un .md por acción con YAML Frontmatter (objectives.md, spec.md, implementation.md, validacion.md); no ficheros .json separados. Entregable con ejecutable: cápsula en paths.skillCapsules[<skill-id>]. Norma: features-documentation-frontmatter.md.'
@@ -20,9 +43,14 @@ related_actions:
   - validate
   - finalize
 related_skills:
-  - iniciar-rama
+  - git-workspace-recon
+  - git-branch-manager
+  - git-save-snapshot
+  - git-sync-remote
+  - git-tactical-retreat
+  - git-create-pr
 skills_contract_ref: SddIA/skills/skills-contract.json
-spec_version: 1.0.0
+spec_version: 2.0.0
 triggers:
   - Crear nueva skill con skill-id (definición y, si aplica, cápsula)
   - Solicitud de incorporación de skill al índice y Cúmulo
@@ -45,7 +73,7 @@ El proceso **create-skill** incorpora una skill al ecosistema: definición en pa
 
 **Skills solo documentales:** únicamente paths.skillsDefinitionPath/<skill-id>/ (sin entrada nueva en skillCapsules si no hay binario ni scripts).
 
-Fases: 0 Preparar entorno | 1 Objetivos y especificación | 1b Definición en SddIA | 2–6 Cápsula, manifest, índice, Cúmulo | 7 Opcional Rust (paths.skillsRustPath) | 8 Validación | 9 Cierre.
+Fases (resumen operativo): **0** git-workspace-recon → git-branch-manager (rama feat/create-skill-&lt;skill-id&gt;) | **1** Objetivos y especificación | **2** Definición, cápsula opcional, índice, Cúmulo (hitos con git-save-snapshot; rescate con git-tactical-retreat si aplica) | **3** Validación | **4** git-sync-remote → git-create-pr con artefactos de la tarea en el cuerpo del PR.
 
 ## Restricciones
 

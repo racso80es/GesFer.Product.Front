@@ -11,6 +11,29 @@ paths:
   toolsIndexPath_ref: paths.toolsIndexPath (Cúmulo)
   toolsPath_ref: paths.toolsPath (Cúmulo)
 persist_ref: paths.featurePath/create-tool-<tool-id>
+phases:
+  - description: >-
+      Ejecutar git-workspace-recon para validar entorno limpio. Tras confirmar, usar git-branch-manager para aislar el
+      contexto en la rama feat/create-tool-<tool-id> (nunca master como trabajo activo).
+    id: '0'
+    name: Preparar entorno
+  - description: objectives.md y spec.md (YAML Frontmatter); acción spec según contrato de acciones.
+    id: '1'
+    name: Objetivos y especificación
+  - description: >-
+      Definición en paths.toolsDefinitionPath, implementación de cápsula en paths.toolCapsules, índice y Cúmulo. Durante
+      la mutación del repositorio, consolidar hitos con git-save-snapshot. Ante fallo estructural, valorar git-tactical-retreat
+      según política y confirmación requerida.
+    id: '2'
+    name: Definición, cápsula e integración
+  - description: Acción validate; validacion.md (YAML Frontmatter). Verificar contrato tools y ejecutable Rust.
+    id: '3'
+    name: Validar
+  - description: >-
+      Cierre. Ejecutar git-sync-remote y git-create-pr incorporando al cuerpo del Pull Request objectives.md,
+      validacion.md y referencia a la cápsula (paths.toolCapsules) y definición en SddIA.
+    id: '4'
+    name: Finalizar
 process_doc_ref: paths.processPath/create-tool/
 process_id: create-tool
 process_interface_compliance: 'Genera en carpeta de la tarea un .md por acción con YAML Frontmatter (objectives.md, spec.md, implementation.md, validacion.md); no ficheros .json separados. Entrega ejecutable: cápsula en paths.toolCapsules[<tool-id>]. Norma: features-documentation-frontmatter.md.'
@@ -20,8 +43,13 @@ related_actions:
   - validate
   - finalize
 related_skills:
-  - iniciar-rama
-spec_version: 1.0.0
+  - git-workspace-recon
+  - git-branch-manager
+  - git-save-snapshot
+  - git-sync-remote
+  - git-tactical-retreat
+  - git-create-pr
+spec_version: 2.0.0
 tools_contract_ref: SddIA/tools/tools-contract.json
 triggers:
   - Crear nueva herramienta en paths.toolsPath
@@ -43,7 +71,7 @@ El proceso **create-tool** define el procedimiento para incorporar una nueva her
 - **Definición (SddIA):** paths.toolsDefinitionPath/<tool-id>/ con spec.md y spec.json (implementation_path_ref obligatorio).
 - **Cápsula (implementación):** paths.toolCapsules[<tool-id>].
 
-Fases: 0 Preparar entorno | 1 Objetivos y especificación | 1b Definición en SddIA | 2–6 Cápsula, manifest, scripts, índice, Cúmulo | 7 Opcional Rust | 8 Validación | 9 Cierre.
+Fases (resumen operativo): **0** git-workspace-recon → git-branch-manager (rama feat/create-tool-&lt;tool-id&gt;) | **1** Objetivos y especificación | **2** Definición SddIA, cápsula, índice, Cúmulo (hitos con git-save-snapshot; rescate con git-tactical-retreat si aplica) | **3** Validación | **4** git-sync-remote → git-create-pr con artefactos de la tarea en el cuerpo del PR.
 
 ## Restricciones
 

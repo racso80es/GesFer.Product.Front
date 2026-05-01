@@ -43,10 +43,10 @@ outputs:
 persist_ref: paths.featurePath/validate-pull-requests-<pr-slug>
 phases:
   - description: >-
-      Verificar contexto Karma2Token según contrato (paths.tokensPath). Sincronizar el working tree con la rama
-      origen del PR solo mediante skill, herramienta, acción o proceso (norma SddIA/norms/git-via-skills-or-process.md);
-      p. ej. paths.skillCapsules.invoke-command u orquestación equivalente documentada. Confirmar que el análisis se
-      aplicará al código propuesto en el PR, no a la rama de integración destino.
+      Ejecutar git-workspace-recon para validar entorno limpio y coherencia local. A continuación usar git-branch-manager
+      (u orquestación equivalente autorizada) para alinear el working tree con la rama origen del PR. Verificar contexto
+      Karma2Token según contrato (paths.tokensPath). Confirmar que el análisis se aplicará al código propuesto en el PR,
+      no a la rama de integración destino. Norma: SddIA/norms/git-via-skills-or-process.md.
     id: '0'
     name: Preparar contexto y rama del PR
   - description: >-
@@ -69,7 +69,11 @@ phases:
     name: Consenso e informe final
   - description: >-
       Persistir validacion.md bajo persist_ref. Escribir semillas Kaizen en tasks_path_cumulo (paths.tasksPath) con
-      nombre [YYYYMMDD]-Refactor-[Tema].md y plantilla indicada en este documento.
+      nombre [YYYYMMDD]-Refactor-[Tema].md y plantilla indicada en este documento. Consolidar hitos atómicos con
+      git-save-snapshot cuando el flujo versiona la rama de revisión. Ante fallo estructural del entorno, valorar
+      git-tactical-retreat según política. Cierre de publicación: ejecutar git-sync-remote y, si procede un PR de
+      acompañamiento o actualización documental, git-create-pr incorporando al cuerpo objectives.md y validacion.md
+      (y referencia al PR objeto de revisión).
     id: '5'
     name: Persistencia y Cúmulo Kaizen
 principles_ref: paths.principlesPath
@@ -85,8 +89,13 @@ related_agents:
   - ref: SddIA/agents/security-engineer.json
     role: security-engineer
 related_skills:
-  - invoke-command
-spec_version: 1.0.0
+  - git-workspace-recon
+  - git-branch-manager
+  - git-save-snapshot
+  - git-sync-remote
+  - git-tactical-retreat
+  - git-create-pr
+spec_version: 2.0.0
 ---
 
 # Proceso: Validación integral de Pull Requests (validate-pull-requests)
@@ -113,7 +122,7 @@ Propósito: asegurar el desarrollo Kaizen del código mediante revisión discipl
 
 Debes operar **exclusivamente sobre la rama origen del Pull Request** (la rama que propone los cambios). Antes de analizar:
 
-1. **Sincroniza** el contexto de trabajo con esa rama (vía skill/herramienta/acción/proceso autorizado; ver `SddIA/norms/git-via-skills-or-process.md`).
+1. **Sincroniza** el contexto de trabajo con esa rama: **git-workspace-recon** y **git-branch-manager** (u orquestación equivalente autorizada; ver `SddIA/norms/git-via-skills-or-process.md`).
 2. **Verifica** que el árbol de trabajo y el diff analizado corresponden al **estado propuesto en el PR**, no a la rama de integración final ni a un merge local no publicado.
 
 Toda alteración o sugerencia debe estar contenida en este entorno aislado (la revisión no mezcla cambios ajenos al PR).
@@ -129,12 +138,12 @@ Toda alteración o sugerencia debe estar contenida en este entorno aislado (la r
 
 | Fase | Nombre | Descripción |
 |:-----|:-------|:------------|
-| 0 | Preparar contexto y rama del PR | Token/trazabilidad; checkout o equivalente autorizado a la rama del PR; confirmación de alcance. |
+| 0 | Preparar contexto y rama del PR | **git-workspace-recon**; **git-branch-manager** (o equivalente autorizado) hacia la rama del PR; Karma2Token; confirmación de alcance. |
 | 1 | Escrutinio architect | Arquitectura: Clean Architecture y separación de responsabilidades. Modularidad y estándar: reutilización y ecosistema de nombres. Si la mejora es válida pero fuera de alcance del PR, marcar como **Semilla Kaizen** para Cúmulo. |
 | 2 | Escrutinio qa-judge | Necesidad: el cambio corresponde a lo solicitado. Ausencia de alucinación: llamadas y APIs existen en la rama actual. Estados frontera y rendimiento. |
 | 3 | Escrutinio security-engineer | Exposición de datos, sanitización de inputs, vulnerabilidades. **Hallazgos de seguridad bloqueantes (🔴).** |
 | 4 | Consenso e informe final | Unificar dictámenes y generar el formato de salida obligatorio (ver sección siguiente). |
-| 5 | Persistencia y Cúmulo Kaizen | `objectives.md` y `validacion.md` en `persist_ref`; ficheros Kaizen en `tasks_path_cumulo` cuando aplique. |
+| 5 | Persistencia y Cúmulo Kaizen | `objectives.md` y `validacion.md` en `persist_ref`; Kaizen en `tasks_path_cumulo`; **git-save-snapshot** en hitos; **git-tactical-retreat** si aplica; cierre con **git-sync-remote** y **git-create-pr** cuando se publique documentación o ajustes en rama propia. |
 
 ## Criterios de veredicto
 

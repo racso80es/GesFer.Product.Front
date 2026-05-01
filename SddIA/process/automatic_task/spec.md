@@ -1,12 +1,40 @@
 ---
+contract_ref: paths.processPath/process-contract.json
 name: Automatic Task
+persist_ref: paths.tasksPath (bandeja, ACTIVE, DONE, KAIZEN)
+phases:
+  - description: >-
+      Ejecutar git-workspace-recon antes de tomar tarea. Al activar una tarea, usar git-branch-manager para crear o
+      seleccionar la rama feat/<nombre> o fix/<nombre> coherente con el proceso por defecto (feature) o el indicado en la tarea.
+    id: '0'
+    name: Preparar entorno y rama
+  - description: Triaje (raíz de paths.tasksPath, cola KAIZEN, o nueva semilla), activación moviendo el .md a ACTIVE/ y primer bloqueo en remoto según política del equipo.
+    id: '1'
+    name: Identificación, triaje y activación
+  - description: >-
+      Ejecución del proceso orquestado (p. ej. feature). Consolidar hitos atómicos con git-save-snapshot. Ante fallo
+      estructural del entorno, valorar git-tactical-retreat según política y confirmación requerida.
+    id: '2'
+    name: Ejecución
+  - description: >-
+      Finalización: mover tarea a DONE/, actualizar Evolution Log. Publicar con git-sync-remote y, cuando corresponda,
+      git-create-pr incorporando resumen de la intervención y enlace a documentación en paths.featurePath o paths.tasksPath/DONE/.
+    id: '3'
+    name: Finalización y publicación
 process_id: automatic_task
 related_actions:
   - triage
   - activation
   - execution
   - finalization
-spec_version: 1.2.0
+related_skills:
+  - git-workspace-recon
+  - git-branch-manager
+  - git-save-snapshot
+  - git-sync-remote
+  - git-tactical-retreat
+  - git-create-pr
+spec_version: 2.0.0
 ---
 # Proceso: Automatic Task
 
@@ -38,14 +66,15 @@ Si **no** hay ningún `.md` pendiente en la raíz de `paths.tasksPath`, revisa l
 ### 2. Activación y Bloqueo (Activation)
 Transición a estado `ACTIVE` para evitar colisiones con otras IAs (Jules/Cursor).
 
-- Crea una nueva rama `feat/<nombre_feature>` o `fix/<nombre_fix>`.
+- **git-workspace-recon** (entorno limpio) y **git-branch-manager** para crear o seleccionar `feat/<nombre_feature>` o `fix/<nombre_fix>`.
 - Mueve el archivo de la tarea **desde su origen** (raíz de `paths.tasksPath` o `paths.tasksPath/KAIZEN/`) hacia `paths.tasksPath/ACTIVE/`.
-- **Sincronización inmediata:** Realiza el primer commit con la reubicación del archivo de la tarea a su nueva ubicación `ACTIVE/` y haz push a origin en la rama actual. Esto bloquea el TODO.
+- **Sincronización inmediata:** Primer **git-save-snapshot** (commit) con la reubicación del archivo a `ACTIVE/` y **git-sync-remote** para publicar el bloqueo en la rama actual.
 
 ### 3. Ejecución (Execution)
 Inicia y continúa las instrucciones definidas en el proceso correspondiente, por defecto el proceso `feature` (definido en `SddIA/process/feature/spec.md`).
 
 - Esto implica generar la documentación de la tarea (objectives, spec, clarify, plan, implementation, execution, validacion) en `paths.featurePath/<nombre_feature>`.
+- Consolidar hitos con **git-save-snapshot**. Ante corrupción severa del árbol, **git-tactical-retreat** solo con confirmación y política aplicable.
 
 ### 4. Finalización y Archivo (Finalization)
 Transición a estado `DONE` tras el cumplimiento del proceso.
@@ -53,6 +82,7 @@ Transición a estado `DONE` tras el cumplimiento del proceso.
 - Mueve el archivo de la tarea de `paths.tasksPath/ACTIVE/` a `paths.tasksPath/DONE/`.
 - Actualiza el log de evolución del producto (`paths.evolutionPath` / `paths.evolutionLogFile` según Cúmulo) con un resumen de la intervención, enlazando al archivo en `DONE/`.
 - Genera la documentación de finalización del proceso feature (`finalize.md`).
+- **git-sync-remote** y, si el cierre requiere revisión formal, **git-create-pr** con resumen y enlaces a `finalize.md` / `validacion.md` en el cuerpo del PR.
 
 ## Estructura de carpetas requerida
 Para el correcto funcionamiento de este proceso, el repositorio debe mantener la siguiente jerarquía bajo `paths.tasksPath`:
