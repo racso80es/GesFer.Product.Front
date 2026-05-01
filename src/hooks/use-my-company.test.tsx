@@ -3,6 +3,7 @@ import { useQueryClient, QueryClient, QueryClientProvider } from "@tanstack/reac
 import { useMyCompany } from "./use-my-company";
 import { myCompanyApi } from "@/lib/api/my-company";
 import React from "react";
+import type { UpdateCompany } from "@/lib/types/api";
 
 jest.mock("@/lib/api/my-company", () => ({
   myCompanyApi: {
@@ -45,7 +46,7 @@ describe("useMyCompany", () => {
 
     const { result } = renderHook(() => useMyCompany(), { wrapper });
 
-    await result.current.updateCompany({ businessName: "Updated Company" } as any);
+    await result.current.updateCompany({ businessName: "Updated Company" } as unknown as UpdateCompany);
 
     expect(myCompanyApi.update).toHaveBeenCalledWith({ businessName: "Updated Company" });
   });
