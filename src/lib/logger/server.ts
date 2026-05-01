@@ -30,7 +30,7 @@ const transport = pino.transport({
       options: {
         destination: logFilePath,
         mkdir: true,
-      } as any,
+      } as Record<string, unknown>,
     },
   ],
 });

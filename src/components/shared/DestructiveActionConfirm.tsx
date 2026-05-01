@@ -8,10 +8,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../ui/dialog";
+} from "@/components/ui/dialog";
 import { Button } from "./Button";
 import { Input } from "./Input";
-import { Label } from "../ui/label";
+import { Label } from "@/components/ui/label";
 import { AlertTriangle, Loader2 } from "lucide-react";
 
 interface DestructiveActionConfirmProps {

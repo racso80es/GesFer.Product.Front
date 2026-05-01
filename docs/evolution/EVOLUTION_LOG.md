@@ -1,5 +1,16 @@
 Objetivo Home Publica
 
+[2026-04-30] [feat/correccion-auditorias-2026-04-30] [Resolución de hallazgo de auditoría en configuración de logs] [DONE].
+
+## feature: correccion-auditorias-2026-04-30
+Resumen: Se eliminó el anti-patrón de aserción `as any` en `src/lib/logger/server.ts` de acuerdo con lo especificado en la auditoría `AUDITORIA_2026_04_30_01.md`, manteniéndose todas las métricas al 100%.
+Referencia archivada: [docs/features/correccion-auditorias-2026-04-30/finalize.md](./features/correccion-auditorias-2026-04-30/finalize.md)
+[2024-04-30] [feat/kaizen-remove-obsolete-tests] [Eliminar test obsoleto de language-id] [DONE].
+
+## feature: kaizen-remove-obsolete-tests
+Resumen: Se eliminó el archivo de pruebas `src/__tests__/integration/language-id-integrity.test.ts` que contenía código muerto deshabilitado (.skip) reduciendo la deuda técnica.
+Referencia archivada: [docs/features/kaizen-remove-obsolete-tests/objectives.md](./features/kaizen-remove-obsolete-tests/objectives.md)
+
 [2026-04-21] [feat/kaizen-overlay-fix-test-id] [Se añadió data-testid a OverlayFix y se estandarizó el retorno del componente] [DONE].
 
 ## feature: kaizen-overlay-fix-test-id
@@ -143,6 +154,11 @@ Referencia archivada: [docs/features/correccion-auditorias-2026-04-23/finalize.m
 Resumen: Se ha documentado y resuelto los pain points críticos y medios correspondientes a las dos últimas auditorías de calidad (S+). Se arregló la integración TypeScript+Jest mediante `src/global.d.ts`, se refactorizaron los mocks de `LoginResponse`, se actualizaron comentarios con credenciales antiguas (`usuario` a `username`) y se sorteó el límite de inferencia de Playwright con aserciones tipadas.
 Referencia archivada: [docs/features/correccion-auditorias/finalize.md](./features/correccion-auditorias/finalize.md)
 
+[2026-04-27] [feat/kaizen-coverage-modal-base] [Se añadieron pruebas unitarias para ModalBase incrementando su cobertura al 100%] [DONE].
+
+## feature: kaizen-coverage-modal-base
+Resumen: Se han implementado pruebas exhaustivas para `src/components/shared/ModalBase.tsx` cubriendo las funciones de confirmación, cancelación y renderizado personalizado.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_27_coverage_modal_base.md](./TASKS/DONE/Kaizen_2026_04_27_coverage_modal_base.md)
 [2026-04-27] [feat/correccion-segun-auditorias] [Aplicación completa de hallazgos S+ de la auditoría 2026-04-24_01] [DONE].
 
 ## feature: correccion-segun-auditorias
@@ -168,3 +184,18 @@ Referencia archivada: [docs/features/correccion-auditorias-2026-04-25/finalize.m
 ## feature: correccion-auditorias-25
 Resumen: Se constató y documentó la resolución de los pain points críticos y medios detectados en `AUDITORIA_2026_04_24_01.md`. Los campos de idioma fueron confirmados en los mocks de `LoginResponse` de los contratos API y se verificó que el bypass de inferencia de TypeScript `Number()` en los tests E2E estaba aplicado sin usar casts peligrosos. El código base compila correctamente sin emitir errores de TypeScript.
 Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_25_correccion_auditorias.md](./TASKS/DONE/Kaizen_2026_04_25_correccion_auditorias.md)
+[2026-04-29] [feat/correccion-auditorias-2026-04-29] [Resolución de hallazgos en import mapping] [DONE].
+
+## feature: correccion-auditorias-2026-04-29
+Resumen: Se resolvieron los hallazgos críticos detectados en AUDITORIA_2026_04_29_01.md reemplazando las importaciones relativas `../../lib/utils/cn` por el alias de path mapping `@/lib/utils/cn` en el directorio `src/components/`.
+Referencia archivada: [docs/features/correccion-auditorias-2026-04-29/finalize.md](./features/correccion-auditorias-2026-04-29/finalize.md)
+[2026-04-28] [feat/correccion-auditorias-2026-04-28] [Aplicación completa de hallazgos S+ de la auditoría 2026-04-28_01] [DONE].
+
+## feature: correccion-auditorias-2026-04-28
+Resumen: Se ha documentado y resuelto el pain point medio correspondiente a la auditoría de calidad (S+) del 2026-04-28. Se reemplazó el casteo "any" por "Record<string, unknown>" en src/lib/logger/server.ts, asegurando estricto apego a The Wall (TypeScript strict typing) sin afectar the build o coverage.
+Referencia archivada: [docs/features/correccion-auditorias-2026-04-28/finalize.md](./features/correccion-auditorias-2026-04-28/finalize.md)
+[2026-04-28] [feat/kaizen-monitoreo-ts-logs] [Kaizen de monitoreo de TS The Wall y validación de EVOLUTION_LOG para asegurar consistencia del repositorio.] [DONE].
+
+## feature: kaizen-monitoreo-ts-logs
+Resumen: Se cumplió con la recomendación de la última auditoría (2026-04-27) monitoreando e inspeccionando la estabilidad estática del código base TypeScript (`tsc --noEmit`) y la coherencia del log de evolución. Se comprobó un estado de integridad total sin deudas o conflictos.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_28_monitoreo_ts_y_logs.md](./TASKS/DONE/Kaizen_2026_04_28_monitoreo_ts_y_logs.md)
