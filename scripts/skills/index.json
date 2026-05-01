@@ -67,6 +67,13 @@
       "manifest": "git-create-pr/manifest.json",
       "launcher_bat": "git-create-pr/Git-Create-PR.bat",
       "description": "push + gh pr create (envelope JSON v2)."
+    },
+    {
+      "skillId": "git-close-cycle",
+      "path": "git-close-cycle/",
+      "manifest": "git-close-cycle/manifest.json",
+      "launcher_bat": "git-close-cycle/Git-Close-Cycle.bat",
+      "description": "Post-fusión: checkout base, pull, fetch --prune, branch -d/-D (envelope JSON v2)."
     }
   ]
 }

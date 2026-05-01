@@ -34,6 +34,7 @@ Cada skill tiene en este directorio una carpeta con:
 | git-sync-remote | fetch + pull con remoto; envelope JSON v2. | git-sync-remote |
 | git-tactical-retreat | reset --hard / clean con confirmación destructiva; envelope JSON v2. | git-tactical-retreat |
 | git-create-pr | push + gh pr create; envelope JSON v2. | git-create-pr |
+| git-close-cycle | Post-fusión: checkout base, pull, fetch --prune, eliminar rama de trabajo; envelope JSON v2. | git-close-cycle |
 | git-operations | Uso seguro de Git (ramas feat/fix, commits convencionales). | — |
 | documentation | Estándares SSOT y gestión de documentación. | — |
 | filesystem-ops | Operaciones de archivo seguras (PowerShell). | — |
