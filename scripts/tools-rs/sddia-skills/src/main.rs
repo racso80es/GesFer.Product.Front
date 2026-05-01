@@ -32,8 +32,12 @@ fn main() {
         }
         Commands::List => {
             println!("Available skills (placeholder):");
-            println!(" - iniciar-rama");
-            println!(" - feature");
+            println!(" - git-workspace-recon");
+            println!(" - git-branch-manager");
+            println!(" - git-save-snapshot");
+            println!(" - git-sync-remote");
+            println!(" - git-tactical-retreat");
+            println!(" - git-create-pr");
         }
     }
 }

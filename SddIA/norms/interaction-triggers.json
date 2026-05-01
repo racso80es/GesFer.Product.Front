@@ -27,7 +27,7 @@
     {
       "trigger": "subir",
       "when": "El usuario pide subir, subir la rama o subir a la nube (publicar rama en origin)",
-      "behavior": "Ejecutar git push: git branch --show-current luego git push -u origin <rama>. PowerShell. Reportar éxito o error. No solo documentar; ejecutar.",
+      "behavior": "Publicar rama en remoto sin comandos git directos: ejecutar git-workspace-recon y luego publicar vía git-create-pr (pushFirst=true) o mediante el flujo de finalize cuando aplique. Reportar éxito o error.",
       "list_source": "—",
       "response": "Ejecutar push y confirmar resultado."
     }

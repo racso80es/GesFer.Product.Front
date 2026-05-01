@@ -2,7 +2,7 @@
 skill_id: git-branch-manager
 spec_version: 1.0.0
 status: Active
-name: Git Branch Manager
+name: Branch Manager
 owner: tekton-developer
 contract_ref: SddIA/skills/skills-contract.json
 implementation_path_ref: paths.skillCapsules.git-branch-manager
@@ -19,7 +19,7 @@ phases:
   - id: checkout
     name: Checkout o creación
     steps:
-      - Si create=true git checkout -b branchName; si no git checkout branchName
+      - Si create=true, crear rama branchName; si no, cambiar a rama branchName
 related_agents:
   - tekton-developer
 rules:
@@ -36,4 +36,4 @@ Crear rama nueva desde HEAD o cambiar a rama existente.
 | Campo | Tipo | Descripción |
 |-------|------|-------------|
 | `branchName` | string | Obligatorio. Nombre de rama (puede incluir prefijo feat/ si se desea). |
-| `create` | boolean | Default false. true = `git checkout -b`. |
+| `create` | boolean | Default false. true = crear rama nueva. |

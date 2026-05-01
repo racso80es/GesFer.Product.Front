@@ -31,8 +31,8 @@ phases:
   - id: pr
     name: Push y PR
     steps:
-      - Opcional git push -u origin branch
-      - gh pr create
+      - Publicar rama en remoto (si pushFirst=true)
+      - Crear Pull Request con gh (si disponible)
 related_agents:
   - tekton-developer
 rules:

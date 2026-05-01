@@ -6,8 +6,6 @@ Implementación por defecto en Rust de los skills con ejecutable (contrato SddIA
 
 | Binario | Skill | Cápsula destino |
 |---------|--------|-----------------|
-| iniciar_rama.exe | iniciar-rama | scripts/skills/iniciar-rama/bin/ |
-| merge_to_master_cleanup.exe | finalizar-git (post_pr) | scripts/skills/finalizar-git/bin/ |
 | invoke_command.exe | invoke-command | scripts/skills/invoke-command/bin/ |
 
 ## Build e instalación
@@ -26,8 +24,6 @@ Los launchers .bat en cada cápsula invocan el .exe en bin/ si existe; si no, fa
 
 ## Uso de los binarios
 
-- **iniciar_rama:** `iniciar_rama.exe feat mi-feature` o `iniciar_rama.exe fix correccion-timeout [master|main]`
-- **merge_to_master_cleanup:** `merge_to_master_cleanup.exe [--branch <rama>] [--delete-remote]`
-- **invoke_command:** `invoke_command.exe --command "git status" [--fase Accion] [--contexto GesFer]`
+- **invoke_command:** `invoke_command.exe --command "<command>" [--fase Accion] [--contexto GesFer]`
 
 Rutas canónicas: Cúmulo paths.skillCapsules (SddIA/agents/cumulo.json).

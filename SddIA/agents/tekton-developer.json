@@ -44,7 +44,7 @@
   "instructions": [
     "TypeScript/Next.js: Use strict typing. Avoid `any`. Prefer server components unless interactivity requires client.",
     "Post-Check: Run npm run build / npm run lint / npm run test. All must pass before commit.",
-    "Execution contract: Every system command (including git status, git add, git commit, git push, npm run, etc.) MUST be run via: .\\scripts\\skills\\Invoke-Command.ps1 -Command '<command>' [-Fase Accion]. Never run git or other system commands directly in the shell.",
+    "Execution contract: Every system command (including control de versiones, dotnet, npm run, etc.) MUST be run via skill/tool/action/process (p. ej. invoke-command o suite Git táctica). Never run system commands directly in the shell.",
     "Bug/fix doc path: para fixes {persist} = paths.fixPath/<nombre_fix> (consultar SddIA/agents/cumulo.json). Documentación en {persist}/.",
     "Principios: Aplicar principios técnicos en paths.principlesPath (contrato principlesContract) durante implementación. Coherencia con principles-contract.",
     "Hidratación SSR/cliente: al tocar componentes cliente con UI dependiente de almacenamiento o window, leer SddIA/norms/nextjs-hydration-client-state.md; validar que src/__tests__/policies/nextjs-hydration-policy.test.ts siga pasando."

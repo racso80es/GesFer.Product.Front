@@ -10,10 +10,10 @@
     "description": { "required": true }
   },
   "related_actions": ["spec", "implementation", "validate", "finalize"],
-  "related_skills": ["iniciar-rama"],
+  "related_skills": ["git-workspace-recon", "git-branch-manager", "git-save-snapshot", "git-sync-remote", "git-tactical-retreat", "git-create-pr"],
   "skills_contract_ref": "SddIA/skills/skills-contract.json",
   "phases": [
-    { "id": "0", "name": "Preparar entorno", "description": "Rama feat/create-skill-<skill-id>; skill iniciar-rama." },
+    { "id": "0", "name": "Preparar entorno", "description": "Validar entorno con git-workspace-recon y aislar contexto con git-branch-manager en rama feat/create-skill-<skill-id>." },
     { "id": "1", "name": "Objetivos y especificación", "description": "objectives.md, spec en carpeta de tarea." },
     { "id": "1b", "name": "Definición en SddIA", "description": "paths.skillsDefinitionPath/<skill-id>/ (spec.md, spec.json)." },
     { "id": "2", "name": "Cápsula e índice", "description": "Si aplica: cápsula, manifest, paths.skillsIndexPath, paths.skillCapsules en Cúmulo." },

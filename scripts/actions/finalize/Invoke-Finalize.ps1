@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Ejecuta la acción finalize: comprueba precondiciones e invoca la skill finalizar-proceso (FinalizarProceso, Push-And-CreatePR).
+    Ejecuta la acción finalize: comprueba precondiciones e invoca skills Git tácticas para publicar rama y abrir PR.
 .DESCRIPTION
     Orquestador de la acción finalize (SddIA/actions/finalize). Comprueba rama, objectives.md y validacion.json;
     opcionalmente ejecuta verify-pr-protocol; luego invoca la skill finalizar-proceso (Push-And-CreatePR.ps1)
@@ -36,15 +36,8 @@ $scriptDir = $PSScriptRoot
 $repoRoot = (Resolve-Path (Join-Path $scriptDir "..\..\..")).Path
 Push-Location $repoRoot
 try {
-    $currentBranch = (git branch --show-current).Trim()
-    if ([string]::IsNullOrWhiteSpace($currentBranch)) {
-        Write-Error "No se pudo obtener la rama actual. Ejecute desde un repositorio git."
-        exit 1
-    }
-    if ($currentBranch -eq "master" -or $currentBranch -eq "main") {
-        Write-Error "La acción finalize no debe ejecutarse en la rama troncal (master/main). Cambie a su rama feat/ o fix/."
-        exit 1
-    }
+    Write-Host "[Finalize] Nota: este orquestador no ejecuta comandos git directos." -ForegroundColor Cyan
+    Write-Host "[Finalize] La validación de rama (no master/main) y el publish se delegan a skills Git tácticas." -ForegroundColor Cyan
 
     $persistFull = Join-Path $repoRoot $Persist
     if (-not (Test-Path $persistFull)) {
@@ -89,17 +82,17 @@ try {
         }
     }
 
-    $skillCapsule = Join-Path $repoRoot "scripts\skills\finalizar-git\Push-And-CreatePR.ps1"
-    if (-not (Test-Path $skillCapsule)) {
-        Write-Error "No se encontró la skill finalizar-git: $skillCapsule (paths.skillCapsules['finalizar-git'])"
+    $gitCreatePr = Join-Path $repoRoot "scripts\skills\git-create-pr\Git-Create-PR.bat"
+    if (-not (Test-Path $gitCreatePr)) {
+        Write-Error "No se encontró la skill git-create-pr: $gitCreatePr (paths.skillCapsules['git-create-pr'])."
         exit 1
     }
+    Write-Host "[Finalize] Invocando skill git-create-pr (publicación y PR)..." -ForegroundColor Cyan
 
-    Write-Host "[Finalize] Invocando skill finalizar-git (Push-And-CreatePR) con -Persist $Persist" -ForegroundColor Cyan
-    $params = @{ Persist = $Persist }
-    if ($BranchName) { $params.BranchName = $BranchName }
-    if ($Title) { $params.Title = $Title }
-    & $skillCapsule @params
+    # Nota: La interfaz exacta (parámetros) la define el ejecutable Rust en la cápsula.
+    # Se invoca sin parámetros para usar defaults (rama actual, base detectada). Si se necesita título,
+    # se recomienda pasar bodyFile/body desde el ejecutor o extender el wrapper.
+    & $gitCreatePr
     $exitCode = $LASTEXITCODE
 } finally {
     Pop-Location

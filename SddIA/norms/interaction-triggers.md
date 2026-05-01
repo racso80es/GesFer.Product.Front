@@ -22,8 +22,6 @@
 
 | skill_id | Descripción | Cápsula |
 |----------|-------------|---------|
-| iniciar-rama | Crea rama feat/ o fix/ actualizada con master/main. Inicio de acción. | paths.skillCapsules.iniciar-rama |
-| finalizar-git | Aceptar PR a master, unificar, eliminar rama, volver a master. | paths.skillCapsules.finalizar-git |
 | invoke-command | Interceptor de comandos de sistema (git, dotnet, npm, pwsh). | paths.skillCapsules.invoke-command |
 | invoke-commit | Operaciones de commit con parámetros directos (--message, --files, --all). Sin ficheros .txt. | paths.skillCapsules.invoke-commit |
 | git-operations | Uso seguro de Git (ramas feat/fix, commits convencionales). | — |
@@ -65,7 +63,7 @@
 | implementation | Implementación (doc): indicar touchpoints en código y documento de implementación; no modifica código. |
 | execution | Ejecución: aplicar al código los cambios del documento de implementación. |
 | validate | Validación: comprobar calidad antes del PR (git diff, build, tests, docs); generar validacion.json. |
-| finalize | Finalizar: cierre del ciclo (commits, Evolution Logs, push, PR a master). Usa skill finalizar-git. |
+| finalize | Finalizar: cierre del ciclo (commits, Evolution Logs, sync remoto, PR). Secuencia S+ Grade: git-sync-remote → git-create-pr. |
 | sddia-difusion | Difusión de SddIA: mantener .cursor/rules, .github y otros gestores IA alineados con AGENTS y SddIA/norms. |
 
 ---
@@ -104,9 +102,9 @@
 **Comportamiento:**
 
 1. **Reconocer** que el usuario quiere que la rama actual se publique en el remoto (`origin`).
-2. **Ejecutar el push:** Desde la raíz del repo, en PowerShell: obtener la rama actual con `git branch --show-current`, luego ejecutar `git push -u origin <rama_actual>`. Entorno: Windows, PowerShell; no usar bash.
+2. **Publicar la rama (sin comandos git directos):** Invocar skills Git (S+ Grade). Mínimo: `git-workspace-recon` (validar entorno) y luego publicar vía `git-create-pr` (pushFirst=true) o el flujo de `finalize` cuando aplique. Entorno: Windows, PowerShell; no usar bash.
 3. **Comprobar resultado:** Leer la salida del comando. Si hay error (credenciales, red, rama rechazada), informar al usuario con el mensaje de error. Si hay éxito (ej. `branch '...' set up to track 'origin/...'` o `Everything up-to-date`), confirmar que la rama está subida.
-4. **No sustituir por documentación:** El agente no debe limitarse a decir que «el paso es subir»; debe **ejecutar** el comando de push y reportar el resultado.
+4. **No sustituir por documentación:** El agente no debe limitarse a decir que «el paso es subir»; debe **ejecutar** la invocación de la skill correspondiente y reportar el resultado.
 
 **Relación con finalize:** La acción finalize (paths.actionsPath/finalize/) incluye este paso como obligatorio; cuando el usuario pide «subir» o «finalizar» (y se aplica el cierre), el agente debe ejecutar el push.
 

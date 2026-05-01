@@ -61,7 +61,7 @@
 - interaction-triggers.md (#Process): listado desde paths.processPath (README + ficheros).
 - feature.md, refactorization.md: “acciones en paths.actionsPath”.
 - create-tool.json: process_doc_ref = paths.processPath/create-tool.md.
-- Skills (iniciar-rama): related_artefacts = paths.processPath/feature.md, bug-fix-specialist.json.
+- Skills (suite Git táctica): related_artefacts = procesos mutadores (feature, bug-fix, refactorization, create-*, etc.).
 
 ### 2.3 Gap frente al patrón skills/tools
 
@@ -98,7 +98,7 @@
 - paths.actionsPath (Cúmulo).
 - Process (feature.md, refactorization.md, create-tool): “acciones en paths.actionsPath”.
 - interaction-triggers.md (#Action): listado desde paths.actionsPath (cada .md es una acción).
-- AGENTS.norms.md, finalize.md (skill finalizar-git): referencias a paths.actionsPath/<action>.md.
+- AGENTS.norms.md, finalize.md (suite Git táctica): referencias a paths.actionsPath/<action>.md y skills (git-sync-remote, git-create-pr).
 
 ### 3.3 Gap frente al patrón skills/tools
 

@@ -5,10 +5,10 @@ flow_steps:
   - Precondiciones
   - Commits atómicos
   - Evolution Logs
-  - Invocar Invoke-Finalize.ps1 (skill finalizar-proceso, pre_pr)
+  - Publicación y PR vía skills Git tácticas (git-sync-remote, git-create-pr) u orquestador Invoke-Finalize.ps1
   - finalize.json
   - Auditoría
-  - 'post_pr: Finalizar-Proceso.ps1 (skill finalizar-proceso)'
+  - 'post_pr: (opcional) limpieza de ramas según política vía skills Git tácticas'
 implementation_script_ref: scripts/actions/finalize/Invoke-Finalize.ps1
 inputs:
   - Carpeta feature (Cúmulo)
@@ -19,13 +19,13 @@ outputs:
   - Evolution Logs
   - PR
   - finalize.md opcional (YAML Frontmatter; no finalize.json separado)
-skill_ref: finalizar-proceso
+skill_ref: git-create-pr
 ---
 # Action: Finalize
 
 ## Propósito
 
-La acción **finalize** (finalizar) cierra el ciclo de la feature: asegura commits atómicos en la rama, actualiza los Evolution Logs, **sube la rama al remoto (push)** y crea el Pull Request hacia `master`. Solo debe ejecutarse cuando la validación ha pasado; en caso contrario, debe advertir o bloquear. **Comportamiento obligatorio:** al realizar finalize, el ejecutor debe comprender e incluir el paso de **subir (push)**: publicar la rama actual en `origin` antes de crear el PR; sin este paso el cierre no está completo. Proporciona trazabilidad y cierre formal alineado con las Leyes Universales (no commit en master, documentación en paths.featurePath según Cúmulo).
+La acción **finalize** (finalizar) cierra el ciclo de la feature: asegura commits atómicos en la rama, actualiza los Evolution Logs, **publica la rama en el remoto** y crea el Pull Request hacia `master`. Solo debe ejecutarse cuando la validación ha pasado; en caso contrario, debe advertir o bloquear. **Comportamiento obligatorio:** al realizar finalize, el ejecutor debe comprender e incluir el paso de **publicación en remoto** antes de crear el PR; sin este paso el cierre no está completo. Proporciona trazabilidad y cierre formal alineado con las Leyes Universales (no commit en master, documentación en paths.featurePath según Cúmulo).
 
 ## Principio
 
@@ -41,20 +41,20 @@ La acción **finalize** (finalizar) cierra el ciclo de la feature: asegura commi
 
 ## Salidas
 
-- **Rama publicada (subir / push):** La rama actual debe quedar subida en `origin`; es una salida obligatoria de finalize antes de considerar el PR creado.
+- **Rama publicada (subir):** La rama actual debe quedar publicada en `origin`; es una salida obligatoria de finalize antes de considerar el PR creado.
 - **Evolution Logs actualizados:**
   - paths.evolutionPath + paths.evolutionLogFile (raíz docs: docs/evolution/EVOLUTION_LOG.md según proyecto): una línea con formato `[YYYY-MM-DD] [feat/<nombre>] [Descripción breve del resultado.] [Estado].`
   - paths.evolutionPath + paths.evolutionLogFile: una sección con fecha, título de la feature, resumen de acción/alcance/resultado y referencia a la carpeta de la feature (Cúmulo)/objectives.md.
 - **Pull Request:** Creado hacia `master`, con descripción que enlace a la documentación de la feature (ej. paths.featurePath/<nombre_feature>/).
 - **Opcional:** Referencia al PR o estado en validacion.md o finalize.md de la carpeta de la feature (Cúmulo) (ej. URL del PR, timestamp de cierre en frontmatter).
 
-## Skill de referencia: FinalizarProceso (finalizar-proceso)
+## Skills de referencia (suite Git táctica)
 
-La acción finalize **utiliza y ejecuta la skill** **FinalizarProceso** (skill_id: `finalizar-proceso`; definición en paths.skillsDefinitionPath/finalizar-proceso/; implementación en paths.skillCapsules[\"finalizar-proceso\"]) para centralizar todas las interacciones con Git. El ejecutor **debe invocar** esta skill para las fases **pre_pr** (push y creación del PR) y, cuando corresponda, **post_pr** (tras aceptar el PR: unificar en main, eliminar rama, volver a main). La skill es la única fuente de verdad para los comandos y flujos git de cierre (Ley COMANDOS: no ejecutar git directamente; toda operación vía skill/herramienta).
+La acción finalize **centraliza** las interacciones de control de versiones mediante la **suite Git táctica S+ Grade**: `git-workspace-recon`, `git-save-snapshot`, `git-sync-remote`, `git-create-pr` (y `git-tactical-retreat` si aplica). La suite es la fuente de verdad para flujos de cierre (Ley COMANDOS: no ejecutar comandos directamente; toda operación vía skill/herramienta).
 
-### Ejecución de la skill FinalizarProceso (obligatoria)
+### Ejecución (obligatoria)
 
-Para **ejecutar** la acción finalize (pasos de push y PR), se debe invocar el script orquestador que a su vez invoca la skill **finalizar-proceso**:
+Para **ejecutar** la acción finalize (publicación y PR), se debe invocar el script orquestador o ejecutar directamente la suite Git táctica:
 
 - **Script orquestador:** `scripts/actions/finalize/Invoke-Finalize.ps1`
 - **Desde la raíz del repositorio:**
@@ -62,7 +62,7 @@ Para **ejecutar** la acción finalize (pasos de push y PR), se debe invocar el s
   .\scripts\actions\finalize\Invoke-Finalize.ps1 -Persist "docs/features/<nombre_feature>/"
   ```
 - **Parámetros:** `-Persist` (obligatorio, ruta de la carpeta de la feature), `-BranchName` (opcional), `-NoVerify` (opcional, omitir verify-pr-protocol), `-Title` (opcional, título del PR).
-- **Comportamiento del script:** Comprueba precondiciones (rama no master, objectives.md, validacion.md); opcionalmente ejecuta verify-pr-protocol (Rust); **invoca la skill finalizar-proceso** ejecutando `Push-And-CreatePR.ps1` de la cápsula (paths.skillCapsules[\"finalizar-proceso\"]). El push y la creación del PR los realiza únicamente la skill; el agente no ejecuta comandos git directamente.
+- **Comportamiento del script:** Comprueba precondiciones (rama no master, objectives.md, validacion.md); opcionalmente ejecuta verify-pr-protocol (Rust); invoca skills Git tácticas (p. ej. `git-sync-remote` y `git-create-pr`). La publicación y el PR los realiza únicamente la skill; el agente no ejecuta comandos directos.
 
 ## Flujo de ejecución (propuesto)
 
@@ -78,19 +78,19 @@ Para **ejecutar** la acción finalize (pasos de push y PR), se debe invocar el s
 4. **Actualización de Evolution Logs:**
    - Añadir entrada en docs/evolution/EVOLUTION_LOG.md (raíz) o paths.evolutionPath + paths.evolutionLogFile.
    - Añadir sección en paths.evolutionPath + paths.evolutionLogFile con resumen y enlace a la carpeta de la feature.
-5. **Ejecutar script finalize (push + PR):** **Invocar** `.\scripts\actions\finalize\Invoke-Finalize.ps1 -Persist "docs/features/<nombre_feature>/"` desde la raíz del repo. Este script comprueba precondiciones, opcionalmente ejecuta verify-pr-protocol y **invoca la skill finalizar-proceso** (Push-And-CreatePR.ps1 de la cápsula), que realiza el push y la creación del PR. Sin este paso ejecutado con éxito, el cierre no está completo. El agente no ejecuta `git push` ni `gh pr create` directamente; toda la interacción Git se hace a través de la skill (Ley COMANDOS).
+5. **Ejecutar script finalize (publicación + PR):** **Invocar** `.\scripts\actions\finalize\Invoke-Finalize.ps1 -Persist "docs/features/<nombre_feature>/"` desde la raíz del repo. Este script comprueba precondiciones, opcionalmente ejecuta verify-pr-protocol e invoca skills Git tácticas para publicar la rama y crear el PR. Sin este paso ejecutado con éxito, el cierre no está completo. El agente no ejecuta comandos directos; toda la interacción se hace a través de skills (Ley COMANDOS).
 6. **Persistencia opcional:** Escribir finalize.md en la carpeta de la feature (Cúmulo) con YAML Frontmatter (pr_url, branch, timestamp); no finalize.json separado. Norma: SddIA/norms/features-documentation-frontmatter.md.
 7. **Auditoría:** Registrar el evento de finalización en paths.auditsPath + paths.accessLogFile (Cúmulo).
-8. **Post-PR (skill finalizar-proceso, fase post_pr):** Una vez el PR esté aceptado/mergeado en el remoto, el ejecutor (o el usuario) aplica la fase **post_pr** de la skill **FinalizarProceso** invocando `.\scripts\skills\finalizar-proceso\Finalizar-Proceso.ps1 -BranchName "feat/<nombre_feature>"` (o Finalizar-Proceso.bat). Por defecto se elimina la rama remota; usar `-NoDeleteRemote` para no borrarla. Ver paths.skillsDefinitionPath/finalizar-proceso/spec.md.
+8. **Post-PR (opcional):** Una vez el PR esté aceptado/mergeado en el remoto, el ejecutor (o el usuario) realiza limpieza de ramas según política del equipo mediante skills Git tácticas (p. ej. `git-branch-manager` + protocolo equivalente) o procedimiento establecido.
 
 ## Implementación técnica
 
-La acción finalize **hace uso de la skill finalizar-proceso** (FinalizarProceso) mediante el script orquestador:
+La acción finalize hace uso de skills Git tácticas mediante el script orquestador:
 
 - **Ruta del script:** `scripts/actions/finalize/Invoke-Finalize.ps1` (desde la raíz del repo).
 - **Invocación mínima:** `.\scripts\actions\finalize\Invoke-Finalize.ps1 -Persist "docs/features/<nombre_feature>/"`
 - **Parámetros:** `-Persist` (obligatorio), `-BranchName`, `-NoVerify` (omitir verify-pr-protocol), `-Title`.
-- El script invoca internamente **Push-And-CreatePR.ps1** de la cápsula paths.skillCapsules[\"finalizar-proceso\"]; no se ejecutan comandos git fuera de la skill.
+- El script invoca internamente cápsulas de skills Git tácticas; no se ejecutan comandos directos fuera de skill.
 
 ## Integración con agentes
 
@@ -104,7 +104,7 @@ La acción finalize **hace uso de la skill finalizar-proceso** (FinalizarProceso
 | :--- | :--- |
 | **Id sugerido** | `tekton-developer` (cierre y PR) o un agente dedicado `finalizer` / `release-agent` si se desea separar responsabilidades. |
 | **Rol** | Cierre: commits atómicos, actualización de Evolution Logs, push, creación del PR. Respetar Ley GIT y SSOT. |
-| **Skills necesarios** | `finalizar-proceso` (FinalizarProceso, obligatorio para pasos Git de cierre), `git-operations`, `documentation`, `invoke-command` (y posiblemente integración con API del repositorio para crear PR). |
+| **Skills necesarios** | suite Git táctica (`git-workspace-recon`, `git-save-snapshot`, `git-sync-remote`, `git-create-pr`), `git-operations`, `documentation`, `invoke-command`. |
 | **Restricciones** | Nunca commit en master; toda operación git/comando vía invoke-command; descripción del PR debe enlazar a paths.featurePath/<nombre_feature>/ (Cúmulo).**
 
 Si se desea un agente nuevo para no mezclar “escribir código” con “cerrar y hacer PR”, se puede definir:

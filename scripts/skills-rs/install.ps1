@@ -36,10 +36,7 @@ if ($LASTEXITCODE -ne 0) {
 $skillsDir = Join-Path $scriptDir "..\skills"
 $releaseDir = Join-Path $scriptDir "target\release"
 $capsules = @(
-    @{ exe = "iniciar_rama"; capsule = "iniciar-rama" },
-    @{ exe = "merge_to_master_cleanup"; capsule = "finalizar-git" },
     @{ exe = "invoke_command"; capsule = "invoke-command" },
-    @{ exe = "push_and_create_pr"; capsule = "finalizar-git" },
     @{ exe = "invoke_commit"; capsule = "invoke-commit" },
     @{ exe = "sddia_evolution_register"; capsule = "sddia-evolution" },
     @{ exe = "sddia_evolution_validate"; capsule = "sddia-evolution" },

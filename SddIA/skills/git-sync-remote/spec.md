@@ -19,9 +19,9 @@ phases:
   - id: sync
     name: Fetch y pull
     steps:
-      - git fetch remote
-      - Opcional checkout branch
-      - git pull remote
+      - Obtener cambios del remoto (fetch)
+      - Opcional cambiar a branch
+      - Integrar cambios del remoto (pull)
 related_agents:
   - tekton-developer
 rules:

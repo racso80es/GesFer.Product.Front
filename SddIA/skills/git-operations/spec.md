@@ -1,8 +1,8 @@
 ---
 common_workflows:
-  finalize: git push origin <branch_name>
+  finalize: publicar rama y abrir PR vía skills (git-sync-remote → git-create-pr) o acción finalize
   save_progress: 'git commit -m ''<type>: <short_description>'''
-  start_task: git checkout -b <type>/<description>
+  start_task: crear/cambiar rama vía git-branch-manager
 contract_ref: paths.skillsDefinitionPath/skills-contract.json (Cúmulo)
 name: Git Operations Standard
 rules:
@@ -29,9 +29,9 @@ Uso seguro y semántico de Git: ramas feat/fix, commits convencionales, pre-push
 
 ## Common workflows
 
-- start_task: git checkout -b <type>/<description>
+- start_task: crear/cambiar rama vía git-branch-manager
 - save_progress: git commit -m '<type>: <short_description>'
-- finalize: git push origin <branch_name>
+- finalize: publicar rama y abrir PR vía skills (git-sync-remote → git-create-pr) o acción finalize
 
 ## Alcance
 
