@@ -1,6 +1,6 @@
 ---
 common_workflows:
-  finalize: publicar rama y abrir PR vía skills (git-sync-remote → git-create-pr) o acción finalize
+  finalize-process: publicar rama y abrir PR vía skills (git-sync-remote → git-create-pr) o acción finalize-process
   save_progress: 'git commit -m ''<type>: <short_description>'''
   start_task: crear/cambiar rama vía git-branch-manager
 contract_ref: paths.skillsDefinitionPath/skills-contract.json (Cúmulo)
@@ -31,7 +31,7 @@ Uso seguro y semántico de Git: ramas feat/fix, commits convencionales, pre-push
 
 - start_task: crear/cambiar rama vía git-branch-manager
 - save_progress: git commit -m '<type>: <short_description>'
-- finalize: publicar rama y abrir PR vía skills (git-sync-remote → git-create-pr) o acción finalize
+- finalize-process: publicar rama y abrir PR vía skills (git-sync-remote → git-create-pr) o acción finalize-process
 
 ## Alcance
 
