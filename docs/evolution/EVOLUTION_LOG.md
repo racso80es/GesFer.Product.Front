@@ -1,4 +1,10 @@
 Objetivo Home Publica
+[2026-05-01] [feat/e2e-auth-selectors] [Actualización de selectores Auth en pruebas E2E] [DONE].
+
+## feature: e2e-auth-selectors
+Resumen: Se eliminaron referencias a la nomenclatura desfasada usuario/contraseña en los Page Objects y pruebas E2E, igualando los localizadores con la estandarización username/password.
+Referencia archivada: [docs/features/e2e-auth-selectors/finalize.md](../features/e2e-auth-selectors/finalize.md)
+
 
 [2026-04-30] [feat/correccion-auditorias-2026-04-30] [Resolución de hallazgo de auditoría en configuración de logs] [DONE].
 
