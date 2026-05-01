@@ -4,6 +4,7 @@
 
 | ID (GUID) | Fecha | Descripción breve |
 | :--- | :--- | :--- |
+| 7c2e9f41-b8d0-4a1e-9f63-2c5d8e7a1b04 | 2026-05-01 | Proceso create-skill, guías de portabilidad y difusión (AGENTS, triggers, README procesos) |
 | 0c009e75-0c73-4a64-96bd-46d9ab380f60 | 2026-03-27 | Norma y herramientas evolution SddIA (register, validate, watch, CI) |
 | b4e8a1c3-7f2d-4e9a-b5c1-6d7e8f9a0b1c | 2026-03-27T18:00:00+00:00 | Kaizen automatic_task + alineación sddia-evolution (Rust, CI, normas) |
 | 16bf7e28-21d2-49bf-aae6-44bef92e4af0 | 2026-04-10 | Actualización de SddIA/actions/finalize/spec.md |

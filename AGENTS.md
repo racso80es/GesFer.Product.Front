@@ -42,6 +42,7 @@ Al **empezar una tarea** se debe elegir un **proceso**. Los procesos definen el 
 | **feature** | Funcionalidad nueva: rama `feat/<nombre_feature>`. | `paths.featurePath/<nombre_feature>` | [`SddIA/process/feature/`](./SddIA/process/feature/) |
 | **bug-fix** | Corrección de bug: rama `fix/<nombre_fix>`. Alcance mínimo. | `paths.fixPath/<nombre_fix>` | [`SddIA/process/bug-fix/`](./SddIA/process/bug-fix/) |
 | **create-tool** | Creación de herramienta: rama `feat/create-tool-<tool-id>`. Entregable: cápsula en paths.toolCapsules. | `paths.featurePath/create-tool-<tool-id>` (doc); entregable en `paths.toolsPath/<tool-id>/` | [`SddIA/process/create-tool/`](./SddIA/process/create-tool/) |
+| **create-skill** | Creación de skill: rama `feat/create-skill-<skill-id>`. Entregable: definición en paths.skillsDefinitionPath; cápsula opcional en paths.skillCapsules. | `paths.featurePath/create-skill-<skill-id>` (doc); definición en `paths.skillsDefinitionPath/<skill-id>/` | [`SddIA/process/create-skill/`](./SddIA/process/create-skill/) |
 | **create-template** | Creación de plantilla: rama `feat/create-template-<template-id>`. Entregable: carpeta en paths.templatesPath con spec.md y spec.json. | `paths.featurePath/create-template-<template-id>` (doc); entregable en `paths.templatesPath/<template-id>/` | [`SddIA/process/create-template/`](./SddIA/process/create-template/) |
 | **audit-tool** | Auditoría de herramienta: verificación empírica del funcionamiento. Resultado: informe en paths.auditsPath/tools/<tool-id>/. | `paths.featurePath/audit-tool-<tool-id>` (doc); resultado en `paths.auditsPath/tools/<tool-id>/` | [`SddIA/process/audit-tool/`](./SddIA/process/audit-tool/) |
 
@@ -81,6 +82,7 @@ Selecciona el rol más específico posible. Si dudas, activa **Arquitecto**.
 | **[FEATURE]**   | tareas, acciones, objetivos | Cargar [`SddIA/process/feature.json`](./SddIA/process/feature.json). Orquestra ciclo de una feature. |
 | **[BUG-FIX]** | Bug, Fix, Incidencia, Corrección, Reproducción. | Cargar [`SddIA/process/bug-fix/`](./SddIA/process/bug-fix/) (spec.md, spec.json). Orquestar ciclo del fix. |
 | **[CREATE-TOOL]** | Herramienta, Tool, Crear herramienta, Nueva tool. | Cargar [`SddIA/process/create-tool/`](./SddIA/process/create-tool/). Orquestar ciclo de creación de herramienta (cápsula, índice, Cúmulo). |
+| **[CREATE-SKILL]** | Skill, Crear skill, Nueva skill (definición/cápsula). | Cargar [`SddIA/process/create-skill/`](./SddIA/process/create-skill/). Orquestar ciclo de creación de skill (paths.skillsDefinitionPath, cápsula opcional, índice, Cúmulo). |
 | **[CREATE-TEMPLATE]** | Plantilla, Template, Crear plantilla, Nueva plantilla. | Cargar [`SddIA/process/create-template/`](./SddIA/process/create-template/). Orquestar ciclo de creación de plantilla (paths.templatesPath, contrato templates). |
 
 ---
