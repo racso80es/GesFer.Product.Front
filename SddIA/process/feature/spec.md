@@ -24,10 +24,10 @@ phases:
   - description: Aplicar el plan al código. Consolidar hitos ejecutando git-save-snapshot (commits atómicos). Si el entorno se corrompe severamente, usar git-tactical-retreat.
     id: '6'
     name: Ejecución
-  - description: Ejecutar validación pre-PR. Invocar git-workspace-recon para verificar la coherencia de los archivos mutados contra el plan. Generar validacion.md.
+  - description: Ejecutar validación pre-PR. Invocar git-workspace-recon para verificar la coherencia de los archivos mutados contra el plan. Generar validacion.md. Evaluación de Impacto SDDIA (innegociable) analizar el conjunto de archivos modificados; si hay cualquier mutación bajo SddIA/, exigir en el cierre fase 8 sddia_evolution_register y git-save-snapshot adicional antes de git-sync-remote.
     id: '7'
     name: Validar
-  - description: Cierre del ciclo. Ejecutar git-sync-remote para subida segura al Leviatán, seguido de git-create-pr inyectando el resumen de objectives.md y validacion.md en el cuerpo del Pull Request. Actualizar Evolution Logs.
+  - description: Antes de git-sync-remote aplicar Evaluación de Impacto SDDIA si hay mutación en SddIA/ ejecutar obligatoriamente sddia_evolution_register y git-save-snapshot adicional consolidando el registro de evolución; luego git-sync-remote git-create-pr con objectives.md y validacion.md y actualizar Evolution Logs de producto.
     id: '8'
     name: Finalizar
 principles_ref: paths.principlesPath
@@ -47,7 +47,8 @@ related_skills:
   - git-sync-remote
   - git-tactical-retreat
   - git-create-pr
-spec_version: 2.0.0
+  - sddia-evolution-register
+spec_version: 2.1.0
 ---
 # Proceso: Feature
 
@@ -74,8 +75,8 @@ Ruta de la tarea: Cúmulo (paths.featurePath/<nombre_feature>).
 | **4** | Planificación | Ejecutar o generar plan (acción **plan**). Entrada: Especificación, Clarificación. Salida: carpeta de la tarea (Cúmulo)/plan.md (YAML Frontmatter). |
 | **5** | Implementación | Generar documento de implementación. Especificación técnica: paths.actionsPath/implementation/. Entrada: carpeta de la tarea (Cúmulo)/objectives.md, spec.md, clarify.md; salida: carpeta de la tarea (Cúmulo)/implementation.md (YAML Frontmatter) |
 | **6** | Ejecución | Aplicar el plan al código (Tekton Developer). Especificación técnica: paths.actionsPath/execution/. Entrada: carpeta de la tarea (Cúmulo)/implementation.md; salida: carpeta de la tarea (Cúmulo)/execution.md (YAML Frontmatter). Consolidar hitos con **git-save-snapshot** (commits atómicos). Si el entorno se corrompe severamente, **git-tactical-retreat**. |
-| **7** | Validar | Ejecutar validación pre-PR. Especificación técnica: paths.actionsPath/validate/. Invocar **git-workspace-recon** para verificar la coherencia de los archivos mutados contra el plan. Entrada: carpeta de la tarea (Cúmulo); salida: carpeta de la tarea (Cúmulo)/validacion.md (YAML Frontmatter). |
-| **8** | Finalizar | Cierre del ciclo. Especificación técnica: paths.actionsPath/finalize/. **git-sync-remote** para subida segura al Leviatán; a continuación **git-create-pr** inyectando el resumen de objectives.md y validacion.md en el cuerpo del Pull Request. Actualizar Evolution Logs. |
+| **7** | Validar | Ejecutar validación pre-PR. Especificación técnica: paths.actionsPath/validate/. Invocar **git-workspace-recon** para verificar la coherencia de los archivos mutados contra el plan. Entrada: carpeta de la tarea (Cúmulo); salida: carpeta de la tarea (Cúmulo)/validacion.md (YAML Frontmatter). **Evaluación de Impacto SDDIA (innegociable):** analizar los archivos modificados; si existe **cualquier** mutación bajo el directorio **SddIA/**, el cierre (fase 8) debe incluir **sddia_evolution_register** y un **git-save-snapshot** adicional antes de **git-sync-remote** (debe quedar reflejado en validacion.md o en el checklist de cierre). |
+| **8** | Finalizar | Cierre del ciclo. Especificación técnica: paths.actionsPath/finalize/. **Antes de git-sync-remote:** si el árbol de trabajo o la validación incluye mutaciones en **SddIA/**, es **obligatorio** ejecutar **sddia_evolution_register** y un **git-save-snapshot** adicional que consolide el registro de evolución SddIA; solo entonces **git-sync-remote** (subida al Leviatán) y **git-create-pr** inyectando objectives.md y validacion.md en el cuerpo del Pull Request. Actualizar Evolution Logs de producto (paths.evolutionPath). |
 
 ## Implementación
 
@@ -104,6 +105,17 @@ Al cierre de la feature (fase 8):
 *   **paths.evolutionPath + paths.evolutionLogFile:** Añadir una línea con formato `[YYYY-MM-DD] [feat/<nombre>] [Descripción breve del resultado.] [Estado].`
 *   **paths.evolutionPath + paths.evolutionLogFile:** Añadir una sección con fecha y título de la feature, resumen y referencia a la carpeta de la tarea (Cúmulo)/objectives.md.
 
+### Evaluación de Impacto SDDIA (innegociable)
+
+**Norma canónica:** `SddIA/norms/sddia-evolution-sync.md`. Herramienta estándar: binario **`sddia_evolution_register`** (skill **sddia-evolution-register**, cápsula en Cúmulo: paths.skillCapsules).
+
+Antes de ejecutar **git-sync-remote**, el ejecutor del proceso debe **analizar los archivos modificados** (respecto a la base acordada de la rama, p. ej. salida de **git-workspace-recon** o inventario explícito en validacion.md). Si existe **cualquier** mutación dentro del directorio **SddIA/**:
+
+1. Es **obligatorio** ejecutar **`sddia_evolution_register`** según el contrato de evolución (paths.sddiaEvolutionContractFile, paths.sddiaEvolutionPath vía Cúmulo).
+2. Es **obligatorio** ejecutar un **`git-save-snapshot`** **adicional** que incluya los artefactos generados o actualizados por ese registro, **antes** de **git-sync-remote** y **git-create-pr**.
+
+Sin este doble paso (registro + snapshot), el PR no cumple el cierre S+ para cambios bajo **SddIA/**. La trazabilidad en **paths.evolutionPath** (evolución de producto) es independiente del registro de evolución SddIA bajo **paths.sddiaEvolutionPath**.
+
 ## Integración con Agentes
 
 *   **Arquitecto / Spec Architect:** Puede iniciar el procedimiento y asegurar que la fase 1 y la ubicación paths.featurePath/<nombre_feature>/ (Cúmulo) se respeten.
@@ -119,6 +131,7 @@ Al cierre de la feature (fase 8):
 ## Estándares de Calidad
 
 *   **Grado S+:** Trazabilidad desde el objetivo hasta el PR: rama → paths.featurePath → spec/clarify/plan → implementación → execution → validación → Evolution Logs → PR.
+*   **Evaluación de Impacto SDDIA:** Cambios bajo **SddIA/** exigen **sddia_evolution_register** + **git-save-snapshot** adicional **antes** de **git-sync-remote** (fases 7–8); ver subsección dedicada.
 *   **Arsenal Táctico Git (Grado S+):** Máquina de estados operativa con **git-workspace-recon**, **git-branch-manager**, **git-save-snapshot**, **git-sync-remote**, **git-tactical-retreat** y **git-create-pr** (definición y cápsulas en Cúmulo: paths.skillsDefinitionPath, paths.skillCapsules).
 *   **Ley GIT:** Ningún commit en `master`; todo el trabajo en rama `feat/` o `fix/` con documentación en paths.featurePath/<nombre_feature>/ (Cúmulo).
 *   **Single Source of Truth:** Para cada feature, la documentación canónica de la tarea es paths.featurePath/<nombre_feature>/ (Cúmulo); la referencia en PR y en Evolution Log es esa ruta.
