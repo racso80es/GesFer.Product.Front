@@ -3,7 +3,7 @@ contract_ref: paths.processPath/process-contract.json
 name: Feature
 persist_ref: paths.featurePath/<nombre_feature>
 phases:
-  - description: Rama feat desde master; skill iniciar-rama.
+  - description: Ejecutar git-workspace-recon para validar entorno limpio. Tras confirmar, crear rama feat/<nombre> o fix/<nombre> desde master usando git-branch-manager.
     id: '0'
     name: Preparar entorno
   - description: objectives.md en carpeta de la tarea.
@@ -21,13 +21,13 @@ phases:
   - description: Acción implementation; implementation.md (YAML Frontmatter).
     id: '5'
     name: Implementación (doc)
-  - description: Acción execution; execution.md (YAML Frontmatter).
+  - description: Aplicar el plan al código. Consolidar hitos ejecutando git-save-snapshot (commits atómicos). Si el entorno se corrompe severamente, usar git-tactical-retreat.
     id: '6'
     name: Ejecución
-  - description: Acción validate; validacion.md (YAML Frontmatter).
+  - description: Ejecutar validación pre-PR. Invocar git-workspace-recon para verificar la coherencia de los archivos mutados contra el plan. Generar validacion.md.
     id: '7'
     name: Validar
-  - description: Acción finalize; Evolution Logs, PR.
+  - description: Cierre del ciclo. Ejecutar git-sync-remote para subida segura al Leviatán, seguido de git-create-pr inyectando el resumen de objectives.md y validacion.md en el cuerpo del Pull Request. Actualizar Evolution Logs.
     id: '8'
     name: Finalizar
 principles_ref: paths.principlesPath
@@ -41,9 +41,13 @@ related_actions:
   - validate
   - finalize
 related_skills:
-  - iniciar-rama
-  - finalizar-git
-spec_version: 1.0.0
+  - git-workspace-recon
+  - git-branch-manager
+  - git-save-snapshot
+  - git-sync-remote
+  - git-tactical-retreat
+  - git-create-pr
+spec_version: 2.0.0
 ---
 # Proceso: Feature
 
@@ -63,15 +67,15 @@ Ruta de la tarea: Cúmulo (paths.featurePath/<nombre_feature>).
 
 | Fase | Nombre | Descripción |
 | :--- | :--- | :--- |
-| **0** | Preparar entorno | Crear rama feat/<nombre_feature> (o `fix/` si aplica) desde `master` actualizado. No trabajar en `master`. **Skill:** iniciar-rama — invocar según contrato (paths.skillsDefinitionPath/iniciar-rama/). Tekton invoca la implementación (paths.skillCapsules[\"iniciar-rama\"]). Parámetros: BranchType feat, BranchName <nombre_feature>. |
+| **0** | Preparar entorno | Ejecutar **git-workspace-recon** para validar entorno limpio. Tras confirmar, crear rama `feat/<nombre_feature>` o `fix/<nombre_feature>` desde `master` usando **git-branch-manager**. No trabajar en `master`. Invocar según contrato (paths.skillsDefinitionPath y paths.skillCapsules del Cúmulo). |
 | **1** | Documentación con objetivos | Documentar objetivo, alcance y ley aplicada. La documentación de la tarea se ubica en la carpeta de la tarea (Cúmulo)/objectives.md. |
 | **2** | Especificación | Ejecutar o generar SPEC (acción **spec**). Entrada: requerimiento o borrador, carpeta de la tarea (Cúmulo)/objectives.md; salida: especificación técnica en paths.actionsPath (spec/) y copia/canon en carpeta de la tarea (Cúmulo)/spec.md (YAML Frontmatter) |
 | **3** | Clarificación | Ejecutar o generar clarificaciones (acción **clarify**). Especificación técnica: paths.actionsPath/clarify/. Entrada: carpeta de la tarea (Cúmulo)/objectives.md, spec.md; salida: carpeta de la tarea (Cúmulo)/clarify.md (YAML Frontmatter) |
 | **4** | Planificación | Ejecutar o generar plan (acción **plan**). Entrada: Especificación, Clarificación. Salida: carpeta de la tarea (Cúmulo)/plan.md (YAML Frontmatter). |
 | **5** | Implementación | Generar documento de implementación. Especificación técnica: paths.actionsPath/implementation/. Entrada: carpeta de la tarea (Cúmulo)/objectives.md, spec.md, clarify.md; salida: carpeta de la tarea (Cúmulo)/implementation.md (YAML Frontmatter) |
-| **6** | Ejecución | Aplicar el plan al código (Tekton Developer). Especificación técnica: paths.actionsPath/execution/. Entrada: carpeta de la tarea (Cúmulo)/implementation.md; salida: carpeta de la tarea (Cúmulo)/execution.md (YAML Frontmatter) |
-| **7** | Validar | Ejecutar validación pre-PR. Especificación técnica: paths.actionsPath/validate/. Entrada: carpeta de la tarea (Cúmulo); salida: carpeta de la tarea (Cúmulo)/validacion.md (YAML Frontmatter) |
-| **8** | Finalizar | Cierre y PR. Especificación técnica: paths.actionsPath/finalize/. Entrada: carpeta de la tarea (Cúmulo); salida: Evolution Logs y Pull Request. |
+| **6** | Ejecución | Aplicar el plan al código (Tekton Developer). Especificación técnica: paths.actionsPath/execution/. Entrada: carpeta de la tarea (Cúmulo)/implementation.md; salida: carpeta de la tarea (Cúmulo)/execution.md (YAML Frontmatter). Consolidar hitos con **git-save-snapshot** (commits atómicos). Si el entorno se corrompe severamente, **git-tactical-retreat**. |
+| **7** | Validar | Ejecutar validación pre-PR. Especificación técnica: paths.actionsPath/validate/. Invocar **git-workspace-recon** para verificar la coherencia de los archivos mutados contra el plan. Entrada: carpeta de la tarea (Cúmulo); salida: carpeta de la tarea (Cúmulo)/validacion.md (YAML Frontmatter). |
+| **8** | Finalizar | Cierre del ciclo. Especificación técnica: paths.actionsPath/finalize/. **git-sync-remote** para subida segura al Leviatán; a continuación **git-create-pr** inyectando el resumen de objectives.md y validacion.md en el cuerpo del Pull Request. Actualizar Evolution Logs. |
 
 ## Implementación
 
@@ -115,6 +119,7 @@ Al cierre de la feature (fase 8):
 ## Estándares de Calidad
 
 *   **Grado S+:** Trazabilidad desde el objetivo hasta el PR: rama → paths.featurePath → spec/clarify/plan → implementación → execution → validación → Evolution Logs → PR.
+*   **Arsenal Táctico Git (Grado S+):** Máquina de estados operativa con **git-workspace-recon**, **git-branch-manager**, **git-save-snapshot**, **git-sync-remote**, **git-tactical-retreat** y **git-create-pr** (definición y cápsulas en Cúmulo: paths.skillsDefinitionPath, paths.skillCapsules).
 *   **Ley GIT:** Ningún commit en `master`; todo el trabajo en rama `feat/` o `fix/` con documentación en paths.featurePath/<nombre_feature>/ (Cúmulo).
 *   **Single Source of Truth:** Para cada feature, la documentación canónica de la tarea es paths.featurePath/<nombre_feature>/ (Cúmulo); la referencia en PR y en Evolution Log es esa ruta.
 
