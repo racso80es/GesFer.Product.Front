@@ -39,6 +39,48 @@
       "manifest": "sddia-evolution/manifest.json",
       "launcher_bat": "sddia-evolution/Register.bat",
       "description": "Registro evolution SddIA (UUID, índice, hash); validate y watch en la misma cápsula."
+    },
+    {
+      "skillId": "git-workspace-recon",
+      "path": "git-workspace-recon/",
+      "manifest": "git-workspace-recon/manifest.json",
+      "launcher_bat": "git-workspace-recon/Git-Workspace-Recon.bat",
+      "description": "Recon Git: rama, status porcelana, remotes, último commit (envelope JSON v2)."
+    },
+    {
+      "skillId": "git-branch-manager",
+      "path": "git-branch-manager/",
+      "manifest": "git-branch-manager/manifest.json",
+      "launcher_bat": "git-branch-manager/Git-Branch-Manager.bat",
+      "description": "Checkout o crear rama (envelope JSON v2)."
+    },
+    {
+      "skillId": "git-save-snapshot",
+      "path": "git-save-snapshot/",
+      "manifest": "git-save-snapshot/manifest.json",
+      "launcher_bat": "git-save-snapshot/Git-Save-Snapshot.bat",
+      "description": "git add + commit snapshot (envelope JSON v2)."
+    },
+    {
+      "skillId": "git-sync-remote",
+      "path": "git-sync-remote/",
+      "manifest": "git-sync-remote/manifest.json",
+      "launcher_bat": "git-sync-remote/Git-Sync-Remote.bat",
+      "description": "fetch + pull con remoto (envelope JSON v2)."
+    },
+    {
+      "skillId": "git-tactical-retreat",
+      "path": "git-tactical-retreat/",
+      "manifest": "git-tactical-retreat/manifest.json",
+      "launcher_bat": "git-tactical-retreat/Git-Tactical-Retreat.bat",
+      "description": "reset --hard y/o clean -fd con confirmación destructiva (envelope JSON v2)."
+    },
+    {
+      "skillId": "git-create-pr",
+      "path": "git-create-pr/",
+      "manifest": "git-create-pr/manifest.json",
+      "launcher_bat": "git-create-pr/Git-Create-PR.bat",
+      "description": "push + gh pr create (envelope JSON v2)."
     }
   ]
 }

@@ -21,6 +21,12 @@ Cuando el usuario escriba **#Skill** (solo o en un mensaje), responde sugiriendo
 | **finalizar-git** | Aceptar PR a master, unificar, eliminar rama, volver a master. Pre-pr / post_pr. Cápsula: paths.skillCapsules.finalizar-git |
 | **invoke-command** | Interceptor de comandos de sistema (git, dotnet, npm, pwsh). Telemetría y registro por rama. Cápsula: paths.skillCapsules.invoke-command |
 | **invoke-commit** | Operaciones de commit con parámetros directos (--message, --files, --all). Sin ficheros .txt. Cápsula: paths.skillCapsules.invoke-commit |
+| **git-workspace-recon** | Diagnóstico Git (rama, status, remotes, último commit). Envelope JSON v2. Cápsula: paths.skillCapsules.git-workspace-recon |
+| **git-branch-manager** | Checkout o crear rama. Envelope JSON v2. Cápsula: paths.skillCapsules.git-branch-manager |
+| **git-save-snapshot** | git add + commit snapshot. Envelope JSON v2. Cápsula: paths.skillCapsules.git-save-snapshot |
+| **git-sync-remote** | fetch + pull con remoto. Envelope JSON v2. Cápsula: paths.skillCapsules.git-sync-remote |
+| **git-tactical-retreat** | reset --hard y/o clean con confirmación destructiva. Envelope JSON v2. Cápsula: paths.skillCapsules.git-tactical-retreat |
+| **git-create-pr** | push + gh pr create. Envelope JSON v2. Cápsula: paths.skillCapsules.git-create-pr |
 | **git-operations** | Uso seguro de Git (ramas feat/fix, commits convencionales). Solo definición. |
 | **documentation** | Estándares SSOT y gestión de documentación. Solo definición. |
 | **filesystem-ops** | Operaciones de archivo seguras (PowerShell). Solo definición. |

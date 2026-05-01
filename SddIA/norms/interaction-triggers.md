@@ -34,6 +34,12 @@
 | security-audit | Auditoría y hooks pre-commit/pre-push. | — |
 | reproducir-create-skill-sddia | Portar el proceso create-skill a otro repo SddIA (norma reproducir-create-skill-en-otros-entornos-sddia). | — |
 | reproducir-skills-en-otros-entornos-sddia | Portar una skill concreta (definición, cápsula, índice) a otro entorno. | — |
+| git-workspace-recon | Diagnóstico del repo Git (rama, status, remotes, último commit). | paths.skillCapsules.git-workspace-recon |
+| git-branch-manager | Checkout o crear rama. | paths.skillCapsules.git-branch-manager |
+| git-save-snapshot | git add + commit rápido (snapshot). | paths.skillCapsules.git-save-snapshot |
+| git-sync-remote | fetch + pull con remoto. | paths.skillCapsules.git-sync-remote |
+| git-tactical-retreat | reset --hard y/o clean con confirmación destructiva. | paths.skillCapsules.git-tactical-retreat |
+| git-create-pr | push y creación de PR con gh. | paths.skillCapsules.git-create-pr |
 
 ---
 

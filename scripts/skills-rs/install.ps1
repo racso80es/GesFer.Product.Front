@@ -2,8 +2,8 @@
 .SYNOPSIS
     Compila gesfer-skills (scripts/skills-rs) y copia los .exe a cada cápsula de skill en scripts/skills/.
 .DESCRIPTION
-    Requiere Rust en PATH (.cargo\bin). Tras cargo build --release, copia iniciar_rama.exe,
-    merge_to_master_cleanup.exe e invoke_command.exe a scripts/skills/<skill-id>/bin/.
+    Requiere Rust en PATH (.cargo\bin). Tras cargo build --release, copia cada binario listado
+    en la tabla $capsules a scripts/skills/<skill-id>/bin/ (ver skills-contract: bin en cápsula).
 #>
 $ErrorActionPreference = "Stop"
 $scriptDir = $PSScriptRoot
@@ -43,7 +43,13 @@ $capsules = @(
     @{ exe = "invoke_commit"; capsule = "invoke-commit" },
     @{ exe = "sddia_evolution_register"; capsule = "sddia-evolution" },
     @{ exe = "sddia_evolution_validate"; capsule = "sddia-evolution" },
-    @{ exe = "sddia_evolution_watch"; capsule = "sddia-evolution" }
+    @{ exe = "sddia_evolution_watch"; capsule = "sddia-evolution" },
+    @{ exe = "git_workspace_recon"; capsule = "git-workspace-recon" },
+    @{ exe = "git_branch_manager"; capsule = "git-branch-manager" },
+    @{ exe = "git_save_snapshot"; capsule = "git-save-snapshot" },
+    @{ exe = "git_sync_remote"; capsule = "git-sync-remote" },
+    @{ exe = "git_tactical_retreat"; capsule = "git-tactical-retreat" },
+    @{ exe = "git_create_pr"; capsule = "git-create-pr" }
 )
 foreach ($cap in $capsules) {
     $src = Join-Path $releaseDir "$($cap.exe).exe"

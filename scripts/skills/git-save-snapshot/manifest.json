@@ -1,0 +1,13 @@
+{
+  "skillId": "git-save-snapshot",
+  "version": "1.0.0",
+  "description": "Snapshot: git add y commit. Por defecto add -A. Envelope JSON v2.",
+  "contract_ref": "SddIA/skills/skills-contract.json",
+  "capsule_io_ref": "SddIA/norms/capsule-json-io.md",
+  "components": {
+    "launcher_bat": "Git-Save-Snapshot.bat",
+    "doc": "git-save-snapshot.md",
+    "bin": "bin/git_save_snapshot.exe"
+  },
+  "env": ["Windows 11", "PowerShell 7+", "Git"]
+}

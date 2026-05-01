@@ -1,0 +1,13 @@
+{
+  "skillId": "git-sync-remote",
+  "version": "1.0.0",
+  "description": "git fetch y git pull con remoto (origin por defecto). Rama opcional (checkout antes del pull). Envelope JSON v2.",
+  "contract_ref": "SddIA/skills/skills-contract.json",
+  "capsule_io_ref": "SddIA/norms/capsule-json-io.md",
+  "components": {
+    "launcher_bat": "Git-Sync-Remote.bat",
+    "doc": "git-sync-remote.md",
+    "bin": "bin/git_sync_remote.exe"
+  },
+  "env": ["Windows 11", "PowerShell 7+", "Git"]
+}

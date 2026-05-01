@@ -1,2 +1,4 @@
 //! Biblioteca auxiliar para skills GesFer (Rust).
-//! Los binarios pueden usar tipos comunes aquí si se extiende el contrato de salida JSON.
+//! Contrato envelope JSON v2: módulo `capsule_v2`.
+
+pub mod capsule_v2;

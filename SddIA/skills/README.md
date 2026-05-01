@@ -29,6 +29,13 @@ Cada skill tiene en este directorio una carpeta con:
 | iniciar-rama | Crea rama feat/ o fix/ actualizada con master; inicio de acción. | iniciar-rama |
 | finalizar-git | Aceptar PR a master, unificar, eliminar rama, volver a master. | finalizar-git |
 | invoke-command | Interceptor de comandos de sistema (git, dotnet, npm, pwsh). | invoke-command |
+| invoke-commit | Commit con parámetros directos (--message, --files, --all). | invoke-commit |
+| git-workspace-recon | Diagnóstico Git (rama, status, remotes, último commit); envelope JSON v2. | git-workspace-recon |
+| git-branch-manager | Checkout o crear rama; envelope JSON v2. | git-branch-manager |
+| git-save-snapshot | git add + commit snapshot; envelope JSON v2. | git-save-snapshot |
+| git-sync-remote | fetch + pull con remoto; envelope JSON v2. | git-sync-remote |
+| git-tactical-retreat | reset --hard / clean con confirmación destructiva; envelope JSON v2. | git-tactical-retreat |
+| git-create-pr | push + gh pr create; envelope JSON v2. | git-create-pr |
 | git-operations | Uso seguro de Git (ramas feat/fix, commits convencionales). | — |
 | documentation | Estándares SSOT y gestión de documentación. | — |
 | filesystem-ops | Operaciones de archivo seguras (PowerShell). | — |
@@ -41,5 +48,6 @@ Cada skill tiene en este directorio una carpeta con:
 ## Referencias
 
 - Contrato global: `skills-contract.json`, `skills-contract.md` (en este directorio).
+- I/O JSON cápsulas (envelope v2): `SddIA/norms/capsule-json-io.md`.
 - Cúmulo: `SddIA/agents/cumulo.json` → **paths.skillsDefinitionPath**, **paths.skillsPath**, **paths.skillCapsules**, **paths.skillsIndexPath**.
 - Índice de implementaciones: **paths.skillsIndexPath** (paths.skillsIndexPath, Cúmulo).

@@ -1,0 +1,13 @@
+{
+  "skillId": "git-create-pr",
+  "version": "1.0.0",
+  "description": "Push rama y creación de PR con GitHub CLI (gh). Envelope JSON v2.",
+  "contract_ref": "SddIA/skills/skills-contract.json",
+  "capsule_io_ref": "SddIA/norms/capsule-json-io.md",
+  "components": {
+    "launcher_bat": "Git-Create-PR.bat",
+    "doc": "git-create-pr.md",
+    "bin": "bin/git_create_pr.exe"
+  },
+  "env": ["Windows 11", "PowerShell 7+", "Git", "GitHub CLI (gh)"]
+}

@@ -1,0 +1,13 @@
+{
+  "skillId": "git-tactical-retreat",
+  "version": "1.0.0",
+  "description": "Reset --hard y/o clean -fd. Requiere confirmDestructive (Visión Zero). Envelope JSON v2.",
+  "contract_ref": "SddIA/skills/skills-contract.json",
+  "capsule_io_ref": "SddIA/norms/capsule-json-io.md",
+  "components": {
+    "launcher_bat": "Git-Tactical-Retreat.bat",
+    "doc": "git-tactical-retreat.md",
+    "bin": "bin/git_tactical_retreat.exe"
+  },
+  "env": ["Windows 11", "PowerShell 7+", "Git"]
+}
