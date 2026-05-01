@@ -84,7 +84,9 @@ if ($null -ne $obj.meta) {
             if (-not $obj.request) {
                 Write-Error "Envelope sddia-evolution-register requiere nodo 'request' con el payload del registro."
             }
-            ($obj.request | ConvertTo-Json -Depth 20 -Compress) | Set-Content -LiteralPath $tmp -Encoding UTF8
+            $jsonPayload = $obj.request | ConvertTo-Json -Depth 20 -Compress
+            $utf8NoBom = New-Object System.Text.UTF8Encoding $false
+            [System.IO.File]::WriteAllText($tmp, $jsonPayload, $utf8NoBom)
             & $exe --input $tmp
             $exitCode = $LASTEXITCODE
         }

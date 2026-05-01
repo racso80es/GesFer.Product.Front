@@ -13,3 +13,4 @@
 | b8b01b65-6e2f-40d5-86ea-358cfa278619 | 2026-04-15T20:55:33.097518+00:00 | Se añadió YAML Frontmatter al archivo de norma SddIA/norms/commands-via-skills-or-tools.md para estandarizar las entidades del SDDIA. |
 | 3412602d-3aab-40f5-a12d-4818bf688132 | 2026-04-16T20:51:46.289974438+00:00 | Adición de YAML Frontmatter a la norma git |
 | 4b8b300b-d781-415e-9330-c91ed4bd4030 | 2026-05-01T12:15:01.344643500+00:00 | Contrato acciones/skills; accion finalize-process; wrapper Tekton |
+| 80f616e9-480d-455a-968b-0ff17750caa7 | 2026-05-01T14:28:01.846404700+00:00 | Alta skill git-close-cycle (Rust/cápsula/Cúmulo); finalize-process orquesta cierre post-fusión; difusión #Skill e install.ps1 |
