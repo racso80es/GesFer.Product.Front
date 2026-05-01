@@ -81,8 +81,8 @@ Transición a estado `DONE` tras el cumplimiento del proceso.
 
 - Mueve el archivo de la tarea de `paths.tasksPath/ACTIVE/` a `paths.tasksPath/DONE/`.
 - Actualiza el log de evolución del producto (`paths.evolutionPath` / `paths.evolutionLogFile` según Cúmulo) con un resumen de la intervención, enlazando al archivo en `DONE/`.
-- Genera la documentación de finalización del proceso feature (`finalize.md`).
-- **git-sync-remote** y, si el cierre requiere revisión formal, **git-create-pr** con resumen y enlaces a `finalize.md` / `validacion.md` en el cuerpo del PR.
+- Genera la documentación de finalización del proceso feature (`finalize-process.md`).
+- **git-sync-remote** y, si el cierre requiere revisión formal, **git-create-pr** con resumen y enlaces a `finalize-process.md` / `validacion.md` en el cuerpo del PR.
 
 ## Estructura de carpetas requerida
 Para el correcto funcionamiento de este proceso, el repositorio debe mantener la siguiente jerarquía bajo `paths.tasksPath`:

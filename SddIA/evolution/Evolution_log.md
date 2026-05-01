@@ -12,3 +12,4 @@
 | 16bf7e28-21d2-49bf-aae6-44bef92e4af0 | 2026-04-10 | Actualización de SddIA/actions/finalize/spec.md |
 | b8b01b65-6e2f-40d5-86ea-358cfa278619 | 2026-04-15T20:55:33.097518+00:00 | Se añadió YAML Frontmatter al archivo de norma SddIA/norms/commands-via-skills-or-tools.md para estandarizar las entidades del SDDIA. |
 | 3412602d-3aab-40f5-a12d-4818bf688132 | 2026-04-16T20:51:46.289974438+00:00 | Adición de YAML Frontmatter a la norma git |
+| 4b8b300b-d781-415e-9330-c91ed4bd4030 | 2026-05-01T12:15:01.344643500+00:00 | Contrato acciones/skills; accion finalize-process; wrapper Tekton |

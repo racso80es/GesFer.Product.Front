@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-05-01] [feat/refactor-actions-contract-and-finalize] [Contrato de acciones (solo skills/tools), acción finalize-process, wrapper Tekton y referencias alineadas] [DONE].
+
+## feature: refactor-actions-contract-and-finalize
+Resumen: Refactor del contrato de acciones SddIA, renombrado de finalize a finalize-process, script run-capsule-from-tekton-request y actualización de procesos, normas y difusión Cursor.
+Referencia: [docs/features/refactor-actions-contract-and-finalize/objectives.md](./features/refactor-actions-contract-and-finalize/objectives.md)
+
 [2026-04-30] [feat/correccion-auditorias-2026-04-30] [Resolución de hallazgo de auditoría en configuración de logs] [DONE].
 
 ## feature: correccion-auditorias-2026-04-30
