@@ -7,8 +7,9 @@ flow_steps:
   - Evolution Logs de producto (paths.evolutionPath)
   - Evaluación de impacto SddIA (si hubo cambios bajo SddIA/) skill sddia-evolution-register + snapshot
   - Publicación y PR vía skills git-sync-remote y git-create-pr
+  - 'Paso final orquestado (tarea finalizada, post-fusión en remoto): skill git-close-cycle con target_branch = rama de trabajo'
   - Auditoría según política del proyecto
-  - 'post_pr: (opcional) limpieza de ramas vía skills Git tácticas'
+  - 'post_pr: (opcional) skills Git tácticas solo si git-close-cycle no aplica o requiere intervención excepcional'
 triggers_semanticos:
   - Proceso finalizado
   - Tarea finalizada
@@ -28,6 +29,7 @@ skills_orquestadas:
   - sddia-evolution-register
   - git-sync-remote
   - git-create-pr
+  - git-close-cycle
   - git-tactical-retreat
   - verify-pr-protocol
 ---
@@ -64,6 +66,7 @@ La acción **finalize-process** cierra el ciclo cuando el **proceso o la tarea**
 5. **Impacto SddIA** — si el cambio tocó `./SddIA/`, ejecutar **`sddia-evolution-register`** y un **`git-save-snapshot`** adicional que incluya el registro, **antes** de subir.
 6. **`git-sync-remote`** — integrar/sincronizar con remoto según política.
 7. **`git-create-pr`** — publicar rama si aplica (`pushFirst`) y crear PR (`body` o `bodyFile` con objectives + validación).
+8. **`git-close-cycle`** — **paso final de ejecución orquestada** cuando el disparador semántico es *tarea finalizada* y el cierre completo incluye higiene local **tras** la fusión en remoto: debe invocarse con `request.target_branch` igual al **nombre de la rama de trabajo** (`feat/` o `fix/`) detectada al inicio del cierre (p. ej. vía **`git-workspace-recon`** o el campo `branch` documentado en `finalize-process.md`). Si el PR aún no está fusionado, `-d` puede fallar: ejecutar esta skill solo cuando corresponda el post-merge o aceptar el envelope de error.
 
 Cada invocación debe usar el contrato de cápsula (stdin/`--request-file` según `SddIA/norms/capsule-json-io.md`) o, para Tekton, el fichero `.tekton_request.json` y `run-capsule-from-tekton-request.ps1`.
 
@@ -75,7 +78,8 @@ Cada invocación debe usar el contrato de cápsula (stdin/`--request-file` segú
 4. Actualizar Evolution Log de producto.
 5. Si mutó `SddIA/`: **`sddia-evolution-register`** + snapshot.
 6. **`git-sync-remote`** → **`git-create-pr`**.
-7. Opcional: **`finalize-process.md`** y auditoría.
+7. **`git-close-cycle`** — con `target_branch` = rama de trabajo (post-fusión en remoto cuando aplique).
+8. Opcional: **`finalize-process.md`** y auditoría.
 
 ## Integración con otras acciones y procesos
 

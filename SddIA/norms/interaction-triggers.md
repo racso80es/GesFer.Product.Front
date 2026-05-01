@@ -38,6 +38,7 @@
 | git-sync-remote | fetch + pull con remoto. | paths.skillCapsules.git-sync-remote |
 | git-tactical-retreat | reset --hard y/o clean con confirmación destructiva. | paths.skillCapsules.git-tactical-retreat |
 | git-create-pr | push y creación de PR con gh. | paths.skillCapsules.git-create-pr |
+| git-close-cycle | Cierre local post-fusión: checkout base, pull, fetch --prune, eliminar rama de trabajo. | paths.skillCapsules.git-close-cycle |
 
 ---
 
@@ -63,7 +64,7 @@
 | implementation | Implementación (doc): indicar touchpoints en código y documento de implementación; no modifica código. |
 | execution | Ejecución: aplicar al código los cambios del documento de implementación. |
 | validate | Validación: comprobar calidad antes del PR (git diff, build, tests, docs); generar validacion.json. |
-| finalize-process | Finalizar proceso o tarea: cierre del ciclo (commits, Evolution Logs, sync remoto, PR). Orquestación solo vía skills. Secuencia S+ Grade: git-sync-remote → git-create-pr. |
+| finalize-process | Finalizar proceso o tarea: cierre del ciclo (commits, Evolution Logs, sync remoto, PR, higiene local post-fusión). Orquestación solo vía skills. Secuencia S+ Grade: git-sync-remote → git-create-pr → git-close-cycle (post-merge). |
 | sddia-difusion | Difusión de SddIA: mantener .cursor/rules, .github y otros gestores IA alineados con AGENTS y SddIA/norms. |
 
 ---

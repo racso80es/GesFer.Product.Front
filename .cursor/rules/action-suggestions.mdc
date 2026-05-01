@@ -23,7 +23,7 @@ Cuando el usuario escriba **#Action** (solo o en un mensaje), responde sugiriend
 | **implementation** | Implementación (doc): touchpoints en código; no modifica código. |
 | **execution** | Ejecución: aplicar al código los cambios del documento de implementación. |
 | **validate** | Validación: calidad pre-PR (build, tests, docs); validacion.json. |
-| **finalize-process** | Finalizar proceso/tarea: cierre (commits, Evolution Logs, sync remoto, PR). Orquestación solo vía skills. Secuencia S+ Grade: git-sync-remote → git-create-pr. |
+| **finalize-process** | Finalizar proceso/tarea: cierre (commits, Evolution Logs, sync remoto, PR, higiene local). Orquestación solo vía skills. Secuencia S+ Grade: git-sync-remote → git-create-pr → git-close-cycle (post-fusión). |
 | **sddia-difusion** | Difusión de SddIA: mantener .cursor/rules, .github y otros gestores IA alineados con AGENTS y SddIA/norms. |
 
 ## Respuesta sugerida
