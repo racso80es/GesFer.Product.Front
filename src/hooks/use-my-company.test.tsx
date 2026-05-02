@@ -45,7 +45,7 @@ describe("useMyCompany", () => {
 
     const { result } = renderHook(() => useMyCompany(), { wrapper });
 
-    await result.current.updateCompany({ businessName: "Updated Company" } as any);
+    await result.current.updateCompany({ businessName: "Updated Company" } as unknown as import("@/lib/types/api").UpdateCompany);
 
     expect(myCompanyApi.update).toHaveBeenCalledWith({ businessName: "Updated Company" });
   });

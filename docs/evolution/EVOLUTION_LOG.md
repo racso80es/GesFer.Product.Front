@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-05-02] [feat/correccion-auditorias-2026-05-02] [Resolución de hallazgo en auditoría sobre as cualquier (any) en tests de my-company] [DONE].
+
+## feature: correccion-auditorias-2026-05-02
+Resumen: Se eliminó el uso de `as any` en `src/hooks/use-my-company.test.tsx` para cumplir con las directrices de The Wall en AUDITORIA_2026_05_02_01.md.
+Referencia archivada: [docs/features/correccion-auditorias-2026-05-02/finalize.md](./features/correccion-auditorias-2026-05-02/finalize.md)
+
 [2026-05-01] [feat/refactor-actions-contract-and-finalize] [Contrato de acciones (solo skills/tools), acción finalize-process, wrapper Tekton y referencias alineadas] [DONE].
 
 ## feature: refactor-actions-contract-and-finalize
