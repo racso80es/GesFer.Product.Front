@@ -2,6 +2,12 @@ Objetivo Home Publica
 
 [2026-05-01] [feat/refactor-actions-contract-and-finalize] [Contrato de acciones (solo skills/tools), acción finalize-process, wrapper Tekton y referencias alineadas] [DONE].
 
+
+[2026-05-02] [feat/actualizacion_e2e_auth] [Actualización de selectores Auth en pruebas E2E] [completed].
+
+## feature: actualizacion_e2e_auth
+Resumen: Actualización de selectores Auth en pruebas E2E.
+Referencia archivada: [docs/features/actualizacion_e2e_auth/objectives.md](docs/features/actualizacion_e2e_auth/objectives.md)
 ## feature: refactor-actions-contract-and-finalize
 Resumen: Refactor del contrato de acciones SddIA, renombrado de finalize a finalize-process, script run-capsule-from-tekton-request y actualización de procesos, normas y difusión Cursor.
 Referencia: [docs/features/refactor-actions-contract-and-finalize/objectives.md](./features/refactor-actions-contract-and-finalize/objectives.md)
