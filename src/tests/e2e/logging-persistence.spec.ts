@@ -58,12 +58,12 @@ test.describe('Logging Persistence Test', () => {
     
     // Intentar login con credenciales inválidas para generar un error
     const companyInput = page.locator('input[name="company"]').or(page.locator('input[type="text"]').first());
-    const usuarioInput = page.locator('input[name="username"]').or(page.locator('input[type="text"]').nth(1));
-    const passwordInput = page.locator('input[type="password"]');
+    const usernameInput = page.locator('input[name="username"]').or(page.locator('input[id="username"]')).first();
+    const passwordInput = page.locator('input[name="password"]').or(page.locator('input[id="password"]')).first();
     const loginButton = page.getByRole('button', { name: /iniciar.*sesión|login/i }).first();
     
     await companyInput.fill(DEMO_COMPANY_NAME);
-    await usuarioInput.fill('usuario-inexistente');
+    await usernameInput.fill('usuario-inexistente');
     await passwordInput.fill('password-incorrecta');
     await loginButton.click();
     
