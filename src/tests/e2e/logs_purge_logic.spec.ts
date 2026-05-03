@@ -155,14 +155,14 @@ test.describe('Logs Purge Logic - Frontend E2E', () => {
     await page.waitForSelector('input[type="text"], input[id="username"], #username', { timeout: 20000 });
     
     // Usar los IDs específicos de la página de login del admin
-    const usuarioInput = page.locator('#username').or(page.locator('input[type="text"]').first());
+    const usernameInput = page.locator('#username').or(page.locator('input[type="text"]').first());
     const passwordInput = page.locator('#password').or(page.locator('input[type="password"]').first());
     
     // Esperar a que los inputs estén visibles
-    await expect(usuarioInput).toBeVisible({ timeout: 10000 });
+    await expect(usernameInput).toBeVisible({ timeout: 10000 });
     await expect(passwordInput).toBeVisible({ timeout: 10000 });
     
-    await usuarioInput.fill('admin');
+    await usernameInput.fill('admin');
     await passwordInput.fill('admin123');
     
     // Buscar el botón de login por el texto específico
