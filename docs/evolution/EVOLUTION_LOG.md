@@ -2,6 +2,12 @@ Objetivo Home Publica
 
 [2026-05-01] [feat/refactor-actions-contract-and-finalize] [Contrato de acciones (solo skills/tools), acción finalize-process, wrapper Tekton y referencias alineadas] [DONE].
 
+[2026-05-04] [feat/actualizacion-e2e-auth] [Actualización nomenclaturas a username/password en pruebas E2E] [DONE].
+
+## feature: actualizacion-e2e-auth
+Resumen: Refactorización de nomenclaturas obsoletas en pruebas E2E, estandarizando usuario a username y contraseñas a passwords.
+Referencia archivada: [Kaizen_2026_04_29_actualizacion_e2e_auth.md](../../TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md)
+
 ## feature: refactor-actions-contract-and-finalize
 Resumen: Refactor del contrato de acciones SddIA, renombrado de finalize a finalize-process, script run-capsule-from-tekton-request y actualización de procesos, normas y difusión Cursor.
 Referencia: [docs/features/refactor-actions-contract-and-finalize/objectives.md](./features/refactor-actions-contract-and-finalize/objectives.md)
