@@ -12,6 +12,12 @@ Referencia archivada: [docs/features/e2e-auth-selectors/finalize.md](../features
 Resumen: Refactor del contrato de acciones SddIA, renombrado de finalize a finalize-process, script run-capsule-from-tekton-request y actualización de procesos, normas y difusión Cursor.
 Referencia: [docs/features/refactor-actions-contract-and-finalize/objectives.md](./features/refactor-actions-contract-and-finalize/objectives.md)
 
+[2026-05-01] [feat/correccion-auditorias-2026-05-01] [Erradicación de any en tests de useMyCompany] [DONE].
+
+## feature: correccion-auditorias-2026-05-01
+Resumen: Se resolvió el pain point medio detectado en AUDITORIA_2026_05_01_01.md eliminando el uso de any en el test use-my-company.test.tsx.
+Referencia archivada: [docs/features/correccion-auditorias-2026-05-01/finalize.md](./features/correccion-auditorias-2026-05-01/finalize.md)
+
 [2026-04-30] [feat/correccion-auditorias-2026-04-30] [Resolución de hallazgo de auditoría en configuración de logs] [DONE].
 
 ## feature: correccion-auditorias-2026-04-30
