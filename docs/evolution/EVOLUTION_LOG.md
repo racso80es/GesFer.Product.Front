@@ -1,5 +1,10 @@
 Objetivo Home Publica
 
+[2026-05-04] [feat/correccion-auditorias-01] Corrección de as any en tests de company [DONE].
+## feature: correccion-auditorias-01
+Resumen: Eliminación de type casting inseguro (as any) en use-my-company.test.tsx según auditoría S+ del 2026-05-04.
+Referencia archivada: docs/features/correccion-auditorias-01
+
 [2026-05-01] [feat/refactor-actions-contract-and-finalize] [Contrato de acciones (solo skills/tools), acción finalize-process, wrapper Tekton y referencias alineadas] [DONE].
 
 ## feature: refactor-actions-contract-and-finalize
