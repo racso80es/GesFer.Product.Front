@@ -1,6 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { useQueryClient, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useMyCompany } from "./use-my-company";
+import { UpdateCompany } from "@/lib/types/api";
 import { myCompanyApi } from "@/lib/api/my-company";
 import React from "react";
 
@@ -45,8 +46,8 @@ describe("useMyCompany", () => {
 
     const { result } = renderHook(() => useMyCompany(), { wrapper });
 
-    await result.current.updateCompany({ businessName: "Updated Company" } as any);
+    await result.current.updateCompany({ name: "Updated Company", address: "Address", isActive: true } as UpdateCompany);
 
-    expect(myCompanyApi.update).toHaveBeenCalledWith({ businessName: "Updated Company" });
+    expect(myCompanyApi.update).toHaveBeenCalledWith({ name: "Updated Company", address: "Address", isActive: true });
   });
 });
