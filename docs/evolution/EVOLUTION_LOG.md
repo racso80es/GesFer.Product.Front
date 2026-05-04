@@ -6,6 +6,12 @@ Resumen: Se eliminaron referencias a la nomenclatura desfasada usuario/contrase�
 Referencia archivada: [docs/features/e2e-auth-selectors/finalize.md](../features/e2e-auth-selectors/finalize.md)
 
 
+[2026-05-04] [feat/refactor-shared-form-logic] [Refactorización estructural y estandarización UI de UserForm finalizada] [DONE].
+
+## feature: refactor-shared-form-logic
+Resumen: Se identificó y resolvió asimetría arquitectónica entre formularios refactorizando `src/components/usuarios/user-form.tsx` para usar `react-hook-form` y validaciones con `zod`, reemplazando la gestión de estado y validación manual obsoleta para alinear el componente con los estándares modernos del proyecto (eliminando asimetría técnica con `company-form.tsx`). Todos los tests mantuvieron cobertura total y se mantuvo estricto The Wall TS.
+Referencia archivada: [docs/features/refactor-shared-form-logic/finalize.md](./features/refactor-shared-form-logic/finalize.md)
+
 [2026-05-01] [feat/refactor-actions-contract-and-finalize] [Contrato de acciones (solo skills/tools), acción finalize-process, wrapper Tekton y referencias alineadas] [DONE].
 
 ## feature: refactor-actions-contract-and-finalize
