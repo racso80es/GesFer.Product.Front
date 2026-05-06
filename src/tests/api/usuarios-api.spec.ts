@@ -21,9 +21,7 @@ test.describe('API - Usuarios', () => {
 
   test.afterEach(async () => {
     // Teardown: Limpiar usuarios creados durante los tests
-    for (const userId of createdUserIds) {
-      await cleanup.cleanupUser(userId);
-    }
+    await Promise.all(createdUserIds.map(userId => cleanup.cleanupUser(userId)));
     createdUserIds.length = 0;
   });
 
