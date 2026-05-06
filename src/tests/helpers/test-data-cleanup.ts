@@ -57,32 +57,43 @@ export class TestDataCleanup {
       return;
     }
 
+    // Limpiar todos los recursos en paralelo
+    const cleanupPromises: Promise<void>[] = [];
+
     // Limpiar usuarios
     for (const userId of this.createdUserIds) {
-      try {
-        await this.apiClient.deleteUser(userId, this.authToken);
-      } catch (error) {
-        console.warn(`Error al eliminar usuario ${userId}:`, error);
-      }
+      cleanupPromises.push((async () => {
+        try {
+          await this.apiClient.deleteUser(userId, this.authToken!);
+        } catch (error) {
+          console.warn(`Error al eliminar usuario ${userId}:`, error);
+        }
+      })());
     }
 
     // Limpiar datos de organización / tenant de prueba
     for (const companyId of this.createdCompanyIds) {
-      try {
-        await this.apiClient.deleteCompany(companyId, this.authToken);
-      } catch (error) {
-        console.warn(`Error al eliminar company ${companyId}:`, error);
-      }
+      cleanupPromises.push((async () => {
+        try {
+          await this.apiClient.deleteCompany(companyId, this.authToken!);
+        } catch (error) {
+          console.warn(`Error al eliminar company ${companyId}:`, error);
+        }
+      })());
     }
 
     // Limpiar clientes
     for (const customerId of this.createdCustomerIds) {
-      try {
-        await this.apiClient.deleteCustomer(customerId, this.authToken);
-      } catch (error) {
-        console.warn(`Error al eliminar cliente ${customerId}:`, error);
-      }
+      cleanupPromises.push((async () => {
+        try {
+          await this.apiClient.deleteCustomer(customerId, this.authToken!);
+        } catch (error) {
+          console.warn(`Error al eliminar cliente ${customerId}:`, error);
+        }
+      })());
     }
+
+    await Promise.all(cleanupPromises);
 
     // Limpiar arrays
     this.createdUserIds = [];
