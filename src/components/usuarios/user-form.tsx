@@ -145,7 +145,7 @@ export function UserForm({
       }
 
       await onSubmit(dataToSubmit as unknown as CreateUser | UpdateUser);
-    } catch (err: any) {
+    } catch (err: unknown) {
       setSubmitError(
         err instanceof Error
           ? err.message
