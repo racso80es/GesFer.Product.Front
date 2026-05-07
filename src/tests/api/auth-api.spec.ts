@@ -34,8 +34,8 @@ test.describe('API - Autenticación', () => {
   test('debe rechazar login con credenciales inválidas', async () => {
     const response = await apiClient.post('/api/auth/login', {
       company: DEMO_COMPANY_NAME,
-      usuario: 'admin',
-      contraseña: 'password-incorrecta',
+      username: 'admin',
+      password: 'password-incorrecta',
     });
 
     expect(response.status()).toBe(401);
@@ -44,8 +44,8 @@ test.describe('API - Autenticación', () => {
   test('debe validar campos requeridos en login', async () => {
     const response = await apiClient.post('/api/auth/login', {
       company: '',
-      usuario: '',
-      contraseña: '',
+      username: '',
+      password: '',
     });
 
     expect(response.status()).toBeGreaterThanOrEqual(400);

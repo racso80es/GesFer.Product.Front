@@ -70,11 +70,11 @@ export class ApiClient {
    * Nota: La API no devuelve un token, devuelve un LoginResponseDto
    * Para mantener compatibilidad con tests, devolvemos el userId como "token"
    */
-  async login(company: string, usuario: string, contraseña: string): Promise<string> {
+  async login(company: string, username: string, password: string): Promise<string> {
     const response = await this.post('/api/auth/login', {
       company,
-      usuario,
-      contraseña,
+      username,
+      password,
     });
 
     if (!response.ok()) {
@@ -90,11 +90,11 @@ export class ApiClient {
   /**
    * Obtiene la información completa del login
    */
-  async loginFull(company: string, usuario: string, contraseña: string): Promise<LoginResponse> {
+  async loginFull(company: string, username: string, password: string): Promise<LoginResponse> {
     const response = await this.post('/api/auth/login', {
       company,
-      usuario,
-      contraseña,
+      username,
+      password,
     });
 
     if (!response.ok()) {
