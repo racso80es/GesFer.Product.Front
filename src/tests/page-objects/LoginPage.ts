@@ -19,8 +19,8 @@ export class LoginPage extends BasePage {
     
     // Preferir getByTestId, con fallback a getByLabel, usando .first() para evitar múltiples elementos
     this.organizationInput = page.getByTestId('login-company-input').or(page.getByTestId('shared-input-text-company')).or(page.getByTestId('login-company-input')).or(page.getByLabel(/organización|organization|company|company/i)).first();
-    this.usernameInput = page.getByTestId('login-username-input').or(page.getByTestId('shared-input-text-username')).or(page.getByLabel(/usuario|username/i)).first();
-    this.passwordInput = page.getByTestId('login-password-input').or(page.getByTestId('shared-input-password-password')).or(page.getByLabel(/contraseña|password/i)).first();
+    this.usernameInput = page.getByTestId('login-username-input').or(page.getByTestId('shared-input-text-username')).or(page.getByLabel(/username/i)).first();
+    this.passwordInput = page.getByTestId('login-password-input').or(page.getByTestId('shared-input-password-password')).or(page.getByLabel(/password/i)).first();
     this.loginButton = page.getByTestId('login-submit-button').or(page.getByTestId('shared-button-login-submit')).or(page.getByRole('button', { name: /iniciar sesión|login/i })).first();
     this.errorMessage = page.getByTestId('login-error-message').or(page.locator('[role="alert"], .error-message')).first();
     this.loginForm = page.getByTestId('login-form').or(page.locator('form')).first();
