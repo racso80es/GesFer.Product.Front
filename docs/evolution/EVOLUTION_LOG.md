@@ -1,22 +1,21 @@
 Objetivo Home Publica
-[2026-05-06] [feat/correccion-auditorias-2026-05-06] [Aplicación completa de hallazgos S+ de la auditoría 2026-05-06_01] [DONE].
-
-## feature: correccion-auditorias-2026-05-06
-Resumen: Se ha documentado y resuelto el pain point correspondiente a la auditoría de calidad (S+) del 2026-05-06. Se reemplazó el casteo "any" por "unknown" en src/components/usuarios/user-form.tsx, asegurando estricto apego a The Wall (TypeScript strict typing).
-Referencia archivada: [docs/features/correccion-auditorias-2026-05-06/finalize.md](./features/correccion-auditorias-2026-05-06/finalize.md)
-
-[2026-05-01] [feat/e2e-auth-selectors] [Actualización de selectores Auth en pruebas E2E] [DONE].
 [2026-05-07] [feat/kaizen-overlay-fix-coverage] [Cobertura empírica del 100% para overlay-fix.tsx] [DONE].
 
 ## feature: kaizen-overlay-fix-coverage
 Resumen: Se ha blindado el componente crítico de manipulación de DOM `src/components/ui/overlay-fix.tsx` alcanzando el 100% de cobertura mediante aserciones rigurosas de simulación de DOM en `src/__tests__/components/ui/overlay-fix.test.tsx`.
 Referencia archivada: [docs/features/kaizen-overlay-fix-coverage/finalize.md](./features/kaizen-overlay-fix-coverage/finalize.md)
 
+[2026-05-06] [feat/correccion-auditorias-2026-05-06] [Aplicación completa de hallazgos S+ de la auditoría 2026-05-06_01] [DONE].
 
-## feature: e2e-auth-selectors
-Resumen: Se eliminaron referencias a la nomenclatura desfasada usuario/contraseña en los Page Objects y pruebas E2E, igualando los localizadores con la estandarización username/password.
-Referencia archivada: [docs/features/e2e-auth-selectors/finalize.md](../features/e2e-auth-selectors/finalize.md)
+## feature: correccion-auditorias-2026-05-06
+Resumen: Se ha documentado y resuelto el pain point correspondiente a la auditoría de calidad (S+) del 2026-05-06. Se reemplazó el casteo "any" por "unknown" en src/components/usuarios/user-form.tsx, asegurando estricto apego a The Wall (TypeScript strict typing).
+Referencia archivada: [docs/features/correccion-auditorias-2026-05-06/finalize.md](./features/correccion-auditorias-2026-05-06/finalize.md)
 
+[2026-05-04] [feat/actualizacion-e2e-auth] [Actualización nomenclaturas a username/password en pruebas E2E] [DONE].
+
+## feature: actualizacion-e2e-auth
+Resumen: Refactorización de nomenclaturas obsoletas en pruebas E2E, estandarizando usuario a username y contraseñas a passwords.
+Referencia archivada: [Kaizen_2026_04_29_actualizacion_e2e_auth.md](../../TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md)
 
 [2026-05-04] [feat/refactor-shared-form-logic] [Refactorización estructural y estandarización UI de UserForm finalizada] [DONE].
 
@@ -24,8 +23,13 @@ Referencia archivada: [docs/features/e2e-auth-selectors/finalize.md](../features
 Resumen: Se identificó y resolvió asimetría arquitectónica entre formularios refactorizando `src/components/usuarios/user-form.tsx` para usar `react-hook-form` y validaciones con `zod`, reemplazando la gestión de estado y validación manual obsoleta para alinear el componente con los estándares modernos del proyecto (eliminando asimetría técnica con `company-form.tsx`). Todos los tests mantuvieron cobertura total y se mantuvo estricto The Wall TS.
 Referencia archivada: [docs/features/refactor-shared-form-logic/finalize.md](./features/refactor-shared-form-logic/finalize.md)
 
-[2026-05-01] [feat/refactor-actions-contract-and-finalize] [Contrato de acciones (solo skills/tools), acción finalize-process, wrapper Tekton y referencias alineadas] [DONE].
+[2026-05-01] [feat/e2e-auth-selectors] [Actualización de selectores Auth en pruebas E2E] [DONE].
 
+## feature: e2e-auth-selectors
+Resumen: Se eliminaron referencias a la nomenclatura desfasada usuario/contraseña en los Page Objects y pruebas E2E, igualando los localizadores con la estandarización username/password.
+Referencia archivada: [docs/features/e2e-auth-selectors/finalize.md](../features/e2e-auth-selectors/finalize.md)
+
+[2026-05-01] [feat/refactor-actions-contract-and-finalize] [Contrato de acciones (solo skills/tools), acción finalize-process, wrapper Tekton y referencias alineadas] [DONE].
 ## feature: refactor-actions-contract-and-finalize
 Resumen: Refactor del contrato de acciones SddIA, renombrado de finalize a finalize-process, script run-capsule-from-tekton-request y actualización de procesos, normas y difusión Cursor.
 Referencia: [docs/features/refactor-actions-contract-and-finalize/objectives.md](./features/refactor-actions-contract-and-finalize/objectives.md)
@@ -35,7 +39,6 @@ Referencia: [docs/features/refactor-actions-contract-and-finalize/objectives.md]
 ## feature: correccion-auditorias-2026-05-01
 Resumen: Se resolvió el pain point medio detectado en AUDITORIA_2026_05_01_01.md eliminando el uso de any en el test use-my-company.test.tsx.
 Referencia archivada: [docs/features/correccion-auditorias-2026-05-01/finalize.md](./features/correccion-auditorias-2026-05-01/finalize.md)
-
 [2026-04-30] [feat/correccion-auditorias-2026-04-30] [Resolución de hallazgo de auditoría en configuración de logs] [DONE].
 
 ## feature: correccion-auditorias-2026-04-30
