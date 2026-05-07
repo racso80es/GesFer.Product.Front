@@ -1,5 +1,11 @@
 Objetivo Home Publica
 [2026-05-01] [feat/e2e-auth-selectors] [Actualización de selectores Auth en pruebas E2E] [DONE].
+[2026-05-07] [feat/kaizen-overlay-fix-coverage] [Cobertura empírica del 100% para overlay-fix.tsx] [DONE].
+
+## feature: kaizen-overlay-fix-coverage
+Resumen: Se ha blindado el componente crítico de manipulación de DOM `src/components/ui/overlay-fix.tsx` alcanzando el 100% de cobertura mediante aserciones rigurosas de simulación de DOM en `src/__tests__/components/ui/overlay-fix.test.tsx`.
+Referencia archivada: [docs/features/kaizen-overlay-fix-coverage/finalize.md](./features/kaizen-overlay-fix-coverage/finalize.md)
+
 
 ## feature: e2e-auth-selectors
 Resumen: Se eliminaron referencias a la nomenclatura desfasada usuario/contraseña en los Page Objects y pruebas E2E, igualando los localizadores con la estandarización username/password.
