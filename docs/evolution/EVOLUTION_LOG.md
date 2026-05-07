@@ -1,5 +1,12 @@
 Objetivo Home Publica
 [2026-05-01] [feat/e2e-auth-selectors] [Actualización de selectores Auth en pruebas E2E] [DONE].
+[2026-05-06] [feat/kaizen-auth-payload-standardization] [Estandarización de payload de autenticación en tests E2E y API] [DONE].
+
+## feature: kaizen-auth-payload-standardization
+Resumen: Se refactorizaron los tests para usar username y password en lugar de los atributos en español en api-client.ts y auth-api.spec.ts, estandarizando el payload.
+Referencia archivada: [docs/features/kaizen-auth-payload-standardization/finalize.md](../features/kaizen-auth-payload-standardization/finalize.md)
+
+
 
 ## feature: e2e-auth-selectors
 Resumen: Se eliminaron referencias a la nomenclatura desfasada usuario/contraseña en los Page Objects y pruebas E2E, igualando los localizadores con la estandarización username/password.

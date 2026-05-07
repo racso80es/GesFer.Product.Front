@@ -19,9 +19,9 @@ export class TestDataCleanup {
   /**
    * Establece el token de autenticación para las operaciones de limpieza
    */
-  async setAuthToken(company: string, usuario: string, contraseña: string): Promise<void> {
+  async setAuthToken(company: string, username: string, password: string): Promise<void> {
     try {
-      this.authToken = await this.apiClient.login(company, usuario, contraseña);
+      this.authToken = await this.apiClient.login(company, username, password);
     } catch (error) {
       console.warn('No se pudo obtener token de autenticación para limpieza:', error);
     }
