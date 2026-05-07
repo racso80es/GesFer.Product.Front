@@ -1,11 +1,10 @@
 Objetivo Home Publica
 [2026-05-01] [feat/e2e-auth-selectors] [Actualización de selectores Auth en pruebas E2E] [DONE].
-[2026-05-06] [feat/kaizen-auth-payload-standardization] [Estandarización de payload de autenticación en tests E2E y API] [DONE].
+[2026-05-07] [feat/kaizen-overlay-fix-coverage] [Cobertura empírica del 100% para overlay-fix.tsx] [DONE].
 
-## feature: kaizen-auth-payload-standardization
-Resumen: Se refactorizaron los tests para usar username y password en lugar de los atributos en español en api-client.ts y auth-api.spec.ts, estandarizando el payload.
-Referencia archivada: [docs/features/kaizen-auth-payload-standardization/finalize.md](../features/kaizen-auth-payload-standardization/finalize.md)
-
+## feature: kaizen-overlay-fix-coverage
+Resumen: Se ha blindado el componente crítico de manipulación de DOM `src/components/ui/overlay-fix.tsx` alcanzando el 100% de cobertura mediante aserciones rigurosas de simulación de DOM en `src/__tests__/components/ui/overlay-fix.test.tsx`.
+Referencia archivada: [docs/features/kaizen-overlay-fix-coverage/finalize.md](./features/kaizen-overlay-fix-coverage/finalize.md)
 
 
 ## feature: e2e-auth-selectors
