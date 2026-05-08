@@ -1,5 +1,11 @@
 Objetivo Home Publica
 [2026-05-06] [feat/correccion-auditorias-2026-05-06] [Aplicación completa de hallazgos S+ de la auditoría 2026-05-06_01] [DONE].
+[2026-05-08] [feat/kaizen-clean-code] [Refactorización de tipos as any en overlay-fix.test.tsx eliminando deuda tecnica] [DONE].
+
+## feature: kaizen-clean-code
+Resumen: Se ha documentado y resuelto los pain points correspondientes a la limpieza de as any en src/__tests__/components/ui/overlay-fix.test.tsx reemplazandolos por as unknown as ReturnType<typeof window.getComputedStyle> para estricto apego a The Wall.
+Referencia archivada: [docs/features/kaizen-clean-code/finalize.md](./features/kaizen-clean-code/finalize.md)
+
 
 ## feature: correccion-auditorias-2026-05-06
 Resumen: Se ha documentado y resuelto el pain point correspondiente a la auditoría de calidad (S+) del 2026-05-06. Se reemplazó el casteo "any" por "unknown" en src/components/usuarios/user-form.tsx, asegurando estricto apego a The Wall (TypeScript strict typing).

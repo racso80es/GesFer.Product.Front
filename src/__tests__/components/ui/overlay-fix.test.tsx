@@ -60,7 +60,7 @@ describe('OverlayFix', () => {
         visibility: 'hidden',
         opacity: '0',
       };
-    }) as any;
+    }) as unknown as typeof window.getComputedStyle;
 
     const dialog = document.createElement('div');
     dialog.setAttribute('role', 'dialog');
@@ -82,7 +82,7 @@ describe('OverlayFix', () => {
         visibility: 'visible',
         opacity: '1',
       };
-    }) as any;
+    }) as unknown as typeof window.getComputedStyle;
 
     const dialog = document.createElement('div');
     dialog.setAttribute('role', 'dialog');
@@ -130,7 +130,7 @@ describe('OverlayFix', () => {
             };
         }
         return { display: 'none' };
-    }) as any;
+    }) as unknown as typeof window.getComputedStyle;
 
     render(<OverlayFix />);
 
@@ -175,7 +175,7 @@ describe('OverlayFix', () => {
             };
         }
         return { display: 'block' };
-    }) as any;
+    }) as unknown as typeof window.getComputedStyle;
 
     render(<OverlayFix />);
 
@@ -192,7 +192,7 @@ describe('OverlayFix', () => {
             visibility: 'hidden',
             opacity: '0',
           };
-      }) as any;
+      }) as unknown as typeof window.getComputedStyle;
 
       const dialog = document.createElement('div');
       dialog.setAttribute('role', 'dialog');
@@ -237,7 +237,7 @@ describe('OverlayFix', () => {
             };
         }
         return { display: 'none' };
-    }) as any;
+    }) as unknown as typeof window.getComputedStyle;
 
     render(<OverlayFix />);
     expect(console.warn).toHaveBeenCalledWith(expect.stringContaining("OverlayFix: Overlay de pantalla completa bloqueante detectado"), el);
