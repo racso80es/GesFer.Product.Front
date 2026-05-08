@@ -3,6 +3,7 @@
  */
 
 import { usersApi } from "@/lib/api/users";
+import { apiClient } from "@/lib/api/client";
 
 // Mock del apiClient
 jest.mock("@/lib/api/client", () => ({
@@ -13,8 +14,6 @@ jest.mock("@/lib/api/client", () => ({
     delete: jest.fn(),
   },
 }));
-
-import { apiClient } from "@/lib/api/client";
 
 describe("Validación de IDs en APIs", () => {
   beforeEach(() => {

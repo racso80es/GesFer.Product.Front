@@ -1,5 +1,10 @@
 Objetivo Home Publica
 [2026-05-06] [feat/correccion-auditorias-2026-05-06] [Aplicación completa de hallazgos S+ de la auditoría 2026-05-06_01] [DONE].
+[2026-12-08] [feat/correccion-auditorias-2026-12-08] [Resolución de hallazgos S+ en auditoría de código confirmados (ESLint)] [DONE].
+
+## feature: correccion-auditorias-2026-12-08
+Resumen: Se resolvieron los hallazgos críticos/medios de AUDITORIA_2026_12_08_01.md. Se reubicaron los imports en tests para cumplir con la regla ESLint import/first, asegurando una arquitectura frontend 100% libre de advertencias The Wall.
+Referencia archivada: [docs/features/correccion-auditorias-2026-12-08/finalize.md](./features/correccion-auditorias-2026-12-08/finalize.md)
 
 ## feature: correccion-auditorias-2026-05-06
 Resumen: Se ha documentado y resuelto el pain point correspondiente a la auditoría de calidad (S+) del 2026-05-06. Se reemplazó el casteo "any" por "unknown" en src/components/usuarios/user-form.tsx, asegurando estricto apego a The Wall (TypeScript strict typing).
