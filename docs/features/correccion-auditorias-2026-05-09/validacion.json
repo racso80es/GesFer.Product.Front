@@ -1,0 +1,5 @@
+{
+  "contract_ref": "paths.processPath/process-contract.json",
+  "name": "Validación de la corrección",
+  "validation_status": "success"
+}
