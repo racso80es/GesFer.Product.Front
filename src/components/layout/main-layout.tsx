@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils/cn";
 import { useTranslations, useLocale } from 'next-intl';
 import type { LoginResponse } from "@/lib/types/api";
 import type { LucideIcon } from "lucide-react";
+import logger from '@/lib/logger';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -66,7 +67,7 @@ export function MainLayout({ children }: MainLayoutProps) {
   useEffect(() => {
     if (sidebarOpen) {
       const safetyTimeout = setTimeout(() => {
-        console.warn("MainLayout: Timeout de seguridad activado, cerrando sidebar automáticamente");
+        logger.warn("MainLayout: Timeout de seguridad activado, cerrando sidebar automáticamente");
         setSidebarOpen(false);
       }, 60000); // 1 minuto como máximo (tiempo razonable para usar el sidebar)
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import logger from '@/lib/logger';
 
 /**
  * Componente de seguridad para prevenir overlays bloqueantes
@@ -22,7 +23,7 @@ export function OverlayFix({ 'data-testid': testId }: { 'data-testid'?: string }
 
         // Si no hay Dialogs visibles pero el body está bloqueado, liberarlo
         if (visibleDialogs.length === 0) {
-          console.warn("OverlayFix: Encontrado body.overflow='hidden' sin Dialog visible, restaurando...");
+          logger.warn("OverlayFix: Encontrado body.overflow='hidden' sin Dialog visible, restaurando...");
           document.body.style.overflow = "unset";
         }
       }
@@ -55,7 +56,7 @@ export function OverlayFix({ 'data-testid': testId }: { 'data-testid'?: string }
           
           // Si es un overlay oscuro de pantalla completa sin Dialog ni sidebar padre, está bloqueando
           if (hasBgBlack && !hasDialogParent && !isSidebarOverlay) {
-            console.error("OverlayFix: ⚠️ OVERLAY BLOQUEANTE DETECTADO - Eliminando overlay huérfano", overlay);
+            logger.error({ overlay }, "OverlayFix: ⚠️ OVERLAY BLOQUEANTE DETECTADO - Eliminando overlay huérfano");
             // Ocultar el overlay huérfano inmediatamente
             htmlOverlay.style.display = "none";
             htmlOverlay.style.visibility = "hidden";
@@ -83,7 +84,7 @@ export function OverlayFix({ 'data-testid': testId }: { 'data-testid'?: string }
           const rect = el.getBoundingClientRect();
           if (rect.width === window.innerWidth && rect.height === window.innerHeight) {
             // Es un overlay de pantalla completa que no debería estar ahí
-            console.warn("OverlayFix: Overlay de pantalla completa bloqueante detectado, verificando...", el);
+            logger.warn({ el }, "OverlayFix: Overlay de pantalla completa bloqueante detectado, verificando...");
           }
         }
       });

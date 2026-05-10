@@ -1,6 +1,15 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
 import { OverlayFix } from '@/components/ui/overlay-fix';
+import logger from '@/lib/logger';
+
+jest.mock("@/lib/logger", () => ({
+  __esModule: true,
+  default: {
+    warn: jest.fn(),
+    error: jest.fn()
+  }
+}));
 
 describe('OverlayFix', () => {
   let originalInnerWidth: number;
@@ -70,7 +79,7 @@ describe('OverlayFix', () => {
     render(<OverlayFix />);
 
     expect(document.body.style.overflow).toBe('unset');
-    expect(console.warn).toHaveBeenCalledWith(expect.stringContaining("OverlayFix: Encontrado body.overflow='hidden' sin Dialog visible"));
+    expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining("OverlayFix: Encontrado body.overflow='hidden' sin Dialog visible"));
   });
 
   it('does NOT fix body overflow when a visible dialog exists', () => {
@@ -138,7 +147,7 @@ describe('OverlayFix', () => {
     expect(overlay.style.visibility).toBe('hidden');
     expect(overlay.style.opacity).toBe('0');
     expect(overlay.style.pointerEvents).toBe('none');
-    expect(console.error).toHaveBeenCalledWith(expect.stringContaining("⚠️ OVERLAY BLOQUEANTE DETECTADO"), overlay);
+    expect(logger.error).toHaveBeenCalledWith(expect.objectContaining({ overlay }), expect.stringContaining("OVERLAY BLOQUEANTE DETECTADO"));
   });
 
   it('does NOT hide black full-screen overlays that are children of a dialog', () => {
@@ -240,6 +249,6 @@ describe('OverlayFix', () => {
     }) as any;
 
     render(<OverlayFix />);
-    expect(console.warn).toHaveBeenCalledWith(expect.stringContaining("OverlayFix: Overlay de pantalla completa bloqueante detectado"), el);
+    expect(logger.warn).toHaveBeenCalledWith(expect.objectContaining({ el }), expect.stringContaining("Overlay de pantalla completa bloqueante detectado"));
   });
 });

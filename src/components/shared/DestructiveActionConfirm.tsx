@@ -13,6 +13,7 @@ import { Button } from "./Button";
 import { Input } from "./Input";
 import { Label } from "@/components/ui/label";
 import { AlertTriangle, Loader2 } from "lucide-react";
+import logger from '@/lib/logger';
 
 interface DestructiveActionConfirmProps {
   open: boolean;
@@ -59,7 +60,7 @@ export function DestructiveActionConfirm({
       onOpenChange(false);
     } catch (error) {
       // El error debe ser manejado por el componente padre
-      console.error("Error al ejecutar acción destructiva:", error);
+      logger.error({ error }, "Error al ejecutar acción destructiva:");
     } finally {
       setIsExecuting(false);
     }

@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils/cn";
 import { Sidebar } from "./Sidebar";
 import { useSidebar } from "@/contexts/sidebar-context";
+import logger from '@/lib/logger';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -28,7 +29,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
   useEffect(() => {
     if (sidebarOpen) {
       const safetyTimeout = setTimeout(() => {
-        console.warn("AdminLayout: Timeout de seguridad activado, cerrando sidebar automáticamente");
+        logger.warn("AdminLayout: Timeout de seguridad activado, cerrando sidebar automáticamente");
         setSidebarOpen(false);
       }, 60000);
 

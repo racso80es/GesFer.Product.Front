@@ -1,6 +1,12 @@
 Objetivo Home Publica
 [2026-05-06] [feat/correccion-auditorias-2026-05-06] [Aplicación completa de hallazgos S+ de la auditoría 2026-05-06_01] [DONE].
 
+[2026-05-06] [feat/ui-logger-migration] [Refactorización de logs UI para usar el logger centralizado en lugar de métodos nativos de consola] [SUCCESS].
+
+## feature: ui-logger-migration
+Resumen: Migración exitosa de console.warn/error a @/lib/logger en componentes UI para habilitar el envío de alertas de telemetría hacia el backend.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_05_06_ui-logs.md]
+
 ## feature: correccion-auditorias-2026-05-06
 Resumen: Se ha documentado y resuelto el pain point correspondiente a la auditoría de calidad (S+) del 2026-05-06. Se reemplazó el casteo "any" por "unknown" en src/components/usuarios/user-form.tsx, asegurando estricto apego a The Wall (TypeScript strict typing).
 Referencia archivada: [docs/features/correccion-auditorias-2026-05-06/finalize.md](./features/correccion-auditorias-2026-05-06/finalize.md)
