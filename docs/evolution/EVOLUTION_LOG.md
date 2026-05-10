@@ -1,5 +1,11 @@
 Objetivo Home Publica
 [2026-05-06] [feat/correccion-auditorias-2026-05-06] [Aplicación completa de hallazgos S+ de la auditoría 2026-05-06_01] [DONE].
+[2026-05-10] [feat/correccion-auditorias-2026-05-10] [Fix as any in overlay-fix tests] [DONE].
+
+## feature: correccion-auditorias-2026-05-10
+Resumen: Eliminado uso de as any en tests de overlay-fix.
+Referencia archivada: docs/features/correccion-auditorias-2026-05-10/finalize.md
+
 
 ## feature: correccion-auditorias-2026-05-06
 Resumen: Se ha documentado y resuelto el pain point correspondiente a la auditoría de calidad (S+) del 2026-05-06. Se reemplazó el casteo "any" por "unknown" en src/components/usuarios/user-form.tsx, asegurando estricto apego a The Wall (TypeScript strict typing).
