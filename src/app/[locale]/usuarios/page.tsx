@@ -24,6 +24,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useTranslations } from 'next-intl';
 import type { User, CreateUser, UpdateUser } from "@/lib/types/api";
 import { DestructiveActionConfirm } from "@/components/shared/DestructiveActionConfirm";
+import logger from '@/lib/logger';
 
 // Mapeo de languageId (Guids) a códigos de idioma
 const languageIdToCode: Record<string, string> = {
@@ -77,7 +78,7 @@ export default function UsuariosPage() {
       setIsCreateModalOpen(false);
     },
     onError: (error) => {
-      console.error('Error al crear usuario:', error);
+      logger.error({ context: 'ui' }, 'Error al crear usuario:', error);
       // El error se propagará al componente UserForm a través de onSubmit
       // Asegurar que el error tenga un mensaje
       if (error instanceof Error) {
@@ -192,7 +193,7 @@ export default function UsuariosPage() {
       setUserToDelete(null);
     } catch (error) {
       // El error se maneja en deleteMutation.onError
-      console.error("Error al eliminar usuario:", error);
+      logger.error({ context: 'ui' }, "Error al eliminar usuario:", error);
     } finally {
       setDeletingUserId(null);
     }

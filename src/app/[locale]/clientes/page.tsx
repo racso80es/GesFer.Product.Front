@@ -13,6 +13,7 @@ import { Plus, Edit, Trash2, Building2 } from "lucide-react";
 import { useState } from "react";
 import { useTranslations, useLocale } from 'next-intl';
 import { DestructiveActionConfirm } from "@/components/shared/DestructiveActionConfirm";
+import logger from '@/lib/logger';
 
 export default function ClientesPage() {
   const { user } = useAuth();
@@ -47,7 +48,7 @@ export default function ClientesPage() {
       setCustomerToDelete(null);
       refetch();
     } catch (error) {
-      console.error("Error al eliminar cliente:", error);
+      logger.error({ context: 'ui' }, "Error al eliminar cliente:", error);
     }
   };
 
