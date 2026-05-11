@@ -1,4 +1,9 @@
 Objetivo Home Publica
+[2026-05-11] [feat/correccion-auditorias-2026-05-11] Reemplazado console.* por logger en UI [DONE].
+
+## feature: correccion-auditorias-2026-05-11
+Resumen: Se han reemplazado los usos de `console.warn` y `console.error` por el `logger` centralizado de la aplicación en los componentes de UI y app para cumplir con la política de arquitectura. Se han actualizado los correspondientes test para mockear la llamada a `logger`.
+Referencia archivada: [docs/features/correccion-auditorias-2026-05-11]
 [2026-05-06] [feat/correccion-auditorias-2026-05-06] [Aplicación completa de hallazgos S+ de la auditoría 2026-05-06_01] [DONE].
 
 ## feature: correccion-auditorias-2026-05-06

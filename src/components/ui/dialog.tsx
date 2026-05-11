@@ -2,6 +2,7 @@ import * as React from "react";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import { Button } from "./button";
+import logger from '@/lib/logger';
 
 interface DialogProps {
   open: boolean;
@@ -58,7 +59,7 @@ const Dialog = ({ open, onOpenChange, children, 'data-testid': testId }: DialogP
   React.useEffect(() => {
     if (open) {
       const safetyTimeout = setTimeout(() => {
-        console.warn("Dialog: Timeout de seguridad activado, cerrando Dialog automáticamente");
+        logger.warn({ context: 'ui' }, "Dialog: Timeout de seguridad activado, cerrando Dialog automáticamente");
         onOpenChange(false);
         // Asegurar que el body se restaure incluso si onOpenChange falla
         document.body.style.overflow = "unset";
@@ -77,7 +78,7 @@ const Dialog = ({ open, onOpenChange, children, 'data-testid': testId }: DialogP
   React.useEffect(() => {
     if (!open && document.body.style.overflow === "hidden") {
       // Si el Dialog está cerrado pero el body sigue bloqueado, restaurarlo
-      console.warn("Dialog: Dialog cerrado pero body.overflow='hidden' detectado, restaurando...");
+      logger.warn({ context: 'ui' }, "Dialog: Dialog cerrado pero body.overflow='hidden' detectado, restaurando...");
       document.body.style.overflow = "unset";
     }
   }, [open]);

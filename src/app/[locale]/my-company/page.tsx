@@ -21,6 +21,7 @@ import { useAuth } from "@/contexts/auth-context";
 import { Edit, Building2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { CreateCompany, UpdateCompany } from "@/lib/types/api";
+import logger from '@/lib/logger';
 
 export default function MyCompanyPage() {
   const t = useTranslations("myCompany");
@@ -34,7 +35,7 @@ export default function MyCompanyPage() {
       updateUser({ companyName: updated.name });
       setIsEditModalOpen(false);
     } catch (err) {
-      console.error("Failed to update organization", err);
+      logger.error({ context: 'ui' }, "Failed to update organization", err);
     }
   };
 
