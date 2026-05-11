@@ -1,0 +1,8 @@
+{
+  "status": "pending",
+  "checks": [
+    "tsc --noEmit pass",
+    "jest tests pass",
+    "no as any left in the file"
+  ]
+}
