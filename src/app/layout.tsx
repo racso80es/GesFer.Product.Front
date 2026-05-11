@@ -10,6 +10,7 @@ import { SessionProvider } from "@/lib/providers/session-provider";
 import { AuthProvider } from "@/contexts/auth-context";
 import { OverlayFix } from "@/components/ui/overlay-fix";
 import ThemeRegistry from "@/components/common/ThemeRegistry";
+import logger from '@/lib/logger';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -43,7 +44,7 @@ export default async function RootLayout({
     locale = await getLocale();
   } catch (error) {
     // Si hay error obteniendo locale, usar default
-    console.warn('Error obteniendo locale, usando default:', error);
+    logger.warn({ context: 'ui' }, 'Error obteniendo locale, usando default:', error);
     locale = 'es';
   }
   
@@ -51,7 +52,7 @@ export default async function RootLayout({
     messages = await getMessages();
   } catch (error) {
     // Si hay error obteniendo messages, intentar cargar directamente
-    console.warn('Error obteniendo messages, intentando cargar directamente:', error);
+    logger.warn({ context: 'ui' }, 'Error obteniendo messages, intentando cargar directamente:', error);
     try {
       messages = (await import(`@/messages/${locale}.json`)).default;
     } catch {

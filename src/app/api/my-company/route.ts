@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Company } from "@/lib/types/api";
 import { getProductApi } from "@/lib/api/product-api";
+import logger from '@/lib/logger';
 
 export async function GET(request: NextRequest) {
   const auth = request.headers.get("authorization");
@@ -23,7 +24,7 @@ export async function GET(request: NextRequest) {
     if (msg.includes("Unauthorized") || msg.includes("401")) {
       return NextResponse.json({ error: "No autorizado" }, { status: 401 });
     }
-    console.error("Error fetching my company:", error);
+    logger.error({ context: 'ui' }, "Error fetching my company:", error);
     return NextResponse.json(
       { error: "Error al obtener la organización" },
       { status: 500 }
@@ -45,7 +46,7 @@ export async function PUT(request: NextRequest) {
     if (msg.includes("Unauthorized") || msg.includes("401")) {
       return NextResponse.json({ error: "No autorizado" }, { status: 401 });
     }
-    console.error("Error updating my company:", error);
+    logger.error({ context: 'ui' }, "Error updating my company:", error);
     const clientMessage = msg.replace(/^API error \d+:\s*/i, "").trim() || msg;
     return NextResponse.json(
       { error: clientMessage || "Error al actualizar la organización" },
