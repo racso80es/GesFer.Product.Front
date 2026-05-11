@@ -1,10 +1,16 @@
 Objetivo Home Publica
-[2026-05-06] [feat/correccion-auditorias-2026-05-06] [Aplicación completa de hallazgos S+ de la auditoría 2026-05-06_01] [DONE].
-[2026-05-11] [feat/kaizen-remove-as-any] [Reemplazo de as any en tests de overlay-fix] [DONE].
 
-## feature: kaizen-remove-as-any
-Resumen: Se han eliminado las conversiones "as any" en src/__tests__/components/ui/overlay-fix.test.tsx en favor de un cast seguro "as unknown as typeof window.getComputedStyle", mejorando la integridad estructural de TypeScript (The Wall).
-Referencia archivada: [docs/features/kaizen-remove-as-any/finalize.md](./features/kaizen-remove-as-any/finalize.md)
+[2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
+
+## feature: actualizacion-e2e-auth
+Resumen: Se ha documentado y resuelto el pain point sobre uso desfasado de nomenclatura española en pruebas frontend y sus PageObjects, erradicando entropía y reemplazando las referencias a "usuario" y "contraseña" a los nuevos campos estándar "username" y "password".
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md](../../docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md)
+[2026-05-06] [feat/correccion-auditorias-2026-05-06] [Aplicación completa de hallazgos S+ de la auditoría 2026-05-06_01] [DONE].
+[2026-05-08] [feat/kaizen-clean-code] [Refactorización de tipos as any en overlay-fix.test.tsx eliminando deuda tecnica] [DONE].
+
+## feature: kaizen-clean-code
+Resumen: Se ha documentado y resuelto los pain points correspondientes a la limpieza de as any en src/__tests__/components/ui/overlay-fix.test.tsx reemplazandolos por as unknown as ReturnType<typeof window.getComputedStyle> para estricto apego a The Wall.
+Referencia archivada: [docs/features/kaizen-clean-code/finalize.md](./features/kaizen-clean-code/finalize.md)
 
 
 ## feature: correccion-auditorias-2026-05-06
@@ -30,6 +36,13 @@ Referencia archivada: [docs/features/e2e-auth-selectors/finalize.md](../features
 Resumen: Se identificó y resolvió asimetría arquitectónica entre formularios refactorizando `src/components/usuarios/user-form.tsx` para usar `react-hook-form` y validaciones con `zod`, reemplazando la gestión de estado y validación manual obsoleta para alinear el componente con los estándares modernos del proyecto (eliminando asimetría técnica con `company-form.tsx`). Todos los tests mantuvieron cobertura total y se mantuvo estricto The Wall TS.
 Referencia archivada: [docs/features/refactor-shared-form-logic/finalize.md](./features/refactor-shared-form-logic/finalize.md)
 
+
+[2026-05-02] [feat/correccion-auditorias-2026-05-02] [Resolución de hallazgo en auditoría sobre as cualquier (any) en tests de my-company] [DONE].
+
+## feature: correccion-auditorias-2026-05-02
+Resumen: Se eliminó el uso de `as any` en `src/hooks/use-my-company.test.tsx` para cumplir con las directrices de The Wall en AUDITORIA_2026_05_02_01.md.
+Referencia archivada: [docs/features/correccion-auditorias-2026-05-02/finalize.md](./features/correccion-auditorias-2026-05-02/finalize.md)
+
 [2026-05-01] [feat/refactor-actions-contract-and-finalize] [Contrato de acciones (solo skills/tools), acción finalize-process, wrapper Tekton y referencias alineadas] [DONE].
 
 ## feature: refactor-actions-contract-and-finalize
@@ -41,6 +54,7 @@ Referencia: [docs/features/refactor-actions-contract-and-finalize/objectives.md]
 ## feature: correccion-auditorias-2026-05-01
 Resumen: Se resolvió el pain point medio detectado en AUDITORIA_2026_05_01_01.md eliminando el uso de any en el test use-my-company.test.tsx.
 Referencia archivada: [docs/features/correccion-auditorias-2026-05-01/finalize.md](./features/correccion-auditorias-2026-05-01/finalize.md)
+
 
 [2026-04-30] [feat/correccion-auditorias-2026-04-30] [Resolución de hallazgo de auditoría en configuración de logs] [DONE].
 

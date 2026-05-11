@@ -1,0 +1,6 @@
+{
+  "unit_tests": true,
+  "lint": true,
+  "build": true,
+  "tsc_noemit": true
+}
