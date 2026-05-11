@@ -1,5 +1,11 @@
 Objetivo Home Publica
 [2026-05-06] [feat/correccion-auditorias-2026-05-06] [Aplicación completa de hallazgos S+ de la auditoría 2026-05-06_01] [DONE].
+[2026-05-11] [feat/kaizen-remove-as-any] [Reemplazo de as any en tests de overlay-fix] [DONE].
+
+## feature: kaizen-remove-as-any
+Resumen: Se han eliminado las conversiones "as any" en src/__tests__/components/ui/overlay-fix.test.tsx en favor de un cast seguro "as unknown as typeof window.getComputedStyle", mejorando la integridad estructural de TypeScript (The Wall).
+Referencia archivada: [docs/features/kaizen-remove-as-any/finalize.md](./features/kaizen-remove-as-any/finalize.md)
+
 
 ## feature: correccion-auditorias-2026-05-06
 Resumen: Se ha documentado y resuelto el pain point correspondiente a la auditoría de calidad (S+) del 2026-05-06. Se reemplazó el casteo "any" por "unknown" en src/components/usuarios/user-form.tsx, asegurando estricto apego a The Wall (TypeScript strict typing).
