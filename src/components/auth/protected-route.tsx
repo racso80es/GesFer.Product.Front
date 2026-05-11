@@ -6,6 +6,7 @@ import { useAuth } from "@/contexts/auth-context";
 import { Loading } from "@/components/ui/loading";
 import { useTranslations } from 'next-intl';
 import { useHasMounted } from "@/hooks/use-has-mounted";
+import logger from '@/lib/logger';
 
 function readStoredAuthUser(): string | null {
   try {
@@ -38,7 +39,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
     // Timeout de seguridad: si isLoading nunca se resuelve, forzar la verificación después de 2 segundos
     timeoutRef.current = setTimeout(() => {
       if (!hasCheckedAuth) {
-        console.warn("ProtectedRoute: Timeout de seguridad activado, forzando verificación de autenticación");
+        logger.warn({ context: 'ui' }, "ProtectedRoute: Timeout de seguridad activado, forzando verificación de autenticación");
         // Verificar localStorage directamente si isLoading tarda mucho
         const storedUser = readStoredAuthUser();
         if (storedUser) {
@@ -101,7 +102,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (isLoading && !hasCheckedAuth) {
       const forceTimeout = setTimeout(() => {
-        console.warn("ProtectedRoute: Timeout forzando interacción después de 3 segundos");
+        logger.warn({ context: 'ui' }, "ProtectedRoute: Timeout forzando interacción después de 3 segundos");
         setForceAllowInteraction(true);
       }, 3000);
       
