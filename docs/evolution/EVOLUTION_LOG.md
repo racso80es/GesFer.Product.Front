@@ -24,6 +24,13 @@ Referencia archivada: [docs/features/e2e-auth-selectors/finalize.md](../features
 Resumen: Se identificó y resolvió asimetría arquitectónica entre formularios refactorizando `src/components/usuarios/user-form.tsx` para usar `react-hook-form` y validaciones con `zod`, reemplazando la gestión de estado y validación manual obsoleta para alinear el componente con los estándares modernos del proyecto (eliminando asimetría técnica con `company-form.tsx`). Todos los tests mantuvieron cobertura total y se mantuvo estricto The Wall TS.
 Referencia archivada: [docs/features/refactor-shared-form-logic/finalize.md](./features/refactor-shared-form-logic/finalize.md)
 
+
+[2026-05-02] [feat/correccion-auditorias-2026-05-02] [Resolución de hallazgo en auditoría sobre as cualquier (any) en tests de my-company] [DONE].
+
+## feature: correccion-auditorias-2026-05-02
+Resumen: Se eliminó el uso de `as any` en `src/hooks/use-my-company.test.tsx` para cumplir con las directrices de The Wall en AUDITORIA_2026_05_02_01.md.
+Referencia archivada: [docs/features/correccion-auditorias-2026-05-02/finalize.md](./features/correccion-auditorias-2026-05-02/finalize.md)
+
 [2026-05-01] [feat/refactor-actions-contract-and-finalize] [Contrato de acciones (solo skills/tools), acción finalize-process, wrapper Tekton y referencias alineadas] [DONE].
 
 ## feature: refactor-actions-contract-and-finalize
@@ -35,6 +42,7 @@ Referencia: [docs/features/refactor-actions-contract-and-finalize/objectives.md]
 ## feature: correccion-auditorias-2026-05-01
 Resumen: Se resolvió el pain point medio detectado en AUDITORIA_2026_05_01_01.md eliminando el uso de any en el test use-my-company.test.tsx.
 Referencia archivada: [docs/features/correccion-auditorias-2026-05-01/finalize.md](./features/correccion-auditorias-2026-05-01/finalize.md)
+
 
 [2026-04-30] [feat/correccion-auditorias-2026-04-30] [Resolución de hallazgo de auditoría en configuración de logs] [DONE].
 
