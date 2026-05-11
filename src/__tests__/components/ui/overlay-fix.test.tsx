@@ -1,3 +1,5 @@
+import logger from '@/lib/logger';
+jest.mock('@/lib/logger', () => ({ __esModule: true, default: { warn: jest.fn(), error: jest.fn(), info: jest.fn() } }));
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
 import { OverlayFix } from '@/components/ui/overlay-fix';
@@ -23,8 +25,8 @@ describe('OverlayFix', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    jest.spyOn(console, 'warn').mockImplementation(() => {});
-    jest.spyOn(console, 'error').mockImplementation(() => {});
+    logger.warn = jest.fn();
+    logger.error = jest.fn();
     document.body.innerHTML = '';
     document.body.style.overflow = '';
   });
@@ -60,7 +62,7 @@ describe('OverlayFix', () => {
         visibility: 'hidden',
         opacity: '0',
       };
-    }) as any;
+    }) as unknown as typeof window.getComputedStyle;
 
     const dialog = document.createElement('div');
     dialog.setAttribute('role', 'dialog');
@@ -70,7 +72,7 @@ describe('OverlayFix', () => {
     render(<OverlayFix />);
 
     expect(document.body.style.overflow).toBe('unset');
-    expect(console.warn).toHaveBeenCalledWith(expect.stringContaining("OverlayFix: Encontrado body.overflow='hidden' sin Dialog visible"));
+    expect(logger.warn).toHaveBeenCalledWith({ context: "ui" }, expect.stringContaining("OverlayFix: Encontrado body.overflow='hidden' sin Dialog visible"));
   });
 
   it('does NOT fix body overflow when a visible dialog exists', () => {
@@ -82,7 +84,7 @@ describe('OverlayFix', () => {
         visibility: 'visible',
         opacity: '1',
       };
-    }) as any;
+    }) as unknown as typeof window.getComputedStyle;
 
     const dialog = document.createElement('div');
     dialog.setAttribute('role', 'dialog');
@@ -130,7 +132,7 @@ describe('OverlayFix', () => {
             };
         }
         return { display: 'none' };
-    }) as any;
+    }) as unknown as typeof window.getComputedStyle;
 
     render(<OverlayFix />);
 
@@ -138,7 +140,7 @@ describe('OverlayFix', () => {
     expect(overlay.style.visibility).toBe('hidden');
     expect(overlay.style.opacity).toBe('0');
     expect(overlay.style.pointerEvents).toBe('none');
-    expect(console.error).toHaveBeenCalledWith(expect.stringContaining("⚠️ OVERLAY BLOQUEANTE DETECTADO"), overlay);
+    expect(logger.error).toHaveBeenCalledWith({ context: "ui" }, expect.stringContaining("⚠️ OVERLAY BLOQUEANTE DETECTADO"), overlay);
   });
 
   it('does NOT hide black full-screen overlays that are children of a dialog', () => {
@@ -175,7 +177,7 @@ describe('OverlayFix', () => {
             };
         }
         return { display: 'block' };
-    }) as any;
+    }) as unknown as typeof window.getComputedStyle;
 
     render(<OverlayFix />);
 
@@ -192,7 +194,7 @@ describe('OverlayFix', () => {
             visibility: 'hidden',
             opacity: '0',
           };
-      }) as any;
+      }) as unknown as typeof window.getComputedStyle;
 
       const dialog = document.createElement('div');
       dialog.setAttribute('role', 'dialog');
@@ -237,9 +239,9 @@ describe('OverlayFix', () => {
             };
         }
         return { display: 'none' };
-    }) as any;
+    }) as unknown as typeof window.getComputedStyle;
 
     render(<OverlayFix />);
-    expect(console.warn).toHaveBeenCalledWith(expect.stringContaining("OverlayFix: Overlay de pantalla completa bloqueante detectado"), el);
+    expect(logger.warn).toHaveBeenCalledWith({ context: "ui" }, expect.stringContaining("OverlayFix: Overlay de pantalla completa bloqueante detectado"), el);
   });
 });
