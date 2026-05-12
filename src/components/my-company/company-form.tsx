@@ -126,7 +126,7 @@ export function CompanyForm({
   const handleSubmit = async (values: FormValues) => {
     setSubmitError(null);
     try {
-      const dataToSubmit: Record<string, unknown> = { ...values };
+      const dataToSubmit = { ...values } as Partial<CreateCompany & UpdateCompany>;
 
       // Handle languageId logic
       if (dataToSubmit.languageId) {
@@ -144,9 +144,9 @@ export function CompanyForm({
         dataToSubmit.id = company.id;
       }
 
-      const payload = sanitizeCompanyMutationBody(dataToSubmit);
+      const payload = sanitizeCompanyMutationBody(dataToSubmit as Partial<CreateCompany & UpdateCompany>);
 
-      await onSubmit(payload as unknown as CreateCompany | UpdateCompany);
+      await onSubmit(payload as CreateCompany | UpdateCompany);
     } catch (error) {
       setSubmitError(
         error instanceof Error ? error.message : t("saveError")

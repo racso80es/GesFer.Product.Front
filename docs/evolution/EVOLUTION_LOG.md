@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-05-12] [feat/correccion-auditorias-2026-05-12] [Limpieza de double casts as unknown as de types API] [DONE].
+
+## feature: correccion-auditorias-2026-05-12
+Resumen: Se eliminó the technical debt en user-form.tsx y company-form.tsx donde se estaba evadiendo el strict typing with "as unknown as" payloads, y ahora usan correct typings.
+Referencia archivada: docs/features/correccion-auditorias-2026-05-12/finalize.md
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth

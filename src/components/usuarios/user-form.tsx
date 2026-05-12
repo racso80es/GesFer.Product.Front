@@ -125,7 +125,7 @@ export function UserForm({
   const handleSubmit = async (values: FormValues) => {
     try {
       setSubmitError(null);
-      const dataToSubmit: Record<string, unknown> = { ...values };
+      const dataToSubmit: Partial<CreateUser & UpdateUser> = { ...values };
 
       if (dataToSubmit.languageId) {
         dataToSubmit.languageId = getLanguageId(dataToSubmit.languageId as string);
@@ -134,7 +134,7 @@ export function UserForm({
       }
       
       // Cleanup empty strings for optional Guid fields
-      ['postalCodeId', 'cityId', 'stateId', 'countryId', 'email', 'phone', 'address'].forEach(key => {
+      (['postalCodeId', 'cityId', 'stateId', 'countryId', 'email', 'phone', 'address'] as const).forEach(key => {
         if (dataToSubmit[key] === "") {
           delete dataToSubmit[key];
         }
@@ -144,7 +144,7 @@ export function UserForm({
         delete dataToSubmit.password;
       }
 
-      await onSubmit(dataToSubmit as unknown as CreateUser | UpdateUser);
+      await onSubmit(dataToSubmit as CreateUser | UpdateUser);
     } catch (err: unknown) {
       setSubmitError(
         err instanceof Error

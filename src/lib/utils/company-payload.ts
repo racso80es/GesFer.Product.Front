@@ -12,10 +12,10 @@ const OPTIONAL_GUID_KEYS = [
   "languageId",
 ] as const;
 
-export function sanitizeCompanyMutationBody(
-  data: Record<string, unknown>
-): Record<string, unknown> {
-  const out: Record<string, unknown> = { ...data };
+export function sanitizeCompanyMutationBody<T extends Record<string, any>>(
+  data: T
+): T {
+  const out: T = { ...data };
 
   for (const key of OPTIONAL_GUID_KEYS) {
     const v = out[key];
