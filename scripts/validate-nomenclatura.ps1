@@ -37,8 +37,18 @@ function Test-KebabCase {
 function Test-BranchName {
     param([string]$b)
     if ($b -eq "main" -or $b -eq "master") { return $true }
-    if ($b -match '^feat/(.+)$') { $suffix = $Matches[1]; return (Test-KebabCase $suffix) -or ($suffix -match '^refactorization-[a-z0-9]+(-[a-z0-9]+)*$') }
-    if ($b -match '^fix/(.+)$') { return Test-KebabCase $Matches[1] }
+    if ($b -match '^feat/(.+)$') {
+        $suffix = $Matches[1]
+        $suffix = $suffix -replace '-\d+$', ''
+        if ($suffix -match '^[a-z0-9_]+(-[a-z0-9_]+)*$') { return $true }
+        return (Test-KebabCase $suffix) -or ($suffix -match '^refactorization-[a-z0-9]+(-[a-z0-9]+)*$')
+    }
+    if ($b -match '^fix/(.+)$') {
+        $suffix = $Matches[1]
+        $suffix = $suffix -replace '-\d+$', ''
+        if ($suffix -match '^[a-z0-9_]+(-[a-z0-9_]+)*$') { return $true }
+        return Test-KebabCase $suffix
+    }
     return $false
 }
 

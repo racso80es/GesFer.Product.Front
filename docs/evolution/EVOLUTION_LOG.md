@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-05-13] [feat/correccion-auditorias-2026_05_13_01] [Corregidos pain points: reemplazo console por logger y eliminación de test.skip()] [COMPLETED].
+
+## feature: correccion-auditorias-2026_05_13_01
+Resumen: Se eliminaron llamados console.* y deuda técnica en E2E según la auditoria 2026_05_13.
+Referencia archivada: docs/features/correccion-auditorias-2026_05_13_01/
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth

@@ -1,3 +1,4 @@
+import logger from "@/lib/logger";
 /**
  * Utilidades para inicialización y limpieza del cliente
  * Este módulo se encarga de validar y limpiar datos corruptos
@@ -64,7 +65,7 @@ export function clearAuthData(): void {
     document.cookie = "auth_token=; path=/; max-age=0; SameSite=Lax";
     document.cookie = "auth_user=; path=/; max-age=0; SameSite=Lax";
   } catch (error) {
-    console.error("Error al limpiar datos de autenticación:", error);
+    logger.error({ error }, "Error al limpiar datos de autenticación:");
   }
 }
 
@@ -84,7 +85,7 @@ export function validateAndCleanStoredUser(): LoginResponse | null {
     if (!userStr) {
       // Si no hay usuario pero hay token, limpiar token también
       if (token) {
-        console.warn("Token encontrado sin datos de usuario, limpiando...");
+        logger.warn("Token encontrado sin datos de usuario, limpiando...");
         clearAuthData();
       }
       return null;
@@ -95,14 +96,14 @@ export function validateAndCleanStoredUser(): LoginResponse | null {
     try {
       userData = JSON.parse(userStr);
     } catch (parseError) {
-      console.error("Error al parsear datos de usuario (JSON inválido), limpiando...", parseError);
+      logger.error({ error: parseError }, "Error al parsear datos de usuario (JSON inválido), limpiando...");
       clearAuthData();
       return null;
     }
 
     // Validar estructura del usuario
     if (!isValidUserData(userData)) {
-      console.error("Datos de usuario con estructura inválida, limpiando...", userData);
+      logger.error({ userData }, "Datos de usuario con estructura inválida, limpiando...");
       clearAuthData();
       return null;
     }
@@ -110,7 +111,7 @@ export function validateAndCleanStoredUser(): LoginResponse | null {
     // Validar token si existe
     if (token) {
       if (isTokenExpired(token)) {
-        console.warn("Token expirado encontrado, limpiando datos de autenticación...");
+        logger.warn("Token expirado encontrado, limpiando datos de autenticación...");
         clearAuthData();
         return null;
       }
@@ -125,13 +126,13 @@ export function validateAndCleanStoredUser(): LoginResponse | null {
       try {
         localStorage.setItem("auth_token", userData.token);
       } catch (e) {
-        console.warn("No se pudo guardar el token en localStorage:", e);
+        logger.warn({ error: e }, "No se pudo guardar el token en localStorage:");
       }
     }
 
     return userData as LoginResponse;
   } catch (error) {
-    console.error("Error inesperado al validar datos almacenados, limpiando...", error);
+    logger.error({ error }, "Error inesperado al validar datos almacenados, limpiando...");
     clearAuthData();
     return null;
   }
@@ -149,9 +150,9 @@ export function clearQueryCache(): void {
     // Nota: Esta función debe ser llamada dentro de un componente
     // que tenga acceso al QueryClient, por lo que la limpieza manual
     // se hace mejor desde el QueryProvider o desde un hook
-    console.info("Se recomienda limpiar el caché de QueryClient desde el componente que lo usa");
+    logger.info("Se recomienda limpiar el caché de QueryClient desde el componente que lo usa");
   } catch (error) {
-    console.error("Error al limpiar caché de QueryClient:", error);
+    logger.error({ error }, "Error al limpiar caché de QueryClient:");
   }
 }
 
@@ -178,7 +179,7 @@ export function initializeClient(): {
   );
 
   if (shouldClearCache) {
-    console.warn("Se detectaron datos corruptos, se recomienda limpiar el caché de QueryClient");
+    logger.warn("Se detectaron datos corruptos, se recomienda limpiar el caché de QueryClient");
   }
 
   return {
