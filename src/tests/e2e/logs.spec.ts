@@ -265,10 +265,7 @@ test.describe('Sistema de Logs E2E Tests', () => {
     
     // Verificar que hay al menos un log
     const logsCount = await logsPage.getLogsCount();
-    if (logsCount === 0) {
-      test.skip();
-      return;
-    }
+    expect(logsCount).toBeGreaterThan(0);
     
     // Hacer clic en el botón de expandir del primer log (usar data-testid)
     // El botón tiene data-testid="shared-button-toggle-log-{logId}"
