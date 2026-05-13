@@ -1,0 +1,10 @@
+{
+  "id": "actualizacion_e2e_auth_validacion",
+  "status": "success",
+  "test_cases": [
+    {
+      "name": "Build frontend y compilar tests",
+      "result": "success"
+    }
+  ]
+}

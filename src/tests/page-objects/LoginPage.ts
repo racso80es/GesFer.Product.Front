@@ -48,7 +48,7 @@ export class LoginPage extends BasePage {
    * Verifica que el login fue exitoso (redirige al dashboard)
    */
   async verifyLoginSuccess() {
-    // Esperar a que el localStorage tenga el usuario (indica que el login se completó)
+    // Esperar a que el localStorage tenga el auth_user (indica que el login se completó)
     await this.page.waitForFunction(() => {
       return localStorage.getItem('auth_user') !== null;
     }, { timeout: 5000 });
