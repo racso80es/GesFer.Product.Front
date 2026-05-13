@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-05-11] [feat/actualizacion_e2e_auth] [Limpieza de nomenclatura usuario/contraseña en E2E test specs y pages] [COMPLETED].
+
+## feature: actualizacion_e2e_auth
+Resumen: Se erradicó el spanglish en las pruebas E2E, actualizando identificadores a username y password.
+Referencia archivada: docs/features/actualizacion_e2e_auth/finalize.md
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
