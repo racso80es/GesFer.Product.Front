@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-05-14] [feat/correccion-auditorias-2026-05-14] Corrección de hallazgos de auditoría (rutas, loggers, test.skip) [COMPLETED].
+
+## feature: Correccion Auditoria 2026-05-14
+Resumen: Se eliminaron rutas relativas profundas en pruebas, se reemplazó console por logger unificado y se documentó código muerto (test.skip).
+Referencia archivada: docs/features/correccion-auditorias-2026-05-14/finalize.md
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth

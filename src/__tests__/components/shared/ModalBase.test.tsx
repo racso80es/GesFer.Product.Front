@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { ModalBase } from "../../../components/shared/ModalBase";
+import { ModalBase } from "@/components/shared/ModalBase";
 
 describe("ModalBase", () => {
   const mockOnOpenChange = jest.fn();
