@@ -16,7 +16,7 @@ test.describe('Admin Logs - Verificación de 403', () => {
     
     // Paso 1: Hacer login con admin@gesfer.local
     // Nota: El login de admin usa el campo "username", no email
-    // El usuario admin@gesfer.local probablemente tiene username "admin"
+    // El admin@gesfer.local probablemente tiene username "admin"
     await page.goto(`${CLIENT_URL}/admin/login`);
     
     // Esperar a que el formulario esté visible
@@ -28,7 +28,7 @@ test.describe('Admin Logs - Verificación de 403', () => {
     const passwordInput = page.locator('input[type="password"]').or(page.locator('input[name="password"]')).first();
     const loginButton = page.getByRole('button', { name: /acceder.*panel|panel.*administrativo/i }).first();
     
-    // Intentar login con username "admin" (el usuario admin@gesfer.local tiene este username)
+    // Intentar login con username "admin" (el admin@gesfer.local tiene este username)
     await usernameInput.fill('admin');
     await passwordInput.fill('admin123');
     
