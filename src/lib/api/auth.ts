@@ -2,6 +2,7 @@ import { apiClient } from "./client";
 import type { LoginRequest, LoginResponse } from "@/lib/types/api";
 import { validateAndCleanStoredUser, clearAuthData } from "@/lib/utils/client-init";
 import { LEGACY_COMPANY_KEY, LEGACY_USER_KEY, LEGACY_PASSWORD_KEY } from "@/lib/legacy-constants";
+import logger from '@/lib/logger';
 
 export const authApi = {
   login: async (credentials: LoginRequest): Promise<LoginResponse> => {
@@ -30,7 +31,7 @@ export const authApi = {
           document.cookie = `auth_token=${response.token}; path=/; max-age=86400; SameSite=Lax`; // 24 horas
         }
       } catch (error) {
-        console.error("Error al guardar datos de autenticación:", error);
+        logger.error({ error }, "Error al guardar datos de autenticación:");
         // Si hay error, limpiar datos previos antes de continuar
         clearAuthData();
         throw new Error("No se pudo guardar la sesión. Intenta nuevamente.");

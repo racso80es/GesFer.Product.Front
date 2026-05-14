@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from './auth';
 import { defaultLocale, locales, type Locale } from './i18n';
+import logger from '@/lib/logger';
 
 // Mapeo de languageId (Guids) a locale
 // Estos son los IDs fijos de los idiomas según seed-data.sql
@@ -43,7 +44,7 @@ function getLocaleFromUser(request: NextRequest): Locale {
       }
     } catch (error) {
       // Si hay error parseando, continuar con el default
-      console.error('Error parsing user data:', error);
+      logger.error({ error }, 'Error parsing user data:');
     }
   }
   

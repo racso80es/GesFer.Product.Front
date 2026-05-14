@@ -1,0 +1,19 @@
+{
+  "validaciones": [
+    {
+      "tipo": "rutas",
+      "descripcion": "Rutas relativas profundas eliminadas en pruebas",
+      "estado": "pasado"
+    },
+    {
+      "tipo": "logger",
+      "descripcion": "Logger unificado aplicado en archivos de producción",
+      "estado": "pasado"
+    },
+    {
+      "tipo": "test.skip",
+      "descripcion": "test.skip muerto documentado en logs.spec.ts",
+      "estado": "pasado"
+    }
+  ]
+}
