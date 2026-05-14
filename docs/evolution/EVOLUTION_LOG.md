@@ -2,6 +2,12 @@ Objetivo Home Publica
 
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
+[2026-04-29] [feat/kaizen-actualizacion-e2e-auth] Actualización de selectores Auth en pruebas E2E [COMPLETED].
+
+## feature: kaizen-actualizacion-e2e-auth
+Resumen: Erradicación de nomenclatura heredada (usuario/contraseña) por username/password en pruebas E2E.
+Referencia archivada: docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md
+
 ## feature: actualizacion-e2e-auth
 Resumen: Se ha documentado y resuelto el pain point sobre uso desfasado de nomenclatura española en pruebas frontend y sus PageObjects, erradicando entropía y reemplazando las referencias a "usuario" y "contraseña" a los nuevos campos estándar "username" y "password".
 Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md](../../docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md)
