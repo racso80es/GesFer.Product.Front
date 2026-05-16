@@ -1,4 +1,5 @@
 "use client";
+import logger from '@/lib/logger';
 
 import { QueryClient, QueryClientProvider, useQueryClient, QueryCache } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -58,7 +59,7 @@ export function QueryProvider({ children }: { children: ReactNode }) {
         const err = error as { message?: string; status?: number };
         // Si es un error 401, limpiar caché y datos de autenticación
         if (err?.message?.includes("401") || err?.status === 401) {
-          console.warn("Error 401 detectado, limpiando datos de autenticación...");
+          logger.warn("Error 401 detectado, limpiando datos de autenticación...");
           if (typeof window !== "undefined") {
             clearAuthData();
             // El client se creará después, así que usamos el queryCache para limpiar

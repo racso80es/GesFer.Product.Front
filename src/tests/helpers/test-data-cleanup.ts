@@ -1,3 +1,4 @@
+import logger from '@/lib/logger';
 import { APIRequestContext } from '@playwright/test';
 import { ApiClient } from '../api/api-client';
 import { appConfig } from '../../lib/config';
@@ -23,7 +24,7 @@ export class TestDataCleanup {
     try {
       this.authToken = await this.apiClient.login(company, username, password);
     } catch (error) {
-      console.warn('No se pudo obtener token de autenticación para limpieza:', error);
+      logger.warn({ error: error }, 'No se pudo obtener token de autenticación para limpieza:');
     }
   }
 
@@ -53,7 +54,7 @@ export class TestDataCleanup {
    */
   async cleanup(): Promise<void> {
     if (!this.authToken) {
-      console.warn('No hay token de autenticación, no se puede limpiar datos');
+      logger.warn('No hay token de autenticación, no se puede limpiar datos');
       return;
     }
 
@@ -66,7 +67,7 @@ export class TestDataCleanup {
         try {
           await this.apiClient.deleteUser(userId, this.authToken!);
         } catch (error) {
-          console.warn(`Error al eliminar usuario ${userId}:`, error);
+          logger.warn({ error: error }, `Error al eliminar usuario ${userId}:`);
         }
       })());
     }
@@ -77,7 +78,7 @@ export class TestDataCleanup {
         try {
           await this.apiClient.deleteCompany(companyId, this.authToken!);
         } catch (error) {
-          console.warn(`Error al eliminar company ${companyId}:`, error);
+          logger.warn({ error: error }, `Error al eliminar company ${companyId}:`);
         }
       })());
     }
@@ -88,7 +89,7 @@ export class TestDataCleanup {
         try {
           await this.apiClient.deleteCustomer(customerId, this.authToken!);
         } catch (error) {
-          console.warn(`Error al eliminar cliente ${customerId}:`, error);
+          logger.warn({ error: error }, `Error al eliminar cliente ${customerId}:`);
         }
       })());
     }
@@ -106,7 +107,7 @@ export class TestDataCleanup {
    */
   async cleanupUser(userId: string): Promise<void> {
     if (!this.authToken) {
-      console.warn('No hay token de autenticación, no se puede limpiar usuario');
+      logger.warn('No hay token de autenticación, no se puede limpiar usuario');
       return;
     }
 
@@ -114,7 +115,7 @@ export class TestDataCleanup {
       await this.apiClient.deleteUser(userId, this.authToken);
       this.createdUserIds = this.createdUserIds.filter(id => id !== userId);
     } catch (error) {
-      console.warn(`Error al eliminar usuario ${userId}:`, error);
+      logger.warn({ error: error }, `Error al eliminar usuario ${userId}:`);
     }
   }
 
@@ -123,7 +124,7 @@ export class TestDataCleanup {
    */
   async cleanupCompany(companyId: string): Promise<void> {
     if (!this.authToken) {
-      console.warn('No hay token de autenticación, no se puede limpiar company');
+      logger.warn('No hay token de autenticación, no se puede limpiar company');
       return;
     }
 
@@ -131,7 +132,7 @@ export class TestDataCleanup {
       await this.apiClient.deleteCompany(companyId, this.authToken);
       this.createdCompanyIds = this.createdCompanyIds.filter(id => id !== companyId);
     } catch (error) {
-      console.warn(`Error al eliminar company ${companyId}:`, error);
+      logger.warn({ error: error }, `Error al eliminar company ${companyId}:`);
     }
   }
 }

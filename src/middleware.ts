@@ -1,3 +1,4 @@
+import logger from '@/lib/logger';
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from './auth';
 import { defaultLocale, locales, type Locale } from './i18n';
@@ -43,7 +44,7 @@ function getLocaleFromUser(request: NextRequest): Locale {
       }
     } catch (error) {
       // Si hay error parseando, continuar con el default
-      console.error('Error parsing user data:', error);
+      logger.error({ error: error }, 'Error parsing user data:');
     }
   }
   
