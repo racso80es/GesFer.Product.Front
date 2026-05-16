@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-05-16] [feat/correccion-auditorias-2026-05-16] [Aplicación completa de hallazgos S+ de la auditoría 2026-05-16_01] [DONE].
+
+## feature: correccion-auditorias-2026-05-16
+Resumen: Se ha documentado y resuelto el pain point crítico correspondiente a la auditoría de calidad (S+) del 2026-05-16. Se reemplazó el uso nativo de console por el logger centralizado.
+Referencia archivada: [docs/features/correccion-auditorias-2026-05-16/finalize.md](./features/correccion-auditorias-2026-05-16/finalize.md)
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth

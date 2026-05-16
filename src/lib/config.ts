@@ -1,3 +1,4 @@
+import logger from '@/lib/logger';
 import { getPublicApiOrigin } from "@/lib/api-origin";
 
 /**
@@ -93,7 +94,7 @@ function loadConfig(): AppConfig {
       config = getDefaultConfig(env);
     }
   } catch (error) {
-    console.warn(`Error loading config for ${env}, using defaults:`, error);
+    logger.warn({ error: error }, `Error loading config for ${env}, using defaults:`);
     config = getDefaultConfig(env);
   }
 

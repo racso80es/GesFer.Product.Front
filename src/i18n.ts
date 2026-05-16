@@ -1,3 +1,4 @@
+import logger from '@/lib/logger';
 import { getRequestConfig } from 'next-intl/server';
 import { cookies } from 'next/headers';
 import type { AbstractIntlMessages } from 'next-intl';
@@ -65,7 +66,7 @@ function getLocaleFromUser(): Locale {
         // Si hay error parseando el JSON, continuar con el default
         // No loguear en producción para evitar spam
         if (process.env.NODE_ENV === 'development') {
-          console.warn('Error parsing user data from cookie:', parseError);
+          logger.warn({ error: parseError }, 'Error parsing user data from cookie:');
         }
       }
     }
@@ -73,7 +74,7 @@ function getLocaleFromUser(): Locale {
     // Si hay cualquier error, usar el default
     // No loguear en producción para evitar spam
     if (process.env.NODE_ENV === 'development') {
-      console.warn('Error accessing cookies for locale:', error);
+      logger.warn({ error: error }, 'Error accessing cookies for locale:');
     }
   }
   
@@ -88,7 +89,7 @@ export default getRequestConfig(async () => {
     locale = getLocaleFromUser();
   } catch (error) {
     // Si hay cualquier error, usar el locale por defecto
-    console.warn('Error obteniendo locale, usando default:', error);
+    logger.warn({ error: error }, 'Error obteniendo locale, usando default:');
     locale = defaultLocale;
   }
 
@@ -98,7 +99,7 @@ export default getRequestConfig(async () => {
     messages = (await import(`./messages/${locale}.json`)).default;
   } catch (error) {
     // Si falla cargar mensajes del locale, intentar con el default
-    console.warn(`Error cargando mensajes para ${locale}, usando default:`, error);
+    logger.warn({ error: error }, `Error cargando mensajes para ${locale}, usando default:`);
     try {
       messages = (await import(`./messages/${defaultLocale}.json`)).default;
     } catch {
