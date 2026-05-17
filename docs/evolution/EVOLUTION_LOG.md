@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-05-17] [feat/correccion-auditorias-logger] [Reemplazar uso de console API por logger centralizado] [COMPLETED].
+
+## feature: correccion-auditorias-logger
+Resumen: Migración de logs de consola nativa a logger en archivos base.
+Referencia archivada: [docs/features/correccion-auditorias-logger/finalize.md]
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
