@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-05-18] [feat/correccion-auditorias-20260518] [Reemplazo de console.warn y error por logger] [COMPLETED].
+
+## feature: correccion-auditorias-20260518
+Resumen: Se eliminaron los llamados a console nativos en favor de logger en el frontend.
+Referencia archivada: [docs/features/correccion-auditorias-20260518/]
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth

@@ -1,4 +1,5 @@
 "use client";
+import logger from '@/lib/logger';
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import type { LoginResponse } from "@/lib/types/api";
@@ -36,7 +37,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setUser(storedUser);
         }
       } catch (error) {
-        console.error("Error al cargar usuario desde localStorage:", error);
+        logger.error({ error }, "Error al cargar usuario desde localStorage:");
         // La función de validación ya limpia los datos corruptos automáticamente,
         // pero por si acaso, asegurar que el estado esté limpio
         if (isMounted) {
@@ -53,7 +54,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Timeout de seguridad: asegurar que isLoading se establezca en false después de máximo 2 segundos
     const timeoutId = setTimeout(() => {
       if (isMounted) {
-        console.warn("AuthContext: Timeout de seguridad activado, forzando isLoading a false");
+        logger.warn({}, "AuthContext: Timeout de seguridad activado, forzando isLoading a false");
         setIsLoading(false);
       }
     }, 2000);
