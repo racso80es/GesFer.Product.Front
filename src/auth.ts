@@ -1,3 +1,4 @@
+import logger from '@/lib/logger';
 import NextAuth, { NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import type { LoginResponse } from "@/lib/types/api";
@@ -59,7 +60,7 @@ export const authConfig: NextAuthConfig = {
             accessToken: data.token, // Guardar el token JWT
           };
         } catch (error) {
-          console.error("Error en authorize:", error);
+          logger.error({ error }, "Error en authorize:");
           return null;
         }
       },

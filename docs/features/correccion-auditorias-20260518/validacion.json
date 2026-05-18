@@ -1,0 +1,6 @@
+{
+  "status": "success",
+  "build": true,
+  "lint": true,
+  "tests": true
+}
