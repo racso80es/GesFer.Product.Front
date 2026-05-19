@@ -1,5 +1,12 @@
 Objetivo Home Publica
 
+[2026-05-19] [feat/refactorization-e2e-auth-nomenclature] Actualizacion nomenclature auth e2e [COMPLETED].
+
+## feature: refactorization-e2e-auth-nomenclature
+Resumen: Se eliminaron referencias a usuario y contraseñas y se igualaron localizadores e2e con username y password.
+Referencia archivada: [Kaizen_2026_04_29_actualizacion_e2e_auth.md](../TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md)
+
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
