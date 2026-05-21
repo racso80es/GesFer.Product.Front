@@ -1,3 +1,4 @@
+import logger from '@/lib/logger';
 /**
  * Tests para validar que los IDs se manejen correctamente
  * y detectar problemas con IDs mal formateados
@@ -97,7 +98,7 @@ describe("Validación de IDs en peticiones API", () => {
       authToken = await getAuthToken();
       expect(authToken).toBeTruthy();
     } catch (error) {
-      console.warn("No se pudo obtener token de autenticación. Algunos tests pueden fallar.");
+      logger.warn("No se pudo obtener token de autenticación. Algunos tests pueden fallar.");
       // Continuar de todas formas para que los tests que no requieren auth puedan ejecutarse
     }
 
@@ -118,7 +119,7 @@ describe("Validación de IDs en peticiones API", () => {
           }
         }
       } catch (error) {
-        console.warn(
+        logger.warn(
           "No se pudo obtener GET /api/company para ID de prueba. Algunos tests pueden fallar."
         );
       }
@@ -139,7 +140,7 @@ describe("Validación de IDs en peticiones API", () => {
           }
         }
       } catch (error) {
-        console.warn("No se pudo obtener usuarios. Algunos tests pueden fallar.");
+        logger.warn("No se pudo obtener usuarios. Algunos tests pueden fallar.");
       }
     }
   });
@@ -147,7 +148,7 @@ describe("Validación de IDs en peticiones API", () => {
   describe("GET/PUT /api/company (API producto) — Validación de IDs", () => {
     it("debe rechazar actualización con ID mal formateado (contiene caracteres inválidos)", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
 
@@ -179,12 +180,12 @@ describe("Validación de IDs en peticiones API", () => {
 
     it("debe validar que el id de organización sea un GUID válido antes de actualizar (PUT)", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
 
       if (!validCompanyId) {
-        console.warn("No hay ID de organización de prueba (GET /api/company falló o vacío)");
+        logger.warn("No hay ID de organización de prueba (GET /api/company falló o vacío)");
         return;
       }
 
@@ -211,7 +212,7 @@ describe("Validación de IDs en peticiones API", () => {
 
     it("debe rechazar actualización con ID que contiene caracteres especiales", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
 
@@ -243,7 +244,7 @@ describe("Validación de IDs en peticiones API", () => {
   describe("Usuarios - Validación de IDs", () => {
     it("debe rechazar actualización con ID mal formateado (contiene caracteres inválidos)", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
 
@@ -276,12 +277,12 @@ describe("Validación de IDs en peticiones API", () => {
 
     it("debe validar que el ID de usuario sea un GUID válido antes de actualizar", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
 
       if (!validUserId) {
-        console.warn("No hay usuario válido disponible para el test");
+        logger.warn("No hay usuario válido disponible para el test");
         return;
       }
 
@@ -309,7 +310,7 @@ describe("Validación de IDs en peticiones API", () => {
 
     it("debe rechazar actualización con ID que contiene caracteres especiales", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
 

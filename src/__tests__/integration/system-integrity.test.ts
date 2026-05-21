@@ -1,3 +1,4 @@
+import logger from '@/lib/logger';
 /**
  * Test de integridad extremo a extremo para API y Cliente.
  * Requiere que ambos servicios estén ejecutándose.
@@ -27,13 +28,13 @@ function skipLoginTestIfUnauthorized(loginResp: HttpResult, context: string): bo
   if (loginResp.status === 200) {
     return false;
   }
-  console.warn(
+  logger.warn(
     `${context}: login respondió ${loginResp.status}. ` +
       "Configura TEST_LOGIN_COMPANY, TEST_LOGIN_USER y TEST_LOGIN_PASSWORD " +
       "(o carga el seed en la BD del backend) para validar login de extremo a extremo."
   );
   if (loginResp.body) {
-    console.warn(`Cuerpo (recorte): ${loginResp.body.substring(0, 240)}`);
+    logger.warn(`Cuerpo (recorte): ${loginResp.body.substring(0, 240)}`);
   }
   return true;
 }
@@ -85,12 +86,12 @@ describe("Auditoría de integridad API + Cliente", () => {
       healthResp = await httpRequest(`${API_URL}/api/health`);
     } catch (error) {
       // Si el servidor no está disponible, saltar el test
-      console.warn(`API no está disponible en ${API_URL}. Saltando test de health check.`);
+      logger.warn(`API no está disponible en ${API_URL}. Saltando test de health check.`);
       return;
     }
 
     if (healthResp.status !== 200) {
-      console.warn(`API no responde correctamente (status ${healthResp.status}). Saltando test de health check.`);
+      logger.warn(`API no responde correctamente (status ${healthResp.status}). Saltando test de health check.`);
       return;
     }
 
@@ -106,12 +107,12 @@ describe("Auditoría de integridad API + Cliente", () => {
       healthResp = await httpRequest(`${API_URL}/api/health`);
     } catch (error) {
       // Si el servidor no está disponible, saltar el test
-      console.warn(`API no está disponible en ${API_URL}. Saltando test de login.`);
+      logger.warn(`API no está disponible en ${API_URL}. Saltando test de login.`);
       return;
     }
 
     if (healthResp.status !== 200) {
-      console.warn(`API no responde correctamente (status ${healthResp.status}). Saltando test de login.`);
+      logger.warn(`API no responde correctamente (status ${healthResp.status}). Saltando test de login.`);
       return;
     }
 
@@ -123,7 +124,7 @@ describe("Auditoría de integridad API + Cliente", () => {
         body: JSON.stringify(demoLoginCredentials),
       });
     } catch (error) {
-      console.warn(`Error al conectar con el endpoint de login. Saltando test.`);
+      logger.warn(`Error al conectar con el endpoint de login. Saltando test.`);
       return;
     }
 
@@ -152,12 +153,12 @@ describe("Auditoría de integridad API + Cliente", () => {
       healthResp = await httpRequest(`${API_URL}/api/health`);
     } catch (error) {
       // Si el servidor no está disponible, saltar el test
-      console.warn(`API no está disponible en ${API_URL}. Saltando test de integridad completo.`);
+      logger.warn(`API no está disponible en ${API_URL}. Saltando test de integridad completo.`);
       return;
     }
 
     if (healthResp.status !== 200) {
-      console.warn(`API no responde correctamente (status ${healthResp.status}). Saltando test de integridad completo.`);
+      logger.warn(`API no responde correctamente (status ${healthResp.status}). Saltando test de integridad completo.`);
       return;
     }
 
@@ -246,7 +247,7 @@ describe("Auditoría de integridad API + Cliente", () => {
         }
       } catch (error) {
         // Si el endpoint no está disponible o requiere autenticación, no fallar el test
-        console.warn("Endpoint de permisos no disponible o requiere autenticación");
+        logger.warn("Endpoint de permisos no disponible o requiere autenticación");
       }
     }
 
@@ -276,13 +277,13 @@ describe("Auditoría de integridad API + Cliente", () => {
       resp = await httpRequest(`${CLIENT_URL}/login`);
     } catch (error) {
       // Si el servidor no está disponible, saltar el test
-      console.warn(`Cliente no está disponible en ${CLIENT_URL}. Saltando test de integridad del cliente.`);
+      logger.warn(`Cliente no está disponible en ${CLIENT_URL}. Saltando test de integridad del cliente.`);
       return;
     }
     
     // Si hay error 500, el servidor está corriendo pero hay un problema interno
     if (resp.status === 500) {
-      console.warn('Cliente responde con error 500. Verifica los logs del servidor.');
+      logger.warn('Cliente responde con error 500. Verifica los logs del servidor.');
       return;
     }
     
@@ -292,21 +293,21 @@ describe("Auditoría de integridad API + Cliente", () => {
         // Intentar con la ruta raíz que debería redirigir
         resp = await httpRequest(`${CLIENT_URL}/`);
       } catch (error) {
-        console.warn(`Cliente no está disponible en ${CLIENT_URL}. Saltando test de integridad del cliente.`);
+        logger.warn(`Cliente no está disponible en ${CLIENT_URL}. Saltando test de integridad del cliente.`);
         return;
       }
     }
     
     // Si el servidor no está disponible (404 o error de conexión), saltar el test
     if (resp.status === 0 || resp.status === 404) {
-      console.warn(`Cliente no está disponible en ${CLIENT_URL}. Saltando test de integridad del cliente.`);
+      logger.warn(`Cliente no está disponible en ${CLIENT_URL}. Saltando test de integridad del cliente.`);
       return;
     }
     
     // Si hay error 500 después de intentar ambas rutas, reportar pero no fallar
     if (resp.status === 500) {
-      console.warn('Cliente responde con error 500. El servidor está corriendo pero hay un error interno.');
-      console.warn('Body (primeros 500 caracteres):', resp.body.substring(0, 500));
+      logger.warn('Cliente responde con error 500. El servidor está corriendo pero hay un error interno.');
+      logger.warn('Body (primeros 500 caracteres):', resp.body.substring(0, 500));
       // No fallar el test, solo advertir
       return;
     }
@@ -322,7 +323,7 @@ describe("Auditoría de integridad API + Cliente", () => {
         try {
           resp = await httpRequest(redirectUrl);
         } catch (error) {
-          console.warn('Error al seguir redirección. Saltando test.');
+          logger.warn('Error al seguir redirección. Saltando test.');
           return;
         }
       }
