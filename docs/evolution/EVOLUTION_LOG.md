@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2025-02-17] [feat/correccion-auditorias-2025021701] [Corrección Kaizen: Test Warnings & Errors] [DONE].
+
+## feature: correccion-auditorias-2025021701
+Resumen: Corrección de errores y warnings detectados en la auditoría del frontend (console.warn, act).
+Referencia archivada: docs/features/correccion-auditorias-2025021701/
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth

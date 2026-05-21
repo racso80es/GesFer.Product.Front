@@ -87,3 +87,14 @@ if (typeof global.TransformStream === 'undefined') {
   };
 }
 
+
+
+
+// Mock IntersectionObserver globally
+const mockIntersectionObserver = jest.fn();
+mockIntersectionObserver.mockReturnValue({
+  observe: () => null,
+  unobserve: () => null,
+  disconnect: () => null
+});
+global.IntersectionObserver = mockIntersectionObserver;

@@ -66,7 +66,9 @@ describe('LoginPage', () => {
 
   it('should handle form submission', async () => {
     const user = userEvent.setup()
-    mockLogin.mockResolvedValue(undefined)
+    let resolveLogin: any;
+    const loginPromise = new Promise(resolve => { resolveLogin = resolve; });
+    mockLogin.mockImplementation(() => loginPromise);
     
     render(<LoginPage />)
     
@@ -76,6 +78,10 @@ describe('LoginPage', () => {
       await user.click(submitButton)
     })
     
+    await act(async () => {
+      resolveLogin(undefined)
+    })
+
     await waitFor(() => {
       expect(mockLogin).toHaveBeenCalledWith({
         company: DEFAULT_LOGIN_COMPANY,
@@ -88,7 +94,9 @@ describe('LoginPage', () => {
   it('should show error message on login failure', async () => {
     const user = userEvent.setup()
     const errorMessage = 'Credenciales inválidas'
-    mockLogin.mockRejectedValue(new Error(errorMessage))
+    let rejectLogin: any;
+    const loginPromise = new Promise((resolve, reject) => { rejectLogin = reject; });
+    mockLogin.mockImplementation(() => loginPromise);
     
     render(<LoginPage />)
     
@@ -98,6 +106,12 @@ describe('LoginPage', () => {
       await user.click(submitButton)
     })
     
+    await act(async () => {
+      rejectLogin(new Error(errorMessage))
+      // catch it locally to avoid unhandled rejection in the test scope
+      loginPromise.catch(() => {});
+    })
+
     await waitFor(() => {
       expect(screen.getByText(errorMessage)).toBeInTheDocument()
     })
@@ -105,7 +119,9 @@ describe('LoginPage', () => {
 
   it('should disable submit button while loading', async () => {
     const user = userEvent.setup()
-    mockLogin.mockImplementation(() => new Promise(() => {})) // Never resolves
+    // Envolvemos en act para asegurar actualización
+    let resolveLogin: any;
+    mockLogin.mockImplementation(() => new Promise((resolve) => { resolveLogin = resolve; })); // Never resolves
     
     render(<LoginPage />)
     
@@ -118,6 +134,13 @@ describe('LoginPage', () => {
     await waitFor(() => {
       expect(submitButton).toBeDisabled()
     })
+
+    // Cleanup the promise to avoid memory leaks or open handles
+    if (resolveLogin) {
+      await act(async () => {
+        resolveLogin();
+      });
+    }
   })
 })
 

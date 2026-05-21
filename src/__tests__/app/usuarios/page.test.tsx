@@ -67,6 +67,16 @@ const mockUseQuery = useQuery as jest.MockedFunction<typeof useQuery>;
 const mockUseMutation = useMutation as jest.MockedFunction<typeof useMutation>;
 const mockUseQueryClient = useQueryClient as jest.MockedFunction<typeof useQueryClient>;
 
+
+// Mock IntersectionObserver to avoid use-intersection warnings
+const mockIntersectionObserver = jest.fn();
+mockIntersectionObserver.mockReturnValue({
+  observe: () => null,
+  unobserve: () => null,
+  disconnect: () => null
+});
+window.IntersectionObserver = mockIntersectionObserver;
+
 describe("UsuariosPage", () => {
   const mockUser = {
     userId: "1",
