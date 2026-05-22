@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-04-29] [feat/Kaizen_2026_04_29_actualizacion_e2e_auth] [Actualizacion de selectores Auth en pruebas E2E a formato en ingles (username, password).] [DONE].
+
+## feature: Kaizen_2026_04_29_actualizacion_e2e_auth
+Resumen: Actualizacion de selectores Auth en pruebas E2E a formato en ingles (username, password).
+Referencia archivada: docs/features/Kaizen_2026_04_29_actualizacion_e2e_auth/objectives.md
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
