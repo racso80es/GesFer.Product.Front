@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-05-24] [feat/refactorization-kaizen-e2e-auth] [Actualizacion de selectores Auth en pruebas E2E] [COMPLETED].
+
+## feature: kaizen-e2e-auth
+Resumen: Actualizacion de selectores y variables de Auth de usuario/contraseña a username/password en pruebas e2e.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md]
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
