@@ -1,6 +1,6 @@
 import { APIRequestContext, APIResponse } from '@playwright/test';
-import { appConfig } from '../../lib/config';
-import type { LoginResponse } from '../../lib/types/api';
+import { appConfig } from '@/lib/config';
+import type { LoginResponse } from '@/lib/types/api';
 
 /**
  * Cliente API para tests de Playwright

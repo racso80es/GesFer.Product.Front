@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { AdminLogsPage } from '../page-objects/AdminLogsPage';
+import { AdminLogsPage } from '@/tests/page-objects/AdminLogsPage';
 
 // Configuración de URLs para tests
 const API_URL = process.env.API_URL || 'http://localhost:5020';

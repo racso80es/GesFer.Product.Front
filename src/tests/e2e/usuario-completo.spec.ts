@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../page-objects/LoginPage';
-import { UsuariosPage } from '../page-objects/UsuariosPage';
-import { TestDataCleanup } from '../helpers/test-data-cleanup';
-import { appConfig } from '../../lib/config';
-import { DEMO_COMPANY_NAME } from '../../lib/legacy-constants';
+import { LoginPage } from '@/tests/page-objects/LoginPage';
+import { UsuariosPage } from '@/tests/page-objects/UsuariosPage';
+import { TestDataCleanup } from '@/tests/helpers/test-data-cleanup';
+import { appConfig } from '@/lib/config';
+import { DEMO_COMPANY_NAME } from '@/lib/legacy-constants';
 
 test.describe('Usuario Completo E2E Tests', () => {
   let cleanup: TestDataCleanup;

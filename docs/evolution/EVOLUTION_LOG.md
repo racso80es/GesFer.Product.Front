@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-05-24] [feat/correccion-auditorias-2026-05-24] [Fix deep relative imports in tests directory] [DONE].
+
+## feature: correccion-auditorias-2026-05-24
+Resumen: Corrección de imports relativos profundos en src/tests/
+Referencia archivada: docs/features/correccion-auditorias-2026-05-24/
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
