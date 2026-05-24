@@ -31,8 +31,8 @@ Al escribir tests de Playwright en este proyecto, siempre seguir estas reglas:
 
 ```typescript
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../page-objects/LoginPage';
-import { TestDataCleanup } from '../helpers/test-data-cleanup';
+import { LoginPage } from '@/tests/page-objects/LoginPage';
+import { TestDataCleanup } from '@/tests/helpers/test-data-cleanup';
 
 test.describe('Mi Feature', () => {
   let cleanup: TestDataCleanup;

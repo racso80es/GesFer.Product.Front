@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { ApiClient } from '../api/api-client';
-import { TestDataCleanup } from '../helpers/test-data-cleanup';
-import { appConfig } from '../../lib/config';
-import { DEMO_COMPANY_NAME } from '../../lib/legacy-constants';
+import { ApiClient } from '@/tests/api/api-client';
+import { TestDataCleanup } from '@/tests/helpers/test-data-cleanup';
+import { appConfig } from '@/lib/config';
+import { DEMO_COMPANY_NAME } from '@/lib/legacy-constants';
 
 test.describe('API - Autenticación', () => {
   let apiClient: ApiClient;

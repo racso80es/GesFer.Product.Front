@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../page-objects/LoginPage';
-import { DashboardPage } from '../page-objects/DashboardPage';
-import { MyCompanyPage } from '../page-objects/MyCompanyPage';
-import { DEMO_COMPANY_NAME } from '../../lib/legacy-constants';
+import { LoginPage } from '@/tests/page-objects/LoginPage';
+import { DashboardPage } from '@/tests/page-objects/DashboardPage';
+import { MyCompanyPage } from '@/tests/page-objects/MyCompanyPage';
+import { DEMO_COMPANY_NAME } from '@/lib/legacy-constants';
 
 test.describe('My Company E2E Tests (Update Only)', () => {
   const originalName = DEMO_COMPANY_NAME;

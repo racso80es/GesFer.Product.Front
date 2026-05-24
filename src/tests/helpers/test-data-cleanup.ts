@@ -1,6 +1,6 @@
 import { APIRequestContext } from '@playwright/test';
-import { ApiClient } from '../api/api-client';
-import { appConfig } from '../../lib/config';
+import { ApiClient } from '@/tests/api/api-client';
+import { appConfig } from '@/lib/config';
 
 /**
  * Helper para limpiar datos de prueba de la API

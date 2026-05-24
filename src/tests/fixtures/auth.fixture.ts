@@ -1,8 +1,8 @@
 import { test as base, Page } from '@playwright/test';
-import { LoginPage } from '../page-objects/LoginPage';
-import { ApiClient } from '../api/api-client';
-import { appConfig } from '../../lib/config';
-import { DEMO_COMPANY_NAME } from '../../lib/legacy-constants';
+import { LoginPage } from '@/tests/page-objects/LoginPage';
+import { ApiClient } from '@/tests/api/api-client';
+import { appConfig } from '@/lib/config';
+import { DEMO_COMPANY_NAME } from '@/lib/legacy-constants';
 
 /**
  * Fixture para autenticación

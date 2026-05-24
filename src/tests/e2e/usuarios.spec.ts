@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../page-objects/LoginPage';
-import { UsuariosPage } from '../page-objects/UsuariosPage';
-import { TestDataCleanup } from '../helpers/test-data-cleanup';
-import { appConfig } from '../../lib/config';
+import { LoginPage } from '@/tests/page-objects/LoginPage';
+import { UsuariosPage } from '@/tests/page-objects/UsuariosPage';
+import { TestDataCleanup } from '@/tests/helpers/test-data-cleanup';
+import { appConfig } from '@/lib/config';
 
 test.describe('Usuarios E2E Tests', () => {
   let cleanup: TestDataCleanup;

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { ApiClient } from '../api/api-client';
-import { DEMO_COMPANY_NAME } from '../../lib/legacy-constants';
+import { ApiClient } from '@/tests/api/api-client';
+import { DEMO_COMPANY_NAME } from '@/lib/legacy-constants';
 
 // Configuración de URLs para tests
 const API_URL = process.env.API_URL || 'http://localhost:5020';
