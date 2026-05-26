@@ -37,7 +37,166 @@ function Test-KebabCase {
 function Test-BranchName {
     param([string]$b)
     if ($b -eq "main" -or $b -eq "master") { return $true }
-    if ($b -match '^feat/(.+)$') { $suffix = $Matches[1]; return (Test-KebabCase $suffix) -or ($suffix -match '^refactorization-[a-z0-9]+(-[a-z0-9]+)*$') }
+    if ($b -match '^feat/(.+)
+    if ($b -match '^fix/(.+)$') { return Test-KebabCase $Matches[1] }
+    return $false
+}
+
+# Commit convencional: tipo(alcance): descripción
+function Test-ConventionalCommit {
+    param([string]$msg)
+    $firstLine = ($msg -split "`n")[0]
+    return $firstLine -match '^(feat|fix|refactor|docs|chore|test)(\([^)]+\))?!?: .+'
+}
+
+$result = @{
+    check    = "nomenclatura"
+    result   = "pass"
+    message  = ""
+    detail   = @{}
+    blocking = $true
+}
+
+# 1) Rama
+if (-not (Test-BranchName $branch)) {
+    $result.result = "fail"
+    $result.message = "Rama '$branch' no cumple nomenclatura: debe ser feat/<kebab>, fix/<kebab> o feat/refactorization-<kebab>. main/master OK en integración."
+    $result.detail.branch = $branch
+    $result.detail.expected = "feat/<nombre> o fix/<nombre> en kebab-case"
+    Write-Output ($result | ConvertTo-Json -Depth 4)
+    exit 1
+}
+$result.detail.branch = $branch
+$result.detail.branch_ok = $true
+
+# 2) Commits (opcional)
+if ($CheckCommits) {
+    $commits = git log "${BaseBranch}..HEAD" --oneline --no-decorate -n $CommitCount 2>$null
+    $bad = @()
+    foreach ($line in ($commits -split "`n")) {
+        if ([string]::IsNullOrWhiteSpace($line)) { continue }
+        $hash, $rest = $line -split " ", 2
+        if (-not (Test-ConventionalCommit $rest)) { $bad += $line }
+    }
+    if ($bad.Count -gt 0) {
+        $result.result = "fail"
+        $result.message = "Algunos commits no siguen formato convencional (tipo(alcance): descripción)."
+        $result.detail.commits_failing = $bad
+        Write-Output ($result | ConvertTo-Json -Depth 4)
+        exit 1
+    }
+    $result.detail.commits_checked = $true
+}
+
+Write-Output ($result | ConvertTo-Json -Depth 4)
+exit 0
+) { $suffix = $Matches[1]; return (Test-KebabCase $suffix) -or ($suffix -match '^refactorization-[a-z0-9]+(-[a-z0-9]+)*
+    if ($b -match '^fix/(.+)$') { return Test-KebabCase $Matches[1] }
+    return $false
+}
+
+# Commit convencional: tipo(alcance): descripción
+function Test-ConventionalCommit {
+    param([string]$msg)
+    $firstLine = ($msg -split "`n")[0]
+    return $firstLine -match '^(feat|fix|refactor|docs|chore|test)(\([^)]+\))?!?: .+'
+}
+
+$result = @{
+    check    = "nomenclatura"
+    result   = "pass"
+    message  = ""
+    detail   = @{}
+    blocking = $true
+}
+
+# 1) Rama
+if (-not (Test-BranchName $branch)) {
+    $result.result = "fail"
+    $result.message = "Rama '$branch' no cumple nomenclatura: debe ser feat/<kebab>, fix/<kebab> o feat/refactorization-<kebab>. main/master OK en integración."
+    $result.detail.branch = $branch
+    $result.detail.expected = "feat/<nombre> o fix/<nombre> en kebab-case"
+    Write-Output ($result | ConvertTo-Json -Depth 4)
+    exit 1
+}
+$result.detail.branch = $branch
+$result.detail.branch_ok = $true
+
+# 2) Commits (opcional)
+if ($CheckCommits) {
+    $commits = git log "${BaseBranch}..HEAD" --oneline --no-decorate -n $CommitCount 2>$null
+    $bad = @()
+    foreach ($line in ($commits -split "`n")) {
+        if ([string]::IsNullOrWhiteSpace($line)) { continue }
+        $hash, $rest = $line -split " ", 2
+        if (-not (Test-ConventionalCommit $rest)) { $bad += $line }
+    }
+    if ($bad.Count -gt 0) {
+        $result.result = "fail"
+        $result.message = "Algunos commits no siguen formato convencional (tipo(alcance): descripción)."
+        $result.detail.commits_failing = $bad
+        Write-Output ($result | ConvertTo-Json -Depth 4)
+        exit 1
+    }
+    $result.detail.commits_checked = $true
+}
+
+Write-Output ($result | ConvertTo-Json -Depth 4)
+exit 0
+) -or ($suffix -match '^correccion-auditorias-[a-z0-9_]+(-[a-z0-9]+)*
+    if ($b -match '^fix/(.+)$') { return Test-KebabCase $Matches[1] }
+    return $false
+}
+
+# Commit convencional: tipo(alcance): descripción
+function Test-ConventionalCommit {
+    param([string]$msg)
+    $firstLine = ($msg -split "`n")[0]
+    return $firstLine -match '^(feat|fix|refactor|docs|chore|test)(\([^)]+\))?!?: .+'
+}
+
+$result = @{
+    check    = "nomenclatura"
+    result   = "pass"
+    message  = ""
+    detail   = @{}
+    blocking = $true
+}
+
+# 1) Rama
+if (-not (Test-BranchName $branch)) {
+    $result.result = "fail"
+    $result.message = "Rama '$branch' no cumple nomenclatura: debe ser feat/<kebab>, fix/<kebab> o feat/refactorization-<kebab>. main/master OK en integración."
+    $result.detail.branch = $branch
+    $result.detail.expected = "feat/<nombre> o fix/<nombre> en kebab-case"
+    Write-Output ($result | ConvertTo-Json -Depth 4)
+    exit 1
+}
+$result.detail.branch = $branch
+$result.detail.branch_ok = $true
+
+# 2) Commits (opcional)
+if ($CheckCommits) {
+    $commits = git log "${BaseBranch}..HEAD" --oneline --no-decorate -n $CommitCount 2>$null
+    $bad = @()
+    foreach ($line in ($commits -split "`n")) {
+        if ([string]::IsNullOrWhiteSpace($line)) { continue }
+        $hash, $rest = $line -split " ", 2
+        if (-not (Test-ConventionalCommit $rest)) { $bad += $line }
+    }
+    if ($bad.Count -gt 0) {
+        $result.result = "fail"
+        $result.message = "Algunos commits no siguen formato convencional (tipo(alcance): descripción)."
+        $result.detail.commits_failing = $bad
+        Write-Output ($result | ConvertTo-Json -Depth 4)
+        exit 1
+    }
+    $result.detail.commits_checked = $true
+}
+
+Write-Output ($result | ConvertTo-Json -Depth 4)
+exit 0
+) }
     if ($b -match '^fix/(.+)$') { return Test-KebabCase $Matches[1] }
     return $false
 }
