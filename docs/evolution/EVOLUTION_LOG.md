@@ -1,5 +1,7 @@
 Objetivo Home Publica
 
+  - [2026-05-26] [Kaizen] [Kaizen_2026_04_29_actualizacion_e2e_auth] E2E auth selectors normalization from Spanglish to English (username/password)
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth

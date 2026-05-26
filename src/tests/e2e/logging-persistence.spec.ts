@@ -63,8 +63,8 @@ test.describe('Logging Persistence Test', () => {
     const loginButton = page.getByRole('button', { name: /iniciar.*sesión|login/i }).first();
     
     await companyInput.fill(DEMO_COMPANY_NAME);
-    await usernameInput.fill('usuario-inexistente');
-    await passwordInput.fill('password-incorrecta');
+    await usernameInput.fill('non-existent-user');
+    await passwordInput.fill('incorrect-password');
     await loginButton.click();
     
     // Esperar a que se procese el error (puede mostrar un mensaje de error)
