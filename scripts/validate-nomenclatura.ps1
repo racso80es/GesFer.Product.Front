@@ -37,7 +37,7 @@ function Test-KebabCase {
 function Test-BranchName {
     param([string]$b)
     if ($b -eq "main" -or $b -eq "master") { return $true }
-    if ($b -match '^feat/(.+)$') { $suffix = $Matches[1]; return (Test-KebabCase $suffix) -or ($suffix -match '^refactorization-[a-z0-9]+(-[a-z0-9]+)*$') }
+    if ($b -match '^feat/(.+)$') { $suffix = $Matches[1]; return (Test-KebabCase $suffix) -or ($suffix -match '^refactorization-[a-z0-9]+(-[a-z0-9]+)*$') -or ($suffix -match '^correccion-auditorias-[a-z0-9_]+(-[a-z0-9_]+)*$') }
     if ($b -match '^fix/(.+)$') { return Test-KebabCase $Matches[1] }
     return $false
 }
@@ -45,7 +45,7 @@ function Test-BranchName {
 # Commit convencional: tipo(alcance): descripción
 function Test-ConventionalCommit {
     param([string]$msg)
-    $firstLine = ($msg -split "`n")[0]
+    $firstLine = ($msg -split "\`n")[0]
     return $firstLine -match '^(feat|fix|refactor|docs|chore|test)(\([^)]+\))?!?: .+'
 }
 
@@ -73,7 +73,7 @@ $result.detail.branch_ok = $true
 if ($CheckCommits) {
     $commits = git log "${BaseBranch}..HEAD" --oneline --no-decorate -n $CommitCount 2>$null
     $bad = @()
-    foreach ($line in ($commits -split "`n")) {
+    foreach ($line in ($commits -split "\`n")) {
         if ([string]::IsNullOrWhiteSpace($line)) { continue }
         $hash, $rest = $line -split " ", 2
         if (-not (Test-ConventionalCommit $rest)) { $bad += $line }

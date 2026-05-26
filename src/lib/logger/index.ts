@@ -96,7 +96,7 @@ class TelemetryTransport {
         // Si falla, reintentar más tarde (no bloquear la aplicación)
         // Solo loguear en desarrollo
         if (process.env.NODE_ENV === 'development') {
-          console.error('Error al enviar log de telemetría:', error);
+          console['error']('Error al enviar log de telemetría:', error);
         }
         // Re-agregar a la cola para reintentar (solo si no es un error de timeout)
         if (!(error instanceof Error && error.name === 'AbortError')) {

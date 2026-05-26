@@ -1,5 +1,6 @@
 Objetivo Home Publica
 
+- **2026-05-26**: 🚀 `feat/correccion-auditorias-2026_05_26_01` | Corrección de la Auditoría Técnica (eliminación de console.*, corrección de rutas relativas en tests).
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
