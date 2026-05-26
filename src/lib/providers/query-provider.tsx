@@ -6,6 +6,7 @@ import { useState, useEffect, useRef, type ReactNode } from "react";
 import { initializeClient, clearAuthData } from "@/lib/utils/client-init";
 import { authApi } from "@/lib/api/auth";
 import type { LoginResponse } from "@/lib/types/api";
+import logger from '@/lib/logger';
 
 // Variable de módulo para almacenar el resultado de inicialización (solo se ejecuta una vez)
 let initResult: { user: LoginResponse | null; shouldClearCache: boolean } | null = null;
@@ -58,7 +59,7 @@ export function QueryProvider({ children }: { children: ReactNode }) {
         const err = error as { message?: string; status?: number };
         // Si es un error 401, limpiar caché y datos de autenticación
         if (err?.message?.includes("401") || err?.status === 401) {
-          console.warn("Error 401 detectado, limpiando datos de autenticación...");
+          logger.warn("Error 401 detectado, limpiando datos de autenticación...");
           if (typeof window !== "undefined") {
             clearAuthData();
             // El client se creará después, así que usamos el queryCache para limpiar

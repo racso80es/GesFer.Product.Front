@@ -1,5 +1,6 @@
 # Evolution Log — GesFer.Product.Front
 
+- **2026-05-26**: 🚀 `feat/correccion-auditorias-2026_05_26_01` | Corrección de la Auditoría Técnica (eliminación de console.*, corrección de rutas relativas en tests).
 Registro obligatorio de cambios relevantes de evolución del repositorio (Cúmulo: `paths.evolutionLogFile`). Mantener entradas breves y cronológicas (más reciente arriba).
 
 ---

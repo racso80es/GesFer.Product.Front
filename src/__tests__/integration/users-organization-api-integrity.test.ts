@@ -11,7 +11,8 @@
 
 import http from "node:http";
 import { URL } from "node:url";
-import { TEST_API_URL } from "../../lib/config.test";
+import { TEST_API_URL } from "@/lib/config.test";
+import logger from '@/lib/logger';
 
 const API_URL = TEST_API_URL.replace(/\/$/, "");
 
@@ -108,7 +109,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
         throw new Error("Token de autenticación vacío");
       }
     } catch (error) {
-      console.warn("No se pudo obtener token de autenticación. Algunos tests pueden fallar.");
+      logger.warn("No se pudo obtener token de autenticación. Algunos tests pueden fallar.");
       // No lanzar error aquí, permitir que los tests individuales manejen la falta de token
       authToken = "";
     }
@@ -117,7 +118,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
   describe("/api/company — flujo CRUD (API producto)", () => {
     it("debe listar organizaciones (GET colección)", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
 
@@ -136,7 +137,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
 
     it("debe crear una organización vía POST", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
 
@@ -159,8 +160,8 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
       });
 
       if (resp.status !== 201) {
-        console.error("Error al crear organización (POST /api/company):", resp.body);
-        console.error("Status:", resp.status);
+        logger.error({ responseBody: resp.body }, 'Error al crear organización (POST /api/company):');
+        logger.error({ status: resp.status }, 'Status error:');
       }
       expect(resp.status).toBe(201);
       const company = JSON.parse(resp.body);
@@ -175,7 +176,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
 
     it("debe obtener por id (GET) la organización creada", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
       expect(testCompanyId).toBeTruthy();
@@ -194,7 +195,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
 
     it("debe actualizar la organización vía PUT", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
       expect(testCompanyId).toBeTruthy();
@@ -231,7 +232,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
 
     it("debe reflejar la actualización en un GET posterior", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
       expect(testCompanyId).toBeTruthy();
@@ -251,7 +252,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
 
     it("debe eliminar la organización vía DELETE", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
       expect(testCompanyId).toBeTruthy();
@@ -284,7 +285,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
 
     beforeAll(async () => {
       if (!authToken) {
-        console.warn("Saltando setup de usuarios: no hay token de autenticación");
+        logger.warn("Saltando setup de usuarios: no hay token de autenticación");
         return;
       }
       // Resolver un `companyId` de tenant para tests de usuario (GET listado `/api/company`)
@@ -337,7 +338,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
 
     it("debe listar todos los usuarios", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
       const resp = await httpRequest(`${API_URL}/api/user`, {
@@ -355,7 +356,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
 
     it("debe crear un usuario correctamente", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
       expect(userTestCompanyId).toBeTruthy();
@@ -381,8 +382,8 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
       });
 
       if (resp.status !== 201) {
-        console.error("Error al crear usuario:", resp.body);
-        console.error("Status:", resp.status);
+        logger.error({ responseBody: resp.body }, 'Error al crear usuario:');
+        logger.error({ status: resp.status }, 'Status error:');
       }
       expect(resp.status).toBe(201);
       const user = JSON.parse(resp.body);
@@ -398,7 +399,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
 
     it("debe obtener el usuario creado", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
       expect(testUserId).toBeTruthy();
@@ -417,7 +418,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
 
     it("debe editar un usuario correctamente", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
       expect(testUserId).toBeTruthy();
@@ -454,7 +455,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
 
     it("debe verificar que el usuario se editó correctamente", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
       expect(testUserId).toBeTruthy();
@@ -475,7 +476,7 @@ describe("Integridad API: usuarios y recurso Company (backend)", () => {
 
     it("debe eliminar un usuario correctamente", async () => {
       if (!authToken) {
-        console.warn("Saltando test: no hay token de autenticación");
+        logger.warn("Saltando test: no hay token de autenticación");
         return;
       }
       expect(testUserId).toBeTruthy();
