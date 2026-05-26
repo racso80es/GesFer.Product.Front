@@ -51,7 +51,7 @@ test.describe('Login E2E Tests', () => {
     await loginPage.goto();
 
     // Intentar login con credenciales inválidas
-    await loginPage.login(DEMO_COMPANY_NAME, 'admin', 'password-incorrecta');
+    await loginPage.login(DEMO_COMPANY_NAME, 'admin', 'incorrect-password');
 
     // Verificar que se muestra mensaje de error
     await loginPage.verifyErrorMessage();
