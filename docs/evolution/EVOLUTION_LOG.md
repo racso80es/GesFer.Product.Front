@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-05-27] [feat/correccion-auditorias-2026-05-27-01] [Corrección Auditoría] [DONE].
+
+## feature: correccion-auditorias-2026-05-27-01
+Resumen: Solucionados errores de ESLint (import/first) según auditoría.
+Referencia archivada: docs/features/correccion-auditorias-2026-05-27-01/finalize.md
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
