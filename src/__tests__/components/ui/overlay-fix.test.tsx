@@ -1,8 +1,8 @@
-import logger from '@/lib/logger';
-jest.mock('@/lib/logger', () => ({ __esModule: true, default: { warn: jest.fn(), error: jest.fn(), info: jest.fn() } }));
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
 import { OverlayFix } from '@/components/ui/overlay-fix';
+import logger from '@/lib/logger';
+jest.mock('@/lib/logger', () => ({ __esModule: true, default: { warn: jest.fn(), error: jest.fn(), info: jest.fn() } }));
 
 describe('OverlayFix', () => {
   let originalInnerWidth: number;
