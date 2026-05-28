@@ -1,5 +1,6 @@
 # Evolution Log — GesFer.Product.Front
 
+2026-05-28: [FRONTEND] Auditoría completada - Warnings de entorno React en tests resueltos configurando IS_REACT_ACT_ENVIRONMENT e IntersectionObserver.
 Registro obligatorio de cambios relevantes de evolución del repositorio (Cúmulo: `paths.evolutionLogFile`). Mantener entradas breves y cronológicas (más reciente arriba).
 
 ---

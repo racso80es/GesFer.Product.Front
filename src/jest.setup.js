@@ -87,3 +87,16 @@ if (typeof global.TransformStream === 'undefined') {
   };
 }
 
+
+// Configurar React act environment globalmente
+global.IS_REACT_ACT_ENVIRONMENT = true;
+
+// Mock de IntersectionObserver requerido por use-intersection en next/link
+global.IntersectionObserver = class IntersectionObserver {
+  constructor(callback) {
+    this.callback = callback;
+  }
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};

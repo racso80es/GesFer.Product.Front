@@ -1,5 +1,6 @@
 Objetivo Home Publica
 
+2026-05-28: [FRONTEND] Auditoría completada - Warnings de entorno React en tests resueltos configurando IS_REACT_ACT_ENVIRONMENT e IntersectionObserver.
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
