@@ -1,5 +1,6 @@
 Objetivo Home Publica
 
+[2026-05-28] [feat/e2e-auth-selectors-fix] [Eradicated non-English nomenclature in E2E auth tests] [DONE].
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
