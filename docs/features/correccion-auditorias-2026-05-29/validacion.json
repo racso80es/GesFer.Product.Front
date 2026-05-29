@@ -1,0 +1,5 @@
+{
+  "tests": true,
+  "compilation": true,
+  "audit": true
+}
