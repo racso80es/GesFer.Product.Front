@@ -18,9 +18,9 @@ type HttpResult = { status: number; body: string; headers: http.IncomingHttpHead
  * Prioridad: variables de entorno → mismos defaults que `src/.env.example` (formulario demo).
  */
 const demoLoginCredentials = {
-  company: process.env.TEST_LOGIN_COMPANY?.trim() || "Empresa Demo",
-  username: process.env.TEST_LOGIN_USER?.trim() || "admin",
-  password: process.env.TEST_LOGIN_PASSWORD?.trim() || "admin123",
+  company: process.env.TEST_LOGIN_COMPANY?.trim() || "",
+  username: process.env.TEST_LOGIN_USER?.trim() || "",
+  password: process.env.TEST_LOGIN_PASSWORD?.trim() || "",
 };
 
 function skipLoginTestIfUnauthorized(loginResp: HttpResult, context: string): boolean {

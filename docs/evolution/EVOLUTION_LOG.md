@@ -1,5 +1,6 @@
 Objetivo Home Publica
 
+[2026-05-30] [feat/correccion-auditorias-2026-05-30] [Resolución de hallazgos sobre terminología prohibida] [DONE].
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
