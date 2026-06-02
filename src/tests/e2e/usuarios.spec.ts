@@ -23,7 +23,7 @@ test.describe('Usuarios E2E Tests', () => {
   });
 
   test.afterEach(async () => {
-    // Teardown: Limpiar usuarios creados durante los tests
+    // Teardown: Limpiar usernames creados durante los tests
     for (const userId of createdUserIds) {
       await cleanup.cleanupUser(userId);
     }

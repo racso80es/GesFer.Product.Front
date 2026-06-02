@@ -1,5 +1,11 @@
 Objetivo Home Publica
 
+[2026-04-29] [feat/refactorization-e2e-auth-selectors] [Actualización de selectores Auth en pruebas E2E (S+)] [DONE].
+
+## feature: correccion-e2e-auth
+Resumen: Se resolvieron los hallazgos correspondientes a la erradicación de nomenclatura desfasada ("usuario", "contraseña") en los locators y strings de E2E, estandarizando los tests-ids a "username" y "password".
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md](../../docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md)
+
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
