@@ -6,7 +6,7 @@ const API_URL = process.env.API_URL || 'http://localhost:5020';
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3000';
 
 test.describe('Logs Purge Logic - Backend Focus', () => {
-  test('debe purgar logs antiguos con usuario Admin y devolver el conteo correcto', async ({ request }) => {
+  test('debe purgar logs antiguos con Admin y devolver el conteo correcto', async ({ request }) => {
     // Paso 1: Autenticarse como admin
     const loginResponse = await request.post(`${API_URL}/api/admin/auth/login`, {
       data: {
