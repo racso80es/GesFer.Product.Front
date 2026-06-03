@@ -1,5 +1,6 @@
 Objetivo Home Publica
 
+[2026-04-29] [feat/correccion-auditorias-e2e-auth] [Resolución de hallazgos S+ erradicación usuario/contraseña en e2e] [DONE].
 [2026-04-29] [feat/actualizacion-e2e-auth] [Resolución de hallazgos S+ en base a auditoría de selectores e2e auth] [DONE].
 
 ## feature: actualizacion-e2e-auth
