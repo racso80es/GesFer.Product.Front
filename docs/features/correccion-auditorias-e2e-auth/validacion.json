@@ -1,0 +1,5 @@
+{
+  "validaciones": [
+    { "paso": "Verificar tests e2e", "resultado": "ok" }
+  ]
+}
