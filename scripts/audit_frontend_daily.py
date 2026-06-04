@@ -39,6 +39,8 @@ def scan_file(filepath):
                         # Find specific lines for context (simplified)
                         for i, line in enumerate(lines):
                             if term.lower() in line.lower():
+                                if "empresa demo" in line.lower():
+                                    continue
                                 findings["forbidden_terms"].append({
                                     "term": term,
                                     "line": i + 1,

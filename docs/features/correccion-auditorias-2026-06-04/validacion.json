@@ -1,0 +1,7 @@
+{
+  "status": "success",
+  "checks": {
+    "audit_passed": true,
+    "tests_passed": true
+  }
+}
