@@ -1,3 +1,4 @@
+- 2026-04-29: [Kaizen] Eliminación de palabra prohibida usuario en tests E2E de logs. (docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md)
 [2026-04-11] [feat/kaizen-2026-04-11-test-id-standardization] [Estandarizar data-testid en componentes UI] [DONE].
 
 ## feature: Estandarizar data-testid en componentes UI
