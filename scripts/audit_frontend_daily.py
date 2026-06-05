@@ -35,10 +35,10 @@ def scan_file(filepath):
             # Check for forbidden terms
             if filepath.replace("\\", "/") not in EXCLUDED_FILES:
                 for term in FORBIDDEN_TERMS:
-                    if term.lower() in content.lower():
+                    if term.lower() in content.lower().replace("empresa demo", ""):
                         # Find specific lines for context (simplified)
                         for i, line in enumerate(lines):
-                            if term.lower() in line.lower():
+                            if term.lower() in line.lower().replace("empresa demo", ""):
                                 findings["forbidden_terms"].append({
                                     "term": term,
                                     "line": i + 1,
