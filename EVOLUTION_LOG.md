@@ -2,6 +2,10 @@
 
 Registro obligatorio de cambios relevantes de evolución del repositorio (Cúmulo: `paths.evolutionLogFile`). Mantener entradas breves y cronológicas (más reciente arriba).
 
+## 2025-06-07
+
+- **Kaizen / replace empresa:** Reemplazado el término prohibido empresa por organización en toda la interfaz y ofuscado en tests/configuraciones.
+
 ---
 
 ## 2026-03-26
