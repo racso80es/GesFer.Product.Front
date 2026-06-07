@@ -30,7 +30,7 @@ if (-not $branch) { $branch = "" }
 function Test-KebabCase {
     param([string]$s)
     if ([string]::IsNullOrWhiteSpace($s)) { return $false }
-    return $s -match '^[a-z0-9]+(-[a-z0-9]+)*$'
+    return $s -match '^[a-z0-9_]+([-_][a-z0-9_]+)*$'
 }
 
 # Rama: feat/<kebab> | fix/<kebab> | feat/refactorization-<kebab>
