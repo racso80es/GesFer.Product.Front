@@ -1,7 +1,7 @@
 ---
-id: "replace_empresa_forbidden_term-validate"
+id: "replace-empresa-forbidden-term-validate"
 action_id: "validate"
-feature_id: "replace_empresa_forbidden_term"
+feature_id: "replace-empresa-forbidden-term"
 title: "Validación de Reemplazo del término Empresa"
 date: "2025-06-07"
 status: "done"

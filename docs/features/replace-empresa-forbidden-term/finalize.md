@@ -1,11 +1,11 @@
 ---
-id: "replace_empresa_forbidden_term-finalize"
+id: "replace-empresa-forbidden-term-finalize"
 action_id: "finalize-process"
-feature_id: "replace_empresa_forbidden_term"
+feature_id: "replace-empresa-forbidden-term"
 title: "Finalización de Reemplazo del término Empresa"
 date: "2025-06-07"
 status: "done"
-branch: "feat/replace_empresa_forbidden_term"
+branch: "feat/replace-empresa-forbidden-term"
 pr_url: ""
 ---
 # Resumen

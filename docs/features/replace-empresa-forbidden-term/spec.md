@@ -1,7 +1,7 @@
 ---
-id: "replace_empresa_forbidden_term-spec"
+id: "replace-empresa-forbidden-term-spec"
 action_id: "spec"
-feature_id: "replace_empresa_forbidden_term"
+feature_id: "replace-empresa-forbidden-term"
 title: "Especificación de Reemplazo del término Empresa"
 date: "2025-06-07"
 status: "done"

@@ -1,7 +1,7 @@
 ---
-id: "replace_empresa_forbidden_term-clarify"
+id: "replace-empresa-forbidden-term-clarify"
 action_id: "clarify"
-feature_id: "replace_empresa_forbidden_term"
+feature_id: "replace-empresa-forbidden-term"
 title: "Clarificación de Reemplazo del término Empresa"
 date: "2025-06-07"
 status: "done"

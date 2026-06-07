@@ -1,7 +1,7 @@
 ---
-id: "replace_empresa_forbidden_term-execution"
+id: "replace-empresa-forbidden-term-execution"
 action_id: "execution"
-feature_id: "replace_empresa_forbidden_term"
+feature_id: "replace-empresa-forbidden-term"
 title: "Ejecución de Reemplazo del término Empresa"
 date: "2025-06-07"
 status: "done"

@@ -1,11 +1,11 @@
 ---
-id: "replace_empresa_forbidden_term-objectives"
+id: "replace-empresa-forbidden-term-objectives"
 action_id: "objectives"
-feature_id: "replace_empresa_forbidden_term"
+feature_id: "replace-empresa-forbidden-term"
 title: "Objetivos de Reemplazo del término Empresa"
 date: "2025-06-07"
 status: "done"
-branch: "feat/replace_empresa_forbidden_term"
+branch: "feat/replace-empresa-forbidden-term"
 scope: "Eliminar el término prohibido 'empresa' de la interfaz de usuario y ofuscarlo en código para cumplir con auditorías de UI."
 ley_aplicada: "Groundedness y UI Standards"
 ---
