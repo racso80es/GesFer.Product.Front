@@ -1,0 +1,7 @@
+[
+  {
+    "id": "val-1",
+    "description": "El script de auditoria debe pasar con 0 violaciones de terminologia",
+    "status": "PASSED"
+  }
+]
