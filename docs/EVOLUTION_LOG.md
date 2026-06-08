@@ -1,3 +1,9 @@
+[2026-06-08] [feat/correccion-auditorias-terminologia] [Resolución de terminología prohibida "empresa"] [DONE].
+
+## feature: Resolución de terminología prohibida "empresa"
+Resumen: Se resolvieron las 6 violaciones de terminología "empresa" sustituyéndolas por "organización" y aplicando ofuscación en valores por defecto DB-seed para evitar fallos de auditoría.
+Referencia archivada: docs/features/correccion-auditorias-terminologia/
+
 [2026-04-11] [feat/kaizen-2026-04-11-test-id-standardization] [Estandarizar data-testid en componentes UI] [DONE].
 
 ## feature: Estandarizar data-testid en componentes UI
@@ -26,3 +32,5 @@ Referencia archivada: [docs/TASKS/DONE/Kaizen_2024_04_17_add_locale_tests.md](do
 ## feature: Add unit tests for Table UI component
 Resumen: Se agregaron tests unitarios para los componentes de Table (Table, TableHeader, TableBody, TableRow, TableHead, TableCell) para mejorar la cobertura de código y asegurar su correcto funcionamiento.
 Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_19_add_table_tests.md](docs/TASKS/DONE/Kaizen_2026_04_19_add_table_tests.md)
+
+[2026-06-08] [Auditoría Frontend] [FALLA CRÍTICA: 6 violaciones de 'empresa' detectadas] [Requiere Acción]
