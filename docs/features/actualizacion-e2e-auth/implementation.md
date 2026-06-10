@@ -1,9 +1,12 @@
 ---
-id: feature_actualizacion_e2e_auth_implementation
-action_id: feature
+id: Kaizen_2026_04_29_actualizacion_e2e_auth_impl
+action_id: feat_e2e_auth_5
 feature_id: actualizacion-e2e-auth
-title: "Implementación de actualización de E2E auth"
-status: done
+title: Implementación
+date: 2026-06-10
+status: active
 ---
-# Implementación
-Se realizaron reemplazos en masa de "usuarioInput" por "usernameInput", y de atributos o etiquetas "usuario" por "username" en los archivos Playwright `.spec.ts` y sus respectivos page-objects. Se alineó la estructura a variables en inglés estrictamente.
+## Implementación
+- Modificar `src/tests/e2e/logging-persistence.spec.ts` línea 66.
+- Modificar `src/tests/e2e/logs_purge_logic.spec.ts` línea 9.
+- Modificar `src/tests/e2e/admin_logs.spec.ts` líneas 19 y 31.

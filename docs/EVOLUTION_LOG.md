@@ -1,3 +1,10 @@
+[2026-06-10] [feat/actualizacion-e2e-auth] [Actualización terminología usuario/contraseña a username/password en pruebas E2E] [DONE].
+
+## feature: Actualización terminología usuario/contraseña a username/password en pruebas E2E
+Resumen: Se eliminó referencias a "usuario" en logging-persistence, admin_logs y logs_purge_logic.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md](docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md)
+
+
 [2026-04-11] [feat/kaizen-2026-04-11-test-id-standardization] [Estandarizar data-testid en componentes UI] [DONE].
 
 ## feature: Estandarizar data-testid en componentes UI

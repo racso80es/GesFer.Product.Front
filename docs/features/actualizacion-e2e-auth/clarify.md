@@ -1,9 +1,10 @@
 ---
-id: feature_actualizacion_e2e_auth_clarify
-action_id: feature
+id: Kaizen_2026_04_29_actualizacion_e2e_auth_clarify
+action_id: feat_e2e_auth_3
 feature_id: actualizacion-e2e-auth
-title: "Clarificación de actualización de E2E auth"
-status: done
+title: Clarificación
+date: 2026-06-10
+status: active
 ---
-# Clarificación
-No es necesario clarificar nada con el usuario. Las especificaciones y el código existente son suficientes para completar la tarea.
+## Clarificación
+No aplican clarificaciones adicionales al objetivo establecido, dado que es claro qué archivos y en qué contextos modificar. Los listados de usuarios de dominio de producto no se afectan.

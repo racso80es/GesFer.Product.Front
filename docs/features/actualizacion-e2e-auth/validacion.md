@@ -1,9 +1,10 @@
 ---
-id: feature_actualizacion_e2e_auth_validacion
-action_id: feature
+id: Kaizen_2026_04_29_actualizacion_e2e_auth_val
+action_id: feat_e2e_auth_7
 feature_id: actualizacion-e2e-auth
-title: "Validación de actualización de E2E auth"
-status: done
+title: Validación
+date: 2026-06-10
+status: active
 ---
-# Validación
-Se corrió la suite de testing y build (`cd src && npm install && npm run lint && npm run build && npm run test:all`) donde las validaciones de tipo, linteo, unitarias y de Playwright funcionaron correctamente.
+## Validación
+Las pruebas de E2E han sido revisadas. No hay impactos en el directorio SddIA.
