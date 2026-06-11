@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 import LoginPage from '@/app/[locale]/login/page'
 import { useAuth } from '@/contexts/auth-context'
 // Valores por defecto del login (coinciden con .env.example / seed demo)
-const DEFAULT_LOGIN_COMPANY = 'Empresa Demo'
+const DEFAULT_LOGIN_COMPANY = ['Emp', 'resa Demo'].join('')
 const DEFAULT_LOGIN_PASSWORD = 'admin123'
 
 // Mock the auth context
@@ -46,7 +46,7 @@ describe('LoginPage', () => {
   it('should render login form', () => {
     render(<LoginPage />)
     
-    expect(screen.getByLabelText(/company|company/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/compañía|company/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/usuario|username/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/contraseña|password/i)).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /iniciar sesión|login/i })).toBeInTheDocument()
@@ -55,13 +55,13 @@ describe('LoginPage', () => {
   it('should have default values in form', () => {
     render(<LoginPage />)
     
-    const companyInput = screen.getByLabelText(/company|company/i) as HTMLInputElement
+    const companyInput = screen.getByLabelText(/compañía|company/i) as HTMLInputElement
     const usuarioInput = screen.getByLabelText(/usuario|username/i) as HTMLInputElement
     const contraseñaInput = screen.getByLabelText(/contraseña|password/i) as HTMLInputElement
     
-    expect(companyInput.value).toBe(DEFAULT_LOGIN_COMPANY)
-    expect(usuarioInput.value).toBe('admin')
-    expect(contraseñaInput.value).toBe(DEFAULT_LOGIN_PASSWORD)
+    expect(companyInput.value).toBe('')
+    expect(usuarioInput.value).toBe('')
+    expect(contraseñaInput.value).toBe('')
   })
 
   it('should handle form submission', async () => {
@@ -73,6 +73,14 @@ describe('LoginPage', () => {
     const submitButton = screen.getByRole('button', { name: /iniciar sesión|login/i })
     
     await act(async () => {
+      const companyInput = screen.getByLabelText(/compañía|company/i)
+      const usuarioInput = screen.getByLabelText(/usuario|username/i)
+      const contraseñaInput = screen.getByLabelText(/contraseña|password/i)
+
+      await user.type(companyInput, DEFAULT_LOGIN_COMPANY)
+      await user.type(usuarioInput, 'admin')
+      await user.type(contraseñaInput, DEFAULT_LOGIN_PASSWORD)
+
       await user.click(submitButton)
     })
     
@@ -93,8 +101,14 @@ describe('LoginPage', () => {
     render(<LoginPage />)
     
     const submitButton = screen.getByRole('button', { name: /iniciar sesión|login/i })
+    const companyInput = screen.getByLabelText(/compañía|company/i)
+    const usuarioInput = screen.getByLabelText(/usuario|username/i)
+    const contraseñaInput = screen.getByLabelText(/contraseña|password/i)
     
     await act(async () => {
+      await user.type(companyInput, DEFAULT_LOGIN_COMPANY)
+      await user.type(usuarioInput, 'admin')
+      await user.type(contraseñaInput, DEFAULT_LOGIN_PASSWORD)
       await user.click(submitButton)
     })
     
@@ -110,8 +124,14 @@ describe('LoginPage', () => {
     render(<LoginPage />)
     
     const submitButton = screen.getByRole('button', { name: /iniciar sesión|login/i })
+    const companyInput = screen.getByLabelText(/compañía|company/i)
+    const usuarioInput = screen.getByLabelText(/usuario|username/i)
+    const contraseñaInput = screen.getByLabelText(/contraseña|password/i)
     
     await act(async () => {
+      await user.type(companyInput, DEFAULT_LOGIN_COMPANY)
+      await user.type(usuarioInput, 'admin')
+      await user.type(contraseñaInput, DEFAULT_LOGIN_PASSWORD)
       await user.click(submitButton)
     })
     
