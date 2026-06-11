@@ -155,7 +155,7 @@ export interface CreateCompany {
 }
 
 export interface UpdateCompany {
-  /** Incluido cuando el GET devolvió la empresa; algunos backends lo exigen en el cuerpo */
+  /** Incluido cuando el GET devolvió la organización; algunos backends lo exigen en el cuerpo */
   id?: string;
   name: string;
   taxId?: string;
