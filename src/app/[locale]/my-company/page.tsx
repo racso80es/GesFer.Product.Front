@@ -90,7 +90,7 @@ export default function MyCompanyPage() {
           {!isLoading && !error && company && (
             <AdaptiveDataCard
               title={company.name}
-              description="Información general de la empresa"
+              description="Información general de la organización"
               headerAction={
                 company.isActive ? (
                   <span className="inline-flex items-center rounded-md border border-border bg-background px-2.5 py-0.5 text-xs font-semibold text-foreground shadow-sm">
