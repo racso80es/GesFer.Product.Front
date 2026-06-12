@@ -1,3 +1,9 @@
+[2026-06-12] [feat/actualizacion_e2e_auth] Actualización de selectores Auth en E2E finalizada. [DONE]
+
+## feature: Actualización de selectores Auth en pruebas E2E (S+)
+Resumen: Se actualizaron las referencias de usuario/contraseña a username/password en pruebas y selectores E2E.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md](docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md)
+
 [2026-04-11] [feat/kaizen-2026-04-11-test-id-standardization] [Estandarizar data-testid en componentes UI] [DONE].
 
 ## feature: Estandarizar data-testid en componentes UI
