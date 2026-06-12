@@ -4,6 +4,14 @@ Registro obligatorio de cambios relevantes de evolución del repositorio (Cúmul
 
 ---
 
+[2026-06-12] [feat/actualizacion_e2e_auth] Actualización de selectores Auth en E2E finalizada. [DONE]
+
+## feature: Actualización de selectores Auth en pruebas E2E (S+)
+Resumen: Se actualizaron las referencias de usuario/contraseña a username/password en pruebas y selectores E2E.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md](docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md)
+
+
+
 ## 2026-03-26
 
 - **Kaizen / cierre adaptación monorepo:** Dockerfile para árbol aislado (`docker build -f src/Dockerfile .`); skill `frontend-build` y normas Cursor/SddIA alineadas a `src/`; `.gitignore` sin rutas `Product/Front` ni Admin; guía `README-TESTS` con `@/`; `spec` de feature `product-front-objetivos-pendientes` cerrado (`done`).
