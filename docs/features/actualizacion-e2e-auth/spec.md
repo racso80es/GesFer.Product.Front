@@ -1,9 +1,10 @@
 ---
-id: feature_actualizacion_e2e_auth_spec
-action_id: feature
+id: actualizacion-e2e-auth-spec
+action_id: spec
 feature_id: actualizacion-e2e-auth
-title: "Especificación de actualización de E2E auth"
-status: done
+title: Especificación de Actualizacion de selectores Auth
+date: 2026-06-13
+status: in_progress
 ---
 # Especificación
-Limpiar restos de nomenclatura no-inglesa en pruebas de playwright. Corregir los campos `usuario` y `contraseña` (o variaciones) a `username` y `password` en el código E2E y page-objects para alinearse al contrato API.
+Sustituir las menciones en texto (comentarios, descripciones, strings hardcodeados) de "usuario" y "contraseña" por "Admin", "non-existent-user" o "username/password" en `logs_purge_logic.spec.ts`, `admin_logs.spec.ts`, y `logging-persistence.spec.ts`.

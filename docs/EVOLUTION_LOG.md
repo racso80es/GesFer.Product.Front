@@ -1,3 +1,9 @@
+[2026-06-13] [feat/actualizacion-e2e-auth] [Actualizar terminología auth en e2e] [DONE].
+
+## feature: Actualización de selectores Auth en pruebas E2E
+Resumen: Se erradicó la entropía en pruebas de frontend eliminando referencias a la nomenclatura desfasada usuario y contraseña.
+Referencia archivada: [docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md](docs/TASKS/DONE/Kaizen_2026_04_29_actualizacion_e2e_auth.md)
+
 [2026-04-11] [feat/kaizen-2026-04-11-test-id-standardization] [Estandarizar data-testid en componentes UI] [DONE].
 
 ## feature: Estandarizar data-testid en componentes UI

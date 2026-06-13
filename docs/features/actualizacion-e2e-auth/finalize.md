@@ -1,9 +1,10 @@
 ---
-id: feature_actualizacion_e2e_auth_finalize
-action_id: feature
+id: actualizacion-e2e-auth-finalize
+action_id: finalize
 feature_id: actualizacion-e2e-auth
-title: "Finalización de actualización de E2E auth"
+title: Finalización de Actualizacion de selectores Auth
+date: 2026-06-13
 status: done
 ---
 # Finalización
-Se resolvió correctamente el reporte Kaizen de la tarea de erradicación de entropía de código no-inglés en tests e2e, actualizando los page objects y aserciones de autenticación para uso estricto de variables "username" y "password".
+Se actualizó la terminología de autenticación desfasada en los tests E2E. Tarea Kaizen completada.

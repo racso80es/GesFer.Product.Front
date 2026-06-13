@@ -1,9 +1,10 @@
 ---
-id: feature_actualizacion_e2e_auth_objectives
-action_id: feature
+id: actualizacion-e2e-auth
+action_id: objectives
 feature_id: actualizacion-e2e-auth
-title: "Objetivos de actualización de E2E auth"
-status: done
+title: Actualizacion de selectores Auth en pruebas E2E
+date: 2026-06-13
+status: in_progress
 ---
-# Objetivos
-Aplicar los hallazgos de correcciones anteriores erradicando la entropía en pruebas de frontend, eliminando referencias a la nomenclatura desfasada "usuario" y "contraseña" e igualando los localizadores de e2e con la estandarización `username` y `password`.
+# Objetivo
+Erradicar la entropía en pruebas de frontend eliminando referencias a la nomenclatura desfasada "usuario" y "contraseña" e igualando los localizadores de e2e con la estandarización username y password.
