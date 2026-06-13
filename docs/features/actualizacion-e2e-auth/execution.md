@@ -1,9 +1,10 @@
 ---
-id: feature_actualizacion_e2e_auth_execution
-action_id: feature
+id: actualizacion-e2e-auth-execution
+action_id: execution
 feature_id: actualizacion-e2e-auth
-title: "Ejecución de actualización de E2E auth"
-status: done
+title: Ejecución de Actualizacion de selectores Auth
+date: 2026-06-13
+status: in_progress
 ---
 # Ejecución
-Se utilizaron comandos `sed` de bash para hacer el refactoring del código, asegurando las variables y Page Objects de Playwright se modifiquen de manera limpia en `src/tests/e2e/` y `src/tests/page-objects/`.
+Cambios aplicados y validados vía diff.
