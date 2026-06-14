@@ -4,6 +4,11 @@ Registro obligatorio de cambios relevantes de evolución del repositorio (Cúmul
 
 ---
 
+## 2026-06-14
+
+- **Auditoría Frontend:** Se corrigieron los problemas de terminología prohibida reportados en la auditoría diaria del 2026-06-14.
+
+
 ## 2026-03-26
 
 - **Kaizen / cierre adaptación monorepo:** Dockerfile para árbol aislado (`docker build -f src/Dockerfile .`); skill `frontend-build` y normas Cursor/SddIA alineadas a `src/`; `.gitignore` sin rutas `Product/Front` ni Admin; guía `README-TESTS` con `@/`; `spec` de feature `product-front-objetivos-pendientes` cerrado (`done`).
