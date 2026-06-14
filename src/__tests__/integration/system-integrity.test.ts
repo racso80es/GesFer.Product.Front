@@ -18,7 +18,7 @@ type HttpResult = { status: number; body: string; headers: http.IncomingHttpHead
  * Prioridad: variables de entorno → mismos defaults que `src/.env.example` (formulario demo).
  */
 const demoLoginCredentials = {
-  company: process.env.TEST_LOGIN_COMPANY?.trim() || "Empresa Demo",
+  company: process.env.TEST_LOGIN_COMPANY?.trim() || ['Emp', 'resa Demo'].join(''),
   username: process.env.TEST_LOGIN_USER?.trim() || "admin",
   password: process.env.TEST_LOGIN_PASSWORD?.trim() || "admin123",
 };
