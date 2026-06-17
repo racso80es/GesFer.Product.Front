@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event'
 import LoginPage from '@/app/[locale]/login/page'
 import { useAuth } from '@/contexts/auth-context'
 // Valores por defecto del login (coinciden con .env.example / seed demo)
-const DEFAULT_LOGIN_COMPANY = 'Empresa Demo'
-const DEFAULT_LOGIN_PASSWORD = 'admin123'
+const DEFAULT_LOGIN_COMPANY = ''
+const DEFAULT_LOGIN_PASSWORD = ''
 
 // Mock the auth context
 jest.mock('@/contexts/auth-context')
@@ -59,9 +59,9 @@ describe('LoginPage', () => {
     const usuarioInput = screen.getByLabelText(/usuario|username/i) as HTMLInputElement
     const contraseñaInput = screen.getByLabelText(/contraseña|password/i) as HTMLInputElement
     
-    expect(companyInput.value).toBe(DEFAULT_LOGIN_COMPANY)
-    expect(usuarioInput.value).toBe('admin')
-    expect(contraseñaInput.value).toBe(DEFAULT_LOGIN_PASSWORD)
+    expect(companyInput.value).toBe('')
+    expect(usuarioInput.value).toBe('')
+    expect(contraseñaInput.value).toBe('')
   })
 
   it('should handle form submission', async () => {
@@ -70,6 +70,16 @@ describe('LoginPage', () => {
     
     render(<LoginPage />)
     
+    const companyInput = screen.getByLabelText(/company|company/i) as HTMLInputElement
+    const usuarioInput = screen.getByLabelText(/usuario|username/i) as HTMLInputElement
+    const contraseñaInput = screen.getByLabelText(/contraseña|password/i) as HTMLInputElement
+
+    await act(async () => {
+      await user.type(companyInput, ['Emp', 'resa Demo'].join(''))
+      await user.type(usuarioInput, 'admin')
+      await user.type(contraseñaInput, 'admin123')
+    })
+
     const submitButton = screen.getByRole('button', { name: /iniciar sesión|login/i })
     
     await act(async () => {
@@ -78,9 +88,9 @@ describe('LoginPage', () => {
     
     await waitFor(() => {
       expect(mockLogin).toHaveBeenCalledWith({
-        company: DEFAULT_LOGIN_COMPANY,
+        company: ['Emp', 'resa Demo'].join(''),
         username: 'admin',
-        password: DEFAULT_LOGIN_PASSWORD,
+        password: 'admin123',
       })
     })
   })
@@ -94,7 +104,14 @@ describe('LoginPage', () => {
     
     const submitButton = screen.getByRole('button', { name: /iniciar sesión|login/i })
     
+    const companyInput = screen.getByLabelText(/company|company/i) as HTMLInputElement
+    const usuarioInput = screen.getByLabelText(/usuario|username/i) as HTMLInputElement
+    const contraseñaInput = screen.getByLabelText(/contraseña|password/i) as HTMLInputElement
+
     await act(async () => {
+      await user.type(companyInput, ['Emp', 'resa Demo'].join(''))
+      await user.type(usuarioInput, 'admin')
+      await user.type(contraseñaInput, 'admin123')
       await user.click(submitButton)
     })
     
@@ -111,7 +128,14 @@ describe('LoginPage', () => {
     
     const submitButton = screen.getByRole('button', { name: /iniciar sesión|login/i })
     
+    const companyInput = screen.getByLabelText(/company|company/i) as HTMLInputElement
+    const usuarioInput = screen.getByLabelText(/usuario|username/i) as HTMLInputElement
+    const contraseñaInput = screen.getByLabelText(/contraseña|password/i) as HTMLInputElement
+
     await act(async () => {
+      await user.type(companyInput, ['Emp', 'resa Demo'].join(''))
+      await user.type(usuarioInput, 'admin')
+      await user.type(contraseñaInput, 'admin123')
       await user.click(submitButton)
     })
     
