@@ -11,9 +11,9 @@ import { useTranslations } from 'next-intl';
 
 function getDefaultLoginCredentials(): { company: string; username: string; password: string } {
   return {
-    company: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_COMPANY ?? "Empresa Demo",
-    username: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_USER ?? "admin",
-    password: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_PASSWORD ?? "admin123",
+    company: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_COMPANY ?? "",
+    username: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_USER ?? "",
+    password: process.env.NEXT_PUBLIC_DEFAULT_LOGIN_PASSWORD ?? "",
   };
 }
 
