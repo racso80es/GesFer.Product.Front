@@ -1,0 +1,9 @@
+{
+  "id": "val-correccion-auditoria-2026-06-19",
+  "action_id": "action-correccion",
+  "feature_id": "correccion-auditorias-2026-06-19",
+  "title": "Validación",
+  "date": "2026-06-19",
+  "status": "DONE",
+  "tests_passed": true
+}
