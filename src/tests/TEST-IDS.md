@@ -8,8 +8,8 @@ Este documento lista todos los `data-testid` agregados a los componentes para fa
 |----------|---------|-------------|
 | Formulario | `login-form` | Formulario de login |
 | Input Company | `login-company-input` | Campo de entrada para company |
-| Input Usuario | `login-usuario-input` | Campo de entrada para usuario |
-| Input Contraseña | `login-password-input` | Campo de entrada para contraseña |
+| Input Username | `login-username-input` | Campo de entrada para usuario |
+| Input Password | `login-password-input` | Campo de entrada para contraseña |
 | Botón Submit | `login-submit-button` | Botón para enviar el formulario |
 | Mensaje de Error | `login-error-message` | Mensaje de error del formulario |
 
