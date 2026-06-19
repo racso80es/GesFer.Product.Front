@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event'
 import LoginPage from '@/app/[locale]/login/page'
 import { useAuth } from '@/contexts/auth-context'
 // Valores por defecto del login (coinciden con .env.example / seed demo)
-const DEFAULT_LOGIN_COMPANY = 'Empresa Demo'
-const DEFAULT_LOGIN_PASSWORD = 'admin123'
+const DEFAULT_LOGIN_COMPANY = ''
+const DEFAULT_LOGIN_PASSWORD = ''
 
 // Mock the auth context
 jest.mock('@/contexts/auth-context')
@@ -52,16 +52,16 @@ describe('LoginPage', () => {
     expect(screen.getByRole('button', { name: /iniciar sesión|login/i })).toBeInTheDocument()
   })
 
-  it('should have default values in form', () => {
+  it('should have empty default values in form', () => {
     render(<LoginPage />)
     
     const companyInput = screen.getByLabelText(/company|company/i) as HTMLInputElement
     const usuarioInput = screen.getByLabelText(/usuario|username/i) as HTMLInputElement
     const contraseñaInput = screen.getByLabelText(/contraseña|password/i) as HTMLInputElement
     
-    expect(companyInput.value).toBe(DEFAULT_LOGIN_COMPANY)
-    expect(usuarioInput.value).toBe('admin')
-    expect(contraseñaInput.value).toBe(DEFAULT_LOGIN_PASSWORD)
+    expect(companyInput.value).toBe('')
+    expect(usuarioInput.value).toBe('')
+    expect(contraseñaInput.value).toBe('')
   })
 
   it('should handle form submission', async () => {
@@ -70,6 +70,16 @@ describe('LoginPage', () => {
     
     render(<LoginPage />)
     
+    const companyInput = screen.getByLabelText(/company|company/i)
+    const usuarioInput = screen.getByLabelText(/usuario|username/i)
+    const contraseñaInput = screen.getByLabelText(/contraseña|password/i)
+
+    await act(async () => {
+      await user.type(companyInput, 'OrgTest')
+      await user.type(usuarioInput, 'testuser')
+      await user.type(contraseñaInput, 'testpass')
+    })
+
     const submitButton = screen.getByRole('button', { name: /iniciar sesión|login/i })
     
     await act(async () => {
@@ -78,9 +88,9 @@ describe('LoginPage', () => {
     
     await waitFor(() => {
       expect(mockLogin).toHaveBeenCalledWith({
-        company: DEFAULT_LOGIN_COMPANY,
-        username: 'admin',
-        password: DEFAULT_LOGIN_PASSWORD,
+        company: 'OrgTest',
+        username: 'testuser',
+        password: 'testpass',
       })
     })
   })
@@ -92,6 +102,16 @@ describe('LoginPage', () => {
     
     render(<LoginPage />)
     
+    const companyInput = screen.getByLabelText(/company|company/i)
+    const usuarioInput = screen.getByLabelText(/usuario|username/i)
+    const contraseñaInput = screen.getByLabelText(/contraseña|password/i)
+
+    await act(async () => {
+      await user.type(companyInput, 'OrgTest')
+      await user.type(usuarioInput, 'testuser')
+      await user.type(contraseñaInput, 'testpass')
+    })
+
     const submitButton = screen.getByRole('button', { name: /iniciar sesión|login/i })
     
     await act(async () => {
@@ -109,6 +129,16 @@ describe('LoginPage', () => {
     
     render(<LoginPage />)
     
+    const companyInput = screen.getByLabelText(/company|company/i)
+    const usuarioInput = screen.getByLabelText(/usuario|username/i)
+    const contraseñaInput = screen.getByLabelText(/contraseña|password/i)
+
+    await act(async () => {
+      await user.type(companyInput, 'OrgTest')
+      await user.type(usuarioInput, 'testuser')
+      await user.type(contraseñaInput, 'testpass')
+    })
+
     const submitButton = screen.getByRole('button', { name: /iniciar sesión|login/i })
     
     await act(async () => {
