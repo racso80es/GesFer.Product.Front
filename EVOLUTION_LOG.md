@@ -4,7 +4,7 @@ Registro obligatorio de cambios relevantes de evolución del repositorio (Cúmul
 
 ---
 
-[2026-04-29] [feat/kaizen-actualizacion-e2e-auth] [Actualización de selectores Auth en pruebas E2E] [DONE].
+[2026-04-29] [feat/refactorization-kaizen-actualizacion-e2e-auth] [Actualización de selectores Auth en pruebas E2E] [DONE].
 
 
 
