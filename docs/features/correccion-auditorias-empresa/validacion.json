@@ -1,0 +1,8 @@
+{
+  "validations": [
+    {
+      "step": "Eliminar termino prohibido 'empresa'",
+      "status": "success"
+    }
+  ]
+}
