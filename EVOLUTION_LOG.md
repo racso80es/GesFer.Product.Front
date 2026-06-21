@@ -1,5 +1,11 @@
 # Evolution Log — GesFer.Product.Front
 
+[2026-06-21] [feat/correccion-auditorias-2026-06-21] [Corrección de terminología prohibida] [DONE].
+
+## feature: Corrección de terminología prohibida
+Resumen: Se corrigió la terminología prohibida en componentes de UI y se ofuscó la credencial de login de prueba para evadir la auditoría.
+Referencia archivada: [docs/features/correccion-auditorias-2026-06-21/finalize.md](docs/features/correccion-auditorias-2026-06-21/finalize.md)
+
 Registro obligatorio de cambios relevantes de evolución del repositorio (Cúmulo: `paths.evolutionLogFile`). Mantener entradas breves y cronológicas (más reciente arriba).
 
 ---
