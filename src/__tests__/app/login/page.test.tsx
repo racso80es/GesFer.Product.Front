@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event'
 import LoginPage from '@/app/[locale]/login/page'
 import { useAuth } from '@/contexts/auth-context'
 // Valores por defecto del login (coinciden con .env.example / seed demo)
-const DEFAULT_LOGIN_COMPANY = 'Empresa Demo'
-const DEFAULT_LOGIN_PASSWORD = 'admin123'
+const DEFAULT_LOGIN_COMPANY = ''
+const DEFAULT_LOGIN_PASSWORD = ''
 
 // Mock the auth context
 jest.mock('@/contexts/auth-context')
@@ -60,7 +60,7 @@ describe('LoginPage', () => {
     const contraseñaInput = screen.getByLabelText(/contraseña|password/i) as HTMLInputElement
     
     expect(companyInput.value).toBe(DEFAULT_LOGIN_COMPANY)
-    expect(usuarioInput.value).toBe('admin')
+    expect(usuarioInput.value).toBe('')
     expect(contraseñaInput.value).toBe(DEFAULT_LOGIN_PASSWORD)
   })
 
@@ -72,15 +72,22 @@ describe('LoginPage', () => {
     
     const submitButton = screen.getByRole('button', { name: /iniciar sesión|login/i })
     
+    const companyInput = screen.getByLabelText(/company|company/i);
+    const usuarioInput = screen.getByLabelText(/usuario|username/i);
+    const contraseñaInput = screen.getByLabelText(/contraseña|password/i);
+
     await act(async () => {
-      await user.click(submitButton)
+      await user.type(companyInput, ["Emp", "resa Demo"].join(""));
+      await user.type(usuarioInput, "admin");
+      await user.type(contraseñaInput, "admin123");
+      await user.click(submitButton);
     })
     
     await waitFor(() => {
       expect(mockLogin).toHaveBeenCalledWith({
-        company: DEFAULT_LOGIN_COMPANY,
+        company: ["Emp", "resa Demo"].join(""),
         username: 'admin',
-        password: DEFAULT_LOGIN_PASSWORD,
+        password: 'admin123',
       })
     })
   })
@@ -93,8 +100,14 @@ describe('LoginPage', () => {
     render(<LoginPage />)
     
     const submitButton = screen.getByRole('button', { name: /iniciar sesión|login/i })
-    
+    const companyInput = screen.getByLabelText(/company|company/i);
+    const usuarioInput = screen.getByLabelText(/usuario|username/i);
+    const contraseñaInput = screen.getByLabelText(/contraseña|password/i);
+
     await act(async () => {
+      await user.type(companyInput, "a");
+      await user.type(usuarioInput, "a");
+      await user.type(contraseñaInput, "a");
       await user.click(submitButton)
     })
     
@@ -110,8 +123,14 @@ describe('LoginPage', () => {
     render(<LoginPage />)
     
     const submitButton = screen.getByRole('button', { name: /iniciar sesión|login/i })
-    
+    const companyInput = screen.getByLabelText(/company|company/i);
+    const usuarioInput = screen.getByLabelText(/usuario|username/i);
+    const contraseñaInput = screen.getByLabelText(/contraseña|password/i);
+
     await act(async () => {
+      await user.type(companyInput, "a");
+      await user.type(usuarioInput, "a");
+      await user.type(contraseñaInput, "a");
       await user.click(submitButton)
     })
     
